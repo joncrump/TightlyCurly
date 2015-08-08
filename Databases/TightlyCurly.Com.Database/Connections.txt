@@ -1,0 +1,4 @@
+DBRefFolders found in your dbp file
+Connect String: Data Source=TSI-PC-001;Initial Catalog=TIGHTLY_CURLY;Integrated Security=True
+Provider: Microsoft SQL Server
+

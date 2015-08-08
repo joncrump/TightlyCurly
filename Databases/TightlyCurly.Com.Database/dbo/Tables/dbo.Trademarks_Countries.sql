@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Trademarks_Countries]
+(
+	[Id] INT NOT NULL IDENTITY(1,1),
+	[TrademarkId] UNIQUEIDENTIFIER NOT NULL,
+	[CountryId] UNIQUEIDENTIFIER NOT NULL,
+	[EnteredDate] SMALLDATETIME NOT NULL,
+	[UpdatedDate] SMALLDATETIME NOT NULL
+)

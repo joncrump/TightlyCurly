@@ -1,0 +1,13 @@
+﻿CREATE TABLE [dbo].[ProductVariantEditorialReviews]
+(
+	[Id] INT IDENTITY(1,1) NOT NULL,
+	[ProductVariantEditorialReviewId] UNIQUEIDENTIFIER NOT NULL,
+	[ProductVariantReviewId] UNIQUEIDENTIFIER NOT NULL,
+	[ReviewedBy] UNIQUEIDENTIFIER NOT NULL,
+	[Review] NVARCHAR(MAX) NOT NULL,
+	[Rating] DECIMAL NULL,
+	[ReviewDate] SMALLDATETIME NOT NULL,
+	[IsActive] BIT NULL,
+	[EnteredDate} SMALLDATETIME NOT NULL,
+	[UpdatedDate] SMALLDATETIME NOT NULL
+)

@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6D3BAFCD-4972-4F74-87CF-2D9C6331E5B3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TightlyCurly.Com.Repositories</RootNamespace>
+    <AssemblyName>TightlyCurly.Com.Repositories</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constants\Columns.cs" />
+    <Compile Include="Constants\Parameters.cs" />
+    <Compile Include="Constants\Tables.cs" />
+    <Compile Include="Database\DatabaseAddressRepository.cs" />
+    <Compile Include="Database\DatabaseAsideRepository.cs" />
+    <Compile Include="Database\DatabaseBrandRepository.cs" />
+    <Compile Include="Database\DatabaseCategoryTypeRepository.cs" />
+    <Compile Include="Database\DatabaseCompanyPositionRepository.cs" />
+    <Compile Include="Database\DatabaseCompanyRelationshipNodeRepository.cs" />
+    <Compile Include="Database\DatabaseCompanyRepository.cs" />
+    <Compile Include="Database\DatabaseCompanyTypeRepository.cs" />
+    <Compile Include="Database\DatabaseContactInfoRepository.cs" />
+    <Compile Include="Database\DatabaseContentArticleDataRepository.cs" />
+    <Compile Include="Database\DatabaseContentArticleNoteRepository.cs" />
+    <Compile Include="Database\DatabaseContentArticleRepository.cs" />
+    <Compile Include="Database\DatabaseContentArticleRevisionRepository.cs" />
+    <Compile Include="Database\DatabaseContentItemRepository.cs" />
+    <Compile Include="Database\DatabaseCoordinatesRepository.cs" />
+    <Compile Include="Database\DatabaseCopyrightRepository.cs" />
+    <Compile Include="Database\DatabaseCountryRepository.cs" />
+    <Compile Include="Database\DatabaseEmailAddressRepository.cs" />
+    <Compile Include="Database\DatabaseIngredientCategoryRepository.cs" />
+    <Compile Include="Database\DatabaseIngredientCommentRepository.cs" />
+    <Compile Include="Database\DatabaseIngredientInfoRepository.cs" />
+    <Compile Include="Database\DatabaseIngredientRatingRepository.cs" />
+    <Compile Include="Database\DatabaseIngredientRatingTextRepository.cs" />
+    <Compile Include="Database\DatabaseIngredientRepository.cs" />
+    <Compile Include="Database\DatabaseLinkRepository.cs" />
+    <Compile Include="Database\DatabaseLocaleRepository.cs" />
+    <Compile Include="Database\DatabaseLocationRepository.cs" />
+    <Compile Include="Database\DatabaseManufacturerInfoRepository.cs" />
+    <Compile Include="Database\DatabaseManufacturerRepository.cs" />
+    <Compile Include="Database\DatabaseMarketRepository.cs" />
+    <Compile Include="Database\DatabaseMenuItemRepository.cs" />
+    <Compile Include="Database\DatabaseMenuRepository.cs" />
+    <Compile Include="Database\DatabaseMenuItemTextRepository.cs" />
+    <Compile Include="Database\DatabaseMenuTextRepository.cs" />
+    <Compile Include="Database\DatabasePatentAuthorRepository.cs" />
+    <Compile Include="Database\DatabasePatentRepository.cs" />
+    <Compile Include="Database\DatabasePersonRelationshipRepository.cs" />
+    <Compile Include="Database\DatabasePersonRelationshipTypeRepository.cs" />
+    <Compile Include="Database\DatabasePersonRepository.cs" />
+    <Compile Include="Database\DatabasePhoneNumberRepository.cs" />
+    <Compile Include="Database\DatabaseProductCategoryRepository.cs" />
+    <Compile Include="Database\DatabaseProductLineRepository.cs" />
+    <Compile Include="Database\DatabaseProductMetadataRepository.cs" />
+    <Compile Include="Database\DatabaseProductRepository.cs" />
+    <Compile Include="Database\DatabaseProductRevisionHistoryRepository.cs" />
+    <Compile Include="Database\DatabaseProductSafetyInfoRepository.cs" />
+    <Compile Include="Database\DatabaseProductTypeRepository.cs" />
+    <Compile Include="Database\DatabaseProductVariantDescriptionRepository.cs" />
+    <Compile Include="Database\DatabaseProductVariantEditorialReviewRepository.cs" />
+    <Compile Include="Database\DatabaseProductVariantMetdataRepository.cs" />
+    <Compile Include="Database\DatabaseProductVariantNoteRepository.cs" />
+    <Compile Include="Database\DatabaseProductVariantRepository.cs" />
+    <Compile Include="IProductTypeRepository.cs" />
+    <Compile Include="IProductVariantDescriptionRepository.cs" />
+    <Compile Include="IProductVariantEditorialReviewRepository.cs" />
+    <Compile Include="IProductVariantMetataRepository.cs" />
+    <Compile Include="IProductVariantNoteRepository.cs" />
+    <Compile Include="IProductVariantRepository.cs" />
+    <Compile Include="IProductVariantReviewRepository.cs" />
+    <Compile Include="Models\PersonRelationshipDataModel.cs" />
+    <Compile Include="IAddressRepository.cs" />
+    <Compile Include="IAsideRepository.cs" />
+    <Compile Include="IBrandRepository.cs" />
+    <Compile Include="ICategoryTypeRepository.cs" />
+    <Compile Include="ICompanyPositionRepository.cs" />
+    <Compile Include="ICompanyRelationshipNodeRepository.cs" />
+    <Compile Include="ICompanyRepository.cs" />
+    <Compile Include="ICompanyTypeRepository.cs" />
+    <Compile Include="IContactInfoRepository.cs" />
+    <Compile Include="IContentArticleDataRepository.cs" />
+    <Compile Include="IContentArticleNoteRepository.cs" />
+    <Compile Include="IContentArticleRepository.cs" />
+    <Compile Include="IContentArticleRevisionRepository.cs" />
+    <Compile Include="IContentItemRepository.cs" />
+    <Compile Include="ICoordinatesRepository.cs" />
+    <Compile Include="ICopyrightRepository.cs" />
+    <Compile Include="ICountryRepository.cs" />
+    <Compile Include="IEmailAddressRepository.cs" />
+    <Compile Include="IIngredientCategoryRepository.cs" />
+    <Compile Include="IIngredientCommentRepository.cs" />
+    <Compile Include="IIngredientInfoRepository.cs" />
+    <Compile Include="IIngredientRatingRepository.cs" />
+    <Compile Include="IIngredientRepository.cs" />
+    <Compile Include="IIngredientRatingTextRepository.cs" />
+    <Compile Include="ILinkRepository.cs" />
+    <Compile Include="ILocaleRepository.cs" />
+    <Compile Include="ILocationRepository.cs" />
+    <Compile Include="IManufacturerInfoRepository.cs" />
+    <Compile Include="IManufacturerRepository.cs" />
+    <Compile Include="IMarketRepository.cs" />
+    <Compile Include="IMenuItemRepository.cs" />
+    <Compile Include="IMenuItemTextRepository.cs" />
+    <Compile Include="IMenuRepository.cs" />
+    <Compile Include="IMenuTextRepository.cs" />
+    <Compile Include="IPatentAuthorRepository.cs" />
+    <Compile Include="IPatentRepository.cs" />
+    <Compile Include="IPersonRelationshipRepository.cs" />
+    <Compile Include="IPersonRelationshipTypeRepository.cs" />
+    <Compile Include="IPersonRepository.cs" />
+    <Compile Include="IPhoneNumberRepository.cs" />
+    <Compile Include="IProductCategoryRepository.cs" />
+    <Compile Include="IProductLineRepository.cs" />
+    <Compile Include="IProductMetadataRepository.cs" />
+    <Compile Include="IProductRepository.cs" />
+    <Compile Include="IProductRevisionHistoryRepository.cs" />
+    <Compile Include="IProductSafetyInfoRepository.cs" />
+    <Compile Include="Models\ContentArticleRevisionDataModel.cs" />
+    <Compile Include="Models\ContentItemDataModel.cs" />
+    <Compile Include="Models\CoordinatesDataModel.cs" />
+    <Compile Include="Models\CopyrightDataModel.cs" />
+    <Compile Include="Models\CountryDataModel.cs" />
+    <Compile Include="Models\EmailAddressDataModel.cs" />
+    <Compile Include="Models\ICompanyPerson.cs" />
+    <Compile Include="Models\IngredientCategoryDataModel.cs" />
+    <Compile Include="Models\IngredientCommentDataModel.cs" />
+    <Compile Include="Models\IngredientDataModel.cs" />
+    <Compile Include="Models\IngredientInfoDataModel.cs" />
+    <Compile Include="Models\IngredientRatingDataModel.cs" />
+    <Compile Include="Models\IngredientRatingTextDataModel.cs" />
+    <Compile Include="Models\LinkDataModel.cs" />
+    <Compile Include="Models\LoaderKeys.cs" />
+    <Compile Include="Models\LocaleDataModel.cs" />
+    <Compile Include="Models\LocationDataModel.cs" />
+    <Compile Include="Models\ManufacturerDataModel.cs" />
+    <Compile Include="Models\ManufacturerInfoDataModel.cs" />
+    <Compile Include="Models\MarketDataModel.cs" />
+    <Compile Include="Models\MenuDataModel.cs" />
+    <Compile Include="Models\MenuItemDataModel.cs" />
+    <Compile Include="Models\MenuItemTextDataModel.cs" />
+    <Compile Include="Models\MenuTextDataItem.cs" />
+    <Compile Include="Models\MenuTextDataModel.cs" />
+    <Compile Include="Models\MessageCampaignDataModel.cs" />
+    <Compile Include="Models\MessageTemplateDataModel.cs" />
+    <Compile Include="Models\PatentAuthorDataModel.cs" />
+    <Compile Include="Models\PatentDataModel.cs" />
+    <Compile Include="Models\PersonDataModel.cs" />
+    <Compile Include="Models\PersonRelationshipTypeDataModel.cs" />
+    <Compile Include="Models\PhoneNumberDataModel.cs" />
+    <Compile Include="Models\ProductCategoryDataModel.cs" />
+    <Compile Include="Models\ProductDataModel.cs" />
+    <Compile Include="Models\ProductLineDataModel.cs" />
+    <Compile Include="Models\ProductMetadataDataModel.cs" />
+    <Compile Include="Models\ProductRevisionHistoryDataModel.cs" />
+    <Compile Include="Models\ProductSafetyInfoDataModel.cs" />
+    <Compile Include="Models\ProductTypeDataModel.cs" />
+    <Compile Include="Models\ProductVariantDataModel.cs" />
+    <Compile Include="Models\ProductVariantDescriptionDataModel.cs" />
+    <Compile Include="Models\ProductVariantEditorialReviewDataModel.cs" />
+    <Compile Include="Models\ProductVariantMetadataDataModel.cs" />
+    <Compile Include="Models\ProductVariantNoteDataModel.cs" />
+    <Compile Include="Models\ProductVariantReviewDataModel.cs" />
+    <Compile Include="Models\StateProvinceDataModel.cs" />
+    <Compile Include="Models\TrademarkDataModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\TightlyCurly.Com.Common.Data\TightlyCurly.Com.Common.Data.csproj">
+      <Project>{02D3A7EC-DEED-49F6-A8A7-A7904E56C1F3}</Project>
+      <Name>TightlyCurly.Com.Common.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\TightlyCurly.Com.Common.Models\TightlyCurly.Com.Common.Models.csproj">
+      <Project>{88A2370D-E1B5-45F5-920B-61EA708E5B14}</Project>
+      <Name>TightlyCurly.Com.Common.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\TightlyCurly.Com.Common\TightlyCurly.Com.Common.csproj">
+      <Project>{90DE5354-58AD-4B3E-805D-E1F471143033}</Project>
+      <Name>TightlyCurly.Com.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

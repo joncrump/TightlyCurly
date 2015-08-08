@@ -1,0 +1,4 @@
+﻿ALTER TABLE [dbo].[ProductVariantEditorialReviews_ProductImageUris]
+	ADD CONSTRAINT [FK_ProductVariantEditorialReviews_ProductImageUris_ProductVariantEditorialReviews]
+	FOREIGN KEY (ProductVariantEditorialReviewId)
+	REFERENCES [ProductVariantEditorialReviews] (ProductVariantEditorialReviewId)

@@ -1,0 +1,5 @@
+C:\SourceCode\TightlyCurly\Dev\Libraries\Common\TightlyCurly.Com.Common\bin\Debug\TightlyCurly.Com.Common.dll
+C:\SourceCode\TightlyCurly\Dev\Libraries\Common\TightlyCurly.Com.Common\bin\Debug\TightlyCurly.Com.Common.pdb
+C:\SourceCode\TightlyCurly\Dev\Libraries\Common\TightlyCurly.Com.Common\obj\Debug\TightlyCurly.Com.Common.csprojResolveAssemblyReference.cache
+C:\SourceCode\TightlyCurly\Dev\Libraries\Common\TightlyCurly.Com.Common\obj\Debug\TightlyCurly.Com.Common.dll
+C:\SourceCode\TightlyCurly\Dev\Libraries\Common\TightlyCurly.Com.Common\obj\Debug\TightlyCurly.Com.Common.pdb

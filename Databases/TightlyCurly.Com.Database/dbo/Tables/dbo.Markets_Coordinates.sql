@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Markets_Coordinates]
+(
+	[Id] INT NOT NULL IDENTITY(1,1),
+	[MarketId] UNIQUEIDENTIFIER NOT NULL,
+	[CoordinateId] UNIQUEIDENTIFIER NOT NULL,
+	[EnteredDate] SMALLDATETIME NOT NULL,
+	[UpdatedDate] SMALLDATETIME NOT NULL
+)

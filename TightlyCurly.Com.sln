@@ -1,0 +1,259 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{AC2EBE8E-46B9-4230-9CEF-19EC5FF2D01C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{771A7699-9631-409B-9742-28384154B596}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repositories", "Repositories", "{A711A5CE-3039-4A9C-B025-F92348D748D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Providers", "Providers", "{149C855C-2CE3-4320-BE81-A96594058856}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TightlyCurly.Com.Common", "Libraries\Common\TightlyCurly.Com.Common\TightlyCurly.Com.Common.csproj", "{90DE5354-58AD-4B3E-805D-E1F471143033}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TightlyCurly.Com.Common.Data", "Libraries\Common\TightlyCurly.Com.Common.Data\TightlyCurly.Com.Common.Data.csproj", "{02D3A7EC-DEED-49F6-A8A7-A7904E56C1F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TightlyCurly.Com.Common.Models", "Libraries\Common\TightlyCurly.Com.Common.Models\TightlyCurly.Com.Common.Models.csproj", "{88A2370D-E1B5-45F5-920B-61EA708E5B14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TightlyCurly.Com.Tests.Common", "Libraries\Common\TightlyCurly.Com.Tests.Common\TightlyCurly.Com.Tests.Common.csproj", "{FA9B391B-963B-455E-94C8-C4B88D766886}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TightlyCurly.Com.Providers.Repositories.Common", "Libraries\Common\TightlyCurly.Com.Providers.Repositories.Common\TightlyCurly.Com.Providers.Repositories.Common.csproj", "{34230E89-77A5-4BA2-B172-26F47C9F1879}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TightlyCurly.Com.Providers.Common", "Libraries\Common\TightlyCurly.Com.Providers.Common\TightlyCurly.Com.Providers.Common.csproj", "{8E0E84AE-BA57-4FB2-8009-96CF513BC269}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TightlyCurly.Com.Repositories", "Libraries\Repositories\TightlyCurly.Com.Repositories\TightlyCurly.Com.Repositories.csproj", "{6D3BAFCD-4972-4F74-87CF-2D9C6331E5B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4D0C6DEA-3D2E-49FE-918D-04E2B6487301}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TightlyCurly.Com.Repositories.Tests", "Tests\TightlyCurly.Com.Repositories.Tests\TightlyCurly.Com.Repositories.Tests.csproj", "{B03C5264-F9C8-4750-A705-0A22FA5466E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebSites", "WebSites", "{24A1A8B2-FC9C-4525-B79D-CCD93038C89E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TightlyCurly.Com.Web", "WebSites\TightlyCurly.Com.Web\TightlyCurly.Com.Web.csproj", "{07160FA7-BEE0-4772-AB5F-4FE0A4CF2FEC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Databases", "Databases", "{D89B3E55-48D9-4A4A-AF86-242A68F7164C}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TightlyCurly.Com.Database", "Databases\TightlyCurly.Com.Database\TightlyCurly.Com.Database.sqlproj", "{D0630DBE-EBDD-4E57-8774-DAA754A694DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TightlyCurly.Com.Tests.Common.MsTest", "Libraries\Common\TightlyCurly.Com.Tests.Common.MsTest\TightlyCurly.Com.Tests.Common.MsTest.csproj", "{B739D274-952B-4377-84EF-D9A7C6A7D346}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TightlyCurly.Com.Tests.Common.MsTest.Data", "Libraries\Common\TightlyCurly.Com.Tests.Common.MsTest.Data\TightlyCurly.Com.Tests.Common.MsTest.Data.csproj", "{F1D14F6A-5A0D-4E3C-B310-ED2A78B572E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TightlyCurly.Com.Tests.Common.Data", "Libraries\Common\TightlyCurly.Com.Tests.Common.Data\TightlyCurly.Com.Tests.Common.Data.csproj", "{FFADF87C-28D8-49B2-AFC7-C96301C7D700}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TightlyCurly.Com.Common.Data.Tests", "Tests\TightlyCurly.Com.Common.Data.Tests\TightlyCurly.Com.Common.Data.Tests.csproj", "{28B4C8EF-D1FD-487F-8CB4-66F316D211CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TightlyCurly.Com.Common.Tests", "Tests\TightlyCurly.Com.Common.Tests\TightlyCurly.Com.Common.Tests.csproj", "{CEBD0252-BE26-4F0C-9A3D-E3C5BF265290}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A49C7C25-2885-4B44-A97E-5496510F02BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseMappings", "DatabaseMappings", "{CD202FD2-4659-4879-8559-730716DBE28F}"
+	ProjectSection(SolutionItems) = preProject
+		DatabaseMappings\address.js = DatabaseMappings\address.js
+		aside.js = aside.js
+		brand.js = brand.js
+		categoryType.js = categoryType.js
+		company.js = company.js
+		companyPosition.js = companyPosition.js
+		companyRelationshipNode.js = companyRelationshipNode.js
+		companyTypes.js = companyTypes.js
+		contactInfo.js = contactInfo.js
+		contentArticle.js = contentArticle.js
+		contentArticleData.js = contentArticleData.js
+		contentArticleNote.js = contentArticleNote.js
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug-CI|Any CPU = Debug-CI|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90DE5354-58AD-4B3E-805D-E1F471143033}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90DE5354-58AD-4B3E-805D-E1F471143033}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90DE5354-58AD-4B3E-805D-E1F471143033}.Debug-CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{90DE5354-58AD-4B3E-805D-E1F471143033}.Debug-CI|Any CPU.Build.0 = Debug|Any CPU
+		{90DE5354-58AD-4B3E-805D-E1F471143033}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90DE5354-58AD-4B3E-805D-E1F471143033}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02D3A7EC-DEED-49F6-A8A7-A7904E56C1F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02D3A7EC-DEED-49F6-A8A7-A7904E56C1F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02D3A7EC-DEED-49F6-A8A7-A7904E56C1F3}.Debug-CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{02D3A7EC-DEED-49F6-A8A7-A7904E56C1F3}.Debug-CI|Any CPU.Build.0 = Debug|Any CPU
+		{02D3A7EC-DEED-49F6-A8A7-A7904E56C1F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02D3A7EC-DEED-49F6-A8A7-A7904E56C1F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88A2370D-E1B5-45F5-920B-61EA708E5B14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88A2370D-E1B5-45F5-920B-61EA708E5B14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88A2370D-E1B5-45F5-920B-61EA708E5B14}.Debug-CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{88A2370D-E1B5-45F5-920B-61EA708E5B14}.Debug-CI|Any CPU.Build.0 = Debug|Any CPU
+		{88A2370D-E1B5-45F5-920B-61EA708E5B14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88A2370D-E1B5-45F5-920B-61EA708E5B14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA9B391B-963B-455E-94C8-C4B88D766886}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA9B391B-963B-455E-94C8-C4B88D766886}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA9B391B-963B-455E-94C8-C4B88D766886}.Debug-CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA9B391B-963B-455E-94C8-C4B88D766886}.Debug-CI|Any CPU.Build.0 = Debug|Any CPU
+		{FA9B391B-963B-455E-94C8-C4B88D766886}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA9B391B-963B-455E-94C8-C4B88D766886}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34230E89-77A5-4BA2-B172-26F47C9F1879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34230E89-77A5-4BA2-B172-26F47C9F1879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34230E89-77A5-4BA2-B172-26F47C9F1879}.Debug-CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{34230E89-77A5-4BA2-B172-26F47C9F1879}.Debug-CI|Any CPU.Build.0 = Debug|Any CPU
+		{34230E89-77A5-4BA2-B172-26F47C9F1879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34230E89-77A5-4BA2-B172-26F47C9F1879}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E0E84AE-BA57-4FB2-8009-96CF513BC269}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E0E84AE-BA57-4FB2-8009-96CF513BC269}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E0E84AE-BA57-4FB2-8009-96CF513BC269}.Debug-CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E0E84AE-BA57-4FB2-8009-96CF513BC269}.Debug-CI|Any CPU.Build.0 = Debug|Any CPU
+		{8E0E84AE-BA57-4FB2-8009-96CF513BC269}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E0E84AE-BA57-4FB2-8009-96CF513BC269}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D3BAFCD-4972-4F74-87CF-2D9C6331E5B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D3BAFCD-4972-4F74-87CF-2D9C6331E5B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D3BAFCD-4972-4F74-87CF-2D9C6331E5B3}.Debug-CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D3BAFCD-4972-4F74-87CF-2D9C6331E5B3}.Debug-CI|Any CPU.Build.0 = Debug|Any CPU
+		{6D3BAFCD-4972-4F74-87CF-2D9C6331E5B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D3BAFCD-4972-4F74-87CF-2D9C6331E5B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B03C5264-F9C8-4750-A705-0A22FA5466E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B03C5264-F9C8-4750-A705-0A22FA5466E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B03C5264-F9C8-4750-A705-0A22FA5466E3}.Debug-CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{B03C5264-F9C8-4750-A705-0A22FA5466E3}.Debug-CI|Any CPU.Build.0 = Debug|Any CPU
+		{B03C5264-F9C8-4750-A705-0A22FA5466E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B03C5264-F9C8-4750-A705-0A22FA5466E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07160FA7-BEE0-4772-AB5F-4FE0A4CF2FEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07160FA7-BEE0-4772-AB5F-4FE0A4CF2FEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07160FA7-BEE0-4772-AB5F-4FE0A4CF2FEC}.Debug-CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{07160FA7-BEE0-4772-AB5F-4FE0A4CF2FEC}.Debug-CI|Any CPU.Build.0 = Debug|Any CPU
+		{07160FA7-BEE0-4772-AB5F-4FE0A4CF2FEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07160FA7-BEE0-4772-AB5F-4FE0A4CF2FEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0630DBE-EBDD-4E57-8774-DAA754A694DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0630DBE-EBDD-4E57-8774-DAA754A694DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0630DBE-EBDD-4E57-8774-DAA754A694DA}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D0630DBE-EBDD-4E57-8774-DAA754A694DA}.Debug-CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0630DBE-EBDD-4E57-8774-DAA754A694DA}.Debug-CI|Any CPU.Build.0 = Debug|Any CPU
+		{D0630DBE-EBDD-4E57-8774-DAA754A694DA}.Debug-CI|Any CPU.Deploy.0 = Debug|Any CPU
+		{D0630DBE-EBDD-4E57-8774-DAA754A694DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0630DBE-EBDD-4E57-8774-DAA754A694DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0630DBE-EBDD-4E57-8774-DAA754A694DA}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B739D274-952B-4377-84EF-D9A7C6A7D346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B739D274-952B-4377-84EF-D9A7C6A7D346}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B739D274-952B-4377-84EF-D9A7C6A7D346}.Debug-CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{B739D274-952B-4377-84EF-D9A7C6A7D346}.Debug-CI|Any CPU.Build.0 = Debug|Any CPU
+		{B739D274-952B-4377-84EF-D9A7C6A7D346}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B739D274-952B-4377-84EF-D9A7C6A7D346}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1D14F6A-5A0D-4E3C-B310-ED2A78B572E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1D14F6A-5A0D-4E3C-B310-ED2A78B572E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1D14F6A-5A0D-4E3C-B310-ED2A78B572E8}.Debug-CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1D14F6A-5A0D-4E3C-B310-ED2A78B572E8}.Debug-CI|Any CPU.Build.0 = Debug|Any CPU
+		{F1D14F6A-5A0D-4E3C-B310-ED2A78B572E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1D14F6A-5A0D-4E3C-B310-ED2A78B572E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFADF87C-28D8-49B2-AFC7-C96301C7D700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFADF87C-28D8-49B2-AFC7-C96301C7D700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFADF87C-28D8-49B2-AFC7-C96301C7D700}.Debug-CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFADF87C-28D8-49B2-AFC7-C96301C7D700}.Debug-CI|Any CPU.Build.0 = Debug|Any CPU
+		{FFADF87C-28D8-49B2-AFC7-C96301C7D700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFADF87C-28D8-49B2-AFC7-C96301C7D700}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28B4C8EF-D1FD-487F-8CB4-66F316D211CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28B4C8EF-D1FD-487F-8CB4-66F316D211CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28B4C8EF-D1FD-487F-8CB4-66F316D211CA}.Debug-CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{28B4C8EF-D1FD-487F-8CB4-66F316D211CA}.Debug-CI|Any CPU.Build.0 = Debug|Any CPU
+		{28B4C8EF-D1FD-487F-8CB4-66F316D211CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28B4C8EF-D1FD-487F-8CB4-66F316D211CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEBD0252-BE26-4F0C-9A3D-E3C5BF265290}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEBD0252-BE26-4F0C-9A3D-E3C5BF265290}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEBD0252-BE26-4F0C-9A3D-E3C5BF265290}.Debug-CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEBD0252-BE26-4F0C-9A3D-E3C5BF265290}.Debug-CI|Any CPU.Build.0 = Debug|Any CPU
+		{CEBD0252-BE26-4F0C-9A3D-E3C5BF265290}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEBD0252-BE26-4F0C-9A3D-E3C5BF265290}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{771A7699-9631-409B-9742-28384154B596} = {AC2EBE8E-46B9-4230-9CEF-19EC5FF2D01C}
+		{A711A5CE-3039-4A9C-B025-F92348D748D4} = {AC2EBE8E-46B9-4230-9CEF-19EC5FF2D01C}
+		{149C855C-2CE3-4320-BE81-A96594058856} = {AC2EBE8E-46B9-4230-9CEF-19EC5FF2D01C}
+		{90DE5354-58AD-4B3E-805D-E1F471143033} = {771A7699-9631-409B-9742-28384154B596}
+		{02D3A7EC-DEED-49F6-A8A7-A7904E56C1F3} = {771A7699-9631-409B-9742-28384154B596}
+		{88A2370D-E1B5-45F5-920B-61EA708E5B14} = {771A7699-9631-409B-9742-28384154B596}
+		{FA9B391B-963B-455E-94C8-C4B88D766886} = {771A7699-9631-409B-9742-28384154B596}
+		{34230E89-77A5-4BA2-B172-26F47C9F1879} = {771A7699-9631-409B-9742-28384154B596}
+		{8E0E84AE-BA57-4FB2-8009-96CF513BC269} = {771A7699-9631-409B-9742-28384154B596}
+		{6D3BAFCD-4972-4F74-87CF-2D9C6331E5B3} = {A711A5CE-3039-4A9C-B025-F92348D748D4}
+		{B03C5264-F9C8-4750-A705-0A22FA5466E3} = {4D0C6DEA-3D2E-49FE-918D-04E2B6487301}
+		{07160FA7-BEE0-4772-AB5F-4FE0A4CF2FEC} = {24A1A8B2-FC9C-4525-B79D-CCD93038C89E}
+		{D0630DBE-EBDD-4E57-8774-DAA754A694DA} = {D89B3E55-48D9-4A4A-AF86-242A68F7164C}
+		{B739D274-952B-4377-84EF-D9A7C6A7D346} = {771A7699-9631-409B-9742-28384154B596}
+		{F1D14F6A-5A0D-4E3C-B310-ED2A78B572E8} = {771A7699-9631-409B-9742-28384154B596}
+		{FFADF87C-28D8-49B2-AFC7-C96301C7D700} = {771A7699-9631-409B-9742-28384154B596}
+		{28B4C8EF-D1FD-487F-8CB4-66F316D211CA} = {4D0C6DEA-3D2E-49FE-918D-04E2B6487301}
+		{CEBD0252-BE26-4F0C-9A3D-E3C5BF265290} = {4D0C6DEA-3D2E-49FE-918D-04E2B6487301}
+		{CD202FD2-4659-4879-8559-730716DBE28F} = {A49C7C25-2885-4B44-A97E-5496510F02BA}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 16
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tightlycurly.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Libraries\\Common\\TightlyCurly.Com.Common\\TightlyCurly.Com.Common.csproj
+		SccProjectTopLevelParentUniqueName1 = TightlyCurly.Com.sln
+		SccProjectName1 = Libraries/Common/TightlyCurly.Com.Common
+		SccLocalPath1 = Libraries\\Common\\TightlyCurly.Com.Common
+		SccProjectUniqueName2 = Libraries\\Common\\TightlyCurly.Com.Common.Data\\TightlyCurly.Com.Common.Data.csproj
+		SccProjectTopLevelParentUniqueName2 = TightlyCurly.Com.sln
+		SccProjectName2 = Libraries/Common/TightlyCurly.Com.Common.Data
+		SccLocalPath2 = Libraries\\Common\\TightlyCurly.Com.Common.Data
+		SccProjectUniqueName3 = Libraries\\Common\\TightlyCurly.Com.Common.Models\\TightlyCurly.Com.Common.Models.csproj
+		SccProjectTopLevelParentUniqueName3 = TightlyCurly.Com.sln
+		SccProjectName3 = Libraries/Common/TightlyCurly.Com.Common.Models
+		SccLocalPath3 = Libraries\\Common\\TightlyCurly.Com.Common.Models
+		SccProjectUniqueName4 = Libraries\\Common\\TightlyCurly.Com.Tests.Common\\TightlyCurly.Com.Tests.Common.csproj
+		SccProjectTopLevelParentUniqueName4 = TightlyCurly.Com.sln
+		SccProjectName4 = Libraries/Common/TightlyCurly.Com.Tests.Common
+		SccLocalPath4 = Libraries\\Common\\TightlyCurly.Com.Tests.Common
+		SccProjectUniqueName5 = Libraries\\Common\\TightlyCurly.Com.Providers.Repositories.Common\\TightlyCurly.Com.Providers.Repositories.Common.csproj
+		SccProjectTopLevelParentUniqueName5 = TightlyCurly.Com.sln
+		SccProjectName5 = Libraries/Common/TightlyCurly.Com.Providers.Repositories.Common
+		SccLocalPath5 = Libraries\\Common\\TightlyCurly.Com.Providers.Repositories.Common
+		SccProjectUniqueName6 = Libraries\\Common\\TightlyCurly.Com.Providers.Common\\TightlyCurly.Com.Providers.Common.csproj
+		SccProjectTopLevelParentUniqueName6 = TightlyCurly.Com.sln
+		SccProjectName6 = Libraries/Common/TightlyCurly.Com.Providers.Common
+		SccLocalPath6 = Libraries\\Common\\TightlyCurly.Com.Providers.Common
+		SccProjectUniqueName7 = Libraries\\Repositories\\TightlyCurly.Com.Repositories\\TightlyCurly.Com.Repositories.csproj
+		SccProjectTopLevelParentUniqueName7 = TightlyCurly.Com.sln
+		SccProjectName7 = Libraries/Repositories/TightlyCurly.Com.Repositories
+		SccLocalPath7 = Libraries\\Repositories\\TightlyCurly.Com.Repositories
+		SccProjectUniqueName8 = Tests\\TightlyCurly.Com.Repositories.Tests\\TightlyCurly.Com.Repositories.Tests.csproj
+		SccProjectTopLevelParentUniqueName8 = TightlyCurly.Com.sln
+		SccProjectName8 = Tests/TightlyCurly.Com.Repositories.Tests
+		SccLocalPath8 = Tests\\TightlyCurly.Com.Repositories.Tests
+		SccProjectUniqueName9 = WebSites\\TightlyCurly.Com.Web\\TightlyCurly.Com.Web.csproj
+		SccProjectTopLevelParentUniqueName9 = TightlyCurly.Com.sln
+		SccProjectName9 = WebSites/TightlyCurly.Com.Web
+		SccLocalPath9 = WebSites\\TightlyCurly.Com.Web
+		SccProjectUniqueName10 = Databases\\TightlyCurly.Com.Database\\TightlyCurly.Com.Database.sqlproj
+		SccProjectTopLevelParentUniqueName10 = TightlyCurly.Com.sln
+		SccProjectName10 = Databases/TightlyCurly.Com.Database
+		SccLocalPath10 = Databases\\TightlyCurly.Com.Database
+		SccProjectUniqueName11 = Libraries\\Common\\TightlyCurly.Com.Tests.Common.MsTest\\TightlyCurly.Com.Tests.Common.MsTest.csproj
+		SccProjectTopLevelParentUniqueName11 = TightlyCurly.Com.sln
+		SccProjectName11 = Libraries/Common/TightlyCurly.Com.Tests.Common.MsTest
+		SccLocalPath11 = Libraries\\Common\\TightlyCurly.Com.Tests.Common.MsTest
+		SccProjectUniqueName12 = Libraries\\Common\\TightlyCurly.Com.Tests.Common.MsTest.Data\\TightlyCurly.Com.Tests.Common.MsTest.Data.csproj
+		SccProjectTopLevelParentUniqueName12 = TightlyCurly.Com.sln
+		SccProjectName12 = Libraries/Common/TightlyCurly.Com.Tests.Common.MsTest.Data
+		SccLocalPath12 = Libraries\\Common\\TightlyCurly.Com.Tests.Common.MsTest.Data
+		SccProjectUniqueName13 = Libraries\\Common\\TightlyCurly.Com.Tests.Common.Data\\TightlyCurly.Com.Tests.Common.Data.csproj
+		SccProjectTopLevelParentUniqueName13 = TightlyCurly.Com.sln
+		SccProjectName13 = Libraries/Common/TightlyCurly.Com.Tests.Common.Data
+		SccLocalPath13 = Libraries\\Common\\TightlyCurly.Com.Tests.Common.Data
+		SccProjectUniqueName14 = Tests\\TightlyCurly.Com.Common.Data.Tests\\TightlyCurly.Com.Common.Data.Tests.csproj
+		SccProjectTopLevelParentUniqueName14 = TightlyCurly.Com.sln
+		SccProjectName14 = Tests/TightlyCurly.Com.Common.Data.Tests
+		SccLocalPath14 = Tests\\TightlyCurly.Com.Common.Data.Tests
+		SccProjectUniqueName15 = Tests\\TightlyCurly.Com.Common.Tests\\TightlyCurly.Com.Common.Tests.csproj
+		SccProjectTopLevelParentUniqueName15 = TightlyCurly.Com.sln
+		SccProjectName15 = Tests/TightlyCurly.Com.Common.Tests
+		SccLocalPath15 = Tests\\TightlyCurly.Com.Common.Tests
+	EndGlobalSection
+EndGlobal

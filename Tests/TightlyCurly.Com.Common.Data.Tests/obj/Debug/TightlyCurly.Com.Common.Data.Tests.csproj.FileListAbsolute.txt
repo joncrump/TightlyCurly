@@ -1,0 +1,1 @@
+C:\SourceCode\TightlyCurly\Dev\Tests\TightlyCurly.Com.Common.Data.Tests\obj\Debug\TightlyCurly.Com.Common.Data.Tests.csprojResolveAssemblyReference.cache

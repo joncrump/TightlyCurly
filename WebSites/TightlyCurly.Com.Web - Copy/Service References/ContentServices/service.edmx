@@ -1,0 +1,81 @@
+﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:DataServices>
+    <Schema Namespace="Alligoshee.Hair.Business" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+      <EntityType Name="QuestionsQuestionCategory">
+        <Key>
+          <PropertyRef Name="QuestionsQuestionCategoriesId" />
+        </Key>
+        <Property Name="QuestionsQuestionCategoriesId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="QuestionId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="QuestionCategoryId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="EnteredDate" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="UpdatedDate" Type="Edm.DateTime" Nullable="false" />
+        <NavigationProperty Name="QuestionCategory" Relationship="Alligoshee.Hair.Business.QuestionsQuestionCategory_QuestionCategory" FromRole="QuestionsQuestionCategory" ToRole="QuestionCategory" />
+        <NavigationProperty Name="Question" Relationship="Alligoshee.Hair.Business.QuestionsQuestionCategory_Question" FromRole="QuestionsQuestionCategory" ToRole="Question" />
+      </EntityType>
+      <EntityType Name="QuestionCategory">
+        <Key>
+          <PropertyRef Name="QuestionCategoryId" />
+        </Key>
+        <Property Name="QuestionCategoryId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Category" Type="Edm.String" Nullable="true" />
+        <Property Name="ParentId" Type="Edm.Int32" Nullable="true" />
+        <Property Name="EnteredDate" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="UpdatedDate" Type="Edm.DateTime" Nullable="false" />
+        <NavigationProperty Name="QuestionsQuestionCategories" Relationship="Alligoshee.Hair.Business.QuestionCategory_QuestionsQuestionCategories" FromRole="QuestionCategory" ToRole="QuestionsQuestionCategories" />
+      </EntityType>
+      <EntityType Name="Question">
+        <Key>
+          <PropertyRef Name="QuestionId" />
+        </Key>
+        <Property Name="QuestionId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Question1" Type="Edm.String" Nullable="true" />
+        <Property Name="Answer" Type="Edm.String" Nullable="true" />
+        <Property Name="LocaleId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="EnteredDate" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="UpdatedDate" Type="Edm.DateTime" Nullable="false" />
+        <NavigationProperty Name="QuestionsQuestionCategories" Relationship="Alligoshee.Hair.Business.Question_QuestionsQuestionCategories" FromRole="Question" ToRole="QuestionsQuestionCategories" />
+      </EntityType>
+      <Association Name="QuestionsQuestionCategory_QuestionCategory">
+        <End Role="QuestionCategory" Type="Alligoshee.Hair.Business.QuestionCategory" Multiplicity="0..1" />
+        <End Role="QuestionsQuestionCategory" Type="Alligoshee.Hair.Business.QuestionsQuestionCategory" Multiplicity="*" />
+      </Association>
+      <Association Name="QuestionsQuestionCategory_Question">
+        <End Role="Question" Type="Alligoshee.Hair.Business.Question" Multiplicity="0..1" />
+        <End Role="QuestionsQuestionCategory" Type="Alligoshee.Hair.Business.QuestionsQuestionCategory" Multiplicity="*" />
+      </Association>
+      <Association Name="QuestionCategory_QuestionsQuestionCategories">
+        <End Role="QuestionsQuestionCategories" Type="Alligoshee.Hair.Business.QuestionsQuestionCategory" Multiplicity="*" />
+        <End Role="QuestionCategory" Type="Alligoshee.Hair.Business.QuestionCategory" Multiplicity="*" />
+      </Association>
+      <Association Name="Question_QuestionsQuestionCategories">
+        <End Role="QuestionsQuestionCategories" Type="Alligoshee.Hair.Business.QuestionsQuestionCategory" Multiplicity="*" />
+        <End Role="Question" Type="Alligoshee.Hair.Business.Question" Multiplicity="*" />
+      </Association>
+      <EntityContainer Name="DataEntitiesDataContext" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="QuestionsQuestionCategories" EntityType="Alligoshee.Hair.Business.QuestionsQuestionCategory" />
+        <EntitySet Name="QuestionCategories" EntityType="Alligoshee.Hair.Business.QuestionCategory" />
+        <EntitySet Name="Questions" EntityType="Alligoshee.Hair.Business.Question" />
+        <AssociationSet Name="QuestionsQuestionCategory_QuestionCategory" Association="Alligoshee.Hair.Business.QuestionsQuestionCategory_QuestionCategory">
+          <End Role="QuestionCategory" EntitySet="QuestionCategories" />
+          <End Role="QuestionsQuestionCategory" EntitySet="QuestionsQuestionCategories" />
+        </AssociationSet>
+        <AssociationSet Name="QuestionsQuestionCategory_Question" Association="Alligoshee.Hair.Business.QuestionsQuestionCategory_Question">
+          <End Role="Question" EntitySet="Questions" />
+          <End Role="QuestionsQuestionCategory" EntitySet="QuestionsQuestionCategories" />
+        </AssociationSet>
+        <AssociationSet Name="QuestionCategory_QuestionsQuestionCategories" Association="Alligoshee.Hair.Business.QuestionCategory_QuestionsQuestionCategories">
+          <End Role="QuestionsQuestionCategories" EntitySet="QuestionsQuestionCategories" />
+          <End Role="QuestionCategory" EntitySet="QuestionCategories" />
+        </AssociationSet>
+        <AssociationSet Name="Question_QuestionsQuestionCategories" Association="Alligoshee.Hair.Business.Question_QuestionsQuestionCategories">
+          <End Role="QuestionsQuestionCategories" EntitySet="QuestionsQuestionCategories" />
+          <End Role="Question" EntitySet="Questions" />
+        </AssociationSet>
+        <FunctionImport Name="GetChildCategoriesById" EntitySet="QuestionCategories" ReturnType="Collection(Alligoshee.Hair.Business.QuestionCategory)" m:HttpMethod="GET">
+          <Parameter Name="categoryId" Type="Edm.Int32" Mode="In" />
+        </FunctionImport>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

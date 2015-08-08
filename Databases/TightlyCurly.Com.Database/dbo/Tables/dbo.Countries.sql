@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Countries]
+(
+	[Id] INT IDENTITY(1,1) NOT NULL,
+	[CountryId] UNIQUEIDENTIFIER NOT NULL,
+	[CountryName] NVARCHAR(255) NOT NULL,
+	[EnteredDate] SMALLDATETIME NOT NULL,
+	[UpdatedDate] SMALLDATETIME NOT NULL
+);

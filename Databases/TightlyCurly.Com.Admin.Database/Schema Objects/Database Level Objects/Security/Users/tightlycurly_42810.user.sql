@@ -1,0 +1,3 @@
+﻿CREATE USER [tightlycurly_42810] WITHOUT LOGIN
+    WITH DEFAULT_SCHEMA = [tightlycurly_42810];
+

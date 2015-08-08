@@ -1,0 +1,28 @@
+# Microsoft Developer Studio Project File - Database Project
+Begin DataProject = "Alligoshee.Admin.Database"
+   MSDTVersion = "80"
+   DefDBRef = "tsi-pc-001.ALLIGOSHEE_HAIR_ADMIN.dbo"
+   Begin Folder = "Change Scripts"
+   End
+   Begin Folder = "Create Scripts"
+      Begin Folder = "Seeding"
+         Script = "SeedUserRoles.sql"
+      End
+      Begin Folder = "StoredProcedures"
+      End
+      Begin Folder = "Tables"
+         Script = "Roles.table.sql"
+         Script = "Users.table.sql"
+         Script = "UsersRoles.sql"
+      End
+   End
+   Begin DBRefFolder = "Database References"
+      Begin DBRefNode = "tsi-pc-001.ALLIGOSHEE_HAIR_ADMIN.dbo"
+         ConnectStr = "Data Source=(local);Initial Catalog=ALLIGOSHEE_HAIR_ADMIN;Integrated Security=True"
+         Provider = "{91510608-8809-4020-8897-FBA057E22D54}"
+         Colorizer = 6
+      End
+   End
+   Begin Folder = "Queries"
+   End
+End

@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[ProductMetadata_ProductLines]
+(
+	[Id] INT NOT NULL IDENTITY(1,1),
+	[ProductMetadataId] UNIQUEIDENTIFIER NOT NULL,
+	[ProductLineId] UNIQUEIDENTIFIER NOT NULL,
+	[EnteredDate] SMALLDATETIME NOT NULL,
+	[UpdatedDate] SMALLDATETIME NOT NULL
+)

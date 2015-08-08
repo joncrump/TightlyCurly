@@ -1,0 +1,28 @@
+﻿@using TightlyCurly.Com.Common.Extensions
+@using TightlyCurly.Com.Web
+@model TightlyCurly.Com.Web.Models.ProductCategoryModel
+
+@{
+    ViewBag.Title = "Recommended Products";
+}
+
+<h2></h2>
+
+<div ng-controller="RecommendedProductsController">
+    before
+    <div ng-repeat="product in products">
+        <div class="product">
+            <h4>{{product.productTitle}}</h4>
+            <img src="{{product.imageUrl}}" />
+            <p>
+                {{product.description}}
+            </p>
+            @*"id":1,
+        "imageUrl":"http://www.tightlycurly.com/images/content/RC_AlaffiaCond3008.jpg",
+        "productTitle":"Coconut &amp; Shea Daily Hydrating Conditioner (For All Hair Types)",
+        "description":"<p>This conditioner has great moisturizing ingredients and a nice lemon verbena scent. It combed really well, and I was done combing sooner than usual, so that was exciting. When it dried in my hair, it clumped well, and my hair was really glossy (if you normally add a bit of oil to conditioners, use a bit less for this one because it was already pretty emollient). For those of you who don't like silicones, this product is silicone free. It also makes a great rinsing conditioner.</p><p>Alaffia says it uses sustainable ingredients, and is donating 10&#37; of it's profits to humanitarian projects in West Africa, so you can feel good about buying this, too. (Oh! I should mention that I didn't feel as comfortable about the ingredients in their shampoos. If memory serves me correctly, I think they are using saponified oils, which usually means the oil has been mixed with lye (or something very alkaline like lye), so it can often be too drying.)</p>",
+        "productType":"Conditioner",*@
+        </div>
+    </div>
+    after
+</div>

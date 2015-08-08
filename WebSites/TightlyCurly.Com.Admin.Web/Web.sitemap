@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" enableLocalization="true">
+  <siteMapNode>
+    <siteMapNode url="~/Landing.aspx" title="$resources:TightlyCurly.Com.Admin.Web,landingTitle" description="$resources:TightlyCurly.Com.Admin.Web,landingDescription" />
+    <siteMapNode url="~/IngredientsAdmin.aspx" title="$resources:TightlyCurly.Com.Admin.Web,ingredientsAdminTitle" description="$resources:TightlyCurly.Com.Admin.Web,ingredientsAdminDescription" />
+    <siteMapNode url="~/AnswerBankAdmin.aspx" title="$resources:TightlyCurly.Com.Admin.Web,answerBankAdminTitle" description="$resources:TightlyCurly.Com.Admin.Web,answerBankAdminDescription" />
+    <siteMapNode url="~/SettingsAdmin.aspx" title="$resources:TightlyCurly.Com.Admin.Web,settingsAdminTitle" description="$resources:TightlyCurly.Com.Admin.Web,settingsAdminDescription" />
+    <siteMapNode url="~/PageAdmin.aspx" title="$resources:TightlyCurly.Com.Admin.Web,pageAdminTitle" description="$resources:TightlyCurly.Com.Admin.Web,pageAdminDescription" />
+  </siteMapNode>
+</siteMap>

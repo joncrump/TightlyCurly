@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[ProductSafetyInfos]
+(
+	[Id] INT IDENTITY(1,1) NOT NULL,
+	[ProductSafetyInfoId] UNIQUEIDENTIFIER NOT NULL,
+	[ProductSafetyInfoType] SMALLINT NOT NULL,
+	[Text] NVARCHAR(300) NOT NULL,
+	[EnteredDate] SMALLDATETIME NOT NULL,
+	[UpdatedDate] SMALLDATETIME NOT NULL
+)

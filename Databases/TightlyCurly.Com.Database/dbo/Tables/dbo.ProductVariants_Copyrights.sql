@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[ProductVariants_Copyrights]
+(
+	[Id] INT NOT NULL IDENTITY(1,1),
+	[ProductVariantId] UNIQUEIDENTIFIER NOT NULL,
+	[CopyrightId] UNIQUEIDENTIFIER NOT NULL,
+	[EnteredDate] SMALLDATETIME NOT NULL,
+	[UpdatedDate] SMALLDATETIME NOT NULL
+)

@@ -1,0 +1,13 @@
+﻿CREATE TABLE [dbo].[PatentAuthors]
+(
+	[Id] INT IDENTITY(1,1) NOT NULL,
+	[PatentAuthorId] UNIQUEIDENTIFIER NOT NULL,
+	[FirstName] NVARCHAR(50) NULL,
+	[MiddleName] NVARCHAR(50) NULL,
+	[LastName] NVARCHAR(50) NULL,
+	[Gender] NVARCHAR(5) NULL,
+	[Honorific] NVARCHAR(30) NULL,
+	[Suffix] NVARCHAR(50) NULL,
+	[EnteredDate] SMALLDATETIME NOT NULL,
+	[UpdatedDate] SMALLDATETIME NOT NULL
+)

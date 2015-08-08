@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[ContactInfos_CompanyPositions]
+(
+	[Id] INT NOT NULL IDENTITY(1,1),
+	[ContactInfoId] UNIQUEIDENTIFIER NOT NULL,
+	[CompanyPositionId] UNIQUEIDENTIFIER NOT NULL,
+	[EnteredDate] SMALLDATETIME NOT NULL,
+	[UpdatedDate] SMALLDATETIME NOT NULL
+)

@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="TightlyCurly.Com.Web.Services.AutoCompleteService" CodeBehind="AutoCompleteService.svc.cs" %>

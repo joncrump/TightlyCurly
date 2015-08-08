@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[ContentItems]
+(
+	[Id] INT NOT NULL IDENTITY(1,1),
+	[ContentItemId] UNIQUEIDENTIFIER NOT NULL,
+)

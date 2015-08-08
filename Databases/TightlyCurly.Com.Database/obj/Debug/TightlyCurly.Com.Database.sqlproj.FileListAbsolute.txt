@@ -1,0 +1,9 @@
+C:\SourceCode\TightlyCurly\Dev\Databases\TightlyCurly.Com.Database\sql\debug\TightlyCurly.Com.Database.dacpac
+C:\SourceCode\TightlyCurly\Dev\Databases\TightlyCurly.Com.Database\sql\debug\TightlyCurly.Com.Database.dll
+C:\SourceCode\TightlyCurly\Dev\Databases\TightlyCurly.Com.Database\sql\debug\TightlyCurly.Com.Database.pdb
+C:\SourceCode\TightlyCurly\Dev\Databases\TightlyCurly.Com.Database\obj\Debug\TightlyCurly.Com.Database.dll
+C:\SourceCode\TightlyCurly\Dev\Databases\TightlyCurly.Com.Database\obj\Debug\TightlyCurly.Com.Database.pdb
+C:\SourceCode\TightlyCurly\Dev\Databases\TightlyCurly.Com.Database\obj\Debug\Model.xml
+C:\SourceCode\TightlyCurly\Dev\Databases\TightlyCurly.Com.Database\obj\Debug\refactor.xml
+C:\SourceCode\TightlyCurly\Dev\Databases\TightlyCurly.Com.Database\obj\Debug\postdeploy.sql
+C:\SourceCode\TightlyCurly\Dev\Databases\TightlyCurly.Com.Database\obj\Debug\predeploy.sql

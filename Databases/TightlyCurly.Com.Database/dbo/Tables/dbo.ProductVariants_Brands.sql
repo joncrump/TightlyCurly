@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[ProductVariants_Brands]
+(
+	[Id] INT NOT NULL IDENTITY(1,1),
+	[ProductVariantId] UNIQUEIDENTIFIER NOT NULL,
+	[BrandId] UNIQUEIDENTIFIER NOT NULL,
+	[EnteredDate] SMALLDATETIME NOT NULL,
+	[UpdatedDate] SMALLDATETIME NOT NULL
+)

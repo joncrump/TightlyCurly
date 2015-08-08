@@ -1,0 +1,135 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PreviewMaster.master.cs" Inherits="TightlyCurly.Com.Admin.Web.MasterPages.PreviewMaster" %>
+<%@ Register Src="~/UserControls/MessageBox.ascx" TagName="MessageBox" TagPrefix="Alligoshee" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="AjaxToolkit" %>     
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head id="pageHeader" runat="server">
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <link rel="shortcut icon" href="~/favicon.ico" />
+        <link rel="shortcut icon" href="~/favicon.gif" />
+        <link rel="stylesheet" href="~/styles/pageStyle.css" type="text/css" />
+        <title="TightlyCurly.com" />
+        <script type="text/javascript">function translate(pattern){if(pattern&&pattern!='undefined'){var dest='http://www.google.com/translate?u='+window.location.href+'&langpair='+pattern+'&hl=en&ie=UTF8';window.open(dest,'subwindow','toolbar=yes,location=yes, directories=yes,status=yes,scrollbars=yes,menubar=yes,resizable=yes,left=0,top=0');}}</script>
+    </head>
+    <body>
+        <form id="MasterForm" runat="server">
+	        <asp:ScriptManager ID="ScriptManager" runat="server">
+	            <Scripts>
+	                <asp:ScriptReference Path="/scripts/js/DataService.js" />
+	                <asp:ScriptReference Path="/scripts/js/jquery-1.3.1.js" />
+	            </Scripts>
+	        </asp:ScriptManager>
+            <table align="center" class="content" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+	                <td>
+	                    <a href="/Welcome.aspx">
+		                    <img src="../images/navigation/TightlyCurlyLogoFadeII.jpg" alt="TightlyCurly Logo" />
+		                </a>
+	                </td>
+	                <td width="5px">
+	                </td>
+	                <td width="100%">
+	                	<asp:SiteMapDataSource ID="SiteMapDataSource" runat="server" ShowStartingNode="false"/>
+	                    <asp:Panel ID="SiteBulletinContainer" runat="server" Visible="false">
+	                        <asp:Literal ID="SiteBulletinContainerText" runat="server" />
+	                    </asp:Panel>
+	                    <div class="pageTitle">
+	                        <asp:Literal ID="PageTitleText" runat="server" />
+	                    </div>
+	                </td>
+	                <td>
+	                    <div style="font-size:x-small">
+		                    Translate:
+                            &nbsp;
+                            <select onchange="translate(this.options[this.selectedIndex].value);" style="font-size:x-small">
+                                <option value="">Select a language</option>
+                                <option value="en|de">Deutsch</option>
+                                <option value="en|pt">Português</option>
+                                <option value="en|fr">Français</option>
+                                <option value="en|it">Italiano</option>
+                                <option value="en|po">Polski</option>
+                                <option value="en|es">Español</option>
+                                <option value="en|nl">Nederlands</option>
+                                <option value="en|ro">Română</option>
+                            </select>
+                        </div>    
+	                </td>
+                </tr>
+                <tr>
+	                <td>
+	                </td>
+	                <td></td>
+	                <td></td>
+	                <td></td>
+                </tr>
+                <tr>
+	                <td valign="top">
+	                    <div style="height:10px;"></div>
+	                    <asp:Menu ID="LeftMenu" runat="server" 
+	                        DataSourceID="siteMapDataSource" 
+	                        StaticMenuItemStyle-VerticalPadding="4" 
+	                        CssClass="menuNormal"/>
+	                    <br />
+	                    <%--<Alligoshee:BookUpdate
+	                        ID="BookUpdates" 
+	                        runat="server" 
+	                        Width="150px"
+	                        CssClass="groupingText"
+	                        ButtonText="Sign Up" 
+	                        GroupingText="Sign Up For Book Updates" 
+	                        ButtonCssClass="buttonSmall"  
+	                        TextCssClass="textBoxSmall" 
+	                        ValidationGroup="newsLetterSignUpValidationGroup"  
+	                        SubscriptionName="Book Updates"
+	                        MessageTemplateName="NewBookUpdateTemplate"
+	                        />--%>
+	                    <br />
+	                    <br />
+
+                        Every purchase made from 
+                        <br /> this site (through Amazon)
+                        <br /> helps support it &#151; and it 
+                        <br /> doesn't cost you anything
+                        <br />extra.
+	                    <br />
+	                    <br />
+                        <iframe src="http://rcm.amazon.com/e/cm?t=birhaiubecurh-20&o=1&p=27&l=qs1&f=ifr" width="180" height="150" frameborder="0" scrolling="no"></iframe>
+                        <br />
+                        <br />
+                    </td>
+	                <td valign="top">
+	                </td>
+	                <td id="PageContent" valign="top">
+	                    <div style="margin-right:10px;margin-left:10px;width:100%">
+	                        <asp:ContentPlaceHolder ID="ContentArea" runat="server" />
+	                    </div>
+	                </td>
+	                <td valign="top">
+                        <div>
+	                        <%--<Alligoshee:AmazonPicker ID="PickerWidget" runat="server" />--%>
+	                    </div>
+	                </td>
+                </tr>
+                </table>
+                <table class="content" align="center">
+                    <tr>
+	                    <td colspan="2">
+		                    <img src="/images/navigation/menu_spacer.gif" />
+	                    </td>
+	                </tr>
+                    <tr>
+                        <td style="width:100px;">&nbsp;</td>
+                        <td align="center">
+                            <%--<Alligoshee:Footer ID="Footer" runat="server" />--%>
+                        </td>
+                    </tr>
+                </table>
+                <Alligoshee:MessageBox ID="MessageBoxControl" runat="server" />
+                <br />
+                <br />
+        </form>
+<%--        <Alligoshee:AmazonWidget ID="AmazonWidget" runat="server" />
+        <Alligoshee:GoogleAnalytics ID="GoogleAnalytics" runat="server" />--%>
+    </body>
+</html>
+

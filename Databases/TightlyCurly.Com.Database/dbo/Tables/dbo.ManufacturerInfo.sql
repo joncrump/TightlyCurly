@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[ManufacturerInfo]
+(
+	[Id] INT IDENTITY(1,1) NOT NULL,
+	[ManufacturerInfoId] UNIQUEIDENTIFIER NOT NULL,
+	[ManufacturerId] UNIQUEIDENTIFIER NOT NULL,
+	[Name] NVARCHAR(100) NOT NULL,
+	[EnteredDate] SMALLDATETIME NOT NULL,
+	[UpdatedDate] SMALLDATETIME NOT NULL
+)

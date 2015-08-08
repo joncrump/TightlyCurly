@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{29476252-4EC1-4A76-BA07-BE529B3E3CC8}</ProjectGuid>
+    <ProjectTypeGuids>{349C5851-65DF-11DA-9384-00065B846F21};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TightlyCurly.Com.Admin.Web</RootNamespace>
+    <AssemblyName>TightlyCurly.Com.Admin.Web</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=3.0.20229.34928, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExternalBinaries\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default.aspx" />
+    <Content Include="Landing.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_GlobalResources\TightlyCurly.Com.Admin.Web.designer.cs">
+      <DependentUpon>TightlyCurly.Com.Admin.Web.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="MasterPages\PreviewMaster.Master.cs">
+      <DependentUpon>PreviewMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\PreviewMaster.Master.designer.cs">
+      <DependentUpon>PreviewMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PageAdmin.aspx.cs">
+      <DependentUpon>PageAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageAdmin.aspx.designer.cs">
+      <DependentUpon>PageAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagePreview.aspx.cs">
+      <DependentUpon>PagePreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagePreview.aspx.designer.cs">
+      <DependentUpon>PagePreview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\EmailService.svc.cs">
+      <DependentUpon>EmailService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\IEmailService.cs" />
+    <Compile Include="SettingsAdmin.aspx.cs">
+      <DependentUpon>SettingsAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SettingsAdmin.aspx.designer.cs">
+      <DependentUpon>SettingsAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AnswerBankAdmin.aspx.cs">
+      <DependentUpon>AnswerBankAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AnswerBankAdmin.aspx.designer.cs">
+      <DependentUpon>AnswerBankAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Base\PageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Base\UserControlBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\Constants.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="IngredientsAdmin.aspx.cs">
+      <DependentUpon>IngredientsAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IngredientsAdmin.aspx.designer.cs">
+      <DependentUpon>IngredientsAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Landing.aspx.cs">
+      <DependentUpon>Landing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Landing.aspx.designer.cs">
+      <DependentUpon>Landing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Master.Master.cs">
+      <DependentUpon>Master.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Master.Master.designer.cs">
+      <DependentUpon>Master.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PageContext.cs" />
+    <Compile Include="Profiles\UserProfile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\UserMembershipProvider.cs" />
+    <Compile Include="Providers\UserRoleProvider.cs" />
+    <Compile Include="UserControls\ListExchangerControl.ascx.cs">
+      <DependentUpon>ListExchangerControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\ListExchangerControl.ascx.designer.cs">
+      <DependentUpon>ListExchangerControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ListExchangerEventArgs.cs" />
+    <Compile Include="UserControls\ListModifierControl.ascx.cs">
+      <DependentUpon>ListModifierControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\ListModifierControl.ascx.designer.cs">
+      <DependentUpon>ListModifierControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MessageBox.ascx.cs">
+      <DependentUpon>MessageBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\MessageBox.ascx.designer.cs">
+      <DependentUpon>MessageBox.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\TightlyCurly.Com.Common\TightlyCurly.Com.Common.csproj">
+      <Project>{A3ACD679-49F0-4F78-91FF-39610A65415B}</Project>
+      <Name>TightlyCurly.Com.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CapitalizationExtender\CapitalizationExtender.csproj">
+      <Project>{11C5D1B0-4969-4C16-A254-A9CBBCB193B5}</Project>
+      <Name>CapitalizationExtender</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\TightlyCurly.Com.Framework\TightlyCurly.Com.Framework.csproj">
+      <Project>{F54590DC-A049-471D-AC9B-9F5AF7A7A258}</Project>
+      <Name>TightlyCurly.Com.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TightlyCurly.Com.Services\TightlyCurly.Com.Services.csproj">
+      <Project>{F0A64CD8-77ED-445E-9DE8-7A49EAA82C53}</Project>
+      <Name>TightlyCurly.Com.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="styles\navigation.css" />
+    <Content Include="styles\pageStyle.css" />
+    <Content Include="UserControls\MessageBox.ascx" />
+    <Content Include="Web.sitemap" />
+    <Content Include="images\navigation\2spacer.gif" />
+    <Content Include="images\navigation\closeButton.jpg" />
+    <Content Include="images\navigation\closeButtonHover.jpg" />
+    <Content Include="images\navigation\horizontalline-left.jpg" />
+    <Content Include="images\navigation\horizontalline-left.png" />
+    <Content Include="images\navigation\horizontalline-middle.jpg" />
+    <Content Include="images\navigation\horizontalline-right.jpg" />
+    <Content Include="images\navigation\horizontalline.jpg" />
+    <Content Include="images\navigation\horizontalline.png" />
+    <Content Include="images\navigation\menu_spacer.gif" />
+    <Content Include="images\navigation\sitelogo.jpg" />
+    <Content Include="images\navigation\TightlyCurlyLogoFadeII.jpg" />
+    <Content Include="images\navigation\verticaline-top.jpg" />
+    <Content Include="images\navigation\verticaline-top.png" />
+    <Content Include="images\navigation\verticalline-bottom.jpg" />
+    <Content Include="images\navigation\verticalline-top.jpg" />
+    <Content Include="images\navigation\verticalline-top.png" />
+    <Content Include="MasterPages\Master.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\TightlyCurly.Com.Admin.Web.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>TightlyCurly.Com.Admin.Web.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="images\content\catInBucket.jpg" />
+    <Content Include="images\content\partyHatAndDog.jpg" />
+    <Content Include="PageAdmin.aspx" />
+    <Content Include="PagePreview.aspx" />
+    <Content Include="Services\EmailService.svc" />
+    <Content Include="SettingsAdmin.aspx" />
+    <Content Include="AnswerBankAdmin.aspx" />
+    <Content Include="favicon.gif" />
+    <Content Include="favicon.ico" />
+    <Content Include="favicon.png" />
+    <Content Include="Global.asax" />
+    <Content Include="images\content\chickInBasket.jpg" />
+    <Content Include="images\content\ingredientsAdmin.jpg" />
+    <Content Include="IngredientsAdmin.aspx" />
+    <Content Include="scripts\js\common.js" />
+    <Content Include="scripts\js\jquery-1.3.1.js" />
+    <Content Include="UserControls\ListExchangerControl.ascx" />
+    <Content Include="UserControls\ListModifierControl.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\content\spottedDog.jpg" />
+    <Content Include="images\content\stainlessSteelKitchen.jpg" />
+    <Content Include="MasterPages\PreviewMaster.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="UserControls\DataControls\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50211</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8101</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+    <MonoDevelop>
+      <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">
+        <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="true" />
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+</Project>

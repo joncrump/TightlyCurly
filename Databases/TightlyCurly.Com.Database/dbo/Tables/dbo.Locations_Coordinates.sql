@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Locations_Coordinates]
+(
+	[Id] INT NOT NULL IDENTITY(1,1),
+	[LocationId] UNIQUEIDENTIFIER NOT NULL,
+	[CoordinateId] UNIQUEIDENTIFIER NOT NULL,
+	[EnteredDate] SMALLDATETIME NOT NULL,
+	[UpdatedDate] SMALLDATETIME NOT NULL
+)

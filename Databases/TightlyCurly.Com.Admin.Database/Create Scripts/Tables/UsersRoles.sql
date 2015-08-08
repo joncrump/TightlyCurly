@@ -1,0 +1,12 @@
+﻿IF OBJECT_ID ('UsersRoles', 'U') IS NOT NULL
+BEGIN
+	DROP TABLE UsersRoles;
+END
+
+CREATE TABLE UsersRoles (
+	UserRoleId int NOT NULL IDENTITY(1,1),
+	UserId int NOT NULL,
+	RoleId int NOT NULL,
+	CONSTRAINT PK_UsersRoles PRIMARY KEY(UserRoleId),
+	CONSTRAINT FK_UsersRoles_UserId FOREIGN KEY(UserId) REFERENCES Users(UserId),
+	CONSTRAINT FK_UsersRoles_RoleId FOREIGN KEY(RoleId) REFERENCES Roles(RoleId));

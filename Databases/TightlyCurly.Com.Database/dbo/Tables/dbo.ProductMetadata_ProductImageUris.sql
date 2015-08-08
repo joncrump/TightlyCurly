@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[ProductMetadata_ProductImageUris]
+(
+	[Id] INT NOT NULL IDENTITY(1,1),
+	[ProductMetadataId] UNIQUEIDENTIFIER NOT NULL,
+	[ProductImageUriId] UNIQUEIDENTIFIER NOT NULL,
+	[EnteredDate] SMALLDATETIME NOT NULL,
+	[UpdatedDate] SMALLDATETIME NOT NULL
+)

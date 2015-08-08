@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[RelationshipTypes]
+(
+	[Id] INT NOT NULL IDENTITY(1,1),
+	[RelationshipTypeId] UNIQUEIDENTIFIER NOT NULL,
+	[Type] NVARCHAR(255) NOT NULL,
+	[EnteredDate] SMALLDATETIME NOT NULL,
+	[UpdatedDate] SMALLDATETIME NOT NULL
+)
