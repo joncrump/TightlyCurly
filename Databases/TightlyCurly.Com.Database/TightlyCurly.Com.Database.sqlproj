@@ -532,6 +532,10 @@
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_ContentArticleNotes_ContentArticleNoteId.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ContentArticleNotes_ContentArticles.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ContentArticleNotes_Users.sql" />
+    <Build Include="dbo\Tables\dbo.ContentArticleRevisions.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_ContentArticleRevisions.sql" />
+    <Build Include="dbo\Keys\Unique Keys\dbo.UKC_ContentArticleRevisions_ContentArticleRevisionId.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ContentArticleRevisions_ContentArticles.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />
