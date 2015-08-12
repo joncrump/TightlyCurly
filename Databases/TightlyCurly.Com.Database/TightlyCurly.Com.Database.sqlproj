@@ -536,6 +536,7 @@
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_ContentArticleRevisions.sql" />
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_ContentArticleRevisions_ContentArticleRevisionId.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ContentArticleRevisions_ContentArticles.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_ContentItems_ContentArticles.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />

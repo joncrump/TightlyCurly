@@ -64,6 +64,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseMappings", "Databas
 		contentArticleData.js = contentArticleData.js
 		contentArticleNote.js = contentArticleNote.js
 		contentArticleRevision.js = contentArticleRevision.js
+		contentItem.js = contentItem.js
 	EndProjectSection
 EndProject
 Global
