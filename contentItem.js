@@ -1,8 +1,8 @@
 // JavaScript source code
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.IAddress, TightlyCurly.Com.Common.Models",
-        "dataSource": "dbo.Addresses",
+        "type":"TightlyCurly.Com.Common.Models.IContentItem, TightlyCurly.Com.Common.Models",
+        "dataSource": "dbo.ContentItems",
         "countProperty":"Id",
         "propertyMappings:": [
         {

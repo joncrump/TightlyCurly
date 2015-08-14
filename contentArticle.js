@@ -2,7 +2,7 @@
 [
     {
         "type":"TightlyCurly.Com.Common.Models.IContentArticle, TightlyCurly.Com.Common.Models",
-        "dataSource": "dbo.ContentArticleData",
+        "dataSource": "dbo.ContentArticles",
         "countProperty":"Id",
         "propertyMappings:": [
             {
