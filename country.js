@@ -8,7 +8,7 @@
         {
             "propertyName": "Id",
             "fieldType": "guid",
-            "field": "CountryIdId",
+            "field": "CountryId",
             "isPrimaryKey": true
         },
         {
