@@ -66,7 +66,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseMappings", "Databas
 		contentArticleRevision.js = contentArticleRevision.js
 		contentItem.js = contentItem.js
 		coordinates.js = coordinates.js
-		copyrights.js = copyrights.js
+		copyright.js = copyright.js
 	EndProjectSection
 EndProject
 Global
