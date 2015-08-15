@@ -8,8 +8,12 @@ namespace TightlyCurly.Com.Common.Models
         string Comment { get; set; }
         ILocale Locale { get; set; }
         Guid? ParentId { get; set; }
+        Guid UserId { get; set; }
+        IIngredientComment Parent { get; set; }
         IUser User { get; set; }
         IEnumerable<IIngredientComment> Children { get; set; }
         Guid IngredientId { get; set; }
+        Guid? LocaleId { get; set; }
+        IIngredient Ingredient { get; set; }
     }
 }

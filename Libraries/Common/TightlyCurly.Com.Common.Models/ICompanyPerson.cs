@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using TightlyCurly.Com.Common.Models;
 
-namespace TightlyCurly.Com.Repositories.Models
+namespace TightlyCurly.Com.Common.Models
 {
     public interface ICompanyPerson : IPerson
     {

@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="AddressType.cs" />
     <Compile Include="IAside.cs" />
+    <Compile Include="ICompanyPerson.cs" />
     <Compile Include="ICompanyType.cs" />
     <Compile Include="Enums\ChangeFrequency.cs" />
     <Compile Include="Enums\ConstructionMode.cs" />

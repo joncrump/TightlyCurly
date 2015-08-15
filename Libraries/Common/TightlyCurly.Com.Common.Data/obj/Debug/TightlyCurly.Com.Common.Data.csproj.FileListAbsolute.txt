@@ -1,3 +1,6 @@
 C:\SourceCode\TightlyCurly\Dev\Libraries\Common\TightlyCurly.Com.Common.Data\obj\Debug\TightlyCurly.Com.Common.Data.csprojResolveAssemblyReference.cache
 C:\SourceCode\TightlyCurly\Dev\Libraries\Common\TightlyCurly.Com.Common.Data\obj\Debug\TightlyCurly.Com.Common.Data.Resources.Resources.resources
 C:\SourceCode\TightlyCurly\Dev\Libraries\Common\TightlyCurly.Com.Common.Data\obj\Debug\TightlyCurly.Com.Common.Data.csproj.GenerateResource.Cache
+C:\Source\Repos\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Data\obj\Debug\TightlyCurly.Com.Common.Data.csprojResolveAssemblyReference.cache
+C:\Source\Repos\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Data\obj\Debug\TightlyCurly.Com.Common.Data.Resources.Resources.resources
+C:\Source\Repos\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Data\obj\Debug\TightlyCurly.Com.Common.Data.csproj.GenerateResource.Cache
