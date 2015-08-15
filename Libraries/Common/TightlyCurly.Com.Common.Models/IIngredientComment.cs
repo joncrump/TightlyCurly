@@ -14,6 +14,5 @@ namespace TightlyCurly.Com.Common.Models
         IEnumerable<IIngredientComment> Children { get; set; }
         Guid IngredientId { get; set; }
         Guid? LocaleId { get; set; }
-        IIngredient Ingredient { get; set; }
     }
 }

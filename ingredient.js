@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using TightlyCurly.Com.Common;
-using TightlyCurly.Com.Common.Data.Attributes;
-using TightlyCurly.Com.Common.Extensions;
-using TightlyCurly.Com.Common.Models;
-using TightlyCurly.Com.Repositories.Constants;
-
-namespace TightlyCurly.Com.Repositories.Models
-{
-    [Table(Tables.Ingredients)]
+// JavaScript source code
+[
+    {
+        /*
+        [Table(Tables.Ingredients)]
     public class IngredientDataModel : ValueFactoryModelBase, IIngredient
     {
         private IEnumerable<IIngredientCategory> _ingredientCategories;
@@ -120,4 +113,6 @@ namespace TightlyCurly.Com.Repositories.Models
             set { _contentArticles = value; }
         }
     }
-}
+        */
+    }
+]
