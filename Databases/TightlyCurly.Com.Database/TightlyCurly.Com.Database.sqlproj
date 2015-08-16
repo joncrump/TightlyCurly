@@ -551,6 +551,10 @@
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_RatingTypes.sql" />
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_RatingTypes_RatingTypeId.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_RatingTypes_Locales.sql" />
+    <Build Include="dbo\Tables\dbo.IngredientRatingTexts.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_IngredientRatingTexts.sql" />
+    <Build Include="dbo\Keys\Unique Keys\dbo.UKC_IngrediantRatingTexts_IngredientRatingTextId.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_IngredientRatingTexts_Locales.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />
