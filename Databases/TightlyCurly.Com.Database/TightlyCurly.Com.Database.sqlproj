@@ -145,7 +145,7 @@
     <Build Include="dbo\Tables\dbo.IngredientDescriptions.table.sql" />
     <Build Include="dbo\Tables\dbo.Ingredients.sql" />
     <Build Include="dbo\Tables\dbo.IngredientTitles.table.sql" />
-    <Build Include="dbo\Tables\dbo.IngredientUris.table.sql" />
+    <Build Include="dbo\Tables\dbo.IngredientUris.sql" />
     <Build Include="dbo\Tables\dbo.Locales.sql" />
     <Build Include="dbo\Tables\dbo.Manufacturers.sql" />
     <Build Include="dbo\Tables\dbo.StateProvinces.sql" />
