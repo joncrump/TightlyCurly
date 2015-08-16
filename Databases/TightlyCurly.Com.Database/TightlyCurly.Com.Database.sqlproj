@@ -138,8 +138,8 @@
     <Build Include="dbo\Tables\dbo.Brands.sql" />
     <Build Include="dbo\Tables\dbo.CategoryTypes.sql" />
     <Build Include="dbo\Tables\dbo.Countries.sql" />
-    <Build Include="dbo\Tables\dbo.IngredientAliases.table.sql" />
-    <Build Include="dbo\Tables\dbo.IngredientCategories.table.sql" />
+    <Build Include="dbo\Tables\dbo.IngredientAliases.sql" />
+    <Build Include="dbo\Tables\dbo.IngredientCategories.sql" />
     <Build Include="dbo\Tables\dbo.IngredientCategories_CategoryTypes.sql" />
     <Build Include="dbo\Tables\dbo.IngredientCategoryNames.table.sql" />
     <Build Include="dbo\Tables\dbo.IngredientDescriptions.table.sql" />
