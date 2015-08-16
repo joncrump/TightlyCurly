@@ -45,10 +45,23 @@
                 "joinTableLeftKey": "IngredientCategoryId",
                 "joinTableRightKey": "IngredientCategoryId"
             }
+        },
+        {
+            "propertyName": "Aliases",
+            "lazyLoader": "GetAliasesByIngredient",
+            "joinMapping":
+            {
+                "joinType": "left",
+                "leftKey": "Id",
+                "rightKey": "IngredientId",
+                "joinTable": "dbo.IngredientAliases",
+                "jonTableJoinType": "left",
+                "joinTableLeftKey": "Id",
+                "joinTableRightKey": "IngredientId"
+            }
         }]
 
         /*
-        IEnumerable<IIngredientAlias> Aliases { get; set; }
         IEnumerable<IIngredientUri> Links { get; set; }
         IEnumerable<IIngredientRating> IngredientRatings { get; set; }
         IEnumerable<IIngredientNote> Notes { get; set; }

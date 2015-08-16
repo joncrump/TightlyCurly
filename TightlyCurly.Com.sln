@@ -70,6 +70,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseMappings", "Databas
 		country.js = country.js
 		emailAddress.js = emailAddress.js
 		ingredient.js = ingredient.js
+		ingredientAlias.js = ingredientAlias.js
 		ingredientCategory.js = ingredientCategory.js
 		ingredientComments.js = ingredientComments.js
 	EndProjectSection
