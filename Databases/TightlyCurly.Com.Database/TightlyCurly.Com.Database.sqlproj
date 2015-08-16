@@ -546,6 +546,7 @@
     <Build Include="dbo\Tables\dbo.Ingredients_IngredientCategories.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_Ingredients_IngredientCategories_Ingredients.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_Ingredients_IngredientCategories_IngredientCategories.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_ContentItems_ContentArticles.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />
