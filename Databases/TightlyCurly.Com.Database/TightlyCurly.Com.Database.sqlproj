@@ -536,7 +536,6 @@
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_ContentArticleRevisions.sql" />
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_ContentArticleRevisions_ContentArticleRevisionId.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ContentArticleRevisions_ContentArticles.sql" />
-    <Build Include="dbo\Keys\Primary Keys\dbo.PK_ContentItems_ContentArticles.sql" />
     <Build Include="dbo\Tables\dbo.IngredientComments.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_IngredientComments.sql" />
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_IngredientComments_IngredientCommentId.sql" />
@@ -544,6 +543,9 @@
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_IngredientComments_Locales.sql" />
     <Build Include="dbo\Tables\dbo.Ingredients_IngredientAliases.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_Ingredients_IngredientCategories.sql" />
+    <Build Include="dbo\Tables\dbo.Ingredients_IngredientCategories.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_Ingredients_IngredientCategories_Ingredients.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_Ingredients_IngredientCategories_IngredientCategories.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />

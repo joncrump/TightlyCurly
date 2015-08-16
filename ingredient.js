@@ -31,10 +31,23 @@
             "fieldType": "nvarchar",
             "field": "Description",
             "allowDbNull": true
+        },
+        {
+            "propertyName": "IngredientCategories",
+            "lazyLoader": "GetIngredientCategoriesByIngredient",
+            "joinMapping":
+            {
+                "joinType": "left",
+                "leftKey": "Id",
+                "rightKey": "IngredientId",
+                "joinTable": "dbo.Ingredients_IngredientCategories",
+                "jonTableJoinType": "left",
+                "joinTableLeftKey": "IngredientCategoryId",
+                "joinTableRightKey": "IngredientCategoryId"
+            }
         }]
 
         /*
-        IEnumerable<IIngredientCategory> IngredientCategories { get; set; }
         IEnumerable<IIngredientAlias> Aliases { get; set; }
         IEnumerable<IIngredientUri> Links { get; set; }
         IEnumerable<IIngredientRating> IngredientRatings { get; set; }
