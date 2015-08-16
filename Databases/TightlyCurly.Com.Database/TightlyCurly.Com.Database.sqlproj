@@ -542,6 +542,8 @@
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_IngredientComments_IngredientCommentId.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_IngredientComments_IngredientId.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_IngredientComments_Locales.sql" />
+    <Build Include="dbo\Tables\dbo.Ingredients_IngredientAliases.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_Ingredients_IngredientCategories.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />
