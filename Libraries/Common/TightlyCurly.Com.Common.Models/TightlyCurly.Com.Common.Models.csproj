@@ -71,6 +71,7 @@
     <Compile Include="ICountry.cs" />
     <Compile Include="IIngredientAlias.cs" />
     <Compile Include="IIngredientNote.cs" />
+    <Compile Include="IIngredientUri.cs" />
     <Compile Include="IProductSafetyInfo.cs" />
     <Compile Include="IProductVariantDescription.cs" />
     <Compile Include="IProductVariantEditorialReview.cs" />

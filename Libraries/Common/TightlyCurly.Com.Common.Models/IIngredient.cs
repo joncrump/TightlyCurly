@@ -10,7 +10,7 @@ namespace TightlyCurly.Com.Common.Models
 
         IEnumerable<IIngredientCategory> IngredientCategories { get; set; }
         IEnumerable<IIngredientAlias> Aliases { get; set; }
-        IEnumerable<Uri> Links { get; set; }
+        IEnumerable<IIngredientUri> Links { get; set; }
         IEnumerable<IIngredientRating> IngredientRatings { get; set; }
         IEnumerable<IIngredientNote> Notes { get; set; }
         IEnumerable<IIngredientComment> Comments { get; set; }
