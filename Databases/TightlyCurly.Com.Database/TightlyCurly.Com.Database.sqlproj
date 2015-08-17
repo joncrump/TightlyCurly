@@ -555,6 +555,7 @@
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_IngredientRatingTexts.sql" />
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_IngrediantRatingTexts_IngredientRatingTextId.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_IngredientRatingTexts_Locales.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_IngredientRatingTexts_IngredientRatings.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />
