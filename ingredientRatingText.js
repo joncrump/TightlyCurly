@@ -25,6 +25,27 @@
             "propertyName": "UpdatedDate",
             "fieldType": "smalldatetime",
             "field": "UpdatedDate"
+        },
+        {
+            "propertyName": "IngredientRatingId",
+            "fieldType": "guid",
+            "field": "IngredientRatingId"
+        },
+        {
+            "propertyName": "LocaleId",
+            "fieldType": "guid",
+            "field": "LocaleId",
+            "allowDbNull": true
+        },
+        {
+            "propertyName": "Loocale",
+            "lazyLoader": "GetLocaleByIngredientRatingText",
+            "joinMapping":
+            {
+                "joinType": "left",
+                "leftKey": "LocaleId",
+                "rightKey": "LocaleId"
+            }
         }]
     }
 ]

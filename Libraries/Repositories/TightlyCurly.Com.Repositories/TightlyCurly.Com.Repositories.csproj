@@ -154,7 +154,6 @@
     <Compile Include="IProductSafetyInfoRepository.cs" />
     <Compile Include="Models\IngredientInfoDataModel.cs" />
     <Compile Include="Models\IngredientRatingDataModel.cs" />
-    <Compile Include="Models\IngredientRatingTextDataModel.cs" />
     <Compile Include="Models\LinkDataModel.cs" />
     <Compile Include="Models\LoaderKeys.cs" />
     <Compile Include="Models\LocaleDataModel.cs" />
