@@ -10,13 +10,21 @@
             "fieldType": "guid",
             "field": "IngredientRatingTextId",
             "isPrimaryKey": true
-        },]
-
-        /*
-	[Text] NVARCHAR(255) NOT NULL,
-	[LocaleId] UNIQUEIDENTIFIER NULL,
-	[EnteredDate] SMALLDATETIME NOT NULL,
-	[UpdatedDate] SMALLDATETIME NOT NULL
-        */
+        },
+        {
+            "propertyName": "Text",
+            "fieldType": "nvarchar",
+            "field": "Text"
+        },
+        {
+            "propertyName": "EnteredDate",
+            "fieldType": "smalldatetime",
+            "field": "EnteredDate"
+        },
+        {
+            "propertyName": "UpdatedDate",
+            "fieldType": "smalldatetime",
+            "field": "UpdatedDate"
+        }]
     }
 ]
