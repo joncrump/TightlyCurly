@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{AC2EBE8E-46B9-4230-9CEF-19EC5FF2D01C}"
 EndProject
@@ -73,6 +73,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseMappings", "Databas
 		ingredientAlias.js = ingredientAlias.js
 		ingredientCategory.js = ingredientCategory.js
 		ingredientComments.js = ingredientComments.js
+		ingredientNote.js = ingredientNote.js
 		ingredientRating.js = ingredientRating.js
 		ingredientRatingText.js = ingredientRatingText.js
 		ingredientUri.js = ingredientUri.js

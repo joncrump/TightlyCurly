@@ -6,7 +6,7 @@ namespace TightlyCurly.Com.Common.Models
     {
         Guid IngredientId { get; set; }
         string Note { get; set; }
-        Guid UserId { get; set; }
+        Guid EnteredByUserId { get; set; }
         IUser EnteredBy { get; set; }
     }
 }

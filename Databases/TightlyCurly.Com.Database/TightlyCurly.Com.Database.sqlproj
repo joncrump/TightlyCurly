@@ -297,7 +297,6 @@
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductVariants_Markets.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariants_Markets_ProductVariants.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariants_Markets_Markets.sql" />
-    <Build Include="dbo\Tables\dbo.IngredientInfos.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_IngredientInfos.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_IngredientInfos_Ingredients.sql" />
     <Build Include="dbo\Tables\dbo.ProductVariants_IngredientInfos.sql" />
@@ -553,18 +552,22 @@
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_RatingTypes_Locales.sql" />
     <Build Include="dbo\Tables\dbo.IngredientRatingTexts.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_IngredientRatingTexts.sql" />
-    <Build Include="dbo\Keys\Unique Keys\dbo.UKC_IngrediantRatingTexts_IngredientRatingTextId.sql" />
+    <Build Include="dbo\Keys\Unique Keys\dbo.UKC_IngredientRatingTexts_IngredientRatingTextId.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_IngredientRatingTexts_Locales.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_IngredientRatingTexts_IngredientRatings.sql" />
     <Build Include="dbo\Tables\dbo.IngredientRatings.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_IngredientRatings.sql" />
-    <Build Include="dbo\Keys\Unique Keys\dbo.UKC_IngredientRatings.sql" />
+    <Build Include="dbo\Keys\Unique Keys\dbo.UKC_IngredientRatings_IngredientRatingId.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_IngredientRatings_Ingredients.sql" />
     <Build Include="dbo\Tables\dbo.IngredientRatings_IngredientRatingTexts.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_IngredientRatings_IngredientRatingTexts.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_IngredientRatings_IngredientRatingTexts_IngredientRatings.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_IngredientRatings_IngredientRatingTexts_IngredientRatingTexts.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_IngredientRatings_RatingTypes.sql" />
+    <Build Include="dbo\Tables\dbo.IngredientNotes.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_IngredientNotes.sql" />
+    <Build Include="dbo\Keys\Unique Keys\dbo.UKC_IngredientNotes_IngredientNoteId.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_IngredientNotes_Users.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />
