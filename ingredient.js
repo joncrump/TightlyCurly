@@ -75,10 +75,19 @@
                 "leftKey": "Id",
                 "rightKey": "IngredientId"
             }
+        },
+        {
+            "propertyName": "Notes",
+            "lazyLoader": "GetIngredientNotesByIngredient",
+            "joinMapping":
+            {
+                "joinType": "left",
+                "leftKey": "Id",
+                "rightKey": "IngredientId"
+            }
         }]
 
         /*
-        IEnumerable<IIngredientNote> Notes { get; set; }
         IEnumerable<IIngredientComment> Comments { get; set; }
         IEnumerable<IContentArticle> ContentArticles { get; set; }
         */
