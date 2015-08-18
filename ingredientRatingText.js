@@ -38,7 +38,7 @@
             "allowDbNull": true
         },
         {
-            "propertyName": "Loocale",
+            "propertyName": "Locale",
             "lazyLoader": "GetLocaleByIngredientRatingText",
             "joinMapping":
             {
