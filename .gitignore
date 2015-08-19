@@ -44,3 +44,5 @@ Temporary Items
 *.dbmdl
 *.suo
 /.vs/config/applicationhost.config
+/Libraries/Common/TightlyCurly.Com.Providers.Common/obj/Debug/TightlyCurly.Com.Providers.Common.csproj.FileListAbsolute.txt
+/Libraries/Common/TightlyCurly.Com.Providers.Common/obj/Debug/TightlyCurly.Com.Providers.Common.csprojResolveAssemblyReference.cache

@@ -297,12 +297,9 @@
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductVariants_Markets.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariants_Markets_ProductVariants.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariants_Markets_Markets.sql" />
-    <Build Include="dbo\Keys\Primary Keys\dbo.PK_IngredientInfos.sql" />
-    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_IngredientInfos_Ingredients.sql" />
     <Build Include="dbo\Tables\dbo.ProductVariants_IngredientInfos.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductVariants_IngredientInfos.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariants_IngredientInfos_ProductVariants.sql" />
-    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariants_IngredientInfos_IngredientInfos.sql" />
     <Build Include="dbo\Tables\dbo.ProductRevisionHistory.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductRevisionHistory.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductRevisionHistory_ProductVariants.sql" />
@@ -464,7 +461,6 @@
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_IngredientCategories_IngredientCategoryId.sql" />
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_IngredientCategoryNames_IngredientCategoryNameId.sql" />
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_IngredientDescriptions_IngredientDescriptionsId.sql" />
-    <Build Include="dbo\Keys\Unique Keys\dbo.UKC_IngredientInfos_IngredientInfoId.sql" />
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_Ingredients_IngredientId.sql" />
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_IngredientTitles_IngredientTitleId.sql" />
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_IngredientUris_IngredientUriId.sql" />

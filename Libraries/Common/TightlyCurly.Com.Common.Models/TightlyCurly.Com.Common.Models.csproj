@@ -82,7 +82,6 @@
     <Compile Include="IIngredientInfo.cs" />
     <Compile Include="IIngredientRating.cs" />
     <Compile Include="IIngredientRatingText.cs" />
-    <Compile Include="ILink.cs" />
     <Compile Include="ILocale.cs" />
     <Compile Include="ILocation.cs" />
     <Compile Include="IManufacturer.cs" />
