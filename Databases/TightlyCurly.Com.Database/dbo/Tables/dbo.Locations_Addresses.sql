@@ -1,8 +1,0 @@
-﻿CREATE TABLE [dbo].[Locations_Addresses]
-(
-	[Id] INT NOT NULL IDENTITY(1,1),
-	[LocationId] UNIQUEIDENTIFIER NOT NULL,
-	[AddressId] UNIQUEIDENTIFIER NOT NULL,
-	[EnteredDate] SMALLDATETIME NOT NULL,
-	[UpdatedDate] SMALLDATETIME NOT NULL
-)

@@ -78,6 +78,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseMappings", "Databas
 		ingredientRatingText.js = ingredientRatingText.js
 		ingredientUri.js = ingredientUri.js
 		locale.js = locale.js
+		location.js = location.js
 		ratingType.js = ratingType.js
 	EndProjectSection
 EndProject
