@@ -85,11 +85,30 @@
                 "leftKey": "Id",
                 "rightKey": "IngredientId"
             }
+        },
+        {
+            "propertyName": "Comments",
+            "lazyLoader": "GetCommentsByIngredient",
+            "joinMapping":
+            {
+                "joinType": "left",
+                "leftKey": "Id",
+                "rightKey": "IngredientId"
+            }
+        },
+        {
+             "propertyName": "ContactArticles",
+             "lazyLoader": "GetContentArticlesByIngredient",
+             "joinMapping":
+             {
+                 "joinType": "left",
+                 "leftKey": "Id",
+                 "rightKey": "IngredientId",
+                 "joinTable": "dbo.Ingredients_ContentArticles",
+                 "jonTableJoinType": "left",
+                 "joinTableLeftKey": "ContentArticleId",
+                 "joinTableRightKey": "ContentArticleId"
+             }
         }]
-
-        /*
-        IEnumerable<IIngredientComment> Comments { get; set; }
-        IEnumerable<IContentArticle> ContentArticles { get; set; }
-        */
     }
 ]

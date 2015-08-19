@@ -568,6 +568,10 @@
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_IngredientNotes.sql" />
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_IngredientNotes_IngredientNoteId.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_IngredientNotes_Users.sql" />
+    <Build Include="dbo\Tables\dbo.Ingredients_ContentArticles.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_Ingredients_ContentArticles.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_Ingredients_ContentArticles_Ingredients.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_Ingredients_ContentArticles_ContentArticles.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />
