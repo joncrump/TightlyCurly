@@ -153,7 +153,6 @@
     <Compile Include="IProductRevisionHistoryRepository.cs" />
     <Compile Include="IProductSafetyInfoRepository.cs" />
     <Compile Include="Models\LoaderKeys.cs" />
-    <Compile Include="Models\LocaleDataModel.cs" />
     <Compile Include="Models\LocationDataModel.cs" />
     <Compile Include="Models\ManufacturerDataModel.cs" />
     <Compile Include="Models\ManufacturerInfoDataModel.cs" />
