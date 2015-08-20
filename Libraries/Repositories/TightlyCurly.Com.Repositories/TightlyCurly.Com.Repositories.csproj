@@ -152,7 +152,6 @@
     <Compile Include="IProductRepository.cs" />
     <Compile Include="IProductRevisionHistoryRepository.cs" />
     <Compile Include="IProductSafetyInfoRepository.cs" />
-    <Compile Include="Models\ManufacturerInfoDataModel.cs" />
     <Compile Include="Models\MarketDataModel.cs" />
     <Compile Include="Models\MenuDataModel.cs" />
     <Compile Include="Models\MenuItemDataModel.cs" />

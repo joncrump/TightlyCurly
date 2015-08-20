@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[ManufacturerInfo]
+﻿CREATE TABLE [dbo].[ManufacturerInfos]
 (
 	[Id] INT IDENTITY(1,1) NOT NULL,
 	[ManufacturerInfoId] UNIQUEIDENTIFIER NOT NULL,

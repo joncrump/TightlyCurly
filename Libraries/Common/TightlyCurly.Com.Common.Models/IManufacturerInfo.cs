@@ -7,6 +7,7 @@ namespace TightlyCurly.Com.Common.Models
     {
         Guid ManufacturerId { get; set; }
         string Name { get; set; }
+        IManufacturer Manufacturer { get; set; }
         IEnumerable<ICompany> ManufacturedBy { get; set; }
         IEnumerable<ILocation> ManufacturedAt { get; set; }
         IEnumerable<IMarket> ManufacturedForMarkets { get; set; }
