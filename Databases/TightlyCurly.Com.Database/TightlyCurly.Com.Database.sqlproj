@@ -201,14 +201,8 @@
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_StateProvinces_Countries.sql" />
     <Build Include="dbo\Tables\dbo.Coordinates.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductImageUris.sql" />
-    <Build Include="dbo\Keys\Primary Keys\dbo.PK_Locations_Addresses.sql" />
-    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_Locations_Addresses_Locations.sql" />
     <Build Include="dbo\Tables\dbo.Locations.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_Locations.sql" />
-    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_Locations_Addresses_Addresses.sql" />
-    <Build Include="dbo\Keys\Primary Keys\dbo.PK_Locations_Coordinates.sql" />
-    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_Locations_Coordinates_Locations.sql" />
-    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_Locations_Coordinates_Coordinates.sql" />
     <Build Include="dbo\Tables\dbo.ManufacturerInfo.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_ManufacturerInfo.sql" />
     <Build Include="dbo\Tables\dbo.ManufacturerInfo_Companies.sql" />
@@ -566,6 +560,10 @@
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_Ingredients_ContentArticles.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_Ingredients_ContentArticles_Ingredients.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_Ingredients_ContentArticles_ContentArticles.sql" />
+    <Build Include="dbo\Tables\dbo.Manufacturers_Locations.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_Manufacturers_Locations.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_Manufacturers_Locations_Manufacturers.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_Manufacturers_Locations_Locations.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />

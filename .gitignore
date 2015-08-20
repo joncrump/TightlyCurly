@@ -46,3 +46,4 @@ Temporary Items
 /.vs/config/applicationhost.config
 /Libraries/Common/TightlyCurly.Com.Providers.Common/obj/Debug/TightlyCurly.Com.Providers.Common.csproj.FileListAbsolute.txt
 /Libraries/Common/TightlyCurly.Com.Providers.Common/obj/Debug/TightlyCurly.Com.Providers.Common.csprojResolveAssemblyReference.cache
+/Libraries/Common/TightlyCurly.Com.Providers.Repositories.Common/obj/Debug
