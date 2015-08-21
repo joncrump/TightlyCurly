@@ -572,6 +572,13 @@
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_ManufacturerInfos_Markets.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ManufacturerInfos_Markets_ManufacturerInfos.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ManufacturerInfos_Markets_Markets.sql" />
+    <Build Include="dbo\Tables\dbo.Menus.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_Menus.sql" />
+    <Build Include="dbo\Keys\Unique Keys\dbo.UKC_Menus_MenuId.sql" />
+    <Build Include="dbo\Tables\dbo.Menus_ContentItems.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_Menus_ContentItems.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_Menus_ContentItems_Menus.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_Menus_ContentItems_ContentItems.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />
