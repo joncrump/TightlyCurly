@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[MenuItems]
+(
+	[Id] INT NOT NULL IDENTITY(1,1),
+	[MenuItemId] UNIQUEIDENTIFIER NOT NULL
+)

@@ -25,11 +25,44 @@
             "propertyName": "UpdatedDate",
             "fieldType": "smalldatetime",
             "field": "UpdatedDate"
+        },
+        {
+             "propertyName": "ContentItems",
+             "lazyLoader": "GetContentItemsByMenu",
+             "joinMapping":
+             {
+                 "joinType": "left",
+                 "leftKey": "Id",
+                 "rightKey": "MenuId",
+                 "joinTable": "dbo.Menus_ContentItems",
+                 "jonTableJoinType": "left",
+                 "joinTableLeftKey": "ContentItemId",
+                 "joinTableRightKey": "ContentItemId"
+             }
+        },
+        {
+            "propertyName": "MenuItems",
+            "lazyLoader": "GetMenuItemsByMenu",
+            "joinMapping":
+            {
+                "joinType": "left",
+                "leftKey": "Id",
+                "rightKey": "MenuId",
+                "joinTable": "dbo.Menus_ContentItems",
+                "jonTableJoinType": "left",
+                "joinTableLeftKey": "ContentItemId",
+                "joinTableRightKey": "ContentItemId"
+            }
+        },
+        {
+            "propertyName": "MenuTexts",
+            "lazyLoader": "GetMenuTextsByMenu",
+            "joinMapping":
+            {
+                "joinType": "left",
+                "leftKey": "Id",
+                "rightKey": "MenuId"
+            }
         }]
-        /*
-                IEnumerable<IContentItem> ContentItems { get; set; }
-        IEnumerable<IMenuItem> MenuItems { get; set; }
-        IEnumerable<IMenuText> MenuTexts { get; set; } 
-        */
     }
 ]
