@@ -84,6 +84,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseMappings", "Databas
 		market.js = market.js
 		menu.js = menu.js
 		menuItem.js = menuItem.js
+		menuItemText.js = menuItemText.js
 		ratingType.js = ratingType.js
 	EndProjectSection
 EndProject
