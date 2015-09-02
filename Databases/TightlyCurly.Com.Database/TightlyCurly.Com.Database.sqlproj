@@ -596,6 +596,7 @@
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_MenuItemTexts_MenuItemTextId.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MenuItemTexts_MenuItems.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MenuItemTexts_Locales.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MenuTexts_Locales.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />

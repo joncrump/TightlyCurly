@@ -152,8 +152,6 @@
     <Compile Include="IProductRepository.cs" />
     <Compile Include="IProductRevisionHistoryRepository.cs" />
     <Compile Include="IProductSafetyInfoRepository.cs" />
-    <Compile Include="Models\MenuTextDataItem.cs" />
-    <Compile Include="Models\MenuTextDataModel.cs" />
     <Compile Include="Models\MessageCampaignDataModel.cs" />
     <Compile Include="Models\MessageTemplateDataModel.cs" />
     <Compile Include="Models\PatentAuthorDataModel.cs" />
