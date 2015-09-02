@@ -1,3 +1,3 @@
 ﻿ALTER TABLE [dbo].[MenuTexts]
-	ADD CONSTRAINT [UK_MenuTexts_MenuTextId]
+	ADD CONSTRAINT [UKC_MenuTexts_MenuTextId]
 	UNIQUE (MenuTextId)

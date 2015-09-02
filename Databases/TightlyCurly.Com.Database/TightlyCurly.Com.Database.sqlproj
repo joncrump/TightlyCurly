@@ -588,8 +588,13 @@
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_Menus_MenuItems_MenuItems.sql" />
     <Build Include="dbo\Tables\dbo.MenuTexts.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_MenuTexts.sql" />
-    <Build Include="dbo\Keys\Unique Keys\dbo.UK_MenuTexts_MenuTextId.sql" />
+    <Build Include="dbo\Keys\Unique Keys\dbo.UKC_MenuTexts_MenuTextId.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MenuTexts_Menus.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MenuItems_MenuItems.sql" />
+    <Build Include="dbo\Tables\dbo.MenuItemTexts.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_MenuItemTexts.sql" />
+    <Build Include="dbo\Keys\Unique Keys\dbo.UKC_MenuItemTexts_MenuItemTextId.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MenuItemTexts_MenuItems.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />
