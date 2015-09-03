@@ -597,6 +597,16 @@
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MenuItemTexts_MenuItems.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MenuItemTexts_Locales.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MenuTexts_Locales.sql" />
+    <Build Include="dbo\Tables\dbo.MessageCampaigns.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_MessageCampaigns.sql" />
+    <Build Include="dbo\Keys\Unique Keys\dbo.UKC_MessageCampaigns_MessageCampaignId.sql" />
+    <Build Include="dbo\Tables\dbo.MessageTemplates.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_MessageTemplates.sql" />
+    <Build Include="dbo\Keys\Unique Keys\dbo.UKC_MessageTemplates_MessageTemplateId.sql" />
+    <Build Include="dbo\Tables\dbo.MessageCampaigns_MessageTemplates.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_MessageCampaigns_MessageTemplates.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MessageCampaigns_MessageTemplates_MessageCampaigns.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MessageCampaigns_MessageTemplates_MessageTemplates.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />

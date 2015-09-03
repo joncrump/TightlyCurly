@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[MessageCampaigns]
+(
+	[Id] INT NOT NULL IDENTITY(1,1),
+	[MessageCampaignId] UNIQUEIDENTIFIER NOT NULL,
+	[CampaignName] NVARCHAR(255) NOT NULL,
+	[Description] NVARCHAR(1000) NULL,
+	[EnteredDate] SMALLDATETIME NOT NULL,
+	[UpdatedDate] SMALLDATETIME NOT NULL
+)
