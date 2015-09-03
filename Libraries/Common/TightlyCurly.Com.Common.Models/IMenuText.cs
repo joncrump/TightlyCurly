@@ -6,6 +6,7 @@ namespace TightlyCurly.Com.Common.Models
     {
         Guid MenuId { get; set; }
         Guid LocaleId { get; set; }
+        IMenu Menu { get; set; }
         ILocale Locale { get; set; }
         string Text { get; set; }
     }
