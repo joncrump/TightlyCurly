@@ -614,6 +614,14 @@
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_MessageCampaigns_Subscriptions.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MessageCampaigns_Subscriptions_MessageCampaigns.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MessageCampaigns_Subscriptions_Subscriptions.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MessageTemplates_Locales.sql" />
+    <Build Include="dbo\Tables\dbo.MessageTemplates_MessageTemplateTokens.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_MessageTemplates_MessageTemplateTokens.sql" />
+    <Build Include="dbo\Tables\dbo.MessageTemplateTokens.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_MesssageTemplateTokens.sql" />
+    <Build Include="dbo\Keys\Unique Keys\dbo.UKC_MessageTemplateTokens_MesssageTemplateTokenId.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MessageTemplates_MessageTemplateTokens_MessageTemplates.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MessageTemplates_MessageTemplateTokens_MessageTemplateTokens.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />

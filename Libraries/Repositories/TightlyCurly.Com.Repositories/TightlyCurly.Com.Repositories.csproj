@@ -152,7 +152,6 @@
     <Compile Include="IProductRepository.cs" />
     <Compile Include="IProductRevisionHistoryRepository.cs" />
     <Compile Include="IProductSafetyInfoRepository.cs" />
-    <Compile Include="Models\MessageTemplateDataModel.cs" />
     <Compile Include="Models\PatentAuthorDataModel.cs" />
     <Compile Include="Models\PatentDataModel.cs" />
     <Compile Include="Models\PersonDataModel.cs" />
