@@ -31,10 +31,34 @@
             "fieldType": "nvarchar",
             "field": "Description",
             "allowDbNull": true
+        },
+        {
+            "propertyName": "MessageTemplates",
+            "lazyLoader": "GetMessageTemplatesByMessageCampaign",
+            "joinMapping":
+            {
+                "joinType": "left",
+                "leftKey": "Id",
+                "rightKey": "MessageCampaignId",
+                "joinTable": "dbo.MessageCampaigns_MessageTemplates",
+                "jonTableJoinType": "left",
+                "joinTableLeftKey": "MessageTemplateId",
+                "joinTableRightKey": "MessageTemplateId"
+            }
+        },
+        {
+            "propertyName": "Subscriptions",
+            "lazyLoader": "GetSubscriptionsByMessageCampaign",
+            "joinMapping":
+            {
+                "joinType": "left",
+                "leftKey": "Id",
+                "rightKey": "MessageCampaignId",
+                "joinTable": "dbo.MessageCampaigns_Subscriptions",
+                "jonTableJoinType": "left",
+                "joinTableLeftKey": "SubscriptionId",
+                "joinTableRightKey": "SubscriptionId"
+            }
         }]
-        /*
-        IEnumerable<IMessageTemplate> MessageTemplates { get; set; }
-        IEnumerable<ISubscription> Subscriptions { get; set; }
-        */
     }
 ]

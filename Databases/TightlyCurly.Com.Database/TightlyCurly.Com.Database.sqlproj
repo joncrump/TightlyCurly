@@ -607,6 +607,13 @@
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_MessageCampaigns_MessageTemplates.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MessageCampaigns_MessageTemplates_MessageCampaigns.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MessageCampaigns_MessageTemplates_MessageTemplates.sql" />
+    <Build Include="dbo\Tables\dbo.Subscriptions.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_Subscriptions.sql" />
+    <Build Include="dbo\Keys\Unique Keys\dbo.UKC_Subscriptions_SubscriptionId.sql" />
+    <Build Include="dbo\Tables\dbo.MessageCampaigns_Subscriptions.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_MessageCampaigns_Subscriptions.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MessageCampaigns_Subscriptions_MessageCampaigns.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MessageCampaigns_Subscriptions_Subscriptions.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />
