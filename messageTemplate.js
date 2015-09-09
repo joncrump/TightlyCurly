@@ -11,22 +11,60 @@
             "field": "MessageTemplateId",
             "isPrimaryKey": true
         },
-        /*
-        	[Id] INT NOT NULL IDENTITY(1,1),
-	[MessageTemplateId] UNIQUEIDENTIFIER NOT NULL,
-	[TemplateName] NVARCHAR(255) NOT NULL,
-	[Text] NVARCHAR(MAX) NOT NULL,
-	[ContentType] INT NULL,
-	[LocaleId] UNIQUEIDENTIFIER NOT NULL,
-	[EnteredDate] SMALLDATETIME NOT NULL,
-	[UpdatedDate] SMALLDATETIME NOT NULL
-
-                ILocale Locale { get; set; }
-        string Text { get; set; }
-        ContentType? ContentType { get; set; }
-        Guid LocaleId { get; set; }
-        string TemplateName { get; set; }
-        IEnumerable<IMessageTemplateToken> MessageTemplateTokens { get; set; }
-        */
+        {
+            "propertyName": "TemplateName",
+            "fieldType": "nvarchar",
+            "field": "TemplateName"
+        },
+        {
+            "propertyName": "Text",
+            "fieldType": "nvarchar",
+            "field": "Text"
+        },
+        {
+            "propertyName": "ContentType",
+            "fieldType": "int",
+            "field": "ContentType",
+            "allowDbNull": true
+        },
+        {
+            "propertyName": "LocaleId",
+            "fieldType": "guid",
+            "field": "LocaleId"
+        },
+        {
+            "propertyName": "EnteredDate",
+            "fieldType": "smalldatetime",
+            "field": "EnteredDate",
+        },
+        {
+            "propertyName": "UpdatedDate",
+            "fieldType": "smalldatetime",
+            "field": "UpdatedDate"
+        },
+        {
+            "propertyName": "Locale",
+            "lazyLoader": "GetLocaleByMessageTemplate",
+            "joinMapping":
+            {
+                "joinType": "left",
+                "leftKey": "LocaleId",
+                "rightKey": "LocaleId"
+            }
+         },
+         {
+             "propertyName": "MessageTemplateTokens",
+             "lazyLoader": "GetMessageTemplateTokensByMessageTemplate",
+             "joinMapping": 
+             {
+                 "joinType": "left",
+                 "leftKey": "Id",
+                 "rightKey": "MessageTemplateId",
+                 "joinTable": "dbo.MessageTemplates_MessageTemplateTokens",
+                 "joinTableJoinType": "left",
+                 "joinTableLeftKey": "MessageTemplateTokenId",
+                 "joinTableRightKey": "MessageTemplateTokenId"
+             }
+         }]
     }
 ]
