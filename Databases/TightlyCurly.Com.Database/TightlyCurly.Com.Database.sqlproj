@@ -618,7 +618,7 @@
     <Build Include="dbo\Tables\dbo.MessageTemplates_MessageTemplateTokens.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_MessageTemplates_MessageTemplateTokens.sql" />
     <Build Include="dbo\Tables\dbo.MessageTemplateTokens.sql" />
-    <Build Include="dbo\Keys\Primary Keys\dbo.PK_MesssageTemplateTokens.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_MessageTemplateTokens.sql" />
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_MessageTemplateTokens_MesssageTemplateTokenId.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MessageTemplates_MessageTemplateTokens_MessageTemplates.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MessageTemplates_MessageTemplateTokens_MessageTemplateTokens.sql" />
