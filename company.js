@@ -90,7 +90,7 @@
                     "leftKey": "CompanyId",
                     "rightKey": "CompanyId",
                     "joinTable": "dbo.Companies_CompanyRelationships",
-                    "jonTableJoinType": "left",
+                    "joinTableJoinType": "left",
                     "joinTableLeftKey": "CompanyRelationshipId",
                     "joinTableRightKey": "CompanyRelationshipId"
                 }
