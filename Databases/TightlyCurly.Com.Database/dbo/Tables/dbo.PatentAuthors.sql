@@ -8,6 +8,7 @@
 	[Gender] NVARCHAR(5) NULL,
 	[Honorific] NVARCHAR(30) NULL,
 	[Suffix] NVARCHAR(50) NULL,
+	[PreferredLocaleId] UNIQUEIDENTIFIER NULL,
 	[EnteredDate] SMALLDATETIME NOT NULL,
 	[UpdatedDate] SMALLDATETIME NOT NULL
 )

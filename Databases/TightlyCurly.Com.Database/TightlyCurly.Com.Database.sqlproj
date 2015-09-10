@@ -622,6 +622,7 @@
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_MessageTemplateTokens_MesssageTemplateTokenId.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MessageTemplates_MessageTemplateTokens_MessageTemplates.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_MessageTemplates_MessageTemplateTokens_MessageTemplateTokens.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_PatentAuthors_Locales.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />

@@ -1,13 +1,59 @@
 // JavaScript source code
 [
     {
+        "type":"TightlyCurly.Com.Common.Models.IPatentAuthor, TightlyCurly.Com.Common.Models",
+            "dataSource": "dbo.PatentAuthors",
+            "countProperty":"Id",
+            "propertyMappings:": [
+            {
+                "propertyName": "Id",
+                "fieldType": "guid",
+                "field": "PatentAuthorId",
+                "isPrimaryKey": true
+            },
+            {
+                "propertyName": "FirstName",
+                "fieldType": "nvarchar",
+                "field": "FirstName",
+                "allowDbNull": true
+            },
+            {
+                "propertyName": "MiddleName",
+                "fieldType": "nvarchar",
+                "field": "MiddleName",
+                "allowDbNull": true
+            },
+            {
+                "propertyName": "LastName",
+                "fieldType": "nvarchar",
+                "field": "LastName",
+                "allowDbNull": true
+            },
+            {
+                "propertyName": "Gender",
+                "fieldType": "nvarchar",
+                "field": "Gender",
+                "allowDbNull": true
+            },
+            {
+                "propertyName": "Honorific",
+                "fieldType": "nvarchar",
+                "field": "Honorific",
+                "allowDbNull": true
+            },
+            {
+                "propertyName": "Suffix",
+                "fieldType": "nvarchar",
+                "field": "Suffix",
+                "allowDbNull": true
+            },
+            {
+                "propertyName": "PreferredLocaleId",
+                "fieldType": "guid",
+                "field": "PreferredLocaleId",
+                "allowDbNull": true
+            }]
         /*
-        string FirstName { get; set; }
-        string MiddleName { get; set; }
-        string LastName { get; set; }
-        string Gender { get; set; }
-        string Honorific { get; set; }
-        string Suffix { get; set; }
         ILocale PreferredLocale { get; set; }
         IEnumerable<ISocialMediaInfo> SocialMediaInfo { get; set; }
                 Guid? PreferredLocaleId { get; set; }
