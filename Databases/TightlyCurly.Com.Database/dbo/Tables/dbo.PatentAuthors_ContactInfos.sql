@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[PatentAuthors_ContactInfos]
+(
+	[Id] INT NOT NULL IDENTITY(1,1),
+	[PatentAuthorId] UNIQUEIDENTIFIER NOT NULL,
+	[ContactInfoId] UNIQUEIDENTIFIER NOT NULL,
+	[EnteredDate] SMALLDATETIME NOT NULL,
+	[UpdatedDate] SMALLDATETIME NOT NULL
+)

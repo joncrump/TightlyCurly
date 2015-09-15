@@ -14,8 +14,6 @@ namespace TightlyCurly.Com.Common.Models
         Guid? PreferredLocaleId { get; set; }
         ILocale PreferredLocale { get; set; }
         IEnumerable<ISocialMediaInfo> SocialMediaInfo { get; set; }
-
         IEnumerable<IContactInfo> ContactInfo { get; set; }
-        IEnumerable<IPersonRelationship> Relationships { get; set; } 
     }
 }

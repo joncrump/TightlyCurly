@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[PatentAuthors_SocialMediaInfos]
+(
+	[Id] INT IDENTITY(1,1),
+	[PatentAuthorId] UNIQUEIDENTIFIER NOT NULL,
+	[SocialMediaInfoId] UNIQUEIDENTIFIER NOT NULL,
+	[EnteredDate] SMALLDATETIME NOT NULL,
+	[UpdatedDate] SMALLDATETIME NOT NULL
+)
