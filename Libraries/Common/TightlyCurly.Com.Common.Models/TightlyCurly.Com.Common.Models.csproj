@@ -97,8 +97,6 @@
     <Compile Include="IMetaItem.cs" />
     <Compile Include="IPatentAuthor.cs" />
     <Compile Include="IPerson.cs" />
-    <Compile Include="IPersonRelationship.cs" />
-    <Compile Include="IPersonRelationshipType.cs" />
     <Compile Include="IPhoneNumber.cs" />
     <Compile Include="IProduct.cs" />
     <Compile Include="IProductCategory.cs" />
