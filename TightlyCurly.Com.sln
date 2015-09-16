@@ -92,6 +92,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseMappings", "Databas
 		patent.js = patent.js
 		patentAuthor.js = patentAuthor.js
 		product.js = product.js
+		productMetadata.js = productMetadata.js
 		ratingType.js = ratingType.js
 	EndProjectSection
 EndProject

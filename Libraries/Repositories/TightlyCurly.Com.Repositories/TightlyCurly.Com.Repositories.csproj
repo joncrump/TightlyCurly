@@ -152,15 +152,11 @@
     <Compile Include="IProductRepository.cs" />
     <Compile Include="IProductRevisionHistoryRepository.cs" />
     <Compile Include="IProductSafetyInfoRepository.cs" />
-    <Compile Include="Models\PatentAuthorDataModel.cs" />
-    <Compile Include="Models\PatentDataModel.cs" />
     <Compile Include="Models\PersonDataModel.cs" />
     <Compile Include="Models\PersonRelationshipTypeDataModel.cs" />
     <Compile Include="Models\PhoneNumberDataModel.cs" />
     <Compile Include="Models\ProductCategoryDataModel.cs" />
-    <Compile Include="Models\ProductDataModel.cs" />
     <Compile Include="Models\ProductLineDataModel.cs" />
-    <Compile Include="Models\ProductMetadataDataModel.cs" />
     <Compile Include="Models\ProductRevisionHistoryDataModel.cs" />
     <Compile Include="Models\ProductSafetyInfoDataModel.cs" />
     <Compile Include="Models\ProductTypeDataModel.cs" />
