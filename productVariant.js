@@ -1,11 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace TightlyCurly.Com.Common.Models
-{
-    public interface IProductVariant : IModel
+// JavaScript source code
+[
     {
-        Guid ProductId { get; set; }
+        "type":"TightlyCurly.Com.Common.Models.ICompany, TightlyCurly.Com.Common.Models",
+        "dataSource": "dbo.Companies",
+        "countProperty":"Id",
+        "propertyMappings:": [
+        {
+            "propertyName": "Id",
+            "fieldType": "guid",
+            "field": "CompanyId",
+            "isPrimaryKey": true
+        }]
+
+        /*
+         Guid ProductId { get; set; }
         IProduct Product { get; set; }
         string Name { get; set; }
         IEnumerable<IManufacturerInfo> Manufacturers { get; set; }
@@ -27,5 +35,6 @@ namespace TightlyCurly.Com.Common.Models
         IEnumerable<IProductVariantNote> Notes { get; set; }
         IEnumerable<IProductVariantDescription> Descriptions { get; set; }
         IEnumerable<IProductVariantMetadata> Metadata { get; set; } 
+        */
     }
-}
+]
