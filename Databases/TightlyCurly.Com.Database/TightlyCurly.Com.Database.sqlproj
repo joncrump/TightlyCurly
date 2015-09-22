@@ -631,6 +631,10 @@
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_PatentAuthors_ContactInfos.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_PatentAuthors_ContactInfos_PatentAuthors.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_PatentAuthors_ContactInfos_ContactInfos.sql" />
+    <Build Include="dbo\Tables\dbo.ProductVariants_Trademarks.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductVariants_Trademarks.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariants_Trademarks_ProductVariants.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariants_Trademarks_Trademarks.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />

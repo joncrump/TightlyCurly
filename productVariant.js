@@ -186,16 +186,88 @@
                 "joinTableLeftKey": "ProductImageUriId",
                 "joinTableRightKey": "ProductImageUriId"
             }
-        }, ]
-
-        /*
-        IEnumerable<ICopyright> Copyrights { get; set; }
-        IEnumerable<ITrademark> Trademarks { get; set; }
-        IEnumerable<IPatent> Patents { get; set; }
-        
-        IEnumerable<IProductVariantNote> Notes { get; set; }
-        IEnumerable<IProductVariantDescription> Descriptions { get; set; }
-        IEnumerable<IProductVariantMetadata> Metadata { get; set; } 
-        */
+        },
+        {
+            "propertyName": "Copyrights",
+            "lazyLoader": "GetCopyrightsByProductVariants",
+            "joinMapping":
+            {
+                "joinType": "left",
+                "leftKey": "Id",
+                "rightKey": "ProductVariantId",
+                "joinTable": "dbo.ProductVariants_Copyrights",
+                "joinTableJoinType": "left",
+                "joinTableLeftKey": "CopyrightId",
+                "joinTableRightKey": "CopyrightId"
+            }
+        },
+        {
+            "propertyName": "Trademarks",
+            "lazyLoader": "GetTrademarksByProductVariants",
+            "joinMapping":
+            {
+                "joinType": "left",
+                "leftKey": "Id",
+                "rightKey": "ProductVariantId",
+                "joinTable": "dbo.ProductVariants_Trademarks",
+                "joinTableJoinType": "left",
+                "joinTableLeftKey": "TrademarkId",
+                "joinTableRightKey": "TrademarkId"
+            }
+        },
+        {
+            "propertyName": "Patents",
+            "lazyLoader": "GetPatentsByProductVariants",
+            "joinMapping":
+            {
+                "joinType": "left",
+                "leftKey": "Id",
+                "rightKey": "ProductVariantId",
+                "joinTable": "dbo.ProductVariants_Patents",
+                "joinTableJoinType": "left",
+                "joinTableLeftKey": "PatentId",
+                "joinTableRightKey": "PatentId"
+            }
+        },
+        {
+            "propertyName": "Notes",
+            "lazyLoader": "GetNotesByProductVariants",
+            "joinMapping":
+            {
+                "joinType": "left",
+                "leftKey": "Id",
+                "rightKey": "ProductVariantId",
+            }
+        },
+        {
+            "propertyName": "Notes",
+            "lazyLoader": "GetNotesByProductVariants",
+            "joinMapping":
+            {
+                "joinType": "left",
+                "leftKey": "Id",
+                "rightKey": "ProductVariantId",
+            }
+        },
+        {
+            "propertyName": "Descriptions",
+            "lazyLoader": "GetDescriptionsByProductVariants",
+            "joinMapping":
+            {
+                "joinType": "left",
+                "leftKey": "Id",
+                "rightKey": "ProductVariantId",
+            }
+        },
+        {
+            "propertyName": "Metadata",
+            "lazyLoader": "GetMetadataByProductVariants",
+            "joinMapping":
+            {
+                "joinType": "left",
+                "leftKey": "Id",
+                "rightKey": "ProductVariantId",
+            }
+        }]
     }
 ]

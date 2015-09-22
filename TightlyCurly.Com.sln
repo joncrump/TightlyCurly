@@ -99,9 +99,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseMappings", "Databas
 		productSafetyInfo.js = productSafetyInfo.js
 		productType.js = productType.js
 		productVariant.js = productVariant.js
+		productVariantDescription.js = productVariantDescription.js
 		productVariantImageUri.js = productVariantImageUri.js
+		productVariantMetadata.js = productVariantMetadata.js
+		productVariantNote.js = productVariantNote.js
 		productVariantReview.js = productVariantReview.js
 		ratingType.js = ratingType.js
+		trademark.js = trademark.js
 	EndProjectSection
 EndProject
 Global
