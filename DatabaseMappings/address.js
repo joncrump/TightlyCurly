@@ -1,4 +1,3 @@
-//address mapping
 [
     {
         "type":"TightlyCurly.Com.Common.Models.IAddress, TightlyCurly.Com.Common.Models",

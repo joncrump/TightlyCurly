@@ -1,4 +1,3 @@
-// patent mappings
 [
     {
         "type": "TightlyCurly.Com.Common.Models.IPatent, TightlyCurly.Com.Common.Models",

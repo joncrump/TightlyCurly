@@ -1,4 +1,3 @@
-// JavaScript source code
 [
     {
         "type":"TightlyCurly.Com.Common.Models.IIngredientRatingText, TightlyCurly.Com.Common.Models",

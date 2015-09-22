@@ -1,4 +1,3 @@
-// aside mapping
 [
     {
         "type": "TightlyCurly.Com.Common.Models.IAside, TightlyCurly.Com.Common.Models",

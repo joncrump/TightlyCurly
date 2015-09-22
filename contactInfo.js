@@ -1,5 +1,3 @@
-// JavaScript source code
-// ContactInfo mappings.
 [
     {
         "type":"TightlyCurly.Com.Common.Models.IContactInfo, TightlyCurly.Com.Common.Models",
