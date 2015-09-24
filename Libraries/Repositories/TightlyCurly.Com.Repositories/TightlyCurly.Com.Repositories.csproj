@@ -166,7 +166,6 @@
     <Compile Include="Models\ProductVariantNoteDataModel.cs" />
     <Compile Include="Models\ProductVariantReviewDataModel.cs" />
     <Compile Include="Models\StateProvinceDataModel.cs" />
-    <Compile Include="Models\TrademarkDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

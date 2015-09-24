@@ -21,6 +21,16 @@
             "field": "Name"
         },
         {
+            "propertyName": "EnteredDate",
+            "fieldType": "smalldatetime",
+            "field": "EnteredDate"
+        },
+        {
+            "propertyName": "UpdatedDate",
+            "fieldType": "smalldatetime",
+            "field": "UpdatedDate"
+        },
+        {
             "propertyName": "Product",
             "lazyLoader": "GetProductByProductVariant",
             "joinMapping":
