@@ -249,16 +249,6 @@
             }
         },
         {
-            "propertyName": "Notes",
-            "lazyLoader": "GetNotesByProductVariants",
-            "joinMapping":
-            {
-                "joinType": "left",
-                "leftKey": "Id",
-                "rightKey": "ProductVariantId",
-            }
-        },
-        {
             "propertyName": "Descriptions",
             "lazyLoader": "GetDescriptionsByProductVariants",
             "joinMapping":

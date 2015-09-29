@@ -635,6 +635,7 @@
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductVariants_Trademarks.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariants_Trademarks_ProductVariants.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariants_Trademarks_Trademarks.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantDescriptions_Locales.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />
