@@ -105,6 +105,8 @@
     <Compile Include="IPatent.cs" />
     <Compile Include="IProductVariantMetadata.cs" />
     <Compile Include="IProductVariantNote.cs" />
+    <Compile Include="IProductVariantReviewComment.cs" />
+    <Compile Include="IProductVariantReviewNote.cs" />
     <Compile Include="IProductVariantSkuInfo.cs" />
     <Compile Include="IProductVariantUserReview.cs" />
     <Compile Include="ITrademark.cs" />

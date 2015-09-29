@@ -100,11 +100,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseMappings", "Databas
 		productType.js = productType.js
 		productVariant.js = productVariant.js
 		productVariantDescription.js = productVariantDescription.js
+		productVariantEditorialReview.js = productVariantEditorialReview.js
 		productVariantImageUri.js = productVariantImageUri.js
 		productVariantMetadata.js = productVariantMetadata.js
 		productVariantNote.js = productVariantNote.js
 		productVariantReview.js = productVariantReview.js
+		productVariantReviewComment.js = productVariantReviewComment.js
+		productVariantReviewNote.js = productVariantReviewNote.js
 		productVariantSkuInfo.js = productVariantSkuInfo.js
+		productVariantUserReview.js = productVariantUserReview.js
 		ratingType.js = ratingType.js
 		trademark.js = trademark.js
 	EndProjectSection
