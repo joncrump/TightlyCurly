@@ -1,7 +1,7 @@
 [
     {
         "type":"TightlyCurly.Com.Common.Models.IProductVariantReview, TightlyCurly.Com.Common.Models",
-        "dataSource": "dbo.Trademarks",
+        "dataSource": "dbo.ProductVariantReviews",
         "countProperty":"Id",
         "propertyMappings:": [
         {
