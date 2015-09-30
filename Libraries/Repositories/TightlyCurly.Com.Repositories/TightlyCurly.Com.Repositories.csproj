@@ -158,8 +158,6 @@
     <Compile Include="Models\ProductCategoryDataModel.cs" />
     <Compile Include="Models\ProductRevisionHistoryDataModel.cs" />
     <Compile Include="Models\ProductSafetyInfoDataModel.cs" />
-    <Compile Include="Models\ProductTypeDataModel.cs" />
-    <Compile Include="Models\ProductVariantDescriptionDataModel.cs" />
     <Compile Include="Models\ProductVariantEditorialReviewDataModel.cs" />
     <Compile Include="Models\ProductVariantMetadataDataModel.cs" />
     <Compile Include="Models\ProductVariantNoteDataModel.cs" />
