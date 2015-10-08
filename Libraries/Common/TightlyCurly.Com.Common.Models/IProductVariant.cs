@@ -19,7 +19,7 @@ namespace TightlyCurly.Com.Common.Models
         IEnumerable<IProductVariantReview> ProductReviews { get; set; }
         IEnumerable<IProductSafetyInfo> ProductSafetyInfos { get; set; } 
         IEnumerable<IProductType> ProductTypes { get; set; }
-        IEnumerable<IImageUri> ProductVariantImageUris { get; set; }
+        IEnumerable<IProductVariantImageUri> ProductVariantImageUris { get; set; }
         IEnumerable<ICopyright> Copyrights { get; set; }
         IEnumerable<ITrademark> Trademarks { get; set; }
         IEnumerable<IPatent> Patents { get; set; }

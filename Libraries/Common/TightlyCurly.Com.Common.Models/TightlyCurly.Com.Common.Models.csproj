@@ -105,6 +105,7 @@
     <Compile Include="IProductLine.cs" />
     <Compile Include="ICopyright.cs" />
     <Compile Include="IPatent.cs" />
+    <Compile Include="IProductVariantImageUri.cs" />
     <Compile Include="IProductVariantMetadata.cs" />
     <Compile Include="IProductVariantNote.cs" />
     <Compile Include="IProductVariantReviewComment.cs" />
@@ -117,7 +118,6 @@
     <Compile Include="IProductMetadata.cs" />
     <Compile Include="IProductType.cs" />
     <Compile Include="IProductVariant.cs" />
-    <Compile Include="IImageUri.cs" />
     <Compile Include="IQuestion.cs" />
     <Compile Include="IQuestionCategory.cs" />
     <Compile Include="IRatingType.cs" />

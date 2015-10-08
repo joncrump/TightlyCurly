@@ -171,7 +171,7 @@
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_Products.sql" />
     <Build Include="dbo\Tables\dbo.ProductTypes.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductTypes.sql" />
-    <Build Include="dbo\Tables\dbo.ProductImageUris.sql" />
+    <Build Include="dbo\Tables\dbo.ProductVariantImageUris.sql" />
     <Build Include="dbo\Tables\dbo.ProductLines.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductLines.sql" />
     <Build Include="dbo\Tables\dbo.ProductLines_Companies.sql" />

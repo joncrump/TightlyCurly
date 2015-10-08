@@ -1,8 +1,8 @@
-﻿CREATE TABLE [dbo].[ProductImageUris]
+﻿CREATE TABLE [dbo].[ProductVariantImageUris]
 (
 	[Id] INT IDENTITY(1,1) NOT NULL,
-	[ProductImageUriId] UNIQUEIDENTIFIER NOT NULL,
-	[ProductId] UNIQUEIDENTIFIER NOT NULL,
+	[ProductVariantImageUriId] UNIQUEIDENTIFIER NOT NULL,
+	[ProductVariantId] UNIQUEIDENTIFIER NOT NULL,
 	[Uri] NVARCHAR(1000) NOT NULL,
 	[Description] NVARCHAR(4000) NULL,
 	[AltText] NVARCHAR(4000) NULL,

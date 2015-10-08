@@ -16,6 +16,12 @@
             "field": "Type"
         },
         {
+            "propertyName": "Description",
+            "fieldType": "nvarchar",
+            "field": "Description",
+            "allowDbNull": true
+        },
+        {
             "propertyName": "EnteredDate",
             "fieldType": "smalldatetime",
             "field": "EnteredDate"
