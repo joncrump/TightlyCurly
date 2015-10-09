@@ -1,4 +1,3 @@
-// Add mapping
 [
     {
         "type":"TightlyCurly.Com.Common.Models.IProductVariantEditorialReview, TightlyCurly.Com.Common.Models",

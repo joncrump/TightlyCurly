@@ -8,7 +8,7 @@
 	[AltText] NVARCHAR(4000) NULL,
 	[IsPrimary] BIT NULL,
 	[Order] INT NULL,
-	[Active] BIT NULL,
+	[IsActive] BIT NULL,
 	[EnteredDate] SMALLDATETIME NOT NULL,
 	[UpdatedDate] SMALLDATETIME NOT NULL
 )
