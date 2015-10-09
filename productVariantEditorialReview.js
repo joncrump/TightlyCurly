@@ -62,13 +62,40 @@
                 "joinTableLeftKey": "AsideId",
                 "joinTableRightKey": "AsideId"
             }
-        }, ]
-        /*
-
-        IEnumerable<IImageUri> ImageUris { get; set; }
-        IUser ReviewedBy { get; set; }
-        IProductVariantReview ProductVariantReview { get; set; }
-    }
-        */
+        },
+        {
+            "propertyName": "ImageUris",
+            "lazyLoader": "GetImageUrisByProductVariantEditorialReview",
+            "joinMapping":
+            {
+                "joinType": "left",
+                "leftKey": "Id",
+                "rightKey": "ProductVariantEditorialReviewId",
+                "joinTable": "dbo.ProductVariantEditorialReviews_ProductVariantImageUris",
+                "joinTableJoinType": "left",
+                "joinTableLeftKey": "ProductVariantImageUriId",
+                "joinTableRightKey": "ProductVariantImageUriId"
+            }
+        },
+        {
+            "propertyName": "ReviewedBy",
+            "lazyLoader": "GetReviewedByProductVariantEditorialReview",
+            "joinMapping":
+            {
+                "joinType": "left",
+                "leftKey": "ReviewedById",
+                "rightKey": "UserId"
+            }
+        },
+        {
+            "propertyName": "ProductVariantReview",
+            "lazyLoader": "GetProductVariantReviewProductVariantEditorialReview",
+            "joinMapping":
+            {
+                "joinType": "left",
+                "leftKey": "ProductVariantReviewId",
+                "rightKey": "ProductVariantReviewId"
+            }
+        }]
     }
 ]

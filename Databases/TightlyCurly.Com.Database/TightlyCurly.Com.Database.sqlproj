@@ -200,7 +200,7 @@
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_Addresses_StateProvinces.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_StateProvinces_Countries.sql" />
     <Build Include="dbo\Tables\dbo.Coordinates.sql" />
-    <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductImageUris.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductVariantImageUris.sql" />
     <Build Include="dbo\Tables\dbo.Locations.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_Locations.sql" />
     <Build Include="dbo\Tables\dbo.ManufacturerInfo.sql" />
@@ -306,10 +306,10 @@
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariants_ProductCategories_ProductVariants.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariants_ProductCategories_ProductCategories.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_Ingredients.sql" />
-    <Build Include="dbo\Tables\dbo.ProductVariants_ProductImageUris.sql" />
+    <Build Include="dbo\Tables\dbo.ProductVariants_ProductVariantImageUris.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductVariants_ProductImageUris.sql" />
-    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariants_ProductImageUris_ProductVariants.sql" />
-    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariants_ProductImageUris_ProductImageUris.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariants_ProductVariantImageUris_ProductVariants.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariants_ProductVariantImageUris_ProductVariantImageUris.sql" />
     <Build Include="dbo\Tables\dbo.ProductVariantReviews.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductVariantReviews.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantReviews_ProductVariants.sql" />
@@ -325,10 +325,10 @@
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductVariantEditorialReviews_Asides.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantEditorialReviews_Asides_ProductVariantEditorialReviews.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantEditorialReviews_Asides_Asides.sql" />
-    <Build Include="dbo\Tables\dbo.ProductVariantEditorialReviews_ProductImageUris.sql" />
-    <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductVariantEditorialReviews_ProductImageUris.sql" />
-    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantEditorialReviews_ProductImageUris_ProductVariantEditorialReviews.sql" />
-    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantEditorialReviews_ProductImageUris_ProductImageUris.sql" />
+    <Build Include="dbo\Tables\dbo.ProductVariantEditorialReviews_ProductVariantImageUris.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductVariantEditorialReviews_ProductVariantImageUris.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantEditorialReviews_ProductVariantImageUris_ProductVariantEditorialReviews.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantEditorialReviews_ProductVariantImageUris_ProductVariantImageUris.sql" />
     <Build Include="dbo\Tables\dbo.ProductVariantUserReviews.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductVariantUserReviews.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantUserReviews_ProductVariantReviews.sql" />
@@ -466,7 +466,7 @@
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_People_PersonId.sql" />
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_PhoneNumbers_PhoneNumberId.sql" />
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_ProductCategories_ProductCategoryId.sql" />
-    <Build Include="dbo\Keys\Unique Keys\dbo.UKC_ProductImageUris_ProductImageUriId.sql" />
+    <Build Include="dbo\Keys\Unique Keys\dbo.UKC_ProductVariantImageUris_ProductVariantImageUriId.sql" />
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_ProductLines_ProductLineId.sql" />
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_ProductMetadata_ProductMetadataId.sql" />
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_ProductRevisionHistory_ProductRevisionHistoryId.sql" />

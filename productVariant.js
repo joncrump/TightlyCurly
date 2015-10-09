@@ -190,10 +190,10 @@
                 "joinType": "left",
                 "leftKey": "Id",
                 "rightKey": "ProductVariantId",
-                "joinTable": "dbo.ProductVariants_ProductImageUris",
+                "joinTable": "dbo.ProductVariants_ProductVariantImageUris",
                 "joinTableJoinType": "left",
-                "joinTableLeftKey": "ProductImageUriId",
-                "joinTableRightKey": "ProductImageUriId"
+                "joinTableLeftKey": "ProductVariantImageUriId",
+                "joinTableRightKey": "ProductVariantImageUriId"
             }
         },
         {
