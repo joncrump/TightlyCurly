@@ -1,4 +1,3 @@
-// TODO: Add mappings
 [
     {
         "type":"TightlyCurly.Com.Common.Models.IProductVariantImageUri, TightlyCurly.Com.Common.Models",
@@ -33,12 +32,43 @@
             "field": "AltText",
             "allowDbNull": true
         },
-        ]
-        /*
- * 	
-[IsPrimary] BIT NULL,
-[Order] INT NULL,
-[IsActive] BIT NULL,
- */
+        {
+            "propertyName": "IsPrimary",
+            "fieldType": "bit",
+            "field": "IsPrimary",
+            "allowDbNull": true
+        },
+        {
+            "propertyName": "Order",
+            "fieldType": "int",
+            "field": "Order",
+            "allowDbNull": true
+        },
+        {
+            "propertyName": "IsActive",
+            "fieldType": "bool",
+            "field": "IsActive",
+            "allowDbNull": true
+        },
+        {
+            "propertyName": "EnteredDate",
+            "fieldType": "smalldatetime",
+            "field": "EnteredDate"
+        },
+        {
+            "propertyName": "UpdatedDate",
+            "fieldType": "smalldatetime",
+            "field": "UpdatedDate"
+        },
+        {
+            "propertyName": "ProductVariant",
+            "lazyLoader": "GetProductVariantByProductVariantImageUri",
+            "joinMapping":
+            {
+                "joinType": "left",
+                "leftKey": "ProductVariantId",
+                "rightKey": "ProductVariantId",
+            }
+        }]
     }
 ]

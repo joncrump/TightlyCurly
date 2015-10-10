@@ -1,4 +1,3 @@
-// TODO: Add mappings
 [
     {
         "type":"TightlyCurly.Com.Common.Models.ITProductVariantSkuInfo, TightlyCurly.Com.Common.Models",

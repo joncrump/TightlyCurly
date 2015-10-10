@@ -337,10 +337,10 @@
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantUserReviews_Asides_ProductVariantUserReviews.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantUserReviews_Users.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantUserReviews_Asides_Asides.sql" />
-    <Build Include="dbo\Tables\dbo.ProductVariantUserReviews_ProductImageUris.sql" />
-    <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductVariantUserReviews_ProductImageUris.sql" />
-    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantUserReviews_ProductImageUris_ProductVariantUserReviews.sql" />
-    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantUserReviews_ProductImageUris_ProductImageUris.sql" />
+    <Build Include="dbo\Tables\dbo.ProductVariantUserReviews_ProductVariantImageUris.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductVariantUserReviews_ProductVariantImageUris.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantUserReviews_ProductVariantImageUris_ProductVariantUserReviews.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantUserReviews_ProductVariantImageUris_ProductImageUris.sql" />
     <Build Include="dbo\Tables\dbo.ProductSafetyInfos.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductSafetyInfos.sql" />
     <Build Include="dbo\Tables\dbo.ProductSafetyInfos_ProductVariants.sql" />
@@ -636,6 +636,7 @@
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariants_Trademarks_ProductVariants.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariants_Trademarks_Trademarks.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantDescriptions_Locales.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantUserReviews_Locales.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />
