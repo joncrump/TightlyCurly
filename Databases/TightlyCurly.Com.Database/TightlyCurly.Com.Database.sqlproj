@@ -637,6 +637,11 @@
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariants_Trademarks_Trademarks.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantDescriptions_Locales.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantUserReviews_Locales.sql" />
+    <Build Include="dbo\Tables\dbo.ProductVariantReviewComments.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductVariantReviewComments.sql" />
+    <Build Include="dbo\Keys\Unique Keys\dbo.UKC_ProductVariantReviewComments_ProductVariantReviewCommentId.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantReviewComments_ProductVariantReviews.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantReviewComments_Users.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />
