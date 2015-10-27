@@ -4,11 +4,6 @@
 	[ProductVariantReviewCommentId] UNIQUEIDENTIFIER NOT NULL,
 	[ProductVariantReviewId] UNIQUEIDENTIFIER NOT NULL,
 	[EnteredById] UNIQUEIDENTIFIER NOT NULL,
-	/*
-	        string Comment { get; set; }
-        Guid ProductVariantReviewId { get; set; }
-        Guid EnteredById { get; set; }
-        IProductVariantReview ProductVariantReview { get; set; }
-        IUser EnteredBy { get; set; }
-	*/
+	[EnteredDate] SMALLDATETIME NOT NULL,
+	[UpdatedDate] SMALLDATETIME NOT NULL
 )
