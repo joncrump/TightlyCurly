@@ -1,7 +1,7 @@
 [
     {
         "type":"TightlyCurly.Com.Common.Models.IProductVariantReviewComment, TightlyCurly.Com.Common.Models",
-        "dataSource": "dbo.ProductVariantMetadata",
+        "dataSource": "dbo.ProductVariantReviewComments",
         "countProperty":"Id",
         "propertyMappings:": [
         {

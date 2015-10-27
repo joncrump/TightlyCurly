@@ -642,6 +642,9 @@
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_ProductVariantReviewComments_ProductVariantReviewCommentId.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantReviewComments_ProductVariantReviews.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariantReviewComments_Users.sql" />
+    <Build Include="dbo\Tables\dbo.ProductVariantReviewNotes.sql" />
+    <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductVariantReviewNotes.sql" />
+    <Build Include="dbo\Keys\Unique Keys\dbo.UKC_ProductVariantReviewNotes_ProductVariantReviewNoteId.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />
