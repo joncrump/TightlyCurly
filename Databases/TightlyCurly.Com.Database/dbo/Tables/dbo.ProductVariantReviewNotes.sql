@@ -1,12 +1,10 @@
 ﻿CREATE TABLE [dbo].[ProductVariantReviewNotes]
 (
 	[Id] INT NOT NULL IDENTITY(1,1),
-	[ProductVariantReviewNoteId] UNIQUEIDENTIFIER NOT NULL
-	/*
-	string Note { get; set; }
-        Guid ProductVariantReviewId { get; set; }
-        Guid EnteredById { get; set; }
-        IProductVariantReview ProductVariantReview { get; set; }
-        IUser EnteredBy { get; set; }
-	*/
+	[ProductVariantReviewNoteId] UNIQUEIDENTIFIER NOT NULL,
+	[ProductVariantReviewId] UNIQUEIDENTIFIER NOT NULL,
+	[Note] NVARCHAR(1000) NOT NULL,
+	[EnteredById] UNIQUEIDENTIFIER NOT NULL,
+	[EnteredDate] SMALLDATETIME NOT NULL,
+	[UpdatedDate] SMALLDATETIME NOT NULL
 )
