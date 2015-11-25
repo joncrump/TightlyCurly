@@ -13,7 +13,7 @@ namespace TightlyCurly.Com.Common.Models
         IEnumerable<IProductVariantSkuInfo> Skus { get; set; }
         IEnumerable<IMarket> Markets { get; set; }
         IEnumerable<IIngredientInfo> Ingredients { get; set; }
-        IEnumerable<IProductRevisionHistory> RevisionHistory { get; set; }
+        IProductRevisionHistory RevisionHistory { get; set; }
         IEnumerable<ILocation> LocationsSoldAt { get; set; }
         IEnumerable<IProductCategory> ProductCategories { get; set; }
         IEnumerable<IProductVariantReview> ProductReviews { get; set; }

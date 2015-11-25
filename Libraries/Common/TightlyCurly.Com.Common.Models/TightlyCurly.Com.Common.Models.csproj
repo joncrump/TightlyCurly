@@ -74,6 +74,7 @@
     <Compile Include="IIngredientUri.cs" />
     <Compile Include="IPersonRelationship.cs" />
     <Compile Include="IPersonRelationshipType.cs" />
+    <Compile Include="IProductRevisionHistoryEntry.cs" />
     <Compile Include="IProductSafetyInfo.cs" />
     <Compile Include="IProductVariantDescription.cs" />
     <Compile Include="IProductVariantEditorialReview.cs" />

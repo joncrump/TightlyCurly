@@ -1,4 +1,3 @@
-// TODO: Add mappings
 [
     {
         "type": "TightlyCurly.Com.Common.Models.IProductSafetyInfo, TightlyCurly.Com.Common.Models",
