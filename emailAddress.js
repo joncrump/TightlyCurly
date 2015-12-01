@@ -3,7 +3,7 @@
         "type":"TightlyCurly.Com.Common.Models.IEmailAddress, TightlyCurly.Com.Common.Models",
         "dataSource": "dbo.EmailAddresses",
         "countProperty":"Id",
-        "propertyMappings:": [
+        "propertyMappings": [
         {
             "propertyName": "Id",
             "fieldType": "guid",

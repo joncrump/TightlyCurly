@@ -3,7 +3,7 @@
         "type":"TightlyCurly.Com.Common.Models.IContentArticleRevision, TightlyCurly.Com.Common.Models",
         "dataSource": "dbo.ContentArticleRevisions",
         "countProperty":"Id",
-        "propertyMappings:": [
+        "propertyMappings": [
             {
                 "propertyName": "Id",
                 "fieldType": "guid",

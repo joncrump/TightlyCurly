@@ -3,7 +3,7 @@
         "type":"TightlyCurly.Com.Common.Models.IRatingType, TightlyCurly.Com.Common.Models",
         "dataSource": "dbo.RatingTypes",
         "countProperty":"Id",
-        "propertyMappings:": [
+        "propertyMappings": [
         {
             "propertyName": "Id",
             "fieldType": "guid",

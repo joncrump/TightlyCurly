@@ -3,7 +3,7 @@
         "type":"TightlyCurly.Com.Common.Models.ITProductVariantSkuInfo, TightlyCurly.Com.Common.Models",
         "dataSource": "dbo.ProductVariantSkus",
         "countProperty":"Id",
-        "propertyMappings:": [
+        "propertyMappings": [
         {
             "propertyName": "Id",
             "fieldType": "guid",

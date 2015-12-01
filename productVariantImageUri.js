@@ -3,7 +3,7 @@
         "type":"TightlyCurly.Com.Common.Models.IProductVariantImageUri, TightlyCurly.Com.Common.Models",
         "dataSource": "dbo.ProductVariantImageUris",
         "countProperty":"Id",
-        "propertyMappings:": [
+        "propertyMappings": [
         {
             "propertyName": "Id",
             "fieldType": "guid",

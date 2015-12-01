@@ -3,7 +3,7 @@
         "type":"TightlyCurly.Com.Common.Models.IAddress, TightlyCurly.Com.Common.Models",
         "dataSource": "dbo.Addresses",
         "countProperty":"Id",
-        "propertyMappings:": [
+        "propertyMappings": [
             {
                 "propertyName": "Id",
                 "fieldType": "guid",

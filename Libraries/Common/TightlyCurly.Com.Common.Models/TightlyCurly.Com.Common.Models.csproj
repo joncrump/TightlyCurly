@@ -115,7 +115,6 @@
     <Compile Include="IProductVariantUserReview.cs" />
     <Compile Include="ITrademark.cs" />
     <Compile Include="IProductVariantReview.cs" />
-    <Compile Include="IProductRevisionHistory.cs" />
     <Compile Include="IProductMetadata.cs" />
     <Compile Include="IProductType.cs" />
     <Compile Include="IProductVariant.cs" />

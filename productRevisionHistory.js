@@ -2,7 +2,7 @@
 [
     {
         "type": "TightlyCurly.Com.Common.Models.IProductRevisionHistory, TightlyCurly.Com.Common.Models",
-            "dataSource": "dbo.ProductSafetyInfos",
+            "dataSource": "dbo.ProductRevisionHistory",
             "countProperty": "Id",
             "propertyMappings:": [
             {

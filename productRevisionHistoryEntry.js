@@ -1,13 +1,14 @@
+// JavaScript source code
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.IProductVariantNote, TightlyCurly.Com.Common.Models",
-        "dataSource": "dbo.ProductVariantNotes",
+        "type":"TightlyCurly.Com.Common.Models.IProductRevisionHistoryEntry, TightlyCurly.Com.Common.Models",
+        "dataSource": "dbo.ProductRevisionHistoryEntries",
         "countProperty":"Id",
         "propertyMappings": [
         {
             "propertyName": "Id",
             "fieldType": "guid",
-            "field": "ProductVariantNoteId",
+            "field": "ProductRevisionHistoryId",
             "isPrimaryKey": true
         },
         {
@@ -16,14 +17,26 @@
             "field": "ProductVariantId"
         },
         {
-            "propertyName": "EnteredById",
-            "fieldType": "guid",
-            "field": "EnteredBy"
+            "propertyName": "OldIngredients",
+            "fieldType": "xml",
+            "field": "OldIngredients"
         },
         {
-            "propertyName": "Text",
+            "propertyName": "NewIngredients",
+            "fieldType": "xml",
+            "field": "NewIngredients"
+        },
+        {
+            "propertyName": "Comments",
             "fieldType": "nvarchar",
-            "field": "Text"
+            "field": "Comments",
+            "allowDbNull": true
+        },
+        {
+            "propertyName": "Notes",
+            "fieldType": "nvarchar",
+            "field": "Notes",
+            "allowDbNull": true
         },
         {
             "propertyName": "EnteredDate",
@@ -37,22 +50,12 @@
         },
         {
             "propertyName": "ProductVariant",
-            "lazyLoader": "GetProductVariantByProductVariantNote",
+            "lazyLoader": "GetProductVariantByProductRevisionHistoryEntry",
             "joinMapping":
             {
                 "joinType": "left",
                 "leftKey": "ProductVariantId",
-                "rightKey": "Id",
-            }
-        },
-        {
-            "propertyName": "EnteredBy",
-            "lazyLoader": "GetEnteredByByProductVariantMetadata",
-            "joinMapping":
-            {
-                "joinType": "left",
-                "leftKey": "EnteredById",
-                "rightKey": "Id",
+                "rightKey": "Id"
             }
         }]
     }

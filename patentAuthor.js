@@ -3,7 +3,7 @@
         "type":"TightlyCurly.Com.Common.Models.IPatentAuthor, TightlyCurly.Com.Common.Models",
         "dataSource": "dbo.PatentAuthors",
         "countProperty":"Id",
-        "propertyMappings:": [
+        "propertyMappings": [
         {
             "propertyName": "Id",
             "fieldType": "guid",

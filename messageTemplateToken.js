@@ -3,7 +3,7 @@
         "type": "TightlyCurly.Com.Common.Models.IMessageTemplateToken, TightlyCurly.Com.Common.Models",
         "dataSource": "dbo.MessageTemplateTokens",
         "countProperty": "Id",
-        "propertyMappings:": [
+        "propertyMappings": [
             {
                 "propertyName": "Id",
                 "fieldType": "guid",

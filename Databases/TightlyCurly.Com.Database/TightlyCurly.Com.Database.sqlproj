@@ -292,9 +292,6 @@
     <Build Include="dbo\Tables\dbo.ProductVariants_IngredientInfos.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductVariants_IngredientInfos.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariants_IngredientInfos_ProductVariants.sql" />
-    <Build Include="dbo\Tables\dbo.ProductRevisionHistories.sql" />
-    <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductRevisionHistory.sql" />
-    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductRevisionHistory_ProductVariants.sql" />
     <Build Include="dbo\Tables\dbo.ProductVariants_LocationsSoldAt.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductVariants_LocationsSoldAt.sql" />
     <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductVariants_LocationsSoldAt_ProductVariants.sql" />
@@ -653,7 +650,7 @@
     <Build Include="dbo\Tables\dbo.ProductRevisionHistoryEntries.sql" />
     <Build Include="dbo\Keys\Primary Keys\dbo.PK_ProductRevisionHistoryEntries.sql" />
     <Build Include="dbo\Keys\Unique Keys\dbo.UKC_ProductRevisionHistoryEntries_ProductRevisionHistoryEntryId.sql" />
-    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductRevisionHistoryEntries_ProductRevisionHistories.sql" />
+    <Build Include="dbo\Keys\Foreign Keys\dbo.FK_ProductRevisionHistoryEntries_ProductVariants.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.publish.xml" />

@@ -3,7 +3,7 @@
         "type":"TightlyCurly.Com.Common.Models.IProductVariantEditorialReview, TightlyCurly.Com.Common.Models",
         "dataSource": "dbo.ProductVariantEditorialReviews",
         "countProperty":"Id",
-        "propertyMappings:": [
+        "propertyMappings": [
         {
             "propertyName": "Id",
             "fieldType": "guid",

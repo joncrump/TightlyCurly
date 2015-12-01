@@ -3,7 +3,7 @@
         "type":"TightlyCurly.Com.Common.Models.IIngredientRating, TightlyCurly.Com.Common.Models",
         "dataSource": "dbo.IngredientRatings",
         "countProperty":"Id",
-        "propertyMappings:": [
+        "propertyMappings": [
         {
             "propertyName": "Id",
             "fieldType": "guid",

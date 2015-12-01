@@ -3,7 +3,7 @@
         "type":"TightlyCurly.Com.Common.Models.IIngredientComment, TightlyCurly.Com.Common.Models",
         "dataSource": "dbo.IngredientComments",
         "countProperty":"Id",
-        "propertyMappings:": [
+        "propertyMappings": [
         {
             "propertyName": "Id",
             "fieldType": "guid",

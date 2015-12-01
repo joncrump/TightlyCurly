@@ -3,7 +3,7 @@
         "type":"TightlyCurly.Com.Common.Models.ITrademark, TightlyCurly.Com.Common.Models",
         "dataSource": "dbo.Trademarks",
         "countProperty":"Id",
-        "propertyMappings:": [
+        "propertyMappings": [
         {
             "propertyName": "Id",
             "fieldType": "guid",

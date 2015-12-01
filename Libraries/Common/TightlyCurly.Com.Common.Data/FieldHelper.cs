@@ -3,61 +3,71 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using TightlyCurly.Com.Common.Data.Attributes;
+using TightlyCurly.Com.Common.Data.Constants;
 using TightlyCurly.Com.Common.Extensions;
 
 namespace TightlyCurly.Com.Common.Data
 {
     public class FieldHelper : IFieldHelper
     {
+        private readonly IObjectMappingFactory _objectMappingFactory;
+        private readonly Dictionary<string, SqlDbType> _fieldTypeMappings = new Dictionary<string, SqlDbType>
+        {
+            { DatabaseTypes.NVarchar, SqlDbType.NVarChar},
+            { DatabaseTypes.Int, SqlDbType.Int },
+            { DatabaseTypes.Xml, SqlDbType.Xml },
+            { DatabaseTypes.Guid, SqlDbType.UniqueIdentifier },
+            { DatabaseTypes.SmallDateTime, SqlDbType.SmallDateTime }
+        };
+
+        public FieldHelper(IObjectMappingFactory objectMappingFactory)
+        {
+            _objectMappingFactory = Guard.EnsureIsNotNull("objectMappingFactory", objectMappingFactory);
+        }
+
         public TableObjectMapping BuildFields<TValue>(IEnumerable<string> desiredFields = null, 
             string tableName = null, TValue model = default(TValue), bool ignoreIdentity = false, 
             string alias = null, string instancePropertyName = null) 
             where TValue : class
         {
-            var type = typeof(TValue);
             var fields = new Dictionary<string, FieldParameterMapping>();
+            var mapping = _objectMappingFactory.GetMappingFor<TValue>();
 
             if (tableName.IsNullOrEmpty())
             {
-                var tableAttribute =
-                    (TableAttribute) type.GetCustomAttributes(typeof (TableAttribute), true).FirstOrDefault();
-
-                if (tableAttribute.IsNull())
-                {
-                    throw new InvalidOperationException("Cannot build query.  Type {0} has no table attributes"
-                        .FormatString(type));
-                }
-
-// ReSharper disable once PossibleNullReferenceException
-                tableName = tableAttribute.Name;
+                tableName = mapping.DataSource; //tableAttribute.Name;
             }
 
-            foreach (var property in type.GetProperties())
+            foreach (var propertyMapping in mapping.PropertyMappings)//var property in type.GetProperties())
             {
-                var attribute =
-                    (FieldMetadataAttribute)property.GetCustomAttributes(typeof(FieldMetadataAttribute), true).FirstOrDefault();
+                //var attribute =
+                //    (FieldMetadataAttribute)property.GetCustomAttributes(typeof(FieldMetadataAttribute), true).FirstOrDefault();
 
-                if (attribute.IsNull())
+                //if (attribute.IsNull())
+                //{
+                //    continue;
+                //}
+
+                // ReSharper disable once PossibleNullReferenceException
+                if (ignoreIdentity && propertyMapping.IsIdentity)
                 {
                     continue;
                 }
 
-// ReSharper disable once PossibleNullReferenceException
-                if (ignoreIdentity && attribute.IsIdentity)
+                // ReSharper disable once AssignNullToNotNullAttribute
+                if ((desiredFields.IsNotNullOrEmpty() && !desiredFields.Contains(propertyMapping.PropertyName)))
                 {
                     continue;
                 }
 
-// ReSharper disable once AssignNullToNotNullAttribute
-                if ((desiredFields.IsNotNullOrEmpty() && !desiredFields.Contains(property.Name)))
-                {
-                    continue;
-                }
-
-// ReSharper disable once PossibleNullReferenceException
-                fields.Add(property.Name, new FieldParameterMapping(attribute.FieldName, attribute.ParameterName, attribute.DbType, 
-                    EqualityComparer<TValue>.Default.Equals(model, default(TValue)) ? null : property.GetValue(model), attribute.IsIdentity, alias));
+                // ReSharper disable once PossibleNullReferenceException
+                fields.Add(propertyMapping.PropertyName, new FieldParameterMapping(propertyMapping.Field, 
+                    propertyMapping.ParameterName.IsNullOrEmpty() 
+                        ? "@{0}".FormatString(propertyMapping.ParameterName.ToLower()) 
+                        : propertyMapping.ParameterName, 
+                            GetDbTypeFromString(propertyMapping.FieldType),
+                    EqualityComparer<TValue>.Default.Equals(model, default(TValue)) ? null : propertyMapping.MethodCache.GetPropertyValue(propertyMapping.PropertyName, model), 
+                        propertyMapping.IsIdentity, alias));
             }
 
             if (fields.IsNullOrEmpty())
@@ -69,7 +79,7 @@ namespace TightlyCurly.Com.Common.Data
             {
                 TableName = tableName,
                 FieldMappings = fields,
-                Alias =  alias,
+                Alias = alias,
                 InstancePropertyName = instancePropertyName
             };
         }
@@ -90,6 +100,13 @@ namespace TightlyCurly.Com.Common.Data
                     Value = f.Value.IsNull() ? DBNull.Value : f.Value
                 })
                 .ToList();
+        }
+
+        private SqlDbType GetDbTypeFromString(string fieldType)
+        {
+            fieldType = fieldType.ToLower();
+
+            return _fieldTypeMappings[fieldType];
         }
     }
 }

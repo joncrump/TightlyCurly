@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using TightlyCurly.Com.Common.Data.Attributes;
 using TightlyCurly.Com.Common.Extensions;
 
 namespace TightlyCurly.Com.Common.Data
@@ -11,6 +10,12 @@ namespace TightlyCurly.Com.Common.Data
     {
         private DataTable _dataTable;
         private IDictionary<string, string> _columnMappings;
+        private IObjectMappingFactory _objectMappingFactory;
+
+        public ModelDataConverter(IObjectMappingFactory objectMappingFactory)
+        {
+            throw new NotImplementedException();
+        }
 
         public IDatatableObjectMapping ConvertToDataTable<TModel>(IEnumerable<TModel> models)
         {
@@ -23,12 +28,13 @@ namespace TightlyCurly.Com.Common.Data
 
         private void BuildDataTable<TModel>(IEnumerable<TModel> models)
         {
-            var type = typeof(TModel);
-            var tableAttribute = (TableAttribute)type.GetCustomAttributes(typeof(TableAttribute), true).FirstOrDefault();
+            throw new NotImplementedException();
+            //var type = typeof(TModel);
+            //var tableAttribute = (TableAttribute)type.GetCustomAttributes(typeof(TableAttribute), true).FirstOrDefault();
 
-            _dataTable = tableAttribute.IsNotNull() 
-                ? BuildTableBasedOnMetadata(models, tableAttribute) 
-                : BuildTableBasedOnModels(models);
+            //_dataTable = tableAttribute.IsNotNull() 
+            //    ? BuildTableBasedOnMetadata(models, tableAttribute) 
+            //    : BuildTableBasedOnModels(models);
         }
 
         private DataTable BuildTableBasedOnModels<TModel>(IEnumerable<TModel> models)
@@ -50,89 +56,92 @@ namespace TightlyCurly.Com.Common.Data
             return table;
         }
 
-        private DataTable BuildTableBasedOnMetadata<TModel>(IEnumerable<TModel> models, TableAttribute tableAttribute)
+        private DataTable BuildTableBasedOnMetadata<TModel>(IEnumerable<TModel> models, IMapping mapping)
         {
-            var table = new DataTable
-            {
-                TableName = tableAttribute.Name
-            };
+            throw new NotImplementedException();
+            //var table = new DataTable
+            //{
+            //    TableName = tableAttribute.Name
+            //};
 
-            BuildColumnsBasedOnFieldAttributesInternal<TModel>(table);
+            //BuildColumnsBasedOnFieldAttributesInternal<TModel>(table);
 
-            foreach (var model in models)
-            {
-                var values = model
-                    .ToDictionary(new[] {typeof(FieldMetadataAttribute)})
-                    .Values
-                    .ToArray();
+            //foreach (var model in models)
+            //{
+            //    var values = model
+            //        .ToDictionary(new[] {typeof(FieldMetadataAttribute)})
+            //        .Values
+            //        .ToArray();
 
-                table.Rows.Add(values);
-            }
+            //    table.Rows.Add(values);
+            //}
 
-            return table;
+            //return table;
         }
 
         private void BuildColumnsBasedOnPropertiesInternal<TModel>(DataTable table)
         {
-            _columnMappings = new Dictionary<string, string>();
+            throw new NotImplementedException();
+            //_columnMappings = new Dictionary<string, string>();
 
-            foreach (var property in typeof(TModel).GetProperties())
-            {
-                Type type;
+            //foreach (var property in typeof(TModel).GetProperties())
+            //{
+            //    Type type;
 
-                if (property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
-                {
-                    type = property.PropertyType.GetGenericArguments()[0];
-                }
-                else
-                {
-                    type = property.PropertyType;
-                }
+            //    if (property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
+            //    {
+            //        type = property.PropertyType.GetGenericArguments()[0];
+            //    }
+            //    else
+            //    {
+            //        type = property.PropertyType;
+            //    }
 
-                table.Columns.Add(new DataColumn(property.Name, type));
+            //    table.Columns.Add(new DataColumn(property.Name, type));
 
-                _columnMappings.Add(property.Name, property.Name);
-            }
+            //    _columnMappings.Add(property.Name, property.Name);
+            //}
         }
 
         private void BuildColumnsBasedOnFieldAttributesInternal<TModel>(DataTable table)
         {
-            _columnMappings = new Dictionary<string, string>();
-            var columns = new List<Tuple<string, int, bool, Type>>();
+            throw new NotImplementedException();
+            //_columnMappings = new Dictionary<string, string>();
+            //var columns = new List<Tuple<string, int, bool, Type>>();
 
-            foreach (var property in typeof(TModel).GetProperties())
-            {
-                var attribute = (FieldMetadataAttribute) property.GetCustomAttributes(typeof(FieldMetadataAttribute), true).FirstOrDefault();
+            //foreach (var property in typeof(TModel).GetProperties())
+            //{
+            //    var attribute = (FieldMetadataAttribute) property.GetCustomAttributes(typeof(FieldMetadataAttribute), true).FirstOrDefault();
 
-                if (attribute.IsNull())
-                {
-                    continue;
-                }
+            //    if (attribute.IsNull())
+            //    {
+            //        continue;
+            //    }
 
-                Type type;
+            //    Type type;
 
-                if (property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
-                {
-                    type = property.PropertyType.GetGenericArguments()[0];
-                }
-                else
-                {
-                    type = property.PropertyType;
-                }
+            //    if (property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
+            //    {
+            //        type = property.PropertyType.GetGenericArguments()[0];
+            //    }
+            //    else
+            //    {
+            //        type = property.PropertyType;
+            //    }
 
-                columns.Add(new Tuple<string, int, bool, Type>(attribute.FieldName, attribute.Order.HasValue ? attribute.Order.Value : 0, 
-                    attribute.AllowDbNull, type));
-            }
+            //    columns.Add(new Tuple<string, int, bool, Type>(attribute.FieldName, attribute.Order.HasValue ? attribute.Order.Value : 0, 
+            //        attribute.AllowDbNull, type));
+            //}
 
-            foreach (var column in columns.OrderBy(c => c.Item2))
-            {
-                table.Columns.Add(new DataColumn(column.Item1, column.Item4)
-                {
-                    AllowDBNull = column.Item3
-                });
+            //foreach (var column in columns.OrderBy(c => c.Item2))
+            //{
+            //    table.Columns.Add(new DataColumn(column.Item1, column.Item4)
+            //    {
+            //        AllowDBNull = column.Item3
+            //    });
 
-                _columnMappings.Add(column.Item1, column.Item1);
-            }
+            //    _columnMappings.Add(column.Item1, column.Item1);
+            //}
         }
     }
 }

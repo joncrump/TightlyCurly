@@ -3,7 +3,7 @@
         "type":"TightlyCurly.Com.Common.Models.ILocation, TightlyCurly.Com.Common.Models",
         "dataSource": "dbo.Locations",
         "countProperty":"Id",
-        "propertyMappings:": [
+        "propertyMappings": [
         {
             "propertyName": "Id",
             "fieldType": "guid",

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
-using TightlyCurly.Com.Common.Data.Attributes;
 using TightlyCurly.Com.Common.Extensions;
 
 namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
@@ -14,54 +13,59 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
     {
         private readonly IPredicateBuilder _predicateBuilder;
         private readonly IQueryBuilderStrategyFactory _queryBuilderStrategyFactory;
+        private readonly IObjectMappingFactory _objectMappingFactory;
 
         public SelectJoinedQueryBuilderStrategy(IFieldHelper fieldHelper, IPredicateBuilder predicateBuilder, 
-            IQueryBuilderStrategyFactory queryBuilderStrategyFactory) 
+            IQueryBuilderStrategyFactory queryBuilderStrategyFactory, 
+            IObjectMappingFactory objectMappingFactory) 
             : base(fieldHelper)
         {
+            throw new NotImplementedException();
+
             _predicateBuilder = Guard.EnsureIsNotNull("predicateBuilder", predicateBuilder);
             _queryBuilderStrategyFactory = Guard.EnsureIsNotNull("queryBuilderStrategyFactory", queryBuilderStrategyFactory);
         }
 
         public QueryInfo BuildQuery<TValue>(dynamic parameters = null) where TValue : class
         {
-            Expression<Func<TValue, bool>> predicate = parameters.Predicate;
-            bool canDirtyRead = parameters.CanDirtyRead;
-            bool includeParameters = parameters.IncludeParameters;
-            IEnumerable<string> desiredFields = parameters.DesiredFields;
-            string tableName = parameters.TableName;
+            throw new NotImplementedException();
+            //Expression<Func<TValue, bool>> predicate = parameters.Predicate;
+            //bool canDirtyRead = parameters.CanDirtyRead;
+            //bool includeParameters = parameters.IncludeParameters;
+            //IEnumerable<string> desiredFields = parameters.DesiredFields;
+            //string tableName = parameters.TableName;
 
-            var joinProperties = typeof(TValue)
-                .GetProperties()
-                .SafeWhere(p => p.GetCustomAttributes(typeof(JoinAttribute), true).IsNotNullOrEmpty())
-                .SafeOrderBy(p => p.Name)
-                .ToSafeList();
+            //var joinProperties = typeof(TValue)
+            //    .GetProperties()
+            //    .SafeWhere(p => p.GetCustomAttributes(typeof(JoinAttribute), true).IsNotNullOrEmpty())
+            //    .SafeOrderBy(p => p.Name)
+            //    .ToSafeList();
 
-            if (joinProperties.IsNullOrEmpty())
-            {
-                var strategy = _queryBuilderStrategyFactory.GetBuilderStrategy(QueryKind.SelectSingleTable);
+            //if (joinProperties.IsNullOrEmpty())
+            //{
+            //    var strategy = _queryBuilderStrategyFactory.GetBuilderStrategy(QueryKind.SelectSingleTable);
 
-                return strategy.BuildQuery<TValue>(parameters);
-            }
+            //    return strategy.BuildQuery<TValue>(parameters);
+            //}
 
-            var tableFieldMappings = GetTableObjectMappings<TValue>(desiredFields, tableName, joinProperties);
-            var queryBuilder = new StringBuilder();
+            //var tableFieldMappings = GetTableObjectMappings<TValue>(desiredFields, tableName, joinProperties);
+            //var queryBuilder = new StringBuilder();
 
-            queryBuilder.Append("SELECT ");
+            //queryBuilder.Append("SELECT ");
 
-            BuildJoinedFields(tableFieldMappings, queryBuilder);
+            //BuildJoinedFields(tableFieldMappings, queryBuilder);
 
-            queryBuilder.Append(" ");
+            //queryBuilder.Append(" ");
 
-            var tableFieldInfo = tableFieldMappings.First();
+            //var tableFieldInfo = tableFieldMappings.First();
 
-            BuildFromJoinClause(tableFieldMappings, queryBuilder, canDirtyRead);
-            var dbParameters = BuildWhereClause(predicate, includeParameters, queryBuilder, tableFieldInfo.Alias, 
-                "{0}_".FormatString(tableFieldInfo.Alias));
+            //BuildFromJoinClause(tableFieldMappings, queryBuilder, canDirtyRead);
+            //var dbParameters = BuildWhereClause(predicate, includeParameters, queryBuilder, tableFieldInfo.Alias, 
+            //    "{0}_".FormatString(tableFieldInfo.Alias));
 
-            queryBuilder.Append(";");
+            //queryBuilder.Append(";");
 
-            return new QueryInfo(queryBuilder.ToString().Trim(), tableFieldMappings, dbParameters);
+            //return new QueryInfo(queryBuilder.ToString().Trim(), tableFieldMappings, dbParameters);
         }
 
         private IEnumerable<IDbDataParameter> BuildWhereClause<TValue>(Expression<Func<TValue, bool>> predicate, bool includeParameters, StringBuilder queryBuilder, 
@@ -145,106 +149,110 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
         private List<TableObjectMapping> GetTableObjectMappings<TValue>(IEnumerable<string> desiredFields, string tableName, List<PropertyInfo> joinProperties)
             where TValue : class
         {
-            var initialTable = FieldHelper.BuildFields<TValue>(desiredFields, tableName, alias: "t1");
+            throw new NotImplementedException();
+            //var initialTable = FieldHelper.BuildFields<TValue>(desiredFields, tableName, alias: "t1");
 
-            var tableObjectMappings = new List<TableObjectMapping>
-            {
-                initialTable
-            };
+            //var tableObjectMappings = new List<TableObjectMapping>
+            //{
+            //    initialTable
+            //};
 
-            var fieldHelperMethod = FieldHelper.GetType().GetMethod("BuildFields");
-            var index = 2;
+            //var fieldHelperMethod = FieldHelper.GetType().GetMethod("BuildFields");
+            //var index = 2;
 
-            foreach (var property in joinProperties)
-            {
-                var attribute = (JoinAttribute) property.GetCustomAttributes(typeof (JoinAttribute), true)
-                    .First();
-                var type = attribute.JoinedType;
-                var genericMethod = fieldHelperMethod.MakeGenericMethod(new[] { type });
-                var tableObjectMapping = (TableObjectMapping) genericMethod.Invoke(FieldHelper, new object[]
-                {
-                    desiredFields, tableName, null, false, "t{0}".FormatString(index), property.Name 
-                });
+            //foreach (var property in joinProperties)
+            //{
+            //    var attribute = (JoinAttribute) property.GetCustomAttributes(typeof (JoinAttribute), true)
+            //        .First();
+            //    var type = attribute.JoinedType;
+            //    var genericMethod = fieldHelperMethod.MakeGenericMethod(new[] { type });
+            //    var tableObjectMapping = (TableObjectMapping) genericMethod.Invoke(FieldHelper, new object[]
+            //    {
+            //        desiredFields, tableName, null, false, "t{0}".FormatString(index), property.Name 
+            //    });
 
-                tableObjectMapping.Prefix = "t{0}".FormatString(index);
-                tableObjectMapping.ParentKey = attribute.ParentProperty;
-                tableObjectMapping.ChildKey = attribute.ChildProperty;
-                tableObjectMapping.JoinType = type;
+            //    tableObjectMapping.Prefix = "t{0}".FormatString(index);
+            //    tableObjectMapping.ParentKey = attribute.ParentProperty;
+            //    tableObjectMapping.ChildKey = attribute.ChildProperty;
+            //    tableObjectMapping.JoinType = type;
 
-                index++;
+            //    index++;
 
-                tableObjectMappings.Add(tableObjectMapping);
+            //    tableObjectMappings.Add(tableObjectMapping);
 
-                tableObjectMappings[0] = AddJoins(attribute, tableObjectMappings.First(), tableObjectMapping);
-            }
+            //    tableObjectMappings[0] = AddJoins(attribute, tableObjectMappings.First(), tableObjectMapping);
+            //}
 
-            return tableObjectMappings;
+            //return tableObjectMappings;
         }
 
-        private TableObjectMapping AddJoins(JoinAttribute attribute, TableObjectMapping parent, TableObjectMapping child)
+        private TableObjectMapping AddJoins(IMapping mapping, TableObjectMapping parent, TableObjectMapping child)
         {
-            if (attribute.JoinTable.IsNotNullOrEmpty())
-            {
-                BuildComplexJoin(attribute, parent, child);
-            }
-            else // No need to join through Network table.
-            {
-                BuildSimpleJoin(attribute, parent, child);
-            }
+            throw new NotImplementedException();
+            //if (attribute.JoinTable.IsNotNullOrEmpty())
+            //{
+            //    BuildComplexJoin(attribute, parent, child);
+            //}
+            //else // No need to join through Network table.
+            //{
+            //    BuildSimpleJoin(attribute, parent, child);
+            //}
            
-            return parent;
+            //return parent;
         }
 
-        private static void BuildComplexJoin(JoinAttribute attribute, TableObjectMapping parent, TableObjectMapping child)
+        private static void BuildComplexJoin(IMapping mapping, TableObjectMapping parent, TableObjectMapping child)
         {
-            var parentTableName = parent.TableName;
-            var parentAlias = parent.Alias;
-            var leftKey = attribute.LeftKey;
+            throw new NotImplementedException();
+            //var parentTableName = parent.TableName;
+            //var parentAlias = parent.Alias;
+            //var leftKey = attribute.LeftKey;
 
-            var joinTableName = attribute.JoinTable;
-            var joinTableLeftKey = attribute.JoinTableLeftKey;
-            var joinTableRightKey = attribute.JoinTableRightKey;
-            var joinTableJoinType = attribute.JoinTableJoinType;
+            //var joinTableName = attribute.JoinTable;
+            //var joinTableLeftKey = attribute.JoinTableLeftKey;
+            //var joinTableRightKey = attribute.JoinTableRightKey;
+            //var joinTableJoinType = attribute.JoinTableJoinType;
 
-            var childTableName = child.TableName;
-            var childAlias = child.Alias;
-            var rightKey = attribute.RightKey;
+            //var childTableName = child.TableName;
+            //var childAlias = child.Alias;
+            //var rightKey = attribute.RightKey;
 
-            parent.Joins.Add(new Join
-            {
-                JoinType = joinTableJoinType,
-                LeftJoinField = "{0}_{1}".FormatString(parent.Alias, leftKey),
-                LeftTableName = parentTableName,
-                LeftTableAlias = parentAlias,
-                RightJoinField = joinTableLeftKey,
-                RightTableName = joinTableName,
-            });
+            //parent.Joins.Add(new Join
+            //{
+            //    JoinType = joinTableJoinType,
+            //    LeftJoinField = "{0}_{1}".FormatString(parent.Alias, leftKey),
+            //    LeftTableName = parentTableName,
+            //    LeftTableAlias = parentAlias,
+            //    RightJoinField = joinTableLeftKey,
+            //    RightTableName = joinTableName,
+            //});
             
-            parent.Joins.Add(new Join
-            {
-                JoinType = joinTableJoinType,
-                LeftJoinField = joinTableRightKey,
-                LeftTableName = joinTableName,
-                RightJoinField = "{0}_{1}".FormatString(childAlias, rightKey),
-                RightTableAlias = childAlias,
-                RightTableName = childTableName
-            });
+            //parent.Joins.Add(new Join
+            //{
+            //    JoinType = joinTableJoinType,
+            //    LeftJoinField = joinTableRightKey,
+            //    LeftTableName = joinTableName,
+            //    RightJoinField = "{0}_{1}".FormatString(childAlias, rightKey),
+            //    RightTableAlias = childAlias,
+            //    RightTableName = childTableName
+            //});
         }
 
-        private static void BuildSimpleJoin(JoinAttribute attribute, TableObjectMapping parent, TableObjectMapping child)
+        private static void BuildSimpleJoin(IMapping mapping, TableObjectMapping parent, TableObjectMapping child)
         {
-            parent.Do(() => parent.Joins.Add(new Join
-            {
-                JoinType = attribute.JoinType,
-                LeftJoinField = attribute.LeftKey,
-                LeftTableName = parent.TableName,
-                LeftTableAlias = parent.Alias,
-                LeftJoinFieldPrefix = parent.Alias.IsNullOrEmpty() ? String.Empty : "{0}_".FormatString(parent.Alias),
-                RightJoinField = attribute.RightKey,
-                RightTableName = child.TableName,
-                RightTableAlias = child.Alias,
-                RightJoinFieldPrefix = child.Alias.IsNullOrEmpty() ? String.Empty : "{0}_".FormatString(child.Alias)
-            }));
+            throw new NotImplementedException();
+            //parent.Do(() => parent.Joins.Add(new Join
+            //{
+            //    JoinType = attribute.JoinType,
+            //    LeftJoinField = attribute.LeftKey,
+            //    LeftTableName = parent.TableName,
+            //    LeftTableAlias = parent.Alias,
+            //    LeftJoinFieldPrefix = parent.Alias.IsNullOrEmpty() ? String.Empty : "{0}_".FormatString(parent.Alias),
+            //    RightJoinField = attribute.RightKey,
+            //    RightTableName = child.TableName,
+            //    RightTableAlias = child.Alias,
+            //    RightJoinFieldPrefix = child.Alias.IsNullOrEmpty() ? String.Empty : "{0}_".FormatString(child.Alias)
+            //}));
         }
 
         private void BuildJoinedFields(List<TableObjectMapping> tableObjectMappings, StringBuilder queryBuilder)

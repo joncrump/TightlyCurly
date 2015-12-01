@@ -3,7 +3,7 @@
         "type":"TightlyCurly.Com.Common.Models.IMenuItem, TightlyCurly.Com.Common.Models",
         "dataSource": "dbo.MenuItems",
         "countProperty":"Id",
-        "propertyMappings:": [
+        "propertyMappings": [
         {
             "propertyName": "Id",
             "fieldType": "guid",

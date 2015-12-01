@@ -3,7 +3,7 @@
         "type":"TightlyCurly.Com.Common.Models.IMessageCampaign, TightlyCurly.Com.Common.Models",
         "dataSource": "dbo.MessageCampaigns",
         "countProperty":"Id",
-        "propertyMappings:": [
+        "propertyMappings": [
         {
             "propertyName": "Id",
             "fieldType": "guid",

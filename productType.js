@@ -3,7 +3,7 @@
         "type":"TightlyCurly.Com.Common.Models.IProductType, TightlyCurly.Com.Common.Models",
         "dataSource": "dbo.ProductTypes",
         "countProperty":"Id",
-        "propertyMappings:": [
+        "propertyMappings": [
         {
             "propertyName": "Id",
             "fieldType": "guid",

@@ -3,7 +3,7 @@
         "type":"TightlyCurly.Com.Common.Models.IContentArticleNote, TightlyCurly.Com.Common.Models",
         "dataSource": "dbo.ContentArticleNotes",
         "countProperty":"Id",
-        "propertyMappings:": [
+        "propertyMappings": [
             {
                 "propertyName": "Id",
                 "fieldType": "guid",

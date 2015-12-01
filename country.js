@@ -3,7 +3,7 @@
         "type":"TightlyCurly.Com.Common.Models.ICountry, TightlyCurly.Com.Common.Models",
         "dataSource": "dbo.Countries",
         "countProperty":"Id",
-        "propertyMappings:": [
+        "propertyMappings": [
         {
             "propertyName": "Id",
             "fieldType": "guid",
