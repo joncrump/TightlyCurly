@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Data;
 
 namespace TightlyCurly.Com.Common.Data.Constants
 {
     public static class DatabaseTypes
     {
-        public const string NVarchar = "nvarchar";
-        public const string Int = "int";
-        public const string Xml = "xml";
-        public const string Guid = "guid";
-        public const string SmallDateTime = "smalldatetime";
+        public static Dictionary<string, SqlDbType> FieldMappings => new Dictionary<string, SqlDbType>
+        {
+            { "nvarchar", SqlDbType.NVarChar},
+            { "int", SqlDbType.Int },
+            { "xml", SqlDbType.Xml },
+            { "guid", SqlDbType.UniqueIdentifier },
+            { "smalldatetime", SqlDbType.SmallDateTime }
+        };
     }
 }

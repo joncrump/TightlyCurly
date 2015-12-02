@@ -11,14 +11,6 @@ namespace TightlyCurly.Com.Common.Data
     public class FieldHelper : IFieldHelper
     {
         private readonly IObjectMappingFactory _objectMappingFactory;
-        private readonly Dictionary<string, SqlDbType> _fieldTypeMappings = new Dictionary<string, SqlDbType>
-        {
-            { DatabaseTypes.NVarchar, SqlDbType.NVarChar},
-            { DatabaseTypes.Int, SqlDbType.Int },
-            { DatabaseTypes.Xml, SqlDbType.Xml },
-            { DatabaseTypes.Guid, SqlDbType.UniqueIdentifier },
-            { DatabaseTypes.SmallDateTime, SqlDbType.SmallDateTime }
-        };
 
         public FieldHelper(IObjectMappingFactory objectMappingFactory)
         {
@@ -30,45 +22,20 @@ namespace TightlyCurly.Com.Common.Data
             string alias = null, string instancePropertyName = null) 
             where TValue : class
         {
-            var fields = new Dictionary<string, FieldParameterMapping>();
             var mapping = _objectMappingFactory.GetMappingFor<TValue>();
 
             if (tableName.IsNullOrEmpty())
             {
-                tableName = mapping.DataSource; //tableAttribute.Name;
+                tableName = mapping.DataSource;
             }
 
-            foreach (var propertyMapping in mapping.PropertyMappings)//var property in type.GetProperties())
-            {
-                //var attribute =
-                //    (FieldMetadataAttribute)property.GetCustomAttributes(typeof(FieldMetadataAttribute), true).FirstOrDefault();
-
-                //if (attribute.IsNull())
-                //{
-                //    continue;
-                //}
-
-                // ReSharper disable once PossibleNullReferenceException
-                if (ignoreIdentity && propertyMapping.IsIdentity)
-                {
-                    continue;
-                }
-
-                // ReSharper disable once AssignNullToNotNullAttribute
-                if ((desiredFields.IsNotNullOrEmpty() && !desiredFields.Contains(propertyMapping.PropertyName)))
-                {
-                    continue;
-                }
-
-                // ReSharper disable once PossibleNullReferenceException
-                fields.Add(propertyMapping.PropertyName, new FieldParameterMapping(propertyMapping.Field, 
-                    propertyMapping.ParameterName.IsNullOrEmpty() 
-                        ? "@{0}".FormatString(propertyMapping.ParameterName.ToLower()) 
-                        : propertyMapping.ParameterName, 
-                            GetDbTypeFromString(propertyMapping.FieldType),
-                    EqualityComparer<TValue>.Default.Equals(model, default(TValue)) ? null : propertyMapping.MethodCache.GetPropertyValue(propertyMapping.PropertyName, model), 
-                        propertyMapping.IsIdentity, alias));
-            }
+            var fields = mapping.PropertyMappings
+                .Where(p => !ignoreIdentity || !p.IsIdentity)
+                .Where(p => (!desiredFields.IsNotNullOrEmpty() || desiredFields.Contains(p.PropertyName)))
+                .ToDictionary(p => p.PropertyName, p => new FieldParameterMapping(p.Field, p.ParameterName, DatabaseTypes.FieldMappings[p.FieldType.ToLower()], 
+                    EqualityComparer<TValue>.Default.Equals(model, default(TValue)) 
+                        ? null 
+                        : p.MethodCache.GetPropertyValue(p.PropertyName, model), p.IsIdentity, alias));
 
             if (fields.IsNullOrEmpty())
             {
@@ -100,13 +67,6 @@ namespace TightlyCurly.Com.Common.Data
                     Value = f.Value.IsNull() ? DBNull.Value : f.Value
                 })
                 .ToList();
-        }
-
-        private SqlDbType GetDbTypeFromString(string fieldType)
-        {
-            fieldType = fieldType.ToLower();
-
-            return _fieldTypeMappings[fieldType];
         }
     }
 }

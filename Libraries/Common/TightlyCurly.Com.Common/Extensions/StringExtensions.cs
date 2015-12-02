@@ -37,16 +37,6 @@ namespace TightlyCurly.Com.Common.Extensions
                 : String.Join(delimiter, value);
         }
 
-        public static string FormatString(this string value, params object[] parameters)
-        {
-            if (value.IsNullOrEmpty())
-            {
-                return String.Empty;
-            }
-
-            return String.Format(value, parameters);
-        }
-
         public static string SafeTrim(this string value)
         {
             return value.IsNullOrEmpty() ? String.Empty : value.Trim();
