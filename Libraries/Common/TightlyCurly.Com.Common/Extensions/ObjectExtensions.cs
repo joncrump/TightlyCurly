@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -144,6 +145,29 @@ namespace TightlyCurly.Com.Common.Extensions
             }
 
             return value.Equals(other);
+        }
+
+        public static bool IsEnumerable(this Type typeInterface, Type childType)
+        {
+            if (typeInterface.IsGenericType
+                    && typeInterface.GetGenericTypeDefinition() == typeof(IEnumerable<>))
+            {
+                var implementType = typeInterface.GetGenericArguments().FirstOrDefault();
+
+                if (implementType.IsInterface &&
+                    childType.GetInterfaces().SafeWhere(i => i == implementType).IsNullOrEmpty()
+                    || (implementType == childType))
+                {
+                    return true;
+                }
+            }
+
+            if (typeInterface == typeof(IEnumerable))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private static bool AddPropertyValueInternal(Type selectorAttributeType, 

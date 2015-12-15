@@ -5,7 +5,6 @@ using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using TightlyCurly.Com.Common.Data.Attributes;
 using TightlyCurly.Com.Common.Extensions;
 
 namespace TightlyCurly.Com.Common.Data.Repositories.Strategies
@@ -35,20 +34,13 @@ namespace TightlyCurly.Com.Common.Data.Repositories.Strategies
             IDictionary<object, TValue> parents = new Dictionary<object, TValue>();
 
             var type = typeof (TValue);
+            var mapping = _objectMappingFactory.GetMappingFor<TValue>();
 
-            var primaryKeyProperties = (type.GetProperties()
-                .Select(
-                    property =>
-                        new
-                        {
-                            property,
-                            fieldMetadataAttributes =
-                                property.GetCustomAttributes(typeof (FieldMetadataAttribute), true)
-                                    .SafeSelect(a => (FieldMetadataAttribute) a)
-                        })
-                .Where(@t => !@t.fieldMetadataAttributes.IsNullOrEmpty())
-                .Where(@t => @t.fieldMetadataAttributes.Where(f => f.IsPrimaryKey).IsNotNullOrEmpty())
-                .Select(@t => @t.property)).ToList();
+            var primaryKeyMappings = mapping.PropertyMappings
+                .Where(p => p.IsPrimaryKey);
+            var primaryKeyProperties = primaryKeyMappings
+                .Select(p => type.GetProperty(p.PropertyName))
+                .ToList();
 
             if (primaryKeyProperties.IsNullOrEmpty())
             {
@@ -56,7 +48,7 @@ namespace TightlyCurly.Com.Common.Data.Repositories.Strategies
                     .FormatString(type.ToString()));
             }
 
-            if (primaryKeyProperties.Count > 1)
+            if (primaryKeyProperties.Count() > 1)
             {
                 throw new InvalidOperationException("Type {0} has too many primary keys defined."
                     .FormatString(type.ToString()));
@@ -132,7 +124,7 @@ namespace TightlyCurly.Com.Common.Data.Repositories.Strategies
             parents[childPropertyValue] = parent;
         }
 
-        private static void LinkChildToParent(object child, object parent, PropertyInfo parentProperty)
+        private void LinkChildToParent(object child, object parent, PropertyInfo parentProperty)
         {
             var parentPropertyType = parentProperty.PropertyType;
             var childType = child.GetType();
@@ -152,12 +144,12 @@ namespace TightlyCurly.Com.Common.Data.Repositories.Strategies
             }
         }
 
-        private static void LinkToSingleProperty(object parent, object child, PropertyInfo parentProperty)
+        private void LinkToSingleProperty(object parent, object child, PropertyInfo parentProperty)
         {
             parentProperty.SetValue(parent, child);
         }
 
-        private static void LinkToEnumerableProperty(object parent, object child, PropertyInfo parentProperty, 
+        private void LinkToEnumerableProperty(object parent, object child, PropertyInfo parentProperty, 
             Type childType)
         {
             var enumerable = parentProperty.GetValue(parent);
@@ -204,7 +196,7 @@ namespace TightlyCurly.Com.Common.Data.Repositories.Strategies
             return convertedEnumerable;
         }
 
-        private static bool IsChildAdded(object convertedEnumerable, object child, Type childType)
+        private bool IsChildAdded(object convertedEnumerable, object child, Type childType)
         {
             var childPrimaryKey = GetChildPrimaryKey(childType);
             var expression = BuildChildPrimaryKeySelector(childPrimaryKey, childType, child);
@@ -237,21 +229,15 @@ namespace TightlyCurly.Com.Common.Data.Repositories.Strategies
             return predicate;
         }
 
-        private static PropertyInfo GetChildPrimaryKey(Type childType)
+        private PropertyInfo GetChildPrimaryKey(Type childType)
         {
-            return (childType.GetProperties()
-                .Select(
-                    property =>
-                        new
-                        {
-                            property,
-                            attributes =
-                                property.GetCustomAttributes()
-                                    .Where(a => a.GetType() == typeof (FieldMetadataAttribute))
-                                    .SafeSelect(a => (FieldMetadataAttribute) a)
-                        })
-                .Where(@t => !@t.attributes.IsNullOrEmpty() && !@t.attributes.Where(a => a.IsPrimaryKey).IsNullOrEmpty())
-                .Select(@t => @t.property)).FirstOrDefault();
+            var mapping = _objectMappingFactory.GetMappingForType(childType);
+            var primaryKeyMapping = mapping.PropertyMappings
+                .FirstOrDefault(p => p.IsPrimaryKey);
+
+            var primaryKeyProperty = childType.GetProperty(primaryKeyMapping.PropertyName);
+
+            return primaryKeyProperty;
         }
 
         private static MethodInfo GetWhereMethod()
@@ -274,7 +260,7 @@ namespace TightlyCurly.Com.Common.Data.Repositories.Strategies
 
             foreach (var typeInterface in parentPropertyType.GetInterfaces())
             {
-                if (IsEnumerable(typeInterface, childType))
+                if (typeInterface.IsEnumerable(childType))
                 {
                     return ParentPropertyDescriptor.Enumerable;
                 }
@@ -288,28 +274,7 @@ namespace TightlyCurly.Com.Common.Data.Repositories.Strategies
             return ParentPropertyDescriptor.Unknown;
         }
 
-        private static bool IsEnumerable(Type typeInterface, Type childType)
-        {
-            if (typeInterface.IsGenericType
-                    && typeInterface.GetGenericTypeDefinition() == typeof(IEnumerable<>))
-            {
-                var implementType = typeInterface.GetGenericArguments().FirstOrDefault();
-
-                if (implementType.IsInterface &&
-                    childType.GetInterfaces().SafeWhere(i => i == implementType).IsNullOrEmpty()
-                    || (implementType == childType))
-                {
-                    return true;
-                }
-            }
-
-            if (typeInterface == typeof(IEnumerable))
-            {
-                return true;
-            }
-
-            return false;
-        }
+        
 
         private static PropertyInfo GetParentInstanceProperty<TParent>(string parentInstancePropertyName, TParent parent)
         {
