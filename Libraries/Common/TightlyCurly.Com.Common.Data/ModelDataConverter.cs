@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using TightlyCurly.Com.Common.Data.Mappings;
 using TightlyCurly.Com.Common.Extensions;
 
 namespace TightlyCurly.Com.Common.Data

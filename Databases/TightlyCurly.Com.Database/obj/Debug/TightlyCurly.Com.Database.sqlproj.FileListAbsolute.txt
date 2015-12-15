@@ -14,3 +14,10 @@ C:\Source\Repos\TightlyCurly\Databases\TightlyCurly.Com.Database\obj\Debug\postd
 C:\Source\Repos\TightlyCurly\Databases\TightlyCurly.Com.Database\obj\Debug\predeploy.sql
 C:\Source\Repos\TightlyCurly\Databases\TightlyCurly.Com.Database\obj\Debug\TightlyCurly.Com.Database.dll
 C:\Source\Repos\TightlyCurly\Databases\TightlyCurly.Com.Database\obj\Debug\TightlyCurly.Com.Database.pdb
+C:\Users\H157595\Documents\GitHub\TightlyCurly\Databases\TightlyCurly.Com.Database\sql\debug\TightlyCurly.Com.Database.dacpac
+C:\Users\H157595\Documents\GitHub\TightlyCurly\Databases\TightlyCurly.Com.Database\obj\Debug\Model.xml
+C:\Users\H157595\Documents\GitHub\TightlyCurly\Databases\TightlyCurly.Com.Database\obj\Debug\refactor.xml
+C:\Users\H157595\Documents\GitHub\TightlyCurly\Databases\TightlyCurly.Com.Database\obj\Debug\postdeploy.sql
+C:\Users\H157595\Documents\GitHub\TightlyCurly\Databases\TightlyCurly.Com.Database\obj\Debug\predeploy.sql
+C:\Users\H157595\Documents\GitHub\TightlyCurly\Databases\TightlyCurly.Com.Database\obj\Debug\TightlyCurly.Com.Database.dll
+C:\Users\H157595\Documents\GitHub\TightlyCurly\Databases\TightlyCurly.Com.Database\obj\Debug\TightlyCurly.Com.Database.pdb

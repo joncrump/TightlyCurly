@@ -39,7 +39,7 @@ namespace TightlyCurly.Com.Common
             {
                 throw new ArgumentNullException(parameterName);
             }
-         
+
             throw new ArgumentNullException(parameterName, message);
         }
 
@@ -71,6 +71,95 @@ namespace TightlyCurly.Com.Common
         }
 
         public static IEnumerable<T> EnsureIsNotNullOrEmpty<T>(string parameterName, IEnumerable<T> value, string message = null)
+        {
+            ValidateParameterName(parameterName);
+
+            if (value.IsNull())
+            {
+                if (message.IsNull())
+                {
+                    throw new ArgumentNullException(parameterName);
+                }
+
+                throw new ArgumentNullException(parameterName, message);
+            }
+
+            var argumentIsNotNullOrEmpty = value as T[] ?? value.ToArray();
+            if (!argumentIsNotNullOrEmpty.Any())
+            {
+                if (message.IsNull())
+                {
+                    throw new ArgumentEmptyException(parameterName);
+                }
+
+                throw new ArgumentEmptyException(message, parameterName);
+            }
+
+            return argumentIsNotNullOrEmpty;
+        }
+
+        public static object EnsureIsNotNull(this object value, string parameterName, string message = null)
+        {
+            ValidateParameterName(parameterName);
+
+            if (!value.IsNull())
+            {
+                return value;
+            }
+
+            if (message.IsNull())
+            {
+                throw new ArgumentNullException(parameterName);
+            }
+
+            throw new ArgumentNullException(parameterName, message);
+        }
+
+        public static T EnsureIsNotNull<T>(this T value, string parameterName, string message = null)
+        {
+            ValidateParameterName(parameterName);
+
+            if (!value.IsNull())
+            {
+                return value;
+            }
+
+            if (message.IsNull())
+            {
+                throw new ArgumentNullException(parameterName);
+            }
+         
+            throw new ArgumentNullException(parameterName, message);
+        }
+
+        public static string EnsureStringIsNotNullOrEmpty(this string value, string parameterName, string message = null)
+        {
+            ValidateParameterName(parameterName);
+
+            if (value.IsNull())
+            {
+                if (message.IsNull())
+                {
+                    throw new ArgumentNullException(parameterName);
+                }
+
+                throw new ArgumentNullException(parameterName, message);
+            }
+
+            if (value.Length == 0)
+            {
+                if (message.IsNull())
+                {
+                    throw new ArgumentEmptyException(parameterName);
+                }
+
+                throw new ArgumentEmptyException(message, parameterName);
+            }
+
+            return value;
+        }
+
+        public static IEnumerable<T> EnsureIsNotNullOrEmpty<T>(this IEnumerable<T> value, string parameterName, string message = null)
         {
             ValidateParameterName(parameterName);
 

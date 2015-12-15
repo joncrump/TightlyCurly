@@ -53,6 +53,11 @@ namespace TightlyCurly.Com.Common.Extensions
             return value;
         }
 
+        public static string FormatString(this string value, params object[] placeHolderValues)
+        {
+            return String.Format(value, placeHolderValues);
+        }
+
         public static bool IsUppercase(this string str)
         {
             //variable to hold our return value

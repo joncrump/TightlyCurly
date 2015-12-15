@@ -10,6 +10,6 @@ namespace TightlyCurly.Com.Common.Models
         Guid ProductId { get; set; }
         string Title { get; set; }
         IEnumerable<IProductLine> ProductLines { get; set; }
-        IEnumerable<IImageUri> ImageUris { get; set; }
+        IEnumerable<IProductVariantImageUri> ImageUris { get; set; }
     }
 }

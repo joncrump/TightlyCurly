@@ -12,3 +12,10 @@ C:\Source\Repos\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Models\bin
 C:\Source\Repos\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Models\obj\Debug\TightlyCurly.Com.Common.Models.csprojResolveAssemblyReference.cache
 C:\Source\Repos\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Models\obj\Debug\TightlyCurly.Com.Common.Models.dll
 C:\Source\Repos\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Models\obj\Debug\TightlyCurly.Com.Common.Models.pdb
+C:\Users\H157595\Documents\GitHub\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Models\obj\Debug\TightlyCurly.Com.Common.Models.csprojResolveAssemblyReference.cache
+C:\Users\H157595\Documents\GitHub\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Models\obj\Debug\TightlyCurly.Com.Common.Models.dll
+C:\Users\H157595\Documents\GitHub\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Models\obj\Debug\TightlyCurly.Com.Common.Models.pdb
+C:\Users\H157595\Documents\GitHub\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Models\bin\Debug\TightlyCurly.Com.Common.Models.dll
+C:\Users\H157595\Documents\GitHub\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Models\bin\Debug\TightlyCurly.Com.Common.Models.pdb
+C:\Users\H157595\Documents\GitHub\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Models\bin\Debug\TightlyCurly.Com.Common.dll
+C:\Users\H157595\Documents\GitHub\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Models\bin\Debug\TightlyCurly.Com.Common.pdb

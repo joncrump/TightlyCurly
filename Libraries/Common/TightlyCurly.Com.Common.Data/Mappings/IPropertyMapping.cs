@@ -16,5 +16,6 @@ namespace TightlyCurly.Com.Common.Data.Mappings
         string Field { get; set; }
         bool IsPrimitive { get; set; }
         string LazyLoader { get; set; }
+        IMethodCache MethodCache { get; set; }
     }
 }

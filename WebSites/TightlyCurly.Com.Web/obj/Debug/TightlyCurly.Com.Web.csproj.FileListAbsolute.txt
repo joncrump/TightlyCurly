@@ -1,2 +1,3 @@
 C:\SourceCode\TightlyCurly\Dev\WebSites\TightlyCurly.Com.Web\obj\Debug\TightlyCurly.Com.Web.csprojResolveAssemblyReference.cache
 C:\Source\Repos\TightlyCurly\WebSites\TightlyCurly.Com.Web\obj\Debug\TightlyCurly.Com.Web.csprojResolveAssemblyReference.cache
+C:\Users\H157595\Documents\GitHub\TightlyCurly\WebSites\TightlyCurly.Com.Web\obj\Debug\TightlyCurly.Com.Web.csprojResolveAssemblyReference.cache

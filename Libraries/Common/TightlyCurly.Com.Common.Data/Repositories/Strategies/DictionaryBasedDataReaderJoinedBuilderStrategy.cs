@@ -13,14 +13,16 @@ namespace TightlyCurly.Com.Common.Data.Repositories.Strategies
     public class DictionaryBasedDataReaderJoinedBuilderStrategy : DataReaderBuilderStrategyBase, IBuilderStrategy
     {
         private static readonly MethodInfo WhereMethod;
+        private readonly IObjectMappingFactory _objectMappingFactory;
 
         static DictionaryBasedDataReaderJoinedBuilderStrategy()
         {
             WhereMethod = GetWhereMethod();
         }
 
-        public DictionaryBasedDataReaderJoinedBuilderStrategy(IDataReaderBuilder dataReaderBuilder) : base(dataReaderBuilder)
+        public DictionaryBasedDataReaderJoinedBuilderStrategy(IDataReaderBuilder dataReaderBuilder, IObjectMappingFactory objectMappingFactory) : base(dataReaderBuilder)
         {
+            _objectMappingFactory = objectMappingFactory.EnsureIsNotNull("objectMappingFactory");
         }
 
         public IEnumerable<TValue> BuildItems<TValue>(dynamic parameters, IDataReader dataSource) 

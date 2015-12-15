@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
-using TightlyCurly.Com.Common.Data.Attributes;
 using TightlyCurly.Com.Common.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TightlyCurly.Com.Common.Extensions;
@@ -65,11 +64,11 @@ namespace TightlyCurly.Com.Common.Data.Tests.ModelDataConverterTests
                 .ExecuteTest(() =>
                 {
                     var actual = ItemUnderTest.ConvertToDataTable(models);
-                    Expression<Action<KeyValuePair<string, string>, KeyValuePair<string, string>>> expression = 
+                    Expression<Action<KeyValuePair<string, string>, KeyValuePair<string, string>>> expression =
                         (e, a) => CompareKeyValuePairs(e, a);
 
                     Assert.AreEqual(expected.DataTable.Columns.Count, actual.DataTable.Columns.Count);
-                    
+
                     for (var index = 0; index < expected.DataTable.Columns.Count; index++)
                     {
                         Asserter.AssertEquality(expected.DataTable.Columns[index].ColumnName, actual.DataTable.Columns[index].ColumnName);
@@ -93,7 +92,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ModelDataConverterTests
                 });
         }
 
-        private void CompareKeyValuePairs(KeyValuePair<string, string> expected, 
+        private void CompareKeyValuePairs(KeyValuePair<string, string> expected,
             KeyValuePair<string, string> actual)
         {
             Asserter.AssertEquality(expected.Key, actual.Value);
@@ -102,77 +101,78 @@ namespace TightlyCurly.Com.Common.Data.Tests.ModelDataConverterTests
 
         private DataTable BuildDataTable(IEnumerable<TestData> models)
         {
-            var type = typeof (TestData);
+            throw new NotImplementedException();
+            //var type = typeof(TestData);
 
-            var table = new DataTable();
+            //var table = new DataTable();
 
-            var tableAttribute = (TableAttribute)type.GetCustomAttributes(typeof(TableAttribute), true).FirstOrDefault();
+            //var tableAttribute = (TableAttribute)type.GetCustomAttributes(typeof(TableAttribute), true).FirstOrDefault();
 
-            table.TableName = tableAttribute.Name;
+            //table.TableName = tableAttribute.Name;
 
-            BuildColumns(table);
+            //BuildColumns(table);
 
-            foreach (var model in models)
-            {
-                var dictionary = model.ToDictionary(new [] {typeof(FieldMetadataAttribute)});
+            //foreach (var model in models)
+            //{
+            //    var dictionary = model.ToDictionary(new[] { typeof(FieldMetadataAttribute) });
 
-                table.Rows.Add(dictionary.Values.ToArray());
-            }
+            //    table.Rows.Add(dictionary.Values.ToArray());
+            //}
 
-           return table;
+            //return table;
         }
 
-        private void BuildColumns(DataTable table)
-        {
-            foreach (var property in typeof (TestData).GetProperties())
-            {
-                var attribute = (FieldMetadataAttribute)
-                                           property.GetCustomAttributes(typeof(FieldMetadataAttribute), true).FirstOrDefault();
+        //private void BuildColumns(DataTable table)
+        //{
+        //    foreach (var property in typeof(TestData).GetProperties())
+        //    {
+        //        var attribute = (FieldMetadataAttribute)
+        //                                   property.GetCustomAttributes(typeof(FieldMetadataAttribute), true).FirstOrDefault();
 
-                if (attribute.IsNull())
-                {
-                    continue;
-                }
+        //        if (attribute.IsNull())
+        //        {
+        //            continue;
+        //        }
 
-                Type type;
+        //        Type type;
 
-                // We need to check whether the property is NULLABLE
-                if (property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
-                {
-                    // If it is NULLABLE, then get the underlying type. eg if "Nullable<int>" then this will return just "int"
-                    type = property.PropertyType.GetGenericArguments()[0];
-                }
-                else
-                {
-                    type = property.PropertyType;
-                }
+        //        // We need to check whether the property is NULLABLE
+        //        if (property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
+        //        {
+        //            // If it is NULLABLE, then get the underlying type. eg if "Nullable<int>" then this will return just "int"
+        //            type = property.PropertyType.GetGenericArguments()[0];
+        //        }
+        //        else
+        //        {
+        //            type = property.PropertyType;
+        //        }
 
-                table.Columns.Add(attribute.FieldName, type);
-            }
-        }
+        //        table.Columns.Add(attribute.FieldName, type);
+        //    }
+        //}
 
-        [Table("MyTable")]
+        //[Table("MyTable")]
         public class TestData : IModel
         {
-            [FieldMetadata("Id", SqlDbType.UniqueIdentifier, "@id")]
+            //[FieldMetadata("Id", SqlDbType.UniqueIdentifier, "@id")]
             public Guid Id { get; set; }
 
             public DateTime EnteredDate { get; set; }
             public DateTime UpdatedDate { get; set; }
 
-            [FieldMetadata("DateCreated", SqlDbType.SmallDateTime, "@dateCreated")]
+            //[FieldMetadata("DateCreated", SqlDbType.SmallDateTime, "@dateCreated")]
             public DateTime DateCreated { get; set; }
 
-            [FieldMetadata("DateLastUpdated", SqlDbType.SmallDateTime, "@dateLastUpdated")]
+            //[FieldMetadata("DateLastUpdated", SqlDbType.SmallDateTime, "@dateLastUpdated")]
             public DateTime DateLastUpdated { get; set; }
 
-            [FieldMetadata("Foo", SqlDbType.NVarChar, "@foo")]
+            //[FieldMetadata("Foo", SqlDbType.NVarChar, "@foo")]
             public string Foo { get; set; }
 
-            [FieldMetadata("Bar", SqlDbType.Int, "@bar")]
+            //[FieldMetadata("Bar", SqlDbType.Int, "@bar")]
             public int Bar { get; set; }
 
-            [FieldMetadata("Baz", SqlDbType.Int, "@baz", allowDbNull:true)]
+            //[FieldMetadata("Baz", SqlDbType.Int, "@baz", allowDbNull: true)]
             public int? Baz { get; set; }
         }
     }

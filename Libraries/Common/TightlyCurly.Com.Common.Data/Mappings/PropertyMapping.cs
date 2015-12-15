@@ -50,5 +50,7 @@ namespace TightlyCurly.Com.Common.Data.Mappings
 
         [DataMember(Name = "lazyLoader", IsRequired = false)]
         public string LazyLoader { get; set; }
+
+        public IMethodCache MethodCache { get; set; }
     }
 }

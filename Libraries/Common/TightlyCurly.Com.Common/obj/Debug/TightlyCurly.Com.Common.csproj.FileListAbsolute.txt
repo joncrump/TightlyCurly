@@ -8,3 +8,8 @@ C:\Source\Repos\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common\bin\Debug\
 C:\Source\Repos\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common\obj\Debug\TightlyCurly.Com.Common.csprojResolveAssemblyReference.cache
 C:\Source\Repos\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common\obj\Debug\TightlyCurly.Com.Common.dll
 C:\Source\Repos\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common\obj\Debug\TightlyCurly.Com.Common.pdb
+C:\Users\H157595\Documents\GitHub\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common\bin\Debug\TightlyCurly.Com.Common.dll
+C:\Users\H157595\Documents\GitHub\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common\bin\Debug\TightlyCurly.Com.Common.pdb
+C:\Users\H157595\Documents\GitHub\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common\obj\Debug\TightlyCurly.Com.Common.csprojResolveAssemblyReference.cache
+C:\Users\H157595\Documents\GitHub\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common\obj\Debug\TightlyCurly.Com.Common.dll
+C:\Users\H157595\Documents\GitHub\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common\obj\Debug\TightlyCurly.Com.Common.pdb

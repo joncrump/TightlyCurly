@@ -5,8 +5,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using TightlyCurly.Com.Common.Data.Attributes;
 using TightlyCurly.Com.Common.Data.Constants;
+using TightlyCurly.Com.Common.Data.Mappings;
 using TightlyCurly.Com.Common.Extensions;
 
 namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
@@ -14,11 +14,14 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
     public class PagedQueryBuilderStrategy : QueryBuilderStrategyBase, IQueryBuilderStrategy
     {
         private readonly IPredicateBuilder _predicateBuilder;
+        private readonly IObjectMappingFactory _objectMappingFactory;
 
-        public PagedQueryBuilderStrategy(IFieldHelper fieldHelper, IPredicateBuilder predicateBuilder) 
+        public PagedQueryBuilderStrategy(IFieldHelper fieldHelper, IPredicateBuilder predicateBuilder, 
+            IObjectMappingFactory objectMappingFactory) 
             : base(fieldHelper)
         {
-            _predicateBuilder = Guard.EnsureIsNotNull("predicateBuilder", predicateBuilder);
+            _predicateBuilder = predicateBuilder.EnsureIsNotNull("predicateBuilder");
+            _objectMappingFactory = objectMappingFactory.EnsureIsNotNull("objectMappingFactory");
         }
 
         public QueryInfo BuildQuery<TValue>(dynamic parameters = null) where TValue : class
@@ -28,11 +31,11 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
             Expression<Func<TValue, bool>> predicate = parameters.Predicate;
             bool canDirtyRead = parameters.CanDirtyRead;
             bool includeParameters = parameters.IncludeParameters;
-
+            var mapping = _objectMappingFactory.GetMappingFor<TValue>();
             var queryBuilder = new StringBuilder();
             var fields = FieldHelper.BuildFields<TValue>(desiredFields);
-            var orderByClause = BuildPagedOrderByClause<TValue>();
-            var countClause = BuildCountClause<TValue>();
+            var orderByClause = BuildPagedOrderByClause(mapping);
+            var countClause = BuildCountClause(mapping);
             var whereClause = String.Empty;
             var databaseParameters = new List<IDbDataParameter>();
 
@@ -79,38 +82,26 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
             return new QueryInfo(queryBuilder.ToString().Trim(), fields, databaseParameters);
         }
 
-        protected string BuildPagedOrderByClause<TValue>()
+        protected string BuildPagedOrderByClause(IMapping mapping)
         {
-            var attributes = typeof(TValue).GetProperties()
-                .SafeSelect(property => property.GetCustomAttributes(typeof(SortMetadataAttribute), true)
-                    .SafeFirstOrDefault() as SortMetadataAttribute)
-                .SafeWhere(sortAttribute => !sortAttribute.IsNull())
-                .ToSafeList();
-
-            if (attributes.IsNullOrEmpty())
-            {
-                throw new InvalidOperationException("Cannot build query.  No sort attributes found on Type {0}."
-                    .FormatString(typeof(TValue).ToString()));
-            }
-
             var clauseBuilder = new StringBuilder();
 
             clauseBuilder.Append("ORDER BY ");
 
-            for (var index = 0; index < attributes.Count; index++)
+            for (var index = 0; index < mapping.PropertyMappings.Count(); index++)
             {
-                var attribute = attributes[index];
+                var propertyMapping = mapping.PropertyMappings.ElementAt(index);
 
                 clauseBuilder.Append("CASE ");
-                clauseBuilder.AppendFormat("WHEN @sortOrder <> 'desc' THEN {0} ", attribute.IsPrimitive ? "0" : "NULL");
-                clauseBuilder.AppendFormat("WHEN @sortColumn = '{0}' THEN {1} ", attribute.SortColumn, attribute.Field);
+                clauseBuilder.AppendFormat("WHEN @sortOrder <> 'desc' THEN {0} ", propertyMapping.IsPrimitive ? "0" : "NULL");
+                clauseBuilder.AppendFormat("WHEN @sortColumn = '{0}' THEN {1} ", propertyMapping.SortColumn, propertyMapping.Field);
                 clauseBuilder.Append("END DESC, ");
                 clauseBuilder.Append("CASE ");
-                clauseBuilder.AppendFormat("WHEN @sortOrder <> 'asc' THEN {0} ", attribute.IsPrimitive ? "0" : "NULL");
-                clauseBuilder.AppendFormat("WHEN @sortColumn = '{0}' THEN {1} ", attribute.SortColumn, attribute.Field);
+                clauseBuilder.AppendFormat("WHEN @sortOrder <> 'asc' THEN {0} ", propertyMapping.IsPrimitive ? "0" : "NULL");
+                clauseBuilder.AppendFormat("WHEN @sortColumn = '{0}' THEN {1} ", propertyMapping.SortColumn, propertyMapping.Field);
                 clauseBuilder.Append("END ASC");
 
-                if (index < attributes.Count - 1)
+                if (index < mapping.PropertyMappings.Count() - 1)
                 {
                     clauseBuilder.Append(",");
                 }
@@ -158,33 +149,9 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
             return queryBuilder.ToString();
         }
 
-        protected string BuildCountClause<TValue>()
+        protected string BuildCountClause(IMapping mapping)
         {
-            CountMetadataAttribute countAttribute = null;
-            var found = false;
-
-            foreach (var property in typeof(TValue).GetProperties())
-            {
-                foreach (var attribute in property.GetCustomAttributes(typeof(CountMetadataAttribute), true))
-                {
-                    countAttribute = attribute as CountMetadataAttribute;
-                    found = true;
-                    break;
-                }
-
-                if (found)
-                {
-                    break;
-                }
-            }
-
-            if (countAttribute.IsNull())
-            {
-                throw new InvalidOperationException("Cannot build query.  Type {0} has no count attribute."
-                    .FormatString(typeof(TValue).ToString()));
-            }
-
-            return "COUNT({0}) OVER() AS TotalRecords ".FormatString(countAttribute.FieldName);
+            return "COUNT({0}) OVER() AS TotalRecords ".FormatString(mapping.CountField);
         }
     }
 }

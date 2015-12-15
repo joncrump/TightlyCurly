@@ -74,16 +74,13 @@
     <Compile Include="IFieldHelper.cs" />
     <Compile Include="IJoinMapping.cs" />
     <Compile Include="ILoadOptions.cs" />
-    <Compile Include="IMapping.cs" />
+    <Compile Include="Mappings\IMapping.cs" />
     <Compile Include="IMethodCache.cs" />
     <Compile Include="IModelDataConverter.cs" />
     <Compile Include="IObjectMappingFactory.cs" />
     <Compile Include="IPredicateBuilder.cs" />
-    <Compile Include="IPropertyMapping.cs" />
     <Compile Include="Join.cs" />
     <Compile Include="InitialObjectState.cs" />
-    <Compile Include="Mappings\ClassMapping.cs" />
-    <Compile Include="Mappings\IClassMapping.cs" />
     <Compile Include="Mappings\IJoinMapping.cs" />
     <Compile Include="Mappings\IPropertyMapping.cs" />
     <Compile Include="Mappings\JoinMapping.cs" />

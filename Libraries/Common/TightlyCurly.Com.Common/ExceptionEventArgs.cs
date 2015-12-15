@@ -8,9 +8,7 @@ namespace TightlyCurly.Com.Common
 
         public ExceptionEventArgs(Exception exception)
         {
-            Guard.EnsureIsNotNull("exception", exception);
-
-            Exception = exception;
+            Exception = exception.EnsureIsNotNull("exception");
         }
     }
 }
