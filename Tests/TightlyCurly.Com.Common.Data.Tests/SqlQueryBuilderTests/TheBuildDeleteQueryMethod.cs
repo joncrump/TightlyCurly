@@ -19,7 +19,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
                 .Setup(x => x.GetBuilderStrategy(QueryKind.Delete))
                 .Returns(new Mock<IQueryBuilderStrategy>().Object);
         }
-
+        
         [TestMethod]
         public void WillThrowArgumentNullExceptionIfPredicateIsNull()
         {

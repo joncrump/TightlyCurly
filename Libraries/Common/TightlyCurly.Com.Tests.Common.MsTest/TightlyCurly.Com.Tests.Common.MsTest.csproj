@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MsTestAssertAdapter.cs" />
-    <Compile Include="MsTestMoqTestBase.cs" />
+    <Compile Include="MsTestMockTestBase.cs" />
     <Compile Include="MsTestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

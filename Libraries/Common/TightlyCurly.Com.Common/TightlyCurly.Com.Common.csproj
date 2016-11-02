@@ -103,7 +103,6 @@
     <Compile Include="PagingModel.cs" />
     <Compile Include="ProcessEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PropertyBag.cs" />
     <Compile Include="QueueBatchHelper.cs" />
     <Compile Include="ResourcesInfo.cs" />
     <Compile Include="RetryPolicy.cs" />

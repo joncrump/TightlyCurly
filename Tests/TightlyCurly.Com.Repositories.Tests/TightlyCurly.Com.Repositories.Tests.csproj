@@ -89,10 +89,6 @@
       <Project>{F1D14F6A-5A0D-4E3C-B310-ED2A78B572E8}</Project>
       <Name>TightlyCurly.Com.Tests.Common.MsTest.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Libraries\Common\TightlyCurly.Com.Tests.Common.MsTest\TightlyCurly.Com.Tests.Common.MsTest.csproj">
-      <Project>{B739D274-952B-4377-84EF-D9A7C6A7D346}</Project>
-      <Name>TightlyCurly.Com.Tests.Common.MsTest</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Libraries\Common\TightlyCurly.Com.Tests.Common\TightlyCurly.Com.Tests.Common.csproj">
       <Project>{FA9B391B-963B-455E-94C8-C4B88D766886}</Project>
       <Name>TightlyCurly.Com.Tests.Common</Name>

@@ -9,30 +9,30 @@ using TightlyCurly.Com.Tests.Common.Helpers;
 
 namespace TightlyCurly.Com.Tests.Common.Base
 {
-    public abstract class MoqTestBase<TItemUnderTest> : TestBase where TItemUnderTest : class
+    public abstract class MockTestBase<TItemUnderTest> : TestBase where TItemUnderTest : class
     {
         protected TItemUnderTest ItemUnderTest { get; set; }
         protected PropertyBag Mocks { get; set; }
 
-        protected MoqTestBase(IAssertAdapter assertAdapter)
+        protected MockTestBase(IAssertAdapter assertAdapter)
             : base(new RandomDataGenerator(), new ReflectionBasedObjectCreator(), assertAdapter, 
             new SurrogateAsserter(assertAdapter))
         {
         }
 
-        protected MoqTestBase(IDataGenerator dataGenerator, IAssertAdapter assertAdapter)
+        protected MockTestBase(IDataGenerator dataGenerator, IAssertAdapter assertAdapter)
             : base(dataGenerator, new ReflectionBasedObjectCreator(), assertAdapter, 
             new SurrogateAsserter(assertAdapter))
         {
         }
 
-        protected MoqTestBase(IDataGenerator dataGenerator, IObjectCreator objectCreator, 
+        protected MockTestBase(IDataGenerator dataGenerator, IObjectCreator objectCreator, 
             IAssertAdapter assertAdapter)
             : base(dataGenerator, objectCreator, assertAdapter)
         {
         }
 
-        protected MoqTestBase(IObjectCreator objectCreator, IAssertAdapter assertAdapter)
+        protected MockTestBase(IObjectCreator objectCreator, IAssertAdapter assertAdapter)
             : base(new RandomDataGenerator(), objectCreator, assertAdapter, 
             new SurrogateAsserter(assertAdapter))
         {

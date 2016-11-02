@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{AC2EBE8E-46B9-4230-9CEF-19EC5FF2D01C}"
 EndProject
@@ -36,8 +36,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Databases", "Databases", "{D89B3E55-48D9-4A4A-AF86-242A68F7164C}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TightlyCurly.Com.Database", "Databases\TightlyCurly.Com.Database\TightlyCurly.Com.Database.sqlproj", "{D0630DBE-EBDD-4E57-8774-DAA754A694DA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TightlyCurly.Com.Tests.Common.MsTest", "Libraries\Common\TightlyCurly.Com.Tests.Common.MsTest\TightlyCurly.Com.Tests.Common.MsTest.csproj", "{B739D274-952B-4377-84EF-D9A7C6A7D346}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TightlyCurly.Com.Tests.Common.MsTest.Data", "Libraries\Common\TightlyCurly.Com.Tests.Common.MsTest.Data\TightlyCurly.Com.Tests.Common.MsTest.Data.csproj", "{F1D14F6A-5A0D-4E3C-B310-ED2A78B572E8}"
 EndProject
@@ -113,6 +111,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseMappings", "Databas
 		trademark.js = trademark.js
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TightlyCurly.Com.Tests.Common.MsTest", "Libraries\Common\TightlyCurly.Com.Tests.Common.MsTest\TightlyCurly.Com.Tests.Common.MsTest.csproj", "{B739D274-952B-4377-84EF-D9A7C6A7D346}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -183,12 +183,6 @@ Global
 		{D0630DBE-EBDD-4E57-8774-DAA754A694DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0630DBE-EBDD-4E57-8774-DAA754A694DA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D0630DBE-EBDD-4E57-8774-DAA754A694DA}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{B739D274-952B-4377-84EF-D9A7C6A7D346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B739D274-952B-4377-84EF-D9A7C6A7D346}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B739D274-952B-4377-84EF-D9A7C6A7D346}.Debug-CI|Any CPU.ActiveCfg = Debug|Any CPU
-		{B739D274-952B-4377-84EF-D9A7C6A7D346}.Debug-CI|Any CPU.Build.0 = Debug|Any CPU
-		{B739D274-952B-4377-84EF-D9A7C6A7D346}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B739D274-952B-4377-84EF-D9A7C6A7D346}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F1D14F6A-5A0D-4E3C-B310-ED2A78B572E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F1D14F6A-5A0D-4E3C-B310-ED2A78B572E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1D14F6A-5A0D-4E3C-B310-ED2A78B572E8}.Debug-CI|Any CPU.ActiveCfg = Debug|Any CPU
@@ -213,6 +207,12 @@ Global
 		{CEBD0252-BE26-4F0C-9A3D-E3C5BF265290}.Debug-CI|Any CPU.Build.0 = Debug|Any CPU
 		{CEBD0252-BE26-4F0C-9A3D-E3C5BF265290}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEBD0252-BE26-4F0C-9A3D-E3C5BF265290}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B739D274-952B-4377-84EF-D9A7C6A7D346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B739D274-952B-4377-84EF-D9A7C6A7D346}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B739D274-952B-4377-84EF-D9A7C6A7D346}.Debug-CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{B739D274-952B-4377-84EF-D9A7C6A7D346}.Debug-CI|Any CPU.Build.0 = Debug|Any CPU
+		{B739D274-952B-4377-84EF-D9A7C6A7D346}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B739D274-952B-4377-84EF-D9A7C6A7D346}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -231,11 +231,11 @@ Global
 		{B03C5264-F9C8-4750-A705-0A22FA5466E3} = {4D0C6DEA-3D2E-49FE-918D-04E2B6487301}
 		{07160FA7-BEE0-4772-AB5F-4FE0A4CF2FEC} = {24A1A8B2-FC9C-4525-B79D-CCD93038C89E}
 		{D0630DBE-EBDD-4E57-8774-DAA754A694DA} = {D89B3E55-48D9-4A4A-AF86-242A68F7164C}
-		{B739D274-952B-4377-84EF-D9A7C6A7D346} = {771A7699-9631-409B-9742-28384154B596}
 		{F1D14F6A-5A0D-4E3C-B310-ED2A78B572E8} = {771A7699-9631-409B-9742-28384154B596}
 		{FFADF87C-28D8-49B2-AFC7-C96301C7D700} = {771A7699-9631-409B-9742-28384154B596}
 		{28B4C8EF-D1FD-487F-8CB4-66F316D211CA} = {4D0C6DEA-3D2E-49FE-918D-04E2B6487301}
 		{CEBD0252-BE26-4F0C-9A3D-E3C5BF265290} = {4D0C6DEA-3D2E-49FE-918D-04E2B6487301}
 		{CD202FD2-4659-4879-8559-730716DBE28F} = {A49C7C25-2885-4B44-A97E-5496510F02BA}
+		{B739D274-952B-4377-84EF-D9A7C6A7D346} = {771A7699-9631-409B-9742-28384154B596}
 	EndGlobalSection
 EndGlobal

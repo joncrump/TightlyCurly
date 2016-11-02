@@ -9,30 +9,30 @@ using TightlyCurly.Com.Tests.Common.Helpers;
 
 namespace TightlyCurly.Com.Tests.Common.Data
 {
-    public abstract class MoqDataItemTestBase<TItemUnderTest> : MoqTestBase<TItemUnderTest>
+    public abstract class MockDataItemTestBase<TItemUnderTest> : MockTestBase<TItemUnderTest>
         where TItemUnderTest : class
     {
         protected IDataReaderHelper DataReaderHelper;
 
-        protected MoqDataItemTestBase(IAssertAdapter assertAdapter, 
+        protected MockDataItemTestBase(IAssertAdapter assertAdapter, 
             IDataReaderHelper dataReaderHelper) : base(assertAdapter)
         {
             DataReaderHelper = dataReaderHelper;
         }
 
-        protected MoqDataItemTestBase(IDataGenerator dataGenerator, IAssertAdapter assertAdapter, 
+        protected MockDataItemTestBase(IDataGenerator dataGenerator, IAssertAdapter assertAdapter, 
             IDataReaderHelper dataReaderHelper) : base(dataGenerator, assertAdapter)
         {
             DataReaderHelper = dataReaderHelper;
         }
 
-        protected MoqDataItemTestBase(IDataGenerator dataGenerator, IObjectCreator objectCreator, IAssertAdapter assertAdapter, 
+        protected MockDataItemTestBase(IDataGenerator dataGenerator, IObjectCreator objectCreator, IAssertAdapter assertAdapter, 
             IDataReaderHelper dataReaderHelper) : base(dataGenerator, objectCreator, assertAdapter)
         {
             DataReaderHelper = dataReaderHelper;
         }
 
-        protected MoqDataItemTestBase(IObjectCreator objectCreator, IAssertAdapter assertAdapter, IDataReaderHelper dataReaderHelper) : base(objectCreator, assertAdapter)
+        protected MockDataItemTestBase(IObjectCreator objectCreator, IAssertAdapter assertAdapter, IDataReaderHelper dataReaderHelper) : base(objectCreator, assertAdapter)
         {
             DataReaderHelper = dataReaderHelper;
         }

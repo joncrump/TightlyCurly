@@ -4,34 +4,34 @@ using TightlyCurly.Com.Common;
 using TightlyCurly.Com.Common.Data;
 using TightlyCurly.Com.Common.Data.Repositories;
 
-namespace TightlyCurly.Com.Providers.Repositories.Common
-{
-    public abstract class WriteRepositoryProviderBase<TInterface, TRepository> 
-        : ReadRepositoryProviderBase<TInterface, TRepository>
-        where TRepository : IEntityRepository<TInterface>, IPagingRepository
-    {
-        protected WriteRepositoryProviderBase(TRepository repository) 
-            : base(repository)
-        {
-        }
+//namespace TightlyCurly.Com.Providers.Repositories.Common
+//{
+//    public abstract class WriteRepositoryProviderBase<TInterface, TRepository> 
+//        : ReadRepositoryProviderBase<TInterface, TRepository>
+//        where TRepository : IEntityRepository<TInterface>, IPagingRepository
+//    {
+//        protected WriteRepositoryProviderBase(TRepository repository) 
+//            : base(repository)
+//        {
+//        }
 
-        public virtual TInterface Save(TInterface model, bool isNew, 
-            Action<TInterface> insertAction = null,
-            Action<TInterface> updateAction = null,
-            Expression updateExpression = null)
-        {
-            Guard.EnsureIsNotNull("model", model);
+//        public virtual TInterface Save(TInterface model, bool isNew, 
+//            Action<TInterface> insertAction = null,
+//            Action<TInterface> updateAction = null,
+//            Expression updateExpression = null)
+//        {
+//            Guard.EnsureIsNotNull("model", model);
 
-            var value = Repository.Save(model, isNew, insertAction, updateAction, updateExpression);
+//            var value = Repository.Save(model, isNew, insertAction, updateAction, updateExpression);
 
-            return value;
-        }
+//            return value;
+//        }
 
-        public virtual void Delete(TInterface model)
-        {
-            Guard.EnsureIsNotNull("model", model);
+//        public virtual void Delete(TInterface model)
+//        {
+//            Guard.EnsureIsNotNull("model", model);
 
-            Repository.Delete(model);
-        }
-    }
-}
+//            Repository.Delete(model);
+//        }
+//    }
+//}

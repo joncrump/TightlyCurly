@@ -7,7 +7,7 @@ using TightlyCurly.Com.Tests.Common.MsTest;
 namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
 {
     [TestClass]
-    public class TheBuildPagedQueryMethod : MsTestMoqTestBase<SqlQueryBuilder>
+    public class TheBuildPagedQueryMethod : MsTestMockTestBase<SqlQueryBuilder>
     {
         public override void Setup()
         {

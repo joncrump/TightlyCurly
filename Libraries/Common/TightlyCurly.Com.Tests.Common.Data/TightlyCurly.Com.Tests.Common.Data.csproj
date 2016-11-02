@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="IDataReaderHelper.cs" />
     <Compile Include="MockDataReaderHelper.cs" />
-    <Compile Include="MoqDataItemTestBase.cs" />
+    <Compile Include="MockDataItemTestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

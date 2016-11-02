@@ -9,13 +9,8 @@ namespace TightlyCurly.Com.Tests.Common.Base
     public abstract class TestBase : UtilityBase
     {
         protected readonly IObjectCreator ObjectCreator;
-        protected readonly IAssertAdapter Assert;
-        protected readonly IAsserter Asserter;
-
-        protected ITestRunner TestRunner
-        {
-            get { return GetTestRunner(); }
-        }
+        private readonly IAssertAdapter Assert;
+        private readonly IAsserter Asserter;
 
         protected TestBase(IAssertAdapter assertAdapter)
             : this(new RandomDataGenerator(), new ReflectionBasedObjectCreator(), assertAdapter, 
@@ -48,16 +43,10 @@ namespace TightlyCurly.Com.Tests.Common.Base
             Asserter = asserter;
         }
 
-        protected ITestRunner GetTestRunner()
+        public IExceptionAsserter AssertExceptionIsThrown<TException>(Action exceptionCallback)
+            where TException : Exception
         {
-            return GetTestRunner(Setup, CleanUp);
-        }
-
-        protected ITestRunner GetTestRunner(Action setupAction, Action cleanupAction)
-        {
-            var runner = new TestRunner(Assert, setupAction, cleanupAction);
-
-            return runner;
+            return Asserter.AssertExceptionIsThrown<TException>(exceptionCallback);
         }
 
         public void AssertIsNullOrNot<T>(T expectedValue, T actualValue, Action<T, T> assertDelegate = null)

@@ -7,3 +7,14 @@ C:\Source\Repos\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Data\obj\D
 C:\Users\H157595\Documents\GitHub\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Data\obj\Debug\TightlyCurly.Com.Common.Data.csprojResolveAssemblyReference.cache
 C:\Users\H157595\Documents\GitHub\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Data\obj\Debug\TightlyCurly.Com.Common.Data.Resources.Resources.resources
 C:\Users\H157595\Documents\GitHub\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Data\obj\Debug\TightlyCurly.Com.Common.Data.csproj.GenerateResource.Cache
+C:\Source\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Data\obj\Debug\TightlyCurly.Com.Common.Data.csprojResolveAssemblyReference.cache
+C:\Source\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Data\obj\Debug\TightlyCurly.Com.Common.Data.Resources.Resources.resources
+C:\Source\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Data\obj\Debug\TightlyCurly.Com.Common.Data.csproj.GenerateResource.Cache
+C:\Source\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Data\bin\Debug\TightlyCurly.Com.Common.Data.dll
+C:\Source\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Data\bin\Debug\TightlyCurly.Com.Common.Data.pdb
+C:\Source\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Data\bin\Debug\Newtonsoft.Json.dll
+C:\Source\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Data\bin\Debug\TightlyCurly.Com.Common.dll
+C:\Source\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Data\bin\Debug\TightlyCurly.Com.Common.pdb
+C:\Source\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Data\bin\Debug\Newtonsoft.Json.xml
+C:\Source\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Data\obj\Debug\TightlyCurly.Com.Common.Data.dll
+C:\Source\TightlyCurly\Libraries\Common\TightlyCurly.Com.Common.Data\obj\Debug\TightlyCurly.Com.Common.Data.pdb

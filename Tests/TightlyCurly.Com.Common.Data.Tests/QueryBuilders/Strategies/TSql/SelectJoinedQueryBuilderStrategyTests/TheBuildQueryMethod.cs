@@ -10,12 +10,13 @@ using TightlyCurly.Com.Common.Data.QueryBuilders;
 using TightlyCurly.Com.Common.Data.QueryBuilders.Strategies;
 using TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql;
 using TightlyCurly.Com.Common.Extensions;
+using TightlyCurly.Com.Tests.Common.Base;
 using TightlyCurly.Com.Tests.Common.MsTest;
 
 namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.SelectJoinedQueryBuilderStrategyTests
 {
     [TestClass]
-    public class TheBuildQueryMethod : MsTestMoqTestBase<SelectJoinedQueryBuilderStrategy>
+    public class TheBuildQueryMethod : TestBase<SelectJoinedQueryBuilderStrategy>
     {
         public override void Setup()
         {
@@ -267,7 +268,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ParentProperty1", 
                                         Prefix = "t1",
-                                        DbType = SqlDbType.Int
+                                        DbType = DbType.Int32
                                     }
                                 }
                             }, 
@@ -288,7 +289,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty1",
                                         Prefix = "t2",
-                                        DbType = SqlDbType.Int
+                                        DbType = DbType.Int32
                                     }
                                 },
                                 {
@@ -296,7 +297,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty2",
                                         Prefix = "t2",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 },
                                 {
@@ -304,7 +305,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty3",
                                         Prefix = "t2",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 }
                             }, 
@@ -325,7 +326,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty1",
                                         Prefix = "t3",
-                                        DbType = SqlDbType.Int
+                                        DbType = DbType.Int32
                                     }
                                 },
                                 {
@@ -333,7 +334,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty2",
                                         Prefix = "t3",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 },
                                 {
@@ -341,7 +342,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty3",
                                         Prefix = "t3",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 }
                             }, 
@@ -392,7 +393,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ParentProperty3", 
                                         Prefix = "t1",
-                                        DbType = SqlDbType.Int
+                                        DbType = DbType.Int32
                                     }
                                 }
                             },
@@ -413,7 +414,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty1",
                                         Prefix = "t2",
-                                        DbType = SqlDbType.Int
+                                        DbType = DbType.Int32
                                     }
                                 },
                                 {
@@ -421,7 +422,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty2",
                                         Prefix = "t2",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 },
                                 {
@@ -429,7 +430,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty3",
                                         Prefix = "t2",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 }
                             },
@@ -480,7 +481,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ParentProperty1", 
                                         Prefix = "t1",
-                                        DbType = SqlDbType.Int
+                                        DbType = DbType.Int32
                                     }
                                 }
                             },
@@ -501,7 +502,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty1",
                                         Prefix = "t2",
-                                        DbType = SqlDbType.Int
+                                        DbType = DbType.Int32
                                     }
                                 },
                                 {
@@ -509,7 +510,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty2",
                                         Prefix = "t2",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 },
                                 {
@@ -517,7 +518,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty3",
                                         Prefix = "t2",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 }
                             },
@@ -538,7 +539,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty1",
                                         Prefix = "t3",
-                                        DbType = SqlDbType.Int
+                                        DbType = DbType.Int32
                                     }
                                 },
                                 {
@@ -546,7 +547,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty2",
                                         Prefix = "t3",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 },
                                 {
@@ -554,7 +555,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty3",
                                         Prefix = "t3",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 }
                             },
@@ -575,7 +576,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty1",
                                         Prefix = "t4",
-                                        DbType = SqlDbType.Int
+                                        DbType = DbType.Int32
                                     }
                                 },
                                 {
@@ -583,7 +584,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty2",
                                         Prefix = "t4",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 },
                                 {
@@ -591,7 +592,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty3",
                                         Prefix = "t4",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 }
                             },
@@ -640,7 +641,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ParentProperty3", 
                                         Prefix = "t1",
-                                        DbType = SqlDbType.Int
+                                        DbType = DbType.Int32
                                     }
                                 }
                             },
@@ -661,7 +662,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty1",
                                         Prefix = "t2",
-                                        DbType = SqlDbType.Int
+                                        DbType = DbType.Int32
                                     }
                                 },
                                 {
@@ -669,7 +670,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty2",
                                         Prefix = "t2",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 },
                                 {
@@ -677,7 +678,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty3",
                                         Prefix = "t2",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 }
                             },
@@ -732,7 +733,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ParentProperty1", 
                                         Prefix = "t1",
-                                        DbType = SqlDbType.Int
+                                        DbType = DbType.Int32
                                     }
                                 }
                             },
@@ -753,7 +754,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty1",
                                         Prefix = "t2",
-                                        DbType = SqlDbType.Int
+                                        DbType = DbType.Int32
                                     }
                                 },
                                 {
@@ -761,7 +762,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty2",
                                         Prefix = "t2",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 },
                                 {
@@ -769,7 +770,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty3",
                                         Prefix = "t2",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 }
                             },
@@ -790,7 +791,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty1",
                                         Prefix = "t3",
-                                        DbType = SqlDbType.Int
+                                        DbType = DbType.Int32
                                     }
                                 },
                                 {
@@ -798,7 +799,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty2",
                                         Prefix = "t3",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 },
                                 {
@@ -806,7 +807,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty3",
                                         Prefix = "t3",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 }
                             },
@@ -827,7 +828,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty1",
                                         Prefix = "t4",
-                                        DbType = SqlDbType.Int
+                                        DbType = DbType.Int32
                                     }
                                 },
                                 {
@@ -835,7 +836,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty2",
                                         Prefix = "t4",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 },
                                 {
@@ -843,7 +844,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty3",
                                         Prefix = "t4",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 }
                             },
@@ -896,7 +897,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ParentProperty3", 
                                         Prefix = "t1",
-                                        DbType = SqlDbType.Int
+                                        DbType = DbType.Int32
                                     }
                                 }
                             },
@@ -917,7 +918,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty1",
                                         Prefix = "t2",
-                                        DbType = SqlDbType.Int
+                                        DbType = DbType.Int32
                                     }
                                 },
                                 {
@@ -925,7 +926,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty2",
                                         Prefix = "t2",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 },
                                 {
@@ -933,7 +934,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                                     {
                                         FieldName = "ChildProperty3",
                                         Prefix = "t2",
-                                        DbType = SqlDbType.NVarChar
+                                        DbType = DbType.String
                                     }
                                 }
                             },
@@ -965,14 +966,14 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
         [Table("dbo.NoJoins")]
         public class NoJoinAttributeClass
         {
-            [FieldMetadata("Id", SqlDbType.Int)]
+            [FieldMetadata("Id", DbType.Int32)]
             public int Id { get; set; }
         }
 
         [Table("dbo.Parent")]
         public class ParentClass
         {
-            [FieldMetadata("ParentProperty1", SqlDbType.Int)]
+            [FieldMetadata("ParentProperty1", DbType.Int32)]
             public int ParentProperty1 { get; set; }
 
             [Join(JoinType.Inner, typeof(Child1), "ParentProperty1", "ChildProperty1")]
@@ -985,7 +986,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
         [Table("dbo.Parent2")]
         public class ParentClass2
         {
-            [FieldMetadata("ParentProperty1", SqlDbType.Int)]
+            [FieldMetadata("ParentProperty1", DbType.Int32)]
             public int ParentProperty1 { get; set; }
 
             [Join(JoinType.Inner, typeof(Child1), "ParentProperty1", "ChildProperty1")]
@@ -1002,7 +1003,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
         [Table("dbo.ParentClass3")]
         public class ParentClass3
         {
-            [FieldMetadata("ParentProperty3", SqlDbType.Int)]
+            [FieldMetadata("ParentProperty3", DbType.Int32)]
             public int ParentProperty3 { get; set; }
 
             [Join(JoinType.Left, typeof(Child3), "ParentProperty3", "ChildProperty1", 
@@ -1013,39 +1014,39 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
         [Table("dbo.Child1")]
         public class Child1
         {
-            [FieldMetadata("ChildProperty1", SqlDbType.Int)]
+            [FieldMetadata("ChildProperty1", DbType.Int32)]
             public int ChildProperty1 { get; set; }
 
-            [FieldMetadata("ChildProperty2", SqlDbType.NVarChar)]
+            [FieldMetadata("ChildProperty2", DbType.String)]
             public string ChildProperty2 { get; set; }
 
-            [FieldMetadata("ChildProperty3", SqlDbType.NVarChar)]
+            [FieldMetadata("ChildProperty3", DbType.String)]
             public string ChildProperty3 { get; set; }
         }
 
         [Table("dbo.Child2")]
         public class Child2
         {
-            [FieldMetadata("ChildProperty1", SqlDbType.Int)]
+            [FieldMetadata("ChildProperty1", DbType.Int32)]
             public int ChildProperty1 { get; set; }
 
-            [FieldMetadata("ChildProperty2", SqlDbType.NVarChar)]
+            [FieldMetadata("ChildProperty2", DbType.String)]
             public string ChildProperty2 { get; set; }
 
-            [FieldMetadata("ChildProperty3", SqlDbType.NVarChar)]
+            [FieldMetadata("ChildProperty3", DbType.String)]
             public string ChildProperty3 { get; set; }
         }
 
         [Table("dbo.Child3")]
         public class Child3
         {
-            [FieldMetadata("ChildProperty1", SqlDbType.Int)]
+            [FieldMetadata("ChildProperty1", DbType.Int32)]
             public int ChildProperty1 { get; set; }
 
-            [FieldMetadata("ChildProperty2", SqlDbType.NVarChar)]
+            [FieldMetadata("ChildProperty2", DbType.String)]
             public string ChildProperty2 { get; set; }
 
-            [FieldMetadata("ChildProperty3", SqlDbType.NVarChar)]
+            [FieldMetadata("ChildProperty3", DbType.String)]
             public string ChildProperty3 { get; set; }
         }
     }

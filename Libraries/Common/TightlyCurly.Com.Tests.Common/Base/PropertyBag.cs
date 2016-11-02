@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Moq;
+using TightlyCurly.Com.Common;
 
-namespace TightlyCurly.Com.Common
+namespace TightlyCurly.Com.Tests.Common.Base
 {
     public class PropertyBag
     {
@@ -13,24 +15,19 @@ namespace TightlyCurly.Com.Common
             _values = new Dictionary<string, Tuple<Type, object>>();
         }
 
-        public void Add(string key, Type type, object value)
+        public void Add<TValue>(string key, Mock<TValue> mock) where TValue : class
         {
             Guard.EnsureIsNotNullOrEmpty("key", key);
 
-            _values.Add(key, new Tuple<Type, object>(type, value));
+            _values.Add(key, new Tuple<Type, object>(mock.GetType().GenericTypeArguments.First(), mock));
         }
 
-        public TValue Get<TValue>()
+        public Mock<TValue> Get<TValue>() where TValue : class
         {
             var value = _values.Values
                 .FirstOrDefault(v => v.Item1 == typeof(TValue));
 
-            if (value != null)
-            {
-                return (TValue)value.Item2;
-            }
-
-            return default(TValue);
+            return value?.Item2 as Mock<TValue>;
         }
 
         public TValue Get<TValue>(string key)

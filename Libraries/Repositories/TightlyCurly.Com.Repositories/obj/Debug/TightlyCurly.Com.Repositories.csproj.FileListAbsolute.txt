@@ -1,3 +1,16 @@
 C:\SourceCode\TightlyCurly\Dev\Libraries\Repositories\TightlyCurly.Com.Repositories\obj\Debug\TightlyCurly.Com.Repositories.csprojResolveAssemblyReference.cache
 C:\Source\Repos\TightlyCurly\Libraries\Repositories\TightlyCurly.Com.Repositories\obj\Debug\TightlyCurly.Com.Repositories.csprojResolveAssemblyReference.cache
 C:\Users\H157595\Documents\GitHub\TightlyCurly\Libraries\Repositories\TightlyCurly.Com.Repositories\obj\Debug\TightlyCurly.Com.Repositories.csprojResolveAssemblyReference.cache
+C:\Source\TightlyCurly\Libraries\Repositories\TightlyCurly.Com.Repositories\obj\Debug\TightlyCurly.Com.Repositories.csprojResolveAssemblyReference.cache
+C:\Source\TightlyCurly\Libraries\Repositories\TightlyCurly.Com.Repositories\bin\Debug\TightlyCurly.Com.Repositories.dll
+C:\Source\TightlyCurly\Libraries\Repositories\TightlyCurly.Com.Repositories\bin\Debug\TightlyCurly.Com.Repositories.pdb
+C:\Source\TightlyCurly\Libraries\Repositories\TightlyCurly.Com.Repositories\bin\Debug\TightlyCurly.Com.Common.Data.dll
+C:\Source\TightlyCurly\Libraries\Repositories\TightlyCurly.Com.Repositories\bin\Debug\TightlyCurly.Com.Common.dll
+C:\Source\TightlyCurly\Libraries\Repositories\TightlyCurly.Com.Repositories\bin\Debug\TightlyCurly.Com.Common.Models.dll
+C:\Source\TightlyCurly\Libraries\Repositories\TightlyCurly.Com.Repositories\bin\Debug\Newtonsoft.Json.dll
+C:\Source\TightlyCurly\Libraries\Repositories\TightlyCurly.Com.Repositories\bin\Debug\TightlyCurly.Com.Common.Data.pdb
+C:\Source\TightlyCurly\Libraries\Repositories\TightlyCurly.Com.Repositories\bin\Debug\TightlyCurly.Com.Common.Models.pdb
+C:\Source\TightlyCurly\Libraries\Repositories\TightlyCurly.Com.Repositories\bin\Debug\TightlyCurly.Com.Common.pdb
+C:\Source\TightlyCurly\Libraries\Repositories\TightlyCurly.Com.Repositories\bin\Debug\Newtonsoft.Json.xml
+C:\Source\TightlyCurly\Libraries\Repositories\TightlyCurly.Com.Repositories\obj\Debug\TightlyCurly.Com.Repositories.dll
+C:\Source\TightlyCurly\Libraries\Repositories\TightlyCurly.Com.Repositories\obj\Debug\TightlyCurly.Com.Repositories.pdb

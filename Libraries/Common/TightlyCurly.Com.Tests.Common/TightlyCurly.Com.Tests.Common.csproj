@@ -48,10 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssertException.cs" />
-    <Compile Include="Base\ITestRunner.cs" />
-    <Compile Include="Base\MoqTestBase.cs" />
+    <Compile Include="Base\MockTestBase.cs" />
+    <Compile Include="Base\PropertyBag.cs" />
     <Compile Include="Base\TestBase.cs" />
-    <Compile Include="Base\TestRunner.cs" />
     <Compile Include="Base\UtilityBase.cs" />
     <Compile Include="ColumnInfo.cs" />
     <Compile Include="ConstructorTester.cs" />

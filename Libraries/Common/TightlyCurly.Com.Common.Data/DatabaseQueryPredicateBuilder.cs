@@ -345,84 +345,85 @@ namespace TightlyCurly.Com.Common.Data
 
         protected override Expression VisitMember(MemberExpression memberExpression)
         {
-            if (memberExpression.IsNull())
-            {
-                return memberExpression;
-            }
+            throw new NotImplementedException();
+           //if (memberExpression.IsNull())
+            //{
+            //    return memberExpression;
+            //}
 
-            if (memberExpression.Expression.NodeType == ExpressionType.Parameter)
-            {
-                var property = memberExpression.Member as PropertyInfo;
-                var fieldName = GetFieldName(property);
-                var mapping = _objectMappingFactory.GetMappingForType(_declaringType);
-                var propertyMapping = mapping.PropertyMappings
-                    .FirstOrDefault(p => p.PropertyName == property.Name);
+            //if (memberExpression.Expression.NodeType == ExpressionType.Parameter)
+            //{
+            //    var property = memberExpression.Member as PropertyInfo;
+            //    var fieldName = GetFieldName(property);
+            //    var mapping = _objectMappingFactory.GetMappingForType(_declaringType);
+            //    var propertyMapping = mapping.PropertyMappings
+            //        .FirstOrDefault(p => p.PropertyName == property.Name);
 
-                _currentParameter = propertyMapping.ParameterName;
-                var parameter = new SqlParameter
-                {
-                    ParameterName = propertyMapping.ParameterName,
-                    SqlDbType =  DatabaseTypes.FieldMappings[propertyMapping.FieldType.ToLower()]
-                };
+            //    _currentParameter = propertyMapping.ParameterName;
+            //    var parameter = new SqlParameter
+            //    {
+            //        ParameterName = propertyMapping.ParameterName,
+            //        SqlDbType =  DatabaseTypes.FieldMappings[propertyMapping.FieldType.ToLower()]
+            //    };
 
-                _parameters.Add(parameter);
+            //    _parameters.Add(parameter);
 
-                _currentField = $"{BuildFieldName(fieldName)}";
+            //    _currentField = $"{BuildFieldName(fieldName)}";
 
-                _queryBuilder.Append(_currentField);
-            }
+            //    _queryBuilder.Append(_currentField);
+            //}
 
-            if (memberExpression.Expression.NodeType == ExpressionType.MemberAccess)
-            {
-                var property = memberExpression.Member as PropertyInfo;
+            //if (memberExpression.Expression.NodeType == ExpressionType.MemberAccess)
+            //{
+            //    var property = memberExpression.Member as PropertyInfo;
 
-                var attribute = property.GetCustomAttributes(typeof(FieldMetadataAttribute)).FirstOrDefault() as FieldMetadataAttribute;
-                var parameter = attribute.IsNull()
-                    ? _parameters.Find(p => p.ParameterName == _currentParameter)
-                    : _parameters.Find(p => p.ParameterName == attribute.ParameterName);
+            //    var attribute = property.GetCustomAttributes(typeof(FieldMetadataAttribute)).FirstOrDefault() as FieldMetadataAttribute;
+            //    var parameter = attribute.IsNull()
+            //        ? _parameters.Find(p => p.ParameterName == _currentParameter)
+            //        : _parameters.Find(p => p.ParameterName == attribute.ParameterName);
 
-                var value = GetLocalValue(memberExpression);
+            //    var value = GetLocalValue(memberExpression);
 
-                if (!property.Name.Equals("Day") && !property.Name.Equals("Month") && !property.Name.Equals("Year"))
-                {
-                    if (_addParameters)
-                    {
-                        parameter.Value = value.IsNull() ? DBNull.Value : value;
+            //    if (!property.Name.Equals("Day") && !property.Name.Equals("Month") && !property.Name.Equals("Year"))
+            //    {
+            //        if (_addParameters)
+            //        {
+            //            parameter.Value = value.IsNull() ? DBNull.Value : value;
 
-                        _queryBuilder.Append(parameter.ParameterName);
+            //            _queryBuilder.Append(parameter.ParameterName);
 
-                        _currentParameter = parameter.ParameterName;
-                    }
-                    else
-                    {
-                        _queryBuilder.Append(value.IsNull() ? "NULL" : value);
-                    }
-                }
-            }
+            //            _currentParameter = parameter.ParameterName;
+            //        }
+            //        else
+            //        {
+            //            _queryBuilder.Append(value.IsNull() ? "NULL" : value);
+            //        }
+            //    }
+            //}
 
-            if (memberExpression.Expression.NodeType == ExpressionType.Call)
-            {
-                var value = GetLocalValue(memberExpression);
+            //if (memberExpression.Expression.NodeType == ExpressionType.Call)
+            //{
+            //    var value = GetLocalValue(memberExpression);
 
-                _queryBuilder.Append(_currentParameter);
+            //    _queryBuilder.Append(_currentParameter);
 
-                var parameter = _parameters.Find(p => p.ParameterName == _currentParameter);
+            //    var parameter = _parameters.Find(p => p.ParameterName == _currentParameter);
 
-                parameter.Value = value.IsNull() ? DBNull.Value : value;
-            }
+            //    parameter.Value = value.IsNull() ? DBNull.Value : value;
+            //}
 
-            if (memberExpression.Expression.NodeType == ExpressionType.Constant)
-            {
-                var value = GetLocalValue(memberExpression);
+            //if (memberExpression.Expression.NodeType == ExpressionType.Constant)
+            //{
+            //    var value = GetLocalValue(memberExpression);
 
-                _queryBuilder.Append(_currentParameter);
+            //    _queryBuilder.Append(_currentParameter);
 
-                var parameter = _parameters.Find(p => p.ParameterName == _currentParameter);
+            //    var parameter = _parameters.Find(p => p.ParameterName == _currentParameter);
 
-                parameter.Value = value.IsNull() ? DBNull.Value : value;
-            }
+            //    parameter.Value = value.IsNull() ? DBNull.Value : value;
+            //}
 
-            return memberExpression;
+            //return memberExpression;
         }
 
         private string GetFieldName(PropertyInfo property)
@@ -442,7 +443,7 @@ namespace TightlyCurly.Com.Common.Data
             if (fieldName.IsNullOrEmpty())
             {
                 throw new InvalidOperationException(
-                    string.Format("Cannot build query.  Property has no metadata attributes: {0}", property.Name));
+                    $"Cannot build query.  Property has no metadata attributes: {property.Name}");
             }
 
             return fieldName;
@@ -491,7 +492,7 @@ namespace TightlyCurly.Com.Common.Data
                 var valueExpression = (ConstantExpression) expression.Arguments[0];
                 value = valueExpression.Value;
             }
-            else if (expression.Arguments[0] is System.Linq.Expressions.MemberExpression)
+            else if (expression.Arguments[0] is MemberExpression)
             {
                 var valueExpression = (MemberExpression) expression.Arguments[0];
 

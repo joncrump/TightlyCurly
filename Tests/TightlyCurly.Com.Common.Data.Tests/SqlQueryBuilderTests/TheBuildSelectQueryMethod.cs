@@ -10,13 +10,13 @@ using TightlyCurly.Com.Tests.Common.MsTest;
 namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
 {
     [TestClass]
-    public class TheBuildSelectQueryMethod : MsTestMoqTestBase<SqlQueryBuilder>
+    public class TheBuildSelectQueryMethod : MsTestMockTestBase<SqlQueryBuilder>
     {
         public override void Setup()
         {
             base.Setup();
 
-            var factory = Mocks.Get<Mock<IQueryBuilderStrategyFactory>>();
+            var factory = Mocks.Get<IQueryBuilderStrategyFactory>();
 
             factory
                 .Setup(x => x.GetBuilderStrategy(It.IsAny<QueryKind>()))
@@ -26,34 +26,26 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
         [TestMethod]
         public void WillInvokeBuilderStrategyIfBuildModeIsSingle()
         {
-            TestRunner
-                .ExecuteTest(() =>
-                {
-                    ItemUnderTest.BuildSelectQuery(It.IsAny<Expression<Func<TestClass, bool>>>(),
-                        It.IsAny<bool>(), It.IsAny<bool>(), It.IsAny<IEnumerable<string>>(),
+            ItemUnderTest.BuildSelectQuery(It.IsAny<Expression<Func<TestClass, bool>>>(),
+                It.IsAny<bool>(), It.IsAny<bool>(), It.IsAny<IEnumerable<string>>(),
 // ReSharper disable once RedundantArgumentDefaultValue
-                        It.IsAny<string>(), BuildMode.Single);
+                It.IsAny<string>(), BuildMode.Single);
 
-                    Mocks.Get<Mock<IQueryBuilderStrategyFactory>>()
-                        .Verify(x => x.GetBuilderStrategy(QueryKind.SelectSingleTable), 
-                            Times.Once);
-                });
+            Mocks.Get<IQueryBuilderStrategyFactory>()
+                .Verify(x => x.GetBuilderStrategy(QueryKind.SelectSingleTable), 
+                    Times.Once);
         }
 
         [TestMethod]
         public void WillInvokeBuilderStrategyIfBuildModeIsJoined()
         {
-            TestRunner
-                .ExecuteTest(() =>
-                {
-                    ItemUnderTest.BuildSelectQuery(It.IsAny<Expression<Func<TestClass, bool>>>(),
-                        It.IsAny<bool>(), It.IsAny<bool>(), It.IsAny<IEnumerable<string>>(),
-                        It.IsAny<string>(), BuildMode.Joined);
+            ItemUnderTest.BuildSelectQuery(It.IsAny<Expression<Func<TestClass, bool>>>(),
+                It.IsAny<bool>(), It.IsAny<bool>(), It.IsAny<IEnumerable<string>>(),
+                It.IsAny<string>(), BuildMode.Joined);
 
-                    Mocks.Get<Mock<IQueryBuilderStrategyFactory>>()
-                        .Verify(x => x.GetBuilderStrategy(QueryKind.SelectJoinTable),
-                            Times.Once);
-                });
+            Mocks.Get<IQueryBuilderStrategyFactory>()
+                .Verify(x => x.GetBuilderStrategy(QueryKind.SelectJoinTable),
+                    Times.Once);
         }
     }
 }
