@@ -9,7 +9,7 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
     {
         private IAssertAdapter Assert { get; set; }
         private Dictionary<string, Tuple<Type, IAsserterStrategy>> _strategies;
-        public IAsserter Asserter { get; set; }
+        public IAssertHelper Asserter { get; set; }
 
         public AsserterStrategyFactory(IAssertAdapter assertAdapter)
         {

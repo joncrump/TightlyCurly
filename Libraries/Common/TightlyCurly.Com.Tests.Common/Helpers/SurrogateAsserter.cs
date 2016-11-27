@@ -6,7 +6,7 @@ using TightlyCurly.Com.Tests.Common.Helpers.Strategies;
 
 namespace TightlyCurly.Com.Tests.Common.Helpers
 {
-    public class SurrogateAsserter : IAsserter
+    public class SurrogateAsserter : IAssertHelper
     {
         private IAssertAdapter Assert { get; set; }
         private readonly IAsserterStrategyFactory _asserterStrategyFactory;

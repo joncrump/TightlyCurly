@@ -3,7 +3,7 @@ using TightlyCurly.Com.Tests.Common.Helpers;
 
 namespace TightlyCurly.Com.Tests.Common.MsTest.Data
 {
-    public abstract class MsTestMoqDataItemTestBase<TItemUnderTest> : MoqDataItemTestBase<TItemUnderTest>
+    public abstract class MsTestMoqDataItemTestBase<TItemUnderTest> : MockDataItemTestBase<TItemUnderTest>
         where TItemUnderTest : class
     {
         protected MsTestMoqDataItemTestBase() : base(new MsTestAssertAdapter(), new MockDataReaderHelper())

@@ -4,27 +4,28 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
-using TightlyCurly.Com.Common.Data.Attributes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using TightlyCurly.Com.Common.Extensions;
+using TightlyCurly.Com.Tests.Common.Base;
 using TightlyCurly.Com.Tests.Common.MsTest;
 
 namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
 {
     [TestClass]
-    public class TheBuildContainerMethod : MsTestMoqTestBase<DatabaseQueryPredicateBuilder>
+    public class TheBuildContainerMethod : MockTestBase<DatabaseQueryPredicateBuilder>
     {
+        public TheBuildContainerMethod() : base(new MsTestAssertAdapter())
+        {
+            
+        }
+
         [TestMethod]
         public void WillThrowArgumentNullExceptionIfExpressionIsNull()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                Asserter
-                    .AssertExceptionIsThrown<ArgumentNullException>(
-                        () => ItemUnderTest.BuildContainer(null, It.IsAny<Type>()))
-                    .AndVerifyHasParameter("expression");
-            });
+            AssertException<ArgumentNullException>(
+                () => ItemUnderTest.BuildContainer(null, It.IsAny<Type>()))
+            .AndVerifyHasParameter("expression");
         }
 
         [TestMethod]
@@ -32,20 +33,14 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
         {
             Expression<Func<TestClass, bool>> expression = null;
 
-            TestRunner
-                .DoCustomSetup(() =>
-                {
                     var id = DataGenerator.GenerateInteger();
                     var testClass = ObjectCreator.CreateNew<TestClass>();
-                    expression = t => t.Id == id && t.Bar == testClass.Bar || t.Foo == "Margaritas";
-                })
-                .ExecuteTest(() =>
-                {
+
                     Asserter
                         .AssertExceptionIsThrown<ArgumentNullException>(
                             () => ItemUnderTest.BuildContainer(expression, null))
                         .AndVerifyHasParameter("declaringType");
-                });
+                
         }
 
         [TestMethod]

@@ -102,7 +102,10 @@ namespace TightlyCurly.Com.Tests.Common.Base
                     var mock = Convert.ChangeType(Activator.CreateInstance(parameterType,
                                                                            null), parameterType);
 
-                    Mocks.Add(parameter.Name, parameterType, mock);
+					var method = Mocks.GetType().GetMethod("Add");
+					var genericMethod = method.MakeGenericMethod(parameterType);
+
+					genericMethod.Invoke(Mocks, new object[] { parameter.Name, mock });
 
                     value = GetObjectFromMock(mock, parameter.ParameterType);
                 }

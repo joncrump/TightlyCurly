@@ -60,13 +60,13 @@
       <Project>{FFADF87C-28D8-49B2-AFC7-C96301C7D700}</Project>
       <Name>TightlyCurly.Com.Tests.Common.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TightlyCurly.Com.Tests.Common.MsTest\TightlyCurly.Com.Tests.Common.MsTest.csproj">
-      <Project>{B739D274-952B-4377-84EF-D9A7C6A7D346}</Project>
-      <Name>TightlyCurly.Com.Tests.Common.MsTest</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TightlyCurly.Com.Tests.Common\TightlyCurly.Com.Tests.Common.csproj">
       <Project>{FA9B391B-963B-455E-94C8-C4B88D766886}</Project>
       <Name>TightlyCurly.Com.Tests.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TightlyCurly.Com.Tests.Common.MsTest\TightlyCurly.Com.Tests.Common.MsTest.csproj">
+      <Project>{B739D274-952B-4377-84EF-D9A7C6A7D346}</Project>
+      <Name>TightlyCurly.Com.Tests.Common.MsTest</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

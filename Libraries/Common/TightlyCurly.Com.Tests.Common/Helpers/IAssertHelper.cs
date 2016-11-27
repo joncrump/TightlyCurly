@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TightlyCurly.Com.Tests.Common.Helpers
 {
-    public interface IAsserter
+    public interface IAssertHelper
     {
         void AssertEquality<TValue>(TValue expected, TValue actual, IEnumerable<string> propertiesToIgnore = null, 
             IDictionary<string, object> additionalParameters = null, bool recurseObjectProperties = true);

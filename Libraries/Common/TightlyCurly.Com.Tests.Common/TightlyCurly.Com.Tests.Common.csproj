@@ -67,7 +67,7 @@
     <Compile Include="Helpers\ExceptionAsserter.cs" />
     <Compile Include="Helpers\IDataGenerator.cs" />
     <Compile Include="Helpers\IExceptionAsserter.cs" />
-    <Compile Include="Helpers\IAsserter.cs" />
+    <Compile Include="Helpers\IAssertHelper.cs" />
     <Compile Include="Helpers\Strategies\ByteAsserterStrategy.cs" />
     <Compile Include="Helpers\Strategies\DateTimeAsserterStrategy.cs" />
     <Compile Include="Helpers\Strategies\DoubleAsserterStrategy.cs" />
@@ -88,6 +88,7 @@
     <Compile Include="Helpers\Strategies\UriAsserterStrategy.cs" />
     <Compile Include="Helpers\Strategies\AsserterStrategyBase.cs" />
     <Compile Include="MappedType.cs" />
+    <Compile Include="MethodTester.cs" />
     <Compile Include="MockDataReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -9,7 +9,7 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
 {
     public class ObjectAsserterStrategy<TValue> : AsserterStrategyBase<TValue> where TValue : class
     {
-        private readonly IAsserter _asserter;
+        private readonly IAssertHelper _asserter;
 
         public override string Name
         {
@@ -21,7 +21,7 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
             get { return typeof(object); }
         }
 
-        public ObjectAsserterStrategy(IAssertAdapter assertAdapter, IAsserter asserter)
+        public ObjectAsserterStrategy(IAssertAdapter assertAdapter, IAssertHelper asserter)
             : base(assertAdapter)
         {
             _asserter = asserter;

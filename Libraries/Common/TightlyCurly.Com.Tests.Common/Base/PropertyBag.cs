@@ -38,7 +38,7 @@ namespace TightlyCurly.Com.Tests.Common.Base
 
             return (TValue)value.Item2;
         }
-
+        
         public bool HasValue(string key)
         {
             Guard.EnsureIsNotNullOrEmpty("key", key);

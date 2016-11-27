@@ -9,8 +9,8 @@ namespace TightlyCurly.Com.Tests.Common.Base
     public abstract class TestBase : UtilityBase
     {
         protected readonly IObjectCreator ObjectCreator;
-        private readonly IAssertAdapter Assert;
-        private readonly IAsserter Asserter;
+        private readonly IAssertHelper _assertHelper;
+        private readonly IAssertAdapter _assertAdapter;
 
         protected TestBase(IAssertAdapter assertAdapter)
             : this(new RandomDataGenerator(), new ReflectionBasedObjectCreator(), assertAdapter, 
@@ -35,18 +35,18 @@ namespace TightlyCurly.Com.Tests.Common.Base
         }
 
         protected TestBase(IDataGenerator dataGenerator, IObjectCreator objectCreator, IAssertAdapter assertAdapter, 
-            IAsserter asserter)
+            IAssertHelper assertHelper)
             : base(dataGenerator)
         {
             ObjectCreator = objectCreator;
-            Assert = assertAdapter;
-            Asserter = asserter;
+            _assertAdapter = assertAdapter;
+            _assertHelper = assertHelper;
         }
 
-        public IExceptionAsserter AssertExceptionIsThrown<TException>(Action exceptionCallback)
+        public IExceptionAsserter AssertException<TException>(Action exceptionCallback)
             where TException : Exception
         {
-            return Asserter.AssertExceptionIsThrown<TException>(exceptionCallback);
+            return _assertHelper.AssertExceptionIsThrown<TException>(exceptionCallback);
         }
 
         public void AssertIsNullOrNot<T>(T expectedValue, T actualValue, Action<T, T> assertDelegate = null)
@@ -54,16 +54,13 @@ namespace TightlyCurly.Com.Tests.Common.Base
         {
             if (expectedValue == null)
             {
-                Assert.IsNull(actualValue);
+                _assertAdapter.IsNull(actualValue);
                 return;
             }
 
-            Assert.IsNotNull(actualValue);
+            _assertAdapter.IsNotNull(actualValue);
 
-            if (assertDelegate != null)
-            {
-                assertDelegate(expectedValue, actualValue);
-            }
+            assertDelegate?.Invoke(expectedValue, actualValue);
         }
 
         public virtual void Setup()
@@ -106,6 +103,13 @@ namespace TightlyCurly.Com.Tests.Common.Base
             var tester = new ConstructorTester(DataGenerator);
 
             tester.TestConstructorsForNullParameters<TItem>();
+        }
+
+        protected void DoMethodTests<TItem>(string methodName, IEnumerable<string> parametersToSkip) where TItem : class
+        {
+            var tester = new MethodTester(DataGenerator);
+
+            tester.TestMethodParameters<TItem>(methodName, parametersToSkip);
         }
 
         protected IEnumerable<T> CreateEnumerableOfItems<T>(int numberOfItems = 5) where T : class, new()

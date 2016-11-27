@@ -2,7 +2,7 @@
 {
     public interface IAsserterStrategyFactory
     {
-        IAsserter Asserter { get; set; }
+        IAssertHelper Asserter { get; set; }
         IAsserterStrategy GetStrategy<TValue>();
     }
 }

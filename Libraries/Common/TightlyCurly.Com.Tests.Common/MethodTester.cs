@@ -4,20 +4,30 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Moq;
 using TightlyCurly.Com.Common;
 using TightlyCurly.Com.Common.Extensions;
 using TightlyCurly.Com.Tests.Common.Base;
+using TightlyCurly.Com.Tests.Common.Helpers;
 
 namespace TightlyCurly.Com.Tests.Common
 {
-    public class MethodTester 
+    public class MethodTester
     {
+        private readonly IDataGenerator _dataGenerator;
+        private int _nullIndex = 0;
+
+        public MethodTester(IDataGenerator dataGenerator)
+        {
+            _dataGenerator = dataGenerator;
+        }
+
         public void TestMethodParameters<TItemUnderTest>(string methodName, 
             IEnumerable<string> parametersToSkip = null)
             where TItemUnderTest : class
         {
             Guard.EnsureIsNotNullOrEmpty("methodName", methodName);
-
+            
             var methodInfo = typeof(TItemUnderTest).GetMethod(methodName);
 
             if (methodInfo.IsNull())
@@ -28,7 +38,7 @@ namespace TightlyCurly.Com.Tests.Common
 
             var parameters = methodInfo.GetParameters();
 
-            TestParameters<TItemUnderTest>(parameters, methodInfo);
+            TestParameters<TItemUnderTest>(parameters, methodInfo, parametersToSkip);
         }
 
         private void TestParameters<TItemUnderTest>(IEnumerable<ParameterInfo> parameters, 
@@ -40,12 +50,13 @@ namespace TightlyCurly.Com.Tests.Common
                 return;
             }
 
+            var failedParameters = new List<string>();
             var instance = ConstructInstance<TItemUnderTest>();
 
             foreach (var parameter in parameters)
             {
                 var parameter1 = parameter;
-                
+
                 if (parametersToSkip
                     .Where(p => p.ToLower() == parameter1.Name.ToLower())
                     .IsNullOrEmpty())
@@ -53,8 +64,97 @@ namespace TightlyCurly.Com.Tests.Common
                     continue;
                 }
 
+                var failed = TestMethodInfoForNullParameter(method, instance);
 
+                if (failed.IsNotNullOrEmpty())
+                {
+                    failedParameters.AddRange(failed
+                        .Where(p => !failedParameters.Contains(p))
+                        .ToList());
+                }
             }
+
+            if (failedParameters.IsNotNullOrEmpty())
+            {
+                throw new AssertException("{0}\r\n{1}".FormatString("The following parameters failed the null check:",
+                    failedParameters.ToDelimitedString("\r\n")));
+            }
+        }
+
+        protected IEnumerable<object> InitializeMethodParameters(IList<ParameterInfo> parameters)
+        {
+            var instances = new List<object>();
+
+            for (var index = 0; index < parameters.Count; index++)
+            {
+                if (index == _nullIndex)
+                {
+                    instances.Add(null);
+                }
+                else
+                {
+					AddInstance(parameters, instances, index);
+                }
+            }
+
+            return instances;
+        }
+
+		private void AddInstance(IList<ParameterInfo> parameters, IList<Object> instances, int index)
+		{
+			var type = parameters[index].ParameterType;
+
+			if (type == typeof(string))
+			{
+				instances.Add(_dataGenerator.GenerateString());
+			}
+			else
+			{
+				var mockType = typeof(Mock<>).MakeGenericType(parameters[index].ParameterType);
+
+				var mock = Convert.ChangeType(Activator.CreateInstance(mockType,
+																	   null), mockType);
+
+				instances.Add(GetObjectFromMock(mock, parameters[index].ParameterType));
+			}
+		}
+
+        private IEnumerable<string> TestMethodInfoForNullParameter(MethodInfo method, object instance)
+        {
+            var parameters = method.GetParameters().ToList();
+            var failedParameters = new List<string>();
+
+            for (var index = 0; index < parameters.Count; index++)
+            {
+                var argumentNullExceptionThrown = false;
+                _nullIndex = index;
+                var parameterInstances = InitializeMethodParameters(parameters);
+
+                try
+                {
+                    method.Invoke(instance, parameterInstances.ToArray());
+                }
+                catch (Exception exception)
+                {
+                    var innerException = exception.InnerException as ArgumentNullException;
+
+                    if (innerException.IsNull())
+                    {
+                        throw;
+                    }
+
+                    argumentNullExceptionThrown = true;
+                }
+                finally
+                {
+                    if (!argumentNullExceptionThrown)
+                    {
+                        failedParameters.Add(parameters[index].Name);
+                    }
+                }
+            }
+
+            return failedParameters;
         }
 
         private TItemUnderTest ConstructInstance<TItemUnderTest>()
@@ -82,6 +182,41 @@ namespace TightlyCurly.Com.Tests.Common
             }
 
             return instance;
+        }
+
+        protected IEnumerable<object> InitializeParameters(IList<ParameterInfo> parameters)
+        {
+            var instances = new List<object>();
+
+            foreach (ParameterInfo parameter in parameters)
+            {
+                var type = parameter.ParameterType;
+
+                if (type == typeof(string))
+                {
+                    instances.Add(_dataGenerator.GenerateString());
+                }
+                else
+                {
+                    var mockType = typeof(Mock<>).MakeGenericType(parameter.ParameterType);
+
+                    var mock = Convert.ChangeType(Activator.CreateInstance(mockType,
+                        null), mockType);
+
+                    instances.Add(GetObjectFromMock(mock, parameter.ParameterType));
+                }
+            }
+
+            return instances;
+        }
+
+        protected object GetObjectFromMock(object mock, Type propertyType)
+        {
+            var type = mock.GetType();
+
+            var property = type.GetProperty("Object", propertyType);
+
+            return property.GetValue(mock);
         }
     }
 }
