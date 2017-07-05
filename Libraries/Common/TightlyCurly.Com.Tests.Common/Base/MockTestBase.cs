@@ -88,7 +88,7 @@ namespace TightlyCurly.Com.Tests.Common.Base
                     continue;
                 }
 
-                Type parameterType = parameter.ParameterType;
+                var parameterType = parameter.ParameterType;
                 object value = null;
 
                 if (parameter.ParameterType == typeof(string))
