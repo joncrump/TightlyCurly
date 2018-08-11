@@ -1,13 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using TightlyCurly.Com.Tests.Common.Base;
-using TightlyCurly.Com.Tests.Common.MsTest;
 
 namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
 {
-    [TestClass]
+    [TestFixture]
     public class TheConstructor : TestBase
     {
-        [TestMethod]
+        [Test]
         public void WillPassConstructorTests()
         {
             DoConstructorTests<TestableDatabaseRepository>();

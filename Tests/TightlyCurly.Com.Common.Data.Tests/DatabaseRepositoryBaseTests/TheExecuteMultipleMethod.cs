@@ -2,15 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using NUnit.Framework;
 using TightlyCurly.Com.Common.Data.Repositories.Strategies;
-using TightlyCurly.Com.Tests.Common.MsTest.Data;
+using TightlyCurly.Com.Tests.Common.Base;
 
 namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
 {
-    [TestClass]
-    public class TheExecuteMultipleMethod : MsTestMoqRepositoryBase<TestableDatabaseRepository>
+    [TestFixture]
+    public class TheExecuteMultipleMethod : MockTestBase<TestableDatabaseRepository>
     {
         public override void Setup()
         {
@@ -23,16 +23,13 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
                 .Returns(strategy.Object);
         }
 
-        [TestMethod]
+        [Test]
         public void WillThrowArgumentNullExceptionIfQueryInfoIsNull()
         {
-            TestRunner.ExecuteTest(() =>
-            {
                 Asserter
-                    .AssertExceptionIsThrown<ArgumentNullException>(
+                    .AssertException<ArgumentNullException>(
                         () => ItemUnderTest.ExecuteMultiple<object>(null, It.IsAny<BuildMode>()))
                     .AndVerifyHasParameter("queryInfo");
-            });
         }
 
         [TestMethod]
