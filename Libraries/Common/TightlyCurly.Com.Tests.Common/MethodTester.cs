@@ -12,7 +12,7 @@ using TightlyCurly.Com.Tests.Common.Helpers;
 
 namespace TightlyCurly.Com.Tests.Common
 {
-    public class MethodTester
+    public class MethodTester : IMethodTester
     {
         private readonly IDataGenerator _dataGenerator;
         private int _nullIndex = 0;
@@ -41,7 +41,7 @@ namespace TightlyCurly.Com.Tests.Common
             TestParameters<TItemUnderTest>(parameters, methodInfo, parametersToSkip);
         }
 
-        private void TestParameters<TItemUnderTest>(IEnumerable<ParameterInfo> parameters, 
+        public void TestParameters<TItemUnderTest>(IEnumerable<ParameterInfo> parameters, 
             MethodInfo method, IEnumerable<string> parametersToSkip = null)
             where TItemUnderTest : class
         {
@@ -81,7 +81,7 @@ namespace TightlyCurly.Com.Tests.Common
             }
         }
 
-        protected IEnumerable<object> InitializeMethodParameters(IList<ParameterInfo> parameters)
+        public IEnumerable<object> InitializeMethodParameters(IList<ParameterInfo> parameters)
         {
             var instances = new List<object>();
 
@@ -100,7 +100,7 @@ namespace TightlyCurly.Com.Tests.Common
             return instances;
         }
 
-		private void AddInstance(IList<ParameterInfo> parameters, IList<Object> instances, int index)
+        public void AddInstance(IList<ParameterInfo> parameters, IList<Object> instances, int index)
 		{
 			var type = parameters[index].ParameterType;
 
@@ -119,7 +119,7 @@ namespace TightlyCurly.Com.Tests.Common
 			}
 		}
 
-        private IEnumerable<string> TestMethodInfoForNullParameter(MethodInfo method, object instance)
+        public IEnumerable<string> TestMethodInfoForNullParameter(MethodInfo method, object instance)
         {
             var parameters = method.GetParameters().ToList();
             var failedParameters = new List<string>();
@@ -157,7 +157,7 @@ namespace TightlyCurly.Com.Tests.Common
             return failedParameters;
         }
 
-        private TItemUnderTest ConstructInstance<TItemUnderTest>()
+        public TItemUnderTest ConstructInstance<TItemUnderTest>()
             where TItemUnderTest : class
         {
             TItemUnderTest instance;
@@ -184,7 +184,7 @@ namespace TightlyCurly.Com.Tests.Common
             return instance;
         }
 
-        protected IEnumerable<object> InitializeParameters(IList<ParameterInfo> parameters)
+        public IEnumerable<object> InitializeParameters(IList<ParameterInfo> parameters)
         {
             var instances = new List<object>();
 
@@ -210,7 +210,7 @@ namespace TightlyCurly.Com.Tests.Common
             return instances;
         }
 
-        protected object GetObjectFromMock(object mock, Type propertyType)
+        public object GetObjectFromMock(object mock, Type propertyType)
         {
             var type = mock.GetType();
 

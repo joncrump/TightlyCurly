@@ -14,6 +14,15 @@ namespace TightlyCurly.Com.Tests.Common.Base
         protected TItemUnderTest ItemUnderTest { get; set; }
         protected PropertyBag Mocks { get; set; }
 
+        protected MockTestBase() : this(AsserterFactory.GetAssertAdapter(UnitTestFrameworkType.Nunit))
+        {
+        }
+        
+        protected MockTestBase(UnitTestFrameworkType frameworkType) : this(AsserterFactory.GetAssertAdapter(frameworkType))
+        {
+            
+        }
+        
         protected MockTestBase(IAssertAdapter assertAdapter)
             : base(new RandomDataGenerator(), new ReflectionBasedObjectCreator(), assertAdapter, 
             new SurrogateAsserter(assertAdapter))
@@ -38,7 +47,7 @@ namespace TightlyCurly.Com.Tests.Common.Base
         {
         }
 
-        public override void Setup()
+        protected override void Setup()
         {
             base.Setup();
 
@@ -46,7 +55,7 @@ namespace TightlyCurly.Com.Tests.Common.Base
             BuildItemUnderTest();
         }
 
-        public override void CleanUp()
+        protected override void CleanUp()
         {
             base.CleanUp();
 

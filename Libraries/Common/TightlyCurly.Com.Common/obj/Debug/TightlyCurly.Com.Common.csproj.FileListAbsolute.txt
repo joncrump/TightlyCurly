@@ -23,3 +23,4 @@ C:/Source/TightlyCurly/Libraries/Common/TightlyCurly.Com.Common/obj/Debug/Tightl
 /Users/jhcrump/Documents/GitHub/TightlyCurly/Libraries/Common/TightlyCurly.Com.Common/obj/Debug/TightlyCurly.Com.Common.csproj.CoreCompileInputs.cache
 /Users/jhcrump/Documents/GitHub/TightlyCurly/Libraries/Common/TightlyCurly.Com.Common/obj/Debug/TightlyCurly.Com.Common.dll
 /Users/jhcrump/Documents/GitHub/TightlyCurly/Libraries/Common/TightlyCurly.Com.Common/obj/Debug/TightlyCurly.Com.Common.pdb
+/Users/jhcrump/Documents/GitHub/TightlyCurly/Libraries/Common/TightlyCurly.Com.Common/obj/Debug/TightlyCurly.Com.Common.csprojResolveAssemblyReference.cache

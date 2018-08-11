@@ -8,45 +8,32 @@ namespace TightlyCurly.Com.Tests.Common.Base
 {
     public abstract class TestBase : UtilityBase
     {
-        protected readonly IObjectCreator ObjectCreator;
-        private readonly IAssertHelper _assertHelper;
         private readonly IAssertAdapter _assertAdapter;
 
-        protected TestBase(IAssertAdapter assertAdapter)
-            : this(new RandomDataGenerator(), new ReflectionBasedObjectCreator(), assertAdapter, 
-            new SurrogateAsserter(assertAdapter, new AsserterStrategyFactory(assertAdapter)))
+        protected IMethodTester MethodTester { get; set; }
+        protected IObjectCreator ObjectCreator { get; set; }
+        protected IConstructorTester ConstructorTester { get; set; }
+        protected IAssertHelper Asserter { get; set; }
+        
+        protected TestBase() : this(new RandomDataGenerator())
         {
         }
 
-        protected TestBase(IDataGenerator dataGenerator, IAssertAdapter assertAdapter)
-            : this(dataGenerator, new ReflectionBasedObjectCreator(), assertAdapter, 
-            new SurrogateAsserter(assertAdapter, new AsserterStrategyFactory(assertAdapter)))
-        {
-        }
-
-        protected TestBase(IObjectCreator objectCreator, IAssertAdapter assertAdapter)
-            : this(new RandomDataGenerator(), objectCreator, assertAdapter, new SurrogateAsserter(assertAdapter, new AsserterStrategyFactory(assertAdapter)))
-        {
-        }
-
-        protected TestBase(IDataGenerator dataGenerator, IObjectCreator objectCreator, IAssertAdapter assertAdapter)
-            : this(dataGenerator, objectCreator, assertAdapter, new SurrogateAsserter(assertAdapter, new AsserterStrategyFactory(assertAdapter)))
-        {
-        }
-
-        protected TestBase(IDataGenerator dataGenerator, IObjectCreator objectCreator, IAssertAdapter assertAdapter, 
-            IAssertHelper assertHelper)
+        protected TestBase(IDataGenerator dataGenerator, IObjectCreator objectCreator = null, IAssertAdapter assertAdapter = null, 
+            IAssertHelper assertHelper = null, IMethodTester methodTester = null, IConstructorTester constructorTester = null)
             : base(dataGenerator)
         {
-            ObjectCreator = objectCreator;
-            _assertAdapter = assertAdapter;
-            _assertHelper = assertHelper;
+            ObjectCreator = objectCreator ?? new ReflectionBasedObjectCreator();
+            _assertAdapter = assertAdapter ?? new NUnitAssertAdapter();
+            Asserter = assertHelper ?? new SurrogateAsserter(_assertAdapter, new AsserterStrategyFactory(_assertAdapter));
+            MethodTester = methodTester ?? new MethodTester(dataGenerator);
+            ConstructorTester = constructorTester ?? new ConstructorTester(dataGenerator);
         }
 
         public IExceptionAsserter AssertException<TException>(Action exceptionCallback)
             where TException : Exception
         {
-            return _assertHelper.AssertExceptionIsThrown<TException>(exceptionCallback);
+            return Asserter.AssertException<TException>(exceptionCallback);
         }
 
         public void AssertIsNullOrNot<T>(T expectedValue, T actualValue, Action<T, T> assertDelegate = null)
@@ -63,11 +50,11 @@ namespace TightlyCurly.Com.Tests.Common.Base
             assertDelegate?.Invoke(expectedValue, actualValue);
         }
 
-        public virtual void Setup()
+        protected virtual void Setup()
         {
         }
 
-        public virtual void CleanUp()
+        protected virtual void CleanUp()
         {
         }
 
@@ -100,16 +87,12 @@ namespace TightlyCurly.Com.Tests.Common.Base
 
         protected void DoConstructorTests<TItem>() where TItem : class
         {
-            var tester = new ConstructorTester(DataGenerator);
-
-            tester.TestConstructorsForNullParameters<TItem>();
+            ConstructorTester.TestConstructorsForNullParameters<TItem>();
         }
 
-        protected void DoMethodTests<TItem>(string methodName, IEnumerable<string> parametersToSkip) where TItem : class
+        protected void DoMethodTests<TItem>(string methodName, IEnumerable<string> parametersToSkip = null) where TItem : class
         {
-            var tester = new MethodTester(DataGenerator);
-
-            tester.TestMethodParameters<TItem>(methodName, parametersToSkip);
+            MethodTester.TestMethodParameters<TItem>(methodName, parametersToSkip);
         }
 
         protected IEnumerable<T> CreateEnumerableOfItems<T>(int numberOfItems = 5) where T : class, new()
@@ -122,37 +105,24 @@ namespace TightlyCurly.Com.Tests.Common.Base
     {
         protected TItemUnderTest ItemUnderTest { get; private set; }
 
-        protected TestBase(IAssertAdapter assertAdapter)
-            : base(new RandomDataGenerator(), new ReflectionBasedObjectCreator(), assertAdapter, 
-            new SurrogateAsserter(assertAdapter, new AsserterStrategyFactory(assertAdapter)))
+        protected TestBase() : this(new RandomDataGenerator())
         {
         }
 
-        protected TestBase(IDataGenerator dataGenerator, IAssertAdapter assertAdapter)
-            : base(dataGenerator, new ReflectionBasedObjectCreator(), assertAdapter, 
-            new SurrogateAsserter(assertAdapter, new AsserterStrategyFactory(assertAdapter)))
+        protected TestBase(IDataGenerator dataGenerator, IObjectCreator objectCreator = null, IAssertAdapter assertAdapter = null, 
+            IAssertHelper assertHelper = null, IMethodTester methodTester = null, IConstructorTester constructorTester = null)
+            : base(dataGenerator, objectCreator, assertAdapter, assertHelper, methodTester, constructorTester)
         {
         }
 
-        protected TestBase(IObjectCreator objectCreator, IAssertAdapter assertAdapter)
-            : base(new RandomDataGenerator(), objectCreator, assertAdapter, 
-            new SurrogateAsserter(assertAdapter, new AsserterStrategyFactory(assertAdapter)))
-        {
-        }
-
-        protected TestBase(IDataGenerator dataGenerator, IObjectCreator objectCreator, 
-            IAssertAdapter assertAdapter) : base(dataGenerator, objectCreator, assertAdapter)
-        {
-        }
-
-        public override void Setup()
+        protected override void Setup()
         {
             base.Setup();
 
             ItemUnderTest = new TItemUnderTest();
         }
 
-        public override void CleanUp()
+        protected override void CleanUp()
         {
             base.CleanUp();
 

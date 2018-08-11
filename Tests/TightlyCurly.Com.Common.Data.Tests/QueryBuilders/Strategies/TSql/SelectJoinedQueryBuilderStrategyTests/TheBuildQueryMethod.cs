@@ -18,7 +18,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
     [TestClass]
     public class TheBuildQueryMethod : TestBase<SelectJoinedQueryBuilderStrategy>
     {
-        public override void Setup()
+        protected override void Setup()
         {
             base.Setup();
 

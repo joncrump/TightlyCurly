@@ -8,7 +8,7 @@ using TightlyCurly.Com.Tests.Common.Helpers;
 
 namespace TightlyCurly.Com.Tests.Common
 {
-    public class ConstructorTester //: TestBase
+    public class ConstructorTester : IConstructorTester
     {
         private int _nullIndex = 0;
         private readonly IDataGenerator _dataGenerator;
@@ -46,7 +46,7 @@ namespace TightlyCurly.Com.Tests.Common
             }
         }
 
-        private IEnumerable<string> TestConstructorForNullParameter(Type itemType, ConstructorInfo constructor)
+        public IEnumerable<string> TestConstructorForNullParameter(Type itemType, ConstructorInfo constructor)
         {
             var parameters = constructor.GetParameters().ToList();
             var failedParameters = new List<string>();
@@ -84,7 +84,7 @@ namespace TightlyCurly.Com.Tests.Common
             return failedParameters;
         }
 
-        protected IEnumerable<object> InitializeParameters(IList<ParameterInfo> parameters)
+        public IEnumerable<object> InitializeParameters(IList<ParameterInfo> parameters)
         {
             var instances = new List<object>();
 
@@ -117,7 +117,7 @@ namespace TightlyCurly.Com.Tests.Common
             return instances;
         }
 
-        protected object GetObjectFromMock(object mock, Type propertyType)
+        public object GetObjectFromMock(object mock, Type propertyType)
         {
             var type = mock.GetType();
 

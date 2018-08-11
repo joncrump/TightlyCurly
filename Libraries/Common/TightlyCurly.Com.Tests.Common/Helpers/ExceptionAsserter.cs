@@ -16,7 +16,7 @@ namespace TightlyCurly.Com.Tests.Common.Helpers
             Assert = assertAdapter;
         }
 
-        public IExceptionAsserter AssertExceptionIsThrown<T>(Action exceptionCallback)
+        public IExceptionAsserter AssertException<T>(Action exceptionCallback)
             where T : Exception
         {
             var called = false;

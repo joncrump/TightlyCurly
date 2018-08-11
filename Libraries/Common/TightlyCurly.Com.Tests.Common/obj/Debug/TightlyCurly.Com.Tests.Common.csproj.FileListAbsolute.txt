@@ -30,3 +30,6 @@ C:/Source/TightlyCurly/Libraries/Common/TightlyCurly.Com.Tests.Common/obj/Debug/
 /Users/jhcrump/Documents/GitHub/TightlyCurly/Libraries/Common/TightlyCurly.Com.Tests.Common/obj/Debug/TightlyCurly.Com.Tests.Common.csproj.CoreCompileInputs.cache
 /Users/jhcrump/Documents/GitHub/TightlyCurly/Libraries/Common/TightlyCurly.Com.Tests.Common/obj/Debug/TightlyCurly.Com.Tests.Common.dll
 /Users/jhcrump/Documents/GitHub/TightlyCurly/Libraries/Common/TightlyCurly.Com.Tests.Common/obj/Debug/TightlyCurly.Com.Tests.Common.pdb
+/Users/jhcrump/Documents/GitHub/TightlyCurly/Libraries/Common/TightlyCurly.Com.Tests.Common/bin/Debug/nunit.framework.dll
+/Users/jhcrump/Documents/GitHub/TightlyCurly/Libraries/Common/TightlyCurly.Com.Tests.Common/bin/Debug/nunit.framework.pdb
+/Users/jhcrump/Documents/GitHub/TightlyCurly/Libraries/Common/TightlyCurly.Com.Tests.Common/bin/Debug/nunit.framework.xml

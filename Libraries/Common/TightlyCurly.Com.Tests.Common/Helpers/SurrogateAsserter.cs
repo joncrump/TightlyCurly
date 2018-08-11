@@ -88,11 +88,11 @@ namespace TightlyCurly.Com.Tests.Common.Helpers
             }  
         }
 
-        public IExceptionAsserter AssertExceptionIsThrown<TException>(Action exceptionCallback) where TException : Exception
+        public IExceptionAsserter AssertException<TException>(Action exceptionCallback) where TException : Exception
         {
             var exceptionAsserter = new ExceptionAsserter(Assert);
 
-            exceptionAsserter.AssertExceptionIsThrown<TException>(exceptionCallback);
+            exceptionAsserter.AssertException<TException>(exceptionCallback);
 
             return exceptionAsserter;
         }
