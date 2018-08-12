@@ -3,119 +3,98 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using TightlyCurly.Com.Tests.Common.MsTest.Data;
+using NUnit.Framework;
+using TightlyCurly.Com.Tests.Common.Base;
 
 namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
 {
-    [TestClass]
-    public class TheExecuteNonQueryMethod : MsTestMoqRepositoryBase<TestableDatabaseRepository>
+    [TestFixture]
+    public class TheExecuteNonQueryMethod : MockTestBase<TestableDatabaseRepository>
     {
-        [TestMethod]
+        [Test]
         public void WillThrowArgumentNullExceptionIfQueryInfoIsNull()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                Asserter
-                    .AssertExceptionIsThrown<ArgumentNullException>(
-                        () => ItemUnderTest.ExecuteNonQuery(null))
-                    .AndVerifyHasParameter("queryInfo");
-            });
+            Asserter
+                .AssertException<ArgumentNullException>(
+                    () => ItemUnderTest.ExecuteNonQuery(null))
+                .AndVerifyHasParameter("queryInfo");
         }
 
-        [TestMethod]
+        [Test]
         public void WillInvokeDatabaseCreateCommandTextMethod()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                ItemUnderTest.ExecuteNonQuery(Mock.Of<QueryInfo>());
+            ItemUnderTest.ExecuteNonQuery(Mock.Of<QueryInfo>());
 
-                MockDatabase
-                    .Verify(x => x.CreateCommandText(It.IsAny<string>(), QueryType.Text), 
-                        Times.Once);
-            });
+            throw new NotImplementedException();
+//            MockDatabase
+//                .Verify(x => x.CreateCommandText(It.IsAny<string>(), QueryType.Text), 
+//                    Times.Once);
         }
 
-        [TestMethod]
+        [Test]
         public void WillNotInvokeDatabaseWithParametersMethodIfParametersAreNull()
         {
             QueryInfo queryInfo = null;
 
-            TestRunner
-                .DoCustomSetup(() =>
-                {
-                    queryInfo = new QueryInfo { Parameters = null };
-                })
-                .ExecuteTest(() =>
-                {
-                    ItemUnderTest.ExecuteNonQuery(queryInfo);
+            queryInfo = new QueryInfo { Parameters = null };
 
-                    MockDatabase
-                        .Verify(x => x.WithParameters(It.IsAny<IEnumerable<IDbDataParameter>>()),
-                            Times.Never);
-                });
+            ItemUnderTest.ExecuteNonQuery(queryInfo);
+
+            throw new NotImplementedException();
+            
+//            MockDatabase
+//                .Verify(x => x.WithParameters(It.IsAny<IEnumerable<IDbDataParameter>>()),
+//                    Times.Never);
         }
 
-        [TestMethod]
+        [Test]
         public void WillNotInvokeDatabaseWithParametersMethodIfParametersAreEmpty()
         {
             QueryInfo queryInfo = null;
 
-            TestRunner
-                .DoCustomSetup(() =>
-                {
-                    queryInfo = new QueryInfo
-                    {
-                        Parameters = Enumerable.Empty<IDbDataParameter>()
-                    };
-                })
-                .ExecuteTest(() =>
-                {
-                    ItemUnderTest.ExecuteNonQuery(queryInfo);
+            queryInfo = new QueryInfo
+            {
+                Parameters = Enumerable.Empty<IDbDataParameter>()
+            };
 
-                    MockDatabase
-                        .Verify(x => x.WithParameters(It.IsAny<IEnumerable<IDbDataParameter>>()),
-                            Times.Never);
-                });
+            ItemUnderTest.ExecuteNonQuery(queryInfo);
+
+            throw new NotImplementedException();
+//                MockDatabase
+//                    .Verify(x => x.WithParameters(It.IsAny<IEnumerable<IDbDataParameter>>()),
+//                        Times.Never);
         }
 
-        [TestMethod]
+        [Test]
         public void WillInvokeDatabaseWithParametersMethodIfParametersHaveValues()
         {
             QueryInfo queryInfo = null;
 
-            TestRunner
-                .DoCustomSetup(() =>
+            queryInfo = new QueryInfo
+            {
+                Parameters = new List<SqlParameter>
                 {
-                    queryInfo = new QueryInfo
-                    {
-                        Parameters = new List<SqlParameter>
-                        {
-                            new SqlParameter()
-                        }
-                    };
-                })
-                .ExecuteTest(() =>
-                {
-                    ItemUnderTest.ExecuteNonQuery(queryInfo);
+                    new SqlParameter()
+                }
+            };
 
-                    MockDatabase
-                        .Verify(x => x.WithParameters(It.IsAny<IEnumerable<IDbDataParameter>>()),
-                            Times.Once);
-                });
+            ItemUnderTest.ExecuteNonQuery(queryInfo);
+
+//            MockDatabase
+//                .Verify(x => x.WithParameters(It.IsAny<IEnumerable<IDbDataParameter>>()),
+//                    Times.Once);
         }
 
-        [TestMethod]
+        [Test]
         public void WillInvokeDatabaseExecuteNonQueryMethod()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                ItemUnderTest.ExecuteNonQuery(Mock.Of<QueryInfo>());
+            ItemUnderTest.ExecuteNonQuery(Mock.Of<QueryInfo>());
 
-                MockDatabase
-                    .Verify(x => x.ExecuteNonQuery(), Times.Once);
-            });
+            throw new NotImplementedException();
+            
+//            MockDatabase
+//                .Verify(x => x.ExecuteNonQuery(), Times.Once);
         }
     }
 }
