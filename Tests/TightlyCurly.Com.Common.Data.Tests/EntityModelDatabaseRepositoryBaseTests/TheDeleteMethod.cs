@@ -1,22 +1,19 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TightlyCurly.Com.Tests.Common.MsTest.Data;
+using NUnit.Framework;
+using TightlyCurly.Com.Tests.Common.Base;
 
 namespace TightlyCurly.Com.Common.Data.Tests.EntityModelDatabaseRepositoryBaseTests
 {
-    [TestClass]
-    public class TheDeleteMethod : MsTestMoqRepositoryBase<TestableEntityDatabaseRepository>
+    [TestFixture]
+    public class TheDeleteMethod : MockTestBase<TestableEntityDatabaseRepository>
     {
-        [TestMethod]
+        [Test]
         public void WillThrowArgumentNullExceptionIfModelIsNull()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                Asserter
-                    .AssertExceptionIsThrown<ArgumentNullException>(
-                        () => ItemUnderTest.Delete(null))
-                    .AndVerifyHasParameter("model");
-            });
+            Asserter
+                .AssertException<ArgumentNullException>(
+                    () => ItemUnderTest.Delete(null))
+                .AndVerifyHasParameter("model");
         }
     }
 }
