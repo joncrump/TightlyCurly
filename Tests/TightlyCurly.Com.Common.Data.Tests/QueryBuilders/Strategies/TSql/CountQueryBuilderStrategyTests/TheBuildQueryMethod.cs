@@ -1,27 +1,23 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using TightlyCurly.Com.Common.Data.Attributes;
+using NUnit.Framework;
 using TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql;
 using TightlyCurly.Com.Common.Extensions;
-using TightlyCurly.Com.Tests.Common.MsTest;
+using TightlyCurly.Com.Tests.Common.Base;
 
 namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.CountQueryBuilderStrategyTests
 {
-    [TestClass]
-    public class TheBuildQueryMethod : MsTestMoqTestBase<CountQueryBuilderStrategy>
+    [TestFixture]
+    public class TheBuildQueryMethod : MockTestBase<CountQueryBuilderStrategy>
     {
-        [TestMethod]
+        [Test]
         public void WillThrowInvalidOperationExceptionIfTypeHasNoCountMetadataAttribute()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                Asserter
-                    .AssertExceptionIsThrown<InvalidOperationException>(
-                        () => ItemUnderTest.BuildQuery<DummyCountClassWithNoCountAttributes>(It.IsAny<dynamic>()))
-                    .AndVerifyMessageContains("Could not build query. Type {0} does not have a count attribute."
-                        .FormatString(typeof (DummyCountClassWithNoCountAttributes).ToString()));
-            });
+            Asserter
+                .AssertException<InvalidOperationException>(
+                    () => ItemUnderTest.BuildQuery<DummyCountClassWithNoCountAttributes>(It.IsAny<dynamic>()))
+                .AndVerifyMessageContains("Could not build query. Type {0} does not have a count attribute."
+                    .FormatString(typeof (DummyCountClassWithNoCountAttributes).ToString()));
         }
 
         [TestMethod]

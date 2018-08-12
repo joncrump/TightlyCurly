@@ -3,92 +3,79 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
+using NUnit.Framework;
 using TightlyCurly.Com.Common.Exceptions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TightlyCurly.Com.Common.Extensions;
-using TightlyCurly.Com.Tests.Common.MsTest;
+using TightlyCurly.Com.Tests.Common.Base;
 
 namespace TightlyCurly.Com.Common.Data.Tests.ModelDataConverterTests
 {
-    [TestClass]
-    public class TheConvertToDataTableMethod : MsTestMoqTestBase<ModelDataConverter>
+    [TestFixture]
+    public class TheConvertToDataTableMethod : MockTestBase<ModelDataConverter>
     {
-        [TestMethod]
+        [Test]
         public void WillThrowArgumentNullExceptionIfModelsAreNull()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                Asserter
-                    .AssertExceptionIsThrown<ArgumentNullException>(
-                        () => ItemUnderTest.ConvertToDataTable<TestData>(null))
-                    .AndVerifyHasParameter("models");
-            });
+            Asserter
+                .AssertException<ArgumentNullException>(
+                    () => ItemUnderTest.ConvertToDataTable<TestData>(null))
+                .AndVerifyHasParameter("models");
         }
 
-        [TestMethod]
+        [Test]
         public void WillThrowArgumentEmptyExceptionIfModelsAreEmpty()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                Asserter
-                    .AssertExceptionIsThrown<ArgumentEmptyException>(
-                        () => ItemUnderTest.ConvertToDataTable(Enumerable.Empty<IModel>()))
-                    .AndVerifyHasParameter("models");
-            });
+            Asserter
+                .AssertException<ArgumentEmptyException>(
+                    () => ItemUnderTest.ConvertToDataTable(Enumerable.Empty<IModel>()))
+                .AndVerifyHasParameter("models");
         }
 
-        [TestMethod]
+        [Test]
         public void WillConvertModelsToDataTable()
         {
             DatatableObjectMapping expected = null;
             IEnumerable<TestData> models = null;
 
-            TestRunner
-                .DoCustomSetup(() =>
+            models = CreateEnumerableOfItems(() => ObjectCreator.CreateNew<TestData>(new Dictionary<string, object>
+            {
+                {"Baz", null}
+            }));
+
+            expected = new DatatableObjectMapping(BuildDataTable(models), new Dictionary<string, string>
+            {
+                {"Id", "Id"},
+                {"DateCreated", "DateCreated"},
+                {"DateLastUpdated", "DateLastUpdated"},
+                {"Foo", "Foo"},
+                {"Bar", "Bar"},
+                {"Baz", "Baz"}
+            });
+
+            var actual = ItemUnderTest.ConvertToDataTable(models);
+            Expression<Action<KeyValuePair<string, string>, KeyValuePair<string, string>>> expression =
+                (e, a) => CompareKeyValuePairs(e, a);
+
+            Assert.AreEqual(expected.DataTable.Columns.Count, actual.DataTable.Columns.Count);
+
+            for (var index = 0; index < expected.DataTable.Columns.Count; index++)
+            {
+                Asserter.AssertEquality(expected.DataTable.Columns[index].ColumnName, actual.DataTable.Columns[index].ColumnName);
+                Assert.AreEqual(expected.DataTable.Columns[index].DataType, actual.DataTable.Columns[index].DataType);
+            }
+
+            for (var index = 0; index < expected.DataTable.Rows.Count; index++)
+            {
+                Assert.AreEqual(expected.DataTable.Rows[index].ItemArray.Length, actual.DataTable.Rows[index].ItemArray.Length);
+                for (var field = 0; field < expected.DataTable.Rows[index].ItemArray.Length; field++)
                 {
-                    models = CreateEnumerableOfItems(() => ObjectCreator.CreateNew<TestData>(new Dictionary<string, object>
-                    {
-                        {"Baz", null}
-                    }));
+                    Assert.AreEqual(expected.DataTable.Rows[index].ItemArray[field], actual.DataTable.Rows[index].ItemArray[field]);
+                }
+            }
 
-                    expected = new DatatableObjectMapping(BuildDataTable(models), new Dictionary<string, string>
-                    {
-                        {"Id", "Id"},
-                        {"DateCreated", "DateCreated"},
-                        {"DateLastUpdated", "DateLastUpdated"},
-                        {"Foo", "Foo"},
-                        {"Bar", "Bar"},
-                        {"Baz", "Baz"}
-                    });
-                })
-                .ExecuteTest(() =>
+            Asserter.AssertEquality(expected.ColumnMappings, actual.ColumnMappings, additionalParameters:
+                new Dictionary<string, object>
                 {
-                    var actual = ItemUnderTest.ConvertToDataTable(models);
-                    Expression<Action<KeyValuePair<string, string>, KeyValuePair<string, string>>> expression =
-                        (e, a) => CompareKeyValuePairs(e, a);
-
-                    Assert.AreEqual(expected.DataTable.Columns.Count, actual.DataTable.Columns.Count);
-
-                    for (var index = 0; index < expected.DataTable.Columns.Count; index++)
-                    {
-                        Asserter.AssertEquality(expected.DataTable.Columns[index].ColumnName, actual.DataTable.Columns[index].ColumnName);
-                        Assert.AreEqual(expected.DataTable.Columns[index].DataType, actual.DataTable.Columns[index].DataType);
-                    }
-
-                    for (var index = 0; index < expected.DataTable.Rows.Count; index++)
-                    {
-                        Assert.AreEqual(expected.DataTable.Rows[index].ItemArray.Length, actual.DataTable.Rows[index].ItemArray.Length);
-                        for (var field = 0; field < expected.DataTable.Rows[index].ItemArray.Length; field++)
-                        {
-                            Assert.AreEqual(expected.DataTable.Rows[index].ItemArray[field], actual.DataTable.Rows[index].ItemArray[field]);
-                        }
-                    }
-
-                    Asserter.AssertEquality(expected.ColumnMappings, actual.ColumnMappings, additionalParameters:
-                        new Dictionary<string, object>
-                        {
-                            {Com.Tests.Common.Constants.ParameterNames.ComparisonDelegate, expression}
-                        });
+                    {Com.Tests.Common.Constants.ParameterNames.ComparisonDelegate, expression}
                 });
         }
 
