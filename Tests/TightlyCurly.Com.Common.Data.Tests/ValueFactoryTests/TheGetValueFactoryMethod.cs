@@ -6,10 +6,10 @@ using TightlyCurly.Com.Tests.Common.MsTest;
 
 namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
 {
-    [TestClass]
+    [TestFixture]
     public class TheGetValueFactoryMethod : MsTestMoqTestBase<TestableValueFactory>
     {
-        [TestMethod]
+        [Test]
         public void WillThrowArgumentNullExceptionIfKeyIsNull()
         {
             TestRunner.ExecuteTest(() =>
@@ -21,7 +21,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
             });
         }
 
-        [TestMethod]
+        [Test]
         public void WillThrowArgumentEmptyExceptionIfKeyIsEmpty()
         {
             TestRunner.ExecuteTest(() =>
@@ -33,7 +33,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
             });
         }
 
-        [TestMethod]
+        [Test]
         public void WillReturnExpressionIfParameterIsNull()
         {
             Expression<Func<object, object>> expected = null;
@@ -56,7 +56,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
                 });
         }
 
-        [TestMethod]
+        [Test]
         public void WillReturnExpressionWithParameter()
         {
             string expected = null;

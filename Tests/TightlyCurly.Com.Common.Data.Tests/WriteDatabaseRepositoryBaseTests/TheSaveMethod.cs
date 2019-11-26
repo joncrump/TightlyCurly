@@ -10,7 +10,7 @@ using TightlyCurly.Com.Tests.Common.MsTest.Data;
 
 namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
 {
-    [TestClass]
+    [TestFixture]
     public class TheSaveMethod : MsTestMoqRepositoryBase<TestableWriteDatabaseRepository>
     {
         public override void Setup()
@@ -36,7 +36,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
                 .Returns(Mock.Of<QueryInfo>());
         }
 
-        [TestMethod]
+        [Test]
         public void WillThrowArgumentNullExceptionIfModelIsNull()
         {
             TestRunner.ExecuteTest(() =>
@@ -50,7 +50,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
             });
         }
 
-        [TestMethod]
+        [Test]
         public void WillInvokeMapper()
         {
             TestRunner.ExecuteTest(() =>
@@ -63,7 +63,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
             });
         }
 
-        [TestMethod]
+        [Test]
         public void WillInvokeInsertActionIfIsNew()
         {
             var invoked = false;
@@ -82,7 +82,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
                 });
         }
 
-        [TestMethod]
+        [Test]
         public void WillInvokeQueryBuilderInsertQuery()
         {
             TestRunner.ExecuteTest(() =>
@@ -96,7 +96,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
             });
         }
 
-        [TestMethod]
+        [Test]
         public void WillInvokeExecuteNonQueryIfModelIsNew()
         {
             TestRunner.ExecuteTest(() =>
@@ -109,7 +109,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
             });
         }
 
-        [TestMethod]
+        [Test]
         public void WillInvokeUpdateActionIfNotIsNew()
         {
             Action<ITestModel> updateAction = null;
@@ -131,7 +131,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
                 });
         }
 
-        [TestMethod]
+        [Test]
         public void WillThrowInvalidOperationExceptionIfUpdateExpressionIsNullAndIsNewIsFalse()
         {
             TestRunner.ExecuteTest(() =>
@@ -143,7 +143,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
             });
         }
 
-        [TestMethod]
+        [Test]
         public void WillInvokeQueryBuilderBuildUpdateQuery()
         {
             Expression updateExpression = null;

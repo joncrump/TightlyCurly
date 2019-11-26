@@ -4,10 +4,10 @@ using TightlyCurly.Com.Tests.Common.MsTest;
 
 namespace TightlyCurly.Com.Common.Data.Tests.ReadDatabaseRepositoryBaseTests
 {
-    [TestClass]
+    [TestFixture]
     public class TheConstructor : TestBase
     {
-        [TestMethod]
+        [Test]
         public void WillPassConstructorTests()
         {
             DoConstructorTests<TestableReadDatabaseRepository>();

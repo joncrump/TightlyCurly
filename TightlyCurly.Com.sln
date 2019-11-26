@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{AC2EBE8E-46B9-4230-9CEF-19EC5FF2D01C}"
 EndProject
@@ -103,7 +103,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseMappings", "Databas
 		trademark.js = trademark.js
 	EndProjectSection
 EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "TightlyCurly.Com.Database", "Databases\TightlyCurly.Com.Database\TightlyCurly.Com.Database.sqlproj", "{34A38CF1-D7A3-4AD5-A8AC-8BA4DF16BD48}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TightlyCurly.Com.Database", "Databases\TightlyCurly.Com.Database\TightlyCurly.Com.Database.sqlproj", "{D0630DBE-EBDD-4E57-8774-DAA754A694DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -178,15 +178,15 @@ Global
 		{CEBD0252-BE26-4F0C-9A3D-E3C5BF265290}.Debug-CI|Any CPU.Build.0 = Debug|Any CPU
 		{CEBD0252-BE26-4F0C-9A3D-E3C5BF265290}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEBD0252-BE26-4F0C-9A3D-E3C5BF265290}.Release|Any CPU.Build.0 = Release|Any CPU
-		{34A38CF1-D7A3-4AD5-A8AC-8BA4DF16BD48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{34A38CF1-D7A3-4AD5-A8AC-8BA4DF16BD48}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{34A38CF1-D7A3-4AD5-A8AC-8BA4DF16BD48}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{34A38CF1-D7A3-4AD5-A8AC-8BA4DF16BD48}.Debug-CI|Any CPU.ActiveCfg = Debug|Any CPU
-		{34A38CF1-D7A3-4AD5-A8AC-8BA4DF16BD48}.Debug-CI|Any CPU.Build.0 = Debug|Any CPU
-		{34A38CF1-D7A3-4AD5-A8AC-8BA4DF16BD48}.Debug-CI|Any CPU.Deploy.0 = Debug|Any CPU
-		{34A38CF1-D7A3-4AD5-A8AC-8BA4DF16BD48}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{34A38CF1-D7A3-4AD5-A8AC-8BA4DF16BD48}.Release|Any CPU.Build.0 = Release|Any CPU
-		{34A38CF1-D7A3-4AD5-A8AC-8BA4DF16BD48}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D0630DBE-EBDD-4E57-8774-DAA754A694DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0630DBE-EBDD-4E57-8774-DAA754A694DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0630DBE-EBDD-4E57-8774-DAA754A694DA}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D0630DBE-EBDD-4E57-8774-DAA754A694DA}.Debug-CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0630DBE-EBDD-4E57-8774-DAA754A694DA}.Debug-CI|Any CPU.Build.0 = Debug|Any CPU
+		{D0630DBE-EBDD-4E57-8774-DAA754A694DA}.Debug-CI|Any CPU.Deploy.0 = Debug|Any CPU
+		{D0630DBE-EBDD-4E57-8774-DAA754A694DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0630DBE-EBDD-4E57-8774-DAA754A694DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0630DBE-EBDD-4E57-8774-DAA754A694DA}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -207,6 +207,9 @@ Global
 		{28B4C8EF-D1FD-487F-8CB4-66F316D211CA} = {4D0C6DEA-3D2E-49FE-918D-04E2B6487301}
 		{CEBD0252-BE26-4F0C-9A3D-E3C5BF265290} = {4D0C6DEA-3D2E-49FE-918D-04E2B6487301}
 		{CD202FD2-4659-4879-8559-730716DBE28F} = {A49C7C25-2885-4B44-A97E-5496510F02BA}
-		{34A38CF1-D7A3-4AD5-A8AC-8BA4DF16BD48} = {D89B3E55-48D9-4A4A-AF86-242A68F7164C}
+		{D0630DBE-EBDD-4E57-8774-DAA754A694DA} = {D89B3E55-48D9-4A4A-AF86-242A68F7164C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8530838E-C938-4288-9FE7-96E62A379393}
 	EndGlobalSection
 EndGlobal

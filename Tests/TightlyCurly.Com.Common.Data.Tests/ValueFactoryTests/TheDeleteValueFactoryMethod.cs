@@ -7,10 +7,10 @@ using TightlyCurly.Com.Tests.Common.MsTest;
 
 namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
 {
-    [TestClass]
+    [TestFixture]
     public class TheDeleteValueFactoryMethod : MsTestMoqTestBase<TestableValueFactory>
     {
-        [TestMethod]
+        [Test]
         public void WillThrowArgumentNullExceptionIfKeyIsNull()
         {
             TestRunner.ExecuteTest(() =>
@@ -22,7 +22,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
             });
         }
 
-        [TestMethod]
+        [Test]
         public void WillThrowArgumentEmptyExceptionIfKeyIsEmpty()
         {
             TestRunner.ExecuteTest(() =>
@@ -34,7 +34,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
             });
         }
 
-        [TestMethod]
+        [Test]
         public void WillThrowInvalidOperationExceptionIfKeyDoesNotExist()
         {
             TestRunner
@@ -53,7 +53,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
                 });
         }
 
-        [TestMethod]
+        [Test]
         public void WillDeleteValueFactory()
         {
             var key = String.Empty;

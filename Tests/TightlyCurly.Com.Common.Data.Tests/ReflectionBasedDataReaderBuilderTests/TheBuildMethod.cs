@@ -10,10 +10,10 @@ using TightlyCurly.Com.Tests.Common.MsTest.Data;
 
 namespace TightlyCurly.Com.Common.Data.Tests.ReflectionBasedDataReaderBuilderTests
 {
-    [TestClass]
+    [TestFixture]
     public class TheBuildMethod : MsTestMoqDataItemTestBase<ReflectionBasedDataReaderBuilder>
     {
-        [TestMethod]
+        [Test]
         public void WillThrowArgumentNullExceptionIfDataReaderIsNull()
         {
             TestRunner.ExecuteTest(() =>
@@ -25,7 +25,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ReflectionBasedDataReaderBuilderTes
             });
         }
 
-        [TestMethod]
+        [Test]
         public void WillBuildItemWithoutValueFactoriesAndNoPrefix()
         {
             TestClass expected = null;
@@ -45,7 +45,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ReflectionBasedDataReaderBuilderTes
                 });
         }
 
-        [TestMethod]
+        [Test]
         public void WillBuildItemWithoutValueFactoriesAndPrefix()
         {
             TestClass expected = null;
@@ -67,7 +67,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ReflectionBasedDataReaderBuilderTes
                 });
         }
 
-        [TestMethod]
+        [Test]
         public void WillBuildItemWithValueFactories()
         {
             TestClass expected = null;

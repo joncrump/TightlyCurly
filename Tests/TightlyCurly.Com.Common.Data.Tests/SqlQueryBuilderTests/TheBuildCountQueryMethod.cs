@@ -6,10 +6,10 @@ using TightlyCurly.Com.Tests.Common.MsTest;
 
 namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
 {
-    [TestClass]
+    [TestFixture]
     public class TheBuildCountQueryMethod : MsTestMoqTestBase<SqlQueryBuilder>
     {
-        [TestMethod]
+        [Test]
         public void WillInvokeQueryBuilderStrategyFactory()
         {
             TestRunner

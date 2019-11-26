@@ -6,7 +6,7 @@ using TightlyCurly.Com.Tests.Common.MsTest;
 
 namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
 {
-    [TestClass]
+    [TestFixture]
     public class TheBuildPagedQueryMethod : MsTestMockTestBase<SqlQueryBuilder>
     {
         public override void Setup()
@@ -18,7 +18,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
                 .Returns(new Mock<IQueryBuilderStrategy>().Object);
         }
 
-        [TestMethod]
+        [Test]
         public void WillInvokeSelectSingleStrategyIfPagingInfoIsNull()
         {
             TestRunner
@@ -31,7 +31,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
                 });
         }
 
-        [TestMethod]
+        [Test]
         public void WillNotInvokeSelectSingleStrategyIfPagingInfoIsNotNull()
         {
             TestRunner
@@ -44,7 +44,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
                 });
         }
 
-        [TestMethod]
+        [Test]
         public void WillInvokePagedSingleStrategy()
         {
             TestRunner

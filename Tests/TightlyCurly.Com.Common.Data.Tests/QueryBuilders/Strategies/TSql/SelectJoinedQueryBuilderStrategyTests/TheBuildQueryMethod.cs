@@ -5,962 +5,902 @@ using System.Dynamic;
 using System.Linq.Expressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using NUnit.Framework;
 using TightlyCurly.Com.Common.Data.Attributes;
 using TightlyCurly.Com.Common.Data.QueryBuilders;
 using TightlyCurly.Com.Common.Data.QueryBuilders.Strategies;
 using TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql;
 using TightlyCurly.Com.Common.Extensions;
 using TightlyCurly.Com.Tests.Common.Base;
-using TightlyCurly.Com.Tests.Common.MsTest;
 
 namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.SelectJoinedQueryBuilderStrategyTests
 {
-    [TestClass]
-    public class TheBuildQueryMethod : TestBase<SelectJoinedQueryBuilderStrategy>
+    [TestFixture]
+    public class TheBuildQueryMethod : MockTestBase<SelectJoinedQueryBuilderStrategy>
     {
         protected override void Setup()
         {
             base.Setup();
 
-            Mocks.Get<Mock<IQueryBuilderStrategyFactory>>()
+            Mocks.Get<IQueryBuilderStrategyFactory>()
                 .Setup(x => x.GetBuilderStrategy(QueryKind.SelectSingleTable))
                 .Returns(new Mock<IQueryBuilderStrategy>().Object);
 
-            Mocks.Get<Mock<IPredicateBuilder>>()
+            Mocks.Get<IPredicateBuilder>()
                 .Setup(x => x.BuildContainer(It.IsAny<Expression>(), It.IsAny<Type>(),
                     It.IsAny<bool>(), It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(new QueryContainer(DataGenerator.GenerateString()));
         }
 
-        [TestMethod]
+        [Test]
         public void WillInvokeQueryBuilderStrategyFactoryIfTypeHasNoJoinAttribute()
         {
-            TestRunner
-                .ExecuteTest(() =>
-                {
-                    dynamic parameters = new ExpandoObject();
-                    Expression<Func<NoJoinAttributeClass, bool>> predicate = p => p.IsNotNull();
+            dynamic parameters = new ExpandoObject();
+            Expression<Func<NoJoinAttributeClass, bool>> predicate = p => p.IsNotNull();
 
-                    parameters.Predicate = predicate;
-                    parameters.CanDirtyRead = true;
-                    parameters.IncludeParameters = true;
-                    parameters.DesiredFields = null;
-                    parameters.TableName = null;
+            parameters.Predicate = predicate;
+            parameters.CanDirtyRead = true;
+            parameters.IncludeParameters = true;
+            parameters.DesiredFields = null;
+            parameters.TableName = null;
 
-                    ItemUnderTest.BuildQuery<NoJoinAttributeClass>(parameters);
+            ItemUnderTest.BuildQuery<NoJoinAttributeClass>(parameters);
 
-                    Mocks.Get<Mock<IQueryBuilderStrategyFactory>>()
-                        .Verify(x => x.GetBuilderStrategy(QueryKind.SelectSingleTable), Times.Once);
-                });
+            Mocks.Get<IQueryBuilderStrategyFactory>()
+                .Verify(x => x.GetBuilderStrategy(QueryKind.SelectSingleTable), Times.Once);
         }
 
-        [TestMethod]
+        [Test]
         public void WillReturnQueryInfoIfTypeHasNoJoinAttributes()
         {
             QueryInfo expected = null;
 
-            TestRunner
-                .DoCustomSetup(() =>
-                {
-                    expected = ObjectCreator.CreateNew<QueryInfo>();
-                    var strategy = new Mock<IQueryBuilderStrategy>();
+            expected = ObjectCreator.CreateNew<QueryInfo>();
+            var strategy = new Mock<IQueryBuilderStrategy>();
 
-                    strategy
-                        .Setup(x => x.BuildQuery<NoJoinAttributeClass>(It.IsAny<object>()))
-                        .Returns(expected);
+            strategy
+                .Setup(x => x.BuildQuery<NoJoinAttributeClass>(It.IsAny<object>()))
+                .Returns(expected);
 
-                    Mocks.Get<Mock<IQueryBuilderStrategyFactory>>()
-                        .Setup(x => x.GetBuilderStrategy(QueryKind.SelectSingleTable))
-                        .Returns(strategy.Object);
-                })
-                .ExecuteTest(() =>
-                {
-                    dynamic parameters = new ExpandoObject();
-                    Expression<Func<NoJoinAttributeClass, bool>> predicate = p => p.IsNotNull();
+            Mocks.Get<IQueryBuilderStrategyFactory>()
+                .Setup(x => x.GetBuilderStrategy(QueryKind.SelectSingleTable))
+                .Returns(strategy.Object);
 
-                    parameters.Predicate = predicate;
-                    parameters.CanDirtyRead = true;
-                    parameters.IncludeParameters = true;
-                    parameters.DesiredFields = null;
-                    parameters.TableName = null;
+            dynamic parameters = new ExpandoObject();
+            Expression<Func<NoJoinAttributeClass, bool>> predicate = p => p.IsNotNull();
 
-                    var actual = ItemUnderTest.BuildQuery<NoJoinAttributeClass>(parameters);
+            parameters.Predicate = predicate;
+            parameters.CanDirtyRead = true;
+            parameters.IncludeParameters = true;
+            parameters.DesiredFields = null;
+            parameters.TableName = null;
 
-                    Asserter.AssertEquality(expected, actual, new[]
-                    {
-                        "Parameters", "tableObjectMappings"
-                    });
-                });
+            var actual = ItemUnderTest.BuildQuery<NoJoinAttributeClass>(parameters);
+
+            Asserter.AssertEquality(expected, actual, new[]
+            {
+                "Parameters", "tableObjectMappings"
+            });
         }
 
-        [TestMethod]
+        [Test]
         public void WillNotInvokeQueryBuilderStrategyFactoryIfTypeHasJoinAttributes()
         {
-            TestRunner
-                .DoCustomSetup(() =>
+            var fieldHelper = Mocks.Get<Mock<IFieldHelper>>();
+
+            fieldHelper
+                .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<string>(), It.IsAny<ParentClass>(), It.IsAny<bool>(),
+                    It.IsAny<string>(), It.IsAny<string>()))
+                .Returns(new TableObjectMapping
                 {
-                    var fieldHelper = Mocks.Get<Mock<IFieldHelper>>();
-
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<ParentClass>(), It.IsAny<bool>(),
-                            It.IsAny<string>(), It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
-                        {
-                            TableName = "dbo.Parent",
-                            Alias = "t1",
-                            FieldMappings = new Dictionary<string, FieldParameterMapping>
-                                                {
-                                                    {DataGenerator.GenerateString(), ObjectCreator.CreateNew<FieldParameterMapping>()}
-                                                }
-                        });
-
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<Child1>(), It.IsAny<bool>(),
-                            It.IsAny<string>(), It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
-                        {
-                            TableName = "dbo.Child1",
-                            Alias = "t2",
-                            FieldMappings = new Dictionary<string, FieldParameterMapping>
-                                                {
-                                                    {DataGenerator.GenerateString(), ObjectCreator.CreateNew<FieldParameterMapping>()}
-                                                }
-                        });
-
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<Child2>(), It.IsAny<bool>(),
-                            It.IsAny<string>(), It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
-                        {
-                            TableName = "dbo.Child2",
-                            Alias = "t3",
-                            FieldMappings = new Dictionary<string, FieldParameterMapping>
-                                                {
-                                                    {DataGenerator.GenerateString(), ObjectCreator.CreateNew<FieldParameterMapping>()}
-                                                }
-                        });
-                })
-                .ExecuteTest(() =>
-                {
-                    dynamic parameters = new ExpandoObject();
-                    Expression<Func<ParentClass, bool>> predicate = p => p.IsNotNull();
-
-                    parameters.Predicate = predicate;
-                    parameters.CanDirtyRead = true;
-                    parameters.IncludeParameters = true;
-                    parameters.DesiredFields = null;
-                    parameters.TableName = null;
-
-                    ItemUnderTest.BuildQuery<ParentClass>(parameters);
-
-                    Mocks.Get<Mock<IQueryBuilderStrategyFactory>>()
-                        .Verify(x => x.GetBuilderStrategy(QueryKind.SelectSingleTable), Times.Never);
+                    TableName = "dbo.Parent",
+                    Alias = "t1",
+                    FieldMappings = new Dictionary<string, FieldParameterMapping>
+                                        {
+                                            {DataGenerator.GenerateString(), ObjectCreator.CreateNew<FieldParameterMapping>()}
+                                        }
                 });
+
+            fieldHelper
+                .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<string>(), It.IsAny<Child1>(), It.IsAny<bool>(),
+                    It.IsAny<string>(), It.IsAny<string>()))
+                .Returns(new TableObjectMapping
+                {
+                    TableName = "dbo.Child1",
+                    Alias = "t2",
+                    FieldMappings = new Dictionary<string, FieldParameterMapping>
+                                        {
+                                            {DataGenerator.GenerateString(), ObjectCreator.CreateNew<FieldParameterMapping>()}
+                                        }
+                });
+
+            fieldHelper
+                .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<string>(), It.IsAny<Child2>(), It.IsAny<bool>(),
+                    It.IsAny<string>(), It.IsAny<string>()))
+                .Returns(new TableObjectMapping
+                {
+                    TableName = "dbo.Child2",
+                    Alias = "t3",
+                    FieldMappings = new Dictionary<string, FieldParameterMapping>
+                                        {
+                                            {DataGenerator.GenerateString(), ObjectCreator.CreateNew<FieldParameterMapping>()}
+                                        }
+                });
+            dynamic parameters = new ExpandoObject();
+            Expression<Func<ParentClass, bool>> predicate = p => p.IsNotNull();
+
+            parameters.Predicate = predicate;
+            parameters.CanDirtyRead = true;
+            parameters.IncludeParameters = true;
+            parameters.DesiredFields = null;
+            parameters.TableName = null;
+
+            ItemUnderTest.BuildQuery<ParentClass>(parameters);
+
+            Mocks.Get<IQueryBuilderStrategyFactory>()
+                .Verify(x => x.GetBuilderStrategy(QueryKind.SelectSingleTable), Times.Never);
         }
 
-        [TestMethod]
+        [Test]
         public void WillInvokeFieldHelper()
         {
             Mock<IFieldHelper> fieldHelper = null;
 
-            TestRunner
-                .DoCustomSetup(() =>
+
+            fieldHelper = Mocks.Get<IFieldHelper>();
+
+            fieldHelper
+                .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(), 
+                    It.IsAny<string>(), It.IsAny<ParentClass>(), It.IsAny<bool>(), 
+                    It.IsAny<string>(), It.IsAny<string>()))
+                .Returns(new TableObjectMapping
                 {
-                    fieldHelper = Mocks.Get<Mock<IFieldHelper>>();
-
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(), 
-                            It.IsAny<string>(), It.IsAny<ParentClass>(), It.IsAny<bool>(), 
-                            It.IsAny<string>(), It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
+                    TableName = "dbo.Parent",
+                    Alias = "t1",
+                    FieldMappings =  new Dictionary<string, FieldParameterMapping>
                         {
-                            TableName = "dbo.Parent",
-                            Alias = "t1",
-                            FieldMappings =  new Dictionary<string, FieldParameterMapping>
-                                {
-                                    {DataGenerator.GenerateString(), ObjectCreator.CreateNew<FieldParameterMapping>()}
-                                }
-                        });
-
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<Child1>(), It.IsAny<bool>(), 
-                            It.IsAny<string>(), It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
-                        {
-                            TableName = "dbo.Child1",
-                            Alias = "t2",
-                            FieldMappings =  new Dictionary<string, FieldParameterMapping>
-                                {
-                                    {DataGenerator.GenerateString(), ObjectCreator.CreateNew<FieldParameterMapping>()}
-                                }
-                        });
-
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<Child2>(), It.IsAny<bool>(), 
-                            It.IsAny<string>(), It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
-                        {
-                            TableName = "dbo.Child2",
-                            Alias = "t3",
-                            FieldMappings = new Dictionary<string, FieldParameterMapping>
-                                {
-                                    {DataGenerator.GenerateString(), ObjectCreator.CreateNew<FieldParameterMapping>()}
-                                }
-                        });
-                })
-                .ExecuteTest(() =>
-                {
-                    dynamic parameters = new ExpandoObject();
-                    Expression<Func<ParentClass, bool>> predicate = p => p.IsNotNull();
-                        
-                    parameters.Predicate = predicate;
-                    parameters.CanDirtyRead = true;
-                    parameters.IncludeParameters = true;
-                    parameters.DesiredFields = null;
-                    parameters.TableName = null;
-                    
-                    ItemUnderTest.BuildQuery<ParentClass>(parameters);
-
-                    fieldHelper
-                        .Verify(x => x.BuildFields(It.IsAny<IEnumerable<string>>(), It.IsAny<string>(), 
-                            It.IsAny<ParentClass>(), It.IsAny<bool>(), It.IsAny<string>(), It.IsAny<string>()), Times.Once);
-
-                    fieldHelper
-                        .Verify(x => x.BuildFields(It.IsAny<IEnumerable<string>>(), It.IsAny<string>(),
-                            It.IsAny<Child1>(), It.IsAny<bool>(), 
-                            It.IsAny<string>(), It.IsAny<string>()), Times.Once);
-
-                    fieldHelper
-                        .Verify(x => x.BuildFields(It.IsAny<IEnumerable<string>>(), It.IsAny<string>(),
-                            It.IsAny<Child2>(), It.IsAny<bool>(), It.IsAny<string>(), 
-                            It.IsAny<string>()), Times.Once);
+                            {DataGenerator.GenerateString(), ObjectCreator.CreateNew<FieldParameterMapping>()}
+                        }
                 });
+
+            fieldHelper
+                .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<string>(), It.IsAny<Child1>(), It.IsAny<bool>(), 
+                    It.IsAny<string>(), It.IsAny<string>()))
+                .Returns(new TableObjectMapping
+                {
+                    TableName = "dbo.Child1",
+                    Alias = "t2",
+                    FieldMappings =  new Dictionary<string, FieldParameterMapping>
+                        {
+                            {DataGenerator.GenerateString(), ObjectCreator.CreateNew<FieldParameterMapping>()}
+                        }
+                });
+
+            fieldHelper
+                .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<string>(), It.IsAny<Child2>(), It.IsAny<bool>(), 
+                    It.IsAny<string>(), It.IsAny<string>()))
+                .Returns(new TableObjectMapping
+                {
+                    TableName = "dbo.Child2",
+                    Alias = "t3",
+                    FieldMappings = new Dictionary<string, FieldParameterMapping>
+                        {
+                            {DataGenerator.GenerateString(), ObjectCreator.CreateNew<FieldParameterMapping>()}
+                        }
+                });
+            dynamic parameters = new ExpandoObject();
+            Expression<Func<ParentClass, bool>> predicate = p => p.IsNotNull();
+                
+            parameters.Predicate = predicate;
+            parameters.CanDirtyRead = true;
+            parameters.IncludeParameters = true;
+            parameters.DesiredFields = null;
+            parameters.TableName = null;
+            
+            ItemUnderTest.BuildQuery<ParentClass>(parameters);
+
+            fieldHelper
+                .Verify(x => x.BuildFields(It.IsAny<IEnumerable<string>>(), It.IsAny<string>(), 
+                    It.IsAny<ParentClass>(), It.IsAny<bool>(), It.IsAny<string>(), It.IsAny<string>()), Times.Once);
+
+            fieldHelper
+                .Verify(x => x.BuildFields(It.IsAny<IEnumerable<string>>(), It.IsAny<string>(),
+                    It.IsAny<Child1>(), It.IsAny<bool>(), 
+                    It.IsAny<string>(), It.IsAny<string>()), Times.Once);
+
+            fieldHelper
+                .Verify(x => x.BuildFields(It.IsAny<IEnumerable<string>>(), It.IsAny<string>(),
+                    It.IsAny<Child2>(), It.IsAny<bool>(), It.IsAny<string>(), 
+                    It.IsAny<string>()), Times.Once); 
         }
 
-        [TestMethod]
+        [Test]
         public void WillBuildSimpleJoinQuery()
         {
             QueryInfo expected = null;
 
-            TestRunner
-                .DoCustomSetup(() =>
+            const string expectedQuery = "SELECT t1.ParentProperty1 AS t1_ParentProperty1, t2.ChildProperty1 AS t2_ChildProperty1, t2.ChildProperty2 AS t2_ChildProperty2, t2.ChildProperty3 AS t2_ChildProperty3, t3.ChildProperty1 AS t3_ChildProperty1, t3.ChildProperty2 AS t3_ChildProperty2, t3.ChildProperty3 AS t3_ChildProperty3 FROM dbo.Parent (NOLOCK) t1 INNER JOIN dbo.Child1 (NOLOCK) t2 ON t1.t1_ParentProperty1 = t2.t2_ChildProperty1 LEFT JOIN dbo.Child2 (NOLOCK) t3 ON t1.t1_ParentProperty1 = t3.t3_ChildProperty1;";
+
+            var fieldHelper = Mocks.Get<IFieldHelper>();
+
+            fieldHelper
+                .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<string>(), It.IsAny<ParentClass>(), It.IsAny<bool>(), "t1", 
+                    It.IsAny<string>()))
+                .Returns(new TableObjectMapping
                 {
-                    const string expectedQuery = "SELECT t1.ParentProperty1 AS t1_ParentProperty1, t2.ChildProperty1 AS t2_ChildProperty1, t2.ChildProperty2 AS t2_ChildProperty2, t2.ChildProperty3 AS t2_ChildProperty3, t3.ChildProperty1 AS t3_ChildProperty1, t3.ChildProperty2 AS t3_ChildProperty2, t3.ChildProperty3 AS t3_ChildProperty3 FROM dbo.Parent (NOLOCK) t1 INNER JOIN dbo.Child1 (NOLOCK) t2 ON t1.t1_ParentProperty1 = t2.t2_ChildProperty1 LEFT JOIN dbo.Child2 (NOLOCK) t3 ON t1.t1_ParentProperty1 = t3.t3_ChildProperty1;";
-
-                    var fieldHelper = Mocks.Get<Mock<IFieldHelper>>();
-
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<ParentClass>(), It.IsAny<bool>(), "t1", 
-                            It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
+                    TableName = "dbo.Parent",
+                    FieldMappings = new Dictionary<string, FieldParameterMapping>
+                    {
                         {
-                            TableName = "dbo.Parent",
-                            FieldMappings = new Dictionary<string, FieldParameterMapping>
+                            "ParentProperty1", new FieldParameterMapping
                             {
-                                {
-                                    "ParentProperty1", new FieldParameterMapping
-                                    {
-                                        FieldName = "ParentProperty1", 
-                                        Prefix = "t1",
-                                        DbType = DbType.Int32
-                                    }
-                                }
-                            }, 
-                            Alias = "t1"
-                        });
-
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<Child1>(), It.IsAny<bool>(), "t2", 
-                            It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
-                        {
-                            TableName = "dbo.Child1",
-                            FieldMappings = new Dictionary<string, FieldParameterMapping>
-                            {
-                                {
-                                    "ChildProperty1", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty1",
-                                        Prefix = "t2",
-                                        DbType = DbType.Int32
-                                    }
-                                },
-                                {
-                                    "ChildProperty2", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty2",
-                                        Prefix = "t2",
-                                        DbType = DbType.String
-                                    }
-                                },
-                                {
-                                    "ChildProperty3", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty3",
-                                        Prefix = "t2",
-                                        DbType = DbType.String
-                                    }
-                                }
-                            }, 
-                            Alias = "t2"
-                        });
-
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<Child2>(), It.IsAny<bool>(), "t3", 
-                            It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
-                        {
-                            TableName = "dbo.Child2",
-                            FieldMappings = new Dictionary<string, FieldParameterMapping>
-                            {
-                                {
-                                    "ChildProperty1", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty1",
-                                        Prefix = "t3",
-                                        DbType = DbType.Int32
-                                    }
-                                },
-                                {
-                                    "ChildProperty2", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty2",
-                                        Prefix = "t3",
-                                        DbType = DbType.String
-                                    }
-                                },
-                                {
-                                    "ChildProperty3", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty3",
-                                        Prefix = "t3",
-                                        DbType = DbType.String
-                                    }
-                                }
-                            }, 
-                            Alias = "t3"
-                        });
-
-                    expected = new QueryInfo(expectedQuery);
-                })
-                .ExecuteTest(() =>
-                {
-                    dynamic parameters = new ExpandoObject();
-
-                    parameters.Predicate = null;
-                    parameters.CanDirtyRead = true;
-                    parameters.IncludeParameters = true;
-                    parameters.DesiredFields = null;
-                    parameters.TableName = null;
-
-                    QueryInfo actual = ItemUnderTest.BuildQuery<ParentClass>(parameters);   
-                 
-                    Asserter.AssertEquality(expected.Query, actual.Query);
+                                FieldName = "ParentProperty1", 
+                                Prefix = "t1",
+                                DbType = DbType.Int32
+                            }
+                        }
+                    }, 
+                    Alias = "t1"
                 });
+
+            fieldHelper
+                .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<string>(), It.IsAny<Child1>(), It.IsAny<bool>(), "t2", 
+                    It.IsAny<string>()))
+                .Returns(new TableObjectMapping
+                {
+                    TableName = "dbo.Child1",
+                    FieldMappings = new Dictionary<string, FieldParameterMapping>
+                    {
+                        {
+                            "ChildProperty1", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty1",
+                                Prefix = "t2",
+                                DbType = DbType.Int32
+                            }
+                        },
+                        {
+                            "ChildProperty2", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty2",
+                                Prefix = "t2",
+                                DbType = DbType.String
+                            }
+                        },
+                        {
+                            "ChildProperty3", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty3",
+                                Prefix = "t2",
+                                DbType = DbType.String
+                            }
+                        }
+                    }, 
+                    Alias = "t2"
+                });
+
+            fieldHelper
+                .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<string>(), It.IsAny<Child2>(), It.IsAny<bool>(), "t3", 
+                    It.IsAny<string>()))
+                .Returns(new TableObjectMapping
+                {
+                    TableName = "dbo.Child2",
+                    FieldMappings = new Dictionary<string, FieldParameterMapping>
+                    {
+                        {
+                            "ChildProperty1", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty1",
+                                Prefix = "t3",
+                                DbType = DbType.Int32
+                            }
+                        },
+                        {
+                            "ChildProperty2", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty2",
+                                Prefix = "t3",
+                                DbType = DbType.String
+                            }
+                        },
+                        {
+                            "ChildProperty3", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty3",
+                                Prefix = "t3",
+                                DbType = DbType.String
+                            }
+                        }
+                    }, 
+                    Alias = "t3"
+                });
+
+            expected = new QueryInfo(expectedQuery);
+       
+            dynamic parameters = new ExpandoObject();
+
+            parameters.Predicate = null;
+            parameters.CanDirtyRead = true;
+            parameters.IncludeParameters = true;
+            parameters.DesiredFields = null;
+            parameters.TableName = null;
+
+            QueryInfo actual = ItemUnderTest.BuildQuery<ParentClass>(parameters);   
+         
+            Asserter.AssertEquality(expected.Query, actual.Query);
         }
 
-        [TestMethod]
+        [Test]
         public void WillBuildComplexJoinQuery()
         {
             QueryInfo expected = null;
 
-            TestRunner
-                .DoCustomSetup(() =>
+            const string expectedQuery = @"SELECT t1.ParentProperty3 AS t1_ParentProperty3, t2.ChildProperty1 AS t2_ChildProperty1, t2.ChildProperty2 AS t2_ChildProperty2, t2.ChildProperty3 AS t2_ChildProperty3 FROM dbo.ParentClass3 (NOLOCK) t1 LEFT JOIN dbo.Parent3_Child1 (NOLOCK) ON t1.t1_ParentProperty3 = dbo.Parent3_Child1.ParentProperty3 LEFT JOIN dbo.Child3 (NOLOCK) t2 ON dbo.Parent3_Child1.ChildProperty1 = t2.t2_ChildProperty1;";
+
+            var fieldHelper = Mocks.Get<IFieldHelper>();
+
+            fieldHelper
+                .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<string>(), It.IsAny<ParentClass3>(), It.IsAny<bool>(), "t1", 
+                    It.IsAny<string>()))
+                .Returns(new TableObjectMapping
                 {
-                    const string expectedQuery = @"SELECT t1.ParentProperty3 AS t1_ParentProperty3, t2.ChildProperty1 AS t2_ChildProperty1, t2.ChildProperty2 AS t2_ChildProperty2, t2.ChildProperty3 AS t2_ChildProperty3 FROM dbo.ParentClass3 (NOLOCK) t1 LEFT JOIN dbo.Parent3_Child1 (NOLOCK) ON t1.t1_ParentProperty3 = dbo.Parent3_Child1.ParentProperty3 LEFT JOIN dbo.Child3 (NOLOCK) t2 ON dbo.Parent3_Child1.ChildProperty1 = t2.t2_ChildProperty1;";
-
-                    var fieldHelper = Mocks.Get<Mock<IFieldHelper>>();
-
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<ParentClass3>(), It.IsAny<bool>(), "t1", 
-                            It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
+                    TableName = "dbo.ParentClass3",
+                    FieldMappings = new Dictionary<string, FieldParameterMapping>
+                    {
                         {
-                            TableName = "dbo.ParentClass3",
-                            FieldMappings = new Dictionary<string, FieldParameterMapping>
+                            "ParentProperty3", new FieldParameterMapping
                             {
-                                {
-                                    "ParentProperty3", new FieldParameterMapping
-                                    {
-                                        FieldName = "ParentProperty3", 
-                                        Prefix = "t1",
-                                        DbType = DbType.Int32
-                                    }
-                                }
-                            },
-                            Alias = "t1"
-                        });
-
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<Child3>(), It.IsAny<bool>(), "t2", 
-                            It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
-                        {
-                            TableName = "dbo.Child3",
-                            FieldMappings = new Dictionary<string, FieldParameterMapping>
-                            {
-                                {
-                                    "ChildProperty1", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty1",
-                                        Prefix = "t2",
-                                        DbType = DbType.Int32
-                                    }
-                                },
-                                {
-                                    "ChildProperty2", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty2",
-                                        Prefix = "t2",
-                                        DbType = DbType.String
-                                    }
-                                },
-                                {
-                                    "ChildProperty3", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty3",
-                                        Prefix = "t2",
-                                        DbType = DbType.String
-                                    }
-                                }
-                            },
-                            Alias = "t2"
-                        });
-
-                    expected = new QueryInfo(expectedQuery);
-                })
-                .ExecuteTest(() =>
-                {
-                    dynamic parameters = new ExpandoObject();
-
-                    parameters.Predicate = null;
-                    parameters.CanDirtyRead = true;
-                    parameters.IncludeParameters = true;
-                    parameters.DesiredFields = null;
-                    parameters.TableName = null;
-
-                    QueryInfo actual = ItemUnderTest.BuildQuery<ParentClass3>(parameters);
-
-                    Asserter.AssertEquality(expected.Query, actual.Query);
+                                FieldName = "ParentProperty3", 
+                                Prefix = "t1",
+                                DbType = DbType.Int32
+                            }
+                        }
+                    },
+                    Alias = "t1"
                 });
+
+            fieldHelper
+                .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<string>(), It.IsAny<Child3>(), It.IsAny<bool>(), "t2", 
+                    It.IsAny<string>()))
+                .Returns(new TableObjectMapping
+                {
+                    TableName = "dbo.Child3",
+                    FieldMappings = new Dictionary<string, FieldParameterMapping>
+                    {
+                        {
+                            "ChildProperty1", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty1",
+                                Prefix = "t2",
+                                DbType = DbType.Int32
+                            }
+                        },
+                        {
+                            "ChildProperty2", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty2",
+                                Prefix = "t2",
+                                DbType = DbType.String
+                            }
+                        },
+                        {
+                            "ChildProperty3", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty3",
+                                Prefix = "t2",
+                                DbType = DbType.String
+                            }
+                        }
+                    },
+                    Alias = "t2"
+                });
+
+            expected = new QueryInfo(expectedQuery);
+
+            dynamic parameters = new ExpandoObject();
+
+            parameters.Predicate = null;
+            parameters.CanDirtyRead = true;
+            parameters.IncludeParameters = true;
+            parameters.DesiredFields = null;
+            parameters.TableName = null;
+
+            QueryInfo actual = ItemUnderTest.BuildQuery<ParentClass3>(parameters);
+
+            Asserter.AssertEquality(expected.Query, actual.Query);
         }
 
-        [TestMethod]
+        [Test]
         public void WillMixSimpleAndComplexJoins()
         {
             QueryInfo expected = null;
 
-            TestRunner
-                .DoCustomSetup(() =>
+            const string expectedQuery = @"SELECT t1.ParentProperty1 AS t1_ParentProperty1, t2.ChildProperty1 AS t2_ChildProperty1, t2.ChildProperty2 AS t2_ChildProperty2, t2.ChildProperty3 AS t2_ChildProperty3, t3.ChildProperty1 AS t3_ChildProperty1, t3.ChildProperty2 AS t3_ChildProperty2, t3.ChildProperty3 AS t3_ChildProperty3, t4.ChildProperty1 AS t4_ChildProperty1, t4.ChildProperty2 AS t4_ChildProperty2, t4.ChildProperty3 AS t4_ChildProperty3 FROM dbo.Parent2 (NOLOCK) t1 INNER JOIN dbo.Child1 (NOLOCK) t2 ON t1.t1_ParentProperty1 = t2.t2_ChildProperty1 LEFT JOIN dbo.Child2 (NOLOCK) t3 ON t1.t1_ParentProperty1 = t3.t3_ChildProperty1 LEFT JOIN dbo.Parent2_Child1 (NOLOCK) ON t1.t1_ParentProperty1 = dbo.Parent2_Child1.ParentProperty1 LEFT JOIN dbo.Child3 (NOLOCK) t4 ON dbo.Parent2_Child1.ChildProperty1 = t4.t4_ChildProperty1;";
+
+            var fieldHelper = Mocks.Get<IFieldHelper>();
+
+            fieldHelper
+                .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<string>(), It.IsAny<ParentClass2>(), It.IsAny<bool>(), "t1", 
+                    It.IsAny<string>()))
+                .Returns(new TableObjectMapping
                 {
-                    const string expectedQuery = @"SELECT t1.ParentProperty1 AS t1_ParentProperty1, t2.ChildProperty1 AS t2_ChildProperty1, t2.ChildProperty2 AS t2_ChildProperty2, t2.ChildProperty3 AS t2_ChildProperty3, t3.ChildProperty1 AS t3_ChildProperty1, t3.ChildProperty2 AS t3_ChildProperty2, t3.ChildProperty3 AS t3_ChildProperty3, t4.ChildProperty1 AS t4_ChildProperty1, t4.ChildProperty2 AS t4_ChildProperty2, t4.ChildProperty3 AS t4_ChildProperty3 FROM dbo.Parent2 (NOLOCK) t1 INNER JOIN dbo.Child1 (NOLOCK) t2 ON t1.t1_ParentProperty1 = t2.t2_ChildProperty1 LEFT JOIN dbo.Child2 (NOLOCK) t3 ON t1.t1_ParentProperty1 = t3.t3_ChildProperty1 LEFT JOIN dbo.Parent2_Child1 (NOLOCK) ON t1.t1_ParentProperty1 = dbo.Parent2_Child1.ParentProperty1 LEFT JOIN dbo.Child3 (NOLOCK) t4 ON dbo.Parent2_Child1.ChildProperty1 = t4.t4_ChildProperty1;";
-
-                    var fieldHelper = Mocks.Get<Mock<IFieldHelper>>();
-
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<ParentClass2>(), It.IsAny<bool>(), "t1", 
-                            It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
+                    TableName = "dbo.Parent2",
+                    FieldMappings = new Dictionary<string, FieldParameterMapping>
+                    {
                         {
-                            TableName = "dbo.Parent2",
-                            FieldMappings = new Dictionary<string, FieldParameterMapping>
+                            "ParentProperty1", new FieldParameterMapping
                             {
-                                {
-                                    "ParentProperty1", new FieldParameterMapping
-                                    {
-                                        FieldName = "ParentProperty1", 
-                                        Prefix = "t1",
-                                        DbType = DbType.Int32
-                                    }
-                                }
-                            },
-                            Alias = "t1"
-                        });
-
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<Child1>(), It.IsAny<bool>(), "t2", 
-                            It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
-                        {
-                            TableName = "dbo.Child1",
-                            FieldMappings = new Dictionary<string, FieldParameterMapping>
-                            {
-                                {
-                                    "ChildProperty1", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty1",
-                                        Prefix = "t2",
-                                        DbType = DbType.Int32
-                                    }
-                                },
-                                {
-                                    "ChildProperty2", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty2",
-                                        Prefix = "t2",
-                                        DbType = DbType.String
-                                    }
-                                },
-                                {
-                                    "ChildProperty3", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty3",
-                                        Prefix = "t2",
-                                        DbType = DbType.String
-                                    }
-                                }
-                            },
-                            Alias = "t2"
-                        });
-
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<Child2>(), It.IsAny<bool>(), "t3", 
-                            It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
-                        {
-                            TableName = "dbo.Child2",
-                            FieldMappings = new Dictionary<string, FieldParameterMapping>
-                            {
-                                {
-                                    "ChildProperty1", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty1",
-                                        Prefix = "t3",
-                                        DbType = DbType.Int32
-                                    }
-                                },
-                                {
-                                    "ChildProperty2", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty2",
-                                        Prefix = "t3",
-                                        DbType = DbType.String
-                                    }
-                                },
-                                {
-                                    "ChildProperty3", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty3",
-                                        Prefix = "t3",
-                                        DbType = DbType.String
-                                    }
-                                }
-                            },
-                            Alias = "t3"
-                        });
-                    
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<Child3>(), It.IsAny<bool>(), "t4", 
-                            It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
-                        {
-                            TableName = "dbo.Child3",
-                            FieldMappings = new Dictionary<string, FieldParameterMapping>
-                            {
-                                {
-                                    "ChildProperty1", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty1",
-                                        Prefix = "t4",
-                                        DbType = DbType.Int32
-                                    }
-                                },
-                                {
-                                    "ChildProperty2", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty2",
-                                        Prefix = "t4",
-                                        DbType = DbType.String
-                                    }
-                                },
-                                {
-                                    "ChildProperty3", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty3",
-                                        Prefix = "t4",
-                                        DbType = DbType.String
-                                    }
-                                }
-                            },
-                        Alias = "t4"
-                    });
-
-                    expected = new QueryInfo(expectedQuery);
-                })
-                .ExecuteTest(() =>
-                {
-                    dynamic parameters = new ExpandoObject();
-
-                    parameters.Predicate = null;
-                    parameters.CanDirtyRead = true;
-                    parameters.IncludeParameters = true;
-                    parameters.DesiredFields = null;
-                    parameters.TableName = null;
-
-                    QueryInfo actual = ItemUnderTest.BuildQuery<ParentClass2>(parameters);
-
-                    Asserter.AssertEquality(expected.Query, actual.Query);
+                                FieldName = "ParentProperty1", 
+                                Prefix = "t1",
+                                DbType = DbType.Int32
+                            }
+                        }
+                    },
+                    Alias = "t1"
                 });
+
+            fieldHelper
+                .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<string>(), It.IsAny<Child1>(), It.IsAny<bool>(), "t2", 
+                    It.IsAny<string>()))
+                .Returns(new TableObjectMapping
+                {
+                    TableName = "dbo.Child1",
+                    FieldMappings = new Dictionary<string, FieldParameterMapping>
+                    {
+                        {
+                            "ChildProperty1", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty1",
+                                Prefix = "t2",
+                                DbType = DbType.Int32
+                            }
+                        },
+                        {
+                            "ChildProperty2", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty2",
+                                Prefix = "t2",
+                                DbType = DbType.String
+                            }
+                        },
+                        {
+                            "ChildProperty3", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty3",
+                                Prefix = "t2",
+                                DbType = DbType.String
+                            }
+                        }
+                    },
+                    Alias = "t2"
+                });
+
+            fieldHelper
+                .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<string>(), It.IsAny<Child2>(), It.IsAny<bool>(), "t3", 
+                    It.IsAny<string>()))
+                .Returns(new TableObjectMapping
+                {
+                    TableName = "dbo.Child2",
+                    FieldMappings = new Dictionary<string, FieldParameterMapping>
+                    {
+                        {
+                            "ChildProperty1", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty1",
+                                Prefix = "t3",
+                                DbType = DbType.Int32
+                            }
+                        },
+                        {
+                            "ChildProperty2", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty2",
+                                Prefix = "t3",
+                                DbType = DbType.String
+                            }
+                        },
+                        {
+                            "ChildProperty3", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty3",
+                                Prefix = "t3",
+                                DbType = DbType.String
+                            }
+                        }
+                    },
+                    Alias = "t3"
+                });
+            
+            fieldHelper
+                .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<string>(), It.IsAny<Child3>(), It.IsAny<bool>(), "t4", 
+                    It.IsAny<string>()))
+                .Returns(new TableObjectMapping
+                {
+                    TableName = "dbo.Child3",
+                    FieldMappings = new Dictionary<string, FieldParameterMapping>
+                    {
+                        {
+                            "ChildProperty1", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty1",
+                                Prefix = "t4",
+                                DbType = DbType.Int32
+                            }
+                        },
+                        {
+                            "ChildProperty2", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty2",
+                                Prefix = "t4",
+                                DbType = DbType.String
+                            }
+                        },
+                        {
+                            "ChildProperty3", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty3",
+                                Prefix = "t4",
+                                DbType = DbType.String
+                            }
+                        }
+                    },
+                Alias = "t4"
+            });
+
+            expected = new QueryInfo(expectedQuery);
+            dynamic parameters = new ExpandoObject();
+
+            parameters.Predicate = null;
+            parameters.CanDirtyRead = true;
+            parameters.IncludeParameters = true;
+            parameters.DesiredFields = null;
+            parameters.TableName = null;
+
+            QueryInfo actual = ItemUnderTest.BuildQuery<ParentClass2>(parameters);
+
+            Asserter.AssertEquality(expected.Query, actual.Query);
         }
 
-        [TestMethod]
+        [Test]
         public void WillInvokePredicateBuilderIfPredicateIsNotNull()
         {
-            TestRunner
-                .DoCustomSetup(() =>
-                {
-                    const string expectedQuery = @"SELECT t1.ParentProperty3 AS t1_ParentProperty3, t2.ChildProperty1 AS t2_ChildProperty1, t2.ChildProperty2 AS t2_ChildProperty2, t2.ChildProperty3 AS t2_ChildProperty3 FROM dbo.ParentClass3 (NOLOCK) t1 LEFT JOIN dbo.Parent3_Child1 (NOLOCK) ON t1.t1_ParentProperty3 = dbo.Parent3_Child1.ParentProperty3 LEFT JOIN dbo.Child3 (NOLOCK) t2 ON dbo.Parent3_Child1.ChildProperty1 = t2.t2_ChildProperty1;";
+            const string expectedQuery = @"SELECT t1.ParentProperty3 AS t1_ParentProperty3, t2.ChildProperty1 AS t2_ChildProperty1, t2.ChildProperty2 AS t2_ChildProperty2, t2.ChildProperty3 AS t2_ChildProperty3 FROM dbo.ParentClass3 (NOLOCK) t1 LEFT JOIN dbo.Parent3_Child1 (NOLOCK) ON t1.t1_ParentProperty3 = dbo.Parent3_Child1.ParentProperty3 LEFT JOIN dbo.Child3 (NOLOCK) t2 ON dbo.Parent3_Child1.ChildProperty1 = t2.t2_ChildProperty1;";
 
-                    var fieldHelper = Mocks.Get<Mock<IFieldHelper>>();
+                var fieldHelper = Mocks.Get<IFieldHelper>();
 
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<ParentClass3>(), It.IsAny<bool>(), "t1", 
-                            It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
+                fieldHelper
+                    .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                        It.IsAny<string>(), It.IsAny<ParentClass3>(), It.IsAny<bool>(), "t1", 
+                        It.IsAny<string>()))
+                    .Returns(new TableObjectMapping
+                    {
+                        TableName = "dbo.ParentClass3",
+                        FieldMappings = new Dictionary<string, FieldParameterMapping>
                         {
-                            TableName = "dbo.ParentClass3",
-                            FieldMappings = new Dictionary<string, FieldParameterMapping>
                             {
+                                "ParentProperty3", new FieldParameterMapping
                                 {
-                                    "ParentProperty3", new FieldParameterMapping
-                                    {
-                                        FieldName = "ParentProperty3", 
-                                        Prefix = "t1",
-                                        DbType = DbType.Int32
-                                    }
+                                    FieldName = "ParentProperty3", 
+                                    Prefix = "t1",
+                                    DbType = DbType.Int32
+                                }
+                            }
+                        },
+                        Alias = "t1"
+                    });
+
+                fieldHelper
+                    .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                        It.IsAny<string>(), It.IsAny<Child3>(), It.IsAny<bool>(), "t2", 
+                        It.IsAny<string>()))
+                    .Returns(new TableObjectMapping
+                    {
+                        TableName = "dbo.Child3",
+                        FieldMappings = new Dictionary<string, FieldParameterMapping>
+                        {
+                            {
+                                "ChildProperty1", new FieldParameterMapping
+                                {
+                                    FieldName = "ChildProperty1",
+                                    Prefix = "t2",
+                                    DbType = DbType.Int32
                                 }
                             },
-                            Alias = "t1"
-                        });
-
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<Child3>(), It.IsAny<bool>(), "t2", 
-                            It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
-                        {
-                            TableName = "dbo.Child3",
-                            FieldMappings = new Dictionary<string, FieldParameterMapping>
                             {
+                                "ChildProperty2", new FieldParameterMapping
                                 {
-                                    "ChildProperty1", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty1",
-                                        Prefix = "t2",
-                                        DbType = DbType.Int32
-                                    }
-                                },
-                                {
-                                    "ChildProperty2", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty2",
-                                        Prefix = "t2",
-                                        DbType = DbType.String
-                                    }
-                                },
-                                {
-                                    "ChildProperty3", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty3",
-                                        Prefix = "t2",
-                                        DbType = DbType.String
-                                    }
+                                    FieldName = "ChildProperty2",
+                                    Prefix = "t2",
+                                    DbType = DbType.String
                                 }
                             },
-                            Alias = "t2"
-                        });
+                            {
+                                "ChildProperty3", new FieldParameterMapping
+                                {
+                                    FieldName = "ChildProperty3",
+                                    Prefix = "t2",
+                                    DbType = DbType.String
+                                }
+                            }
+                        },
+                        Alias = "t2"
+                    });
 
-                    var query = new QueryInfo(expectedQuery);
-                })
-                .ExecuteTest(() =>
-                {
-                    dynamic parameters = new ExpandoObject();
+                var query = new QueryInfo(expectedQuery);
+        
+                dynamic parameters = new ExpandoObject();
 // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-                    Expression<Func<ParentClass3, bool>> predicate = t => t.ParentProperty3 != null;
+                Expression<Func<ParentClass3, bool>> predicate = t => t.ParentProperty3 != null;
 
-                    parameters.Predicate = predicate;
-                    parameters.CanDirtyRead = true;
-                    parameters.IncludeParameters = true;
-                    parameters.DesiredFields = null;
-                    parameters.TableName = null;
+                parameters.Predicate = predicate;
+                parameters.CanDirtyRead = true;
+                parameters.IncludeParameters = true;
+                parameters.DesiredFields = null;
+                parameters.TableName = null;
 
-                    ItemUnderTest.BuildQuery<ParentClass3>(parameters);
+                ItemUnderTest.BuildQuery<ParentClass3>(parameters);
 
-                    Mocks.Get<Mock<IPredicateBuilder>>()
-                        .Verify(x => x.BuildContainer(It.IsAny<Expression>(), It.IsAny<Type>(), 
-                            It.IsAny<bool>(), It.IsAny<string>(), It.IsAny<string>()), Times.Once);
-                });
+                Mocks.Get<IPredicateBuilder>()
+                    .Verify(x => x.BuildContainer(It.IsAny<Expression>(), It.IsAny<Type>(), 
+                        It.IsAny<bool>(), It.IsAny<string>(), It.IsAny<string>()), Times.Once);
         }
 
-        [TestMethod]
+        [Test]
         public void WillNotInvokePredicateBuilderIfPredicateIsNull()
         {
             QueryInfo expected = null;
 
-            TestRunner
-                .DoCustomSetup(() =>
+            const string expectedQuery = @"SELECT t1.ParentProperty1 AS t1_ParentProperty1, t2.ChildProperty1 AS t2_ChildProperty1, t2.ChildProperty2 AS t2_ChildProperty2, t2.ChildProperty3 AS t2_ChildProperty3, t3.ChildProperty1 AS t3_ChildProperty1, t3.ChildProperty2 AS t3_ChildProperty2, t3.ChildProperty3 AS t3_ChildProperty3, t4.ChildProperty1 AS t4_ChildProperty1, t4.ChildProperty2 AS t4_ChildProperty2, t4.ChildProperty3 AS t4_ChildProperty3 FROM dbo.Parent2 (NOLOCK) t1 INNER JOIN dbo.Child1 (NOLOCK) t2 ON t1.t1_ParentProperty1 = t2.t2_ChildProperty1 LEFT JOIN dbo.Child2 (NOLOCK) t3 ON t1.t1_ParentProperty1 = t3.t3_ChildProperty1 LEFT JOIN dbo.Parent2_Child1 (NOLOCK) ON t1.t1_ParentProperty1 = dbo.Parent2_Child1.ParentProperty1 LEFT JOIN dbo.Child3 (NOLOCK) t4 ON dbo.Parent2_Child1.ChildProperty1 = t4.t4_ChildProperty1;";
+
+            var fieldHelper = Mocks.Get<IFieldHelper>();
+
+            fieldHelper
+                .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<string>(), It.IsAny<ParentClass2>(), It.IsAny<bool>(), "t1", 
+                    It.IsAny<string>()))
+                .Returns(new TableObjectMapping
                 {
-                    const string expectedQuery = @"SELECT t1.ParentProperty1 AS t1_ParentProperty1, t2.ChildProperty1 AS t2_ChildProperty1, t2.ChildProperty2 AS t2_ChildProperty2, t2.ChildProperty3 AS t2_ChildProperty3, t3.ChildProperty1 AS t3_ChildProperty1, t3.ChildProperty2 AS t3_ChildProperty2, t3.ChildProperty3 AS t3_ChildProperty3, t4.ChildProperty1 AS t4_ChildProperty1, t4.ChildProperty2 AS t4_ChildProperty2, t4.ChildProperty3 AS t4_ChildProperty3 FROM dbo.Parent2 (NOLOCK) t1 INNER JOIN dbo.Child1 (NOLOCK) t2 ON t1.t1_ParentProperty1 = t2.t2_ChildProperty1 LEFT JOIN dbo.Child2 (NOLOCK) t3 ON t1.t1_ParentProperty1 = t3.t3_ChildProperty1 LEFT JOIN dbo.Parent2_Child1 (NOLOCK) ON t1.t1_ParentProperty1 = dbo.Parent2_Child1.ParentProperty1 LEFT JOIN dbo.Child3 (NOLOCK) t4 ON dbo.Parent2_Child1.ChildProperty1 = t4.t4_ChildProperty1;";
-
-                    var fieldHelper = Mocks.Get<Mock<IFieldHelper>>();
-
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<ParentClass2>(), It.IsAny<bool>(), "t1", 
-                            It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
+                    TableName = "dbo.Parent2",
+                    FieldMappings = new Dictionary<string, FieldParameterMapping>
+                    {
                         {
-                            TableName = "dbo.Parent2",
-                            FieldMappings = new Dictionary<string, FieldParameterMapping>
+                            "ParentProperty1", new FieldParameterMapping
                             {
-                                {
-                                    "ParentProperty1", new FieldParameterMapping
-                                    {
-                                        FieldName = "ParentProperty1", 
-                                        Prefix = "t1",
-                                        DbType = DbType.Int32
-                                    }
-                                }
-                            },
-                            Alias = "t1"
-                        });
-
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<Child1>(), It.IsAny<bool>(), "t2", 
-                            It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
-                        {
-                            TableName = "dbo.Child1",
-                            FieldMappings = new Dictionary<string, FieldParameterMapping>
-                            {
-                                {
-                                    "ChildProperty1", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty1",
-                                        Prefix = "t2",
-                                        DbType = DbType.Int32
-                                    }
-                                },
-                                {
-                                    "ChildProperty2", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty2",
-                                        Prefix = "t2",
-                                        DbType = DbType.String
-                                    }
-                                },
-                                {
-                                    "ChildProperty3", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty3",
-                                        Prefix = "t2",
-                                        DbType = DbType.String
-                                    }
-                                }
-                            },
-                            Alias = "t2"
-                        });
-
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<Child2>(), It.IsAny<bool>(), "t3", 
-                            It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
-                        {
-                            TableName = "dbo.Child2",
-                            FieldMappings = new Dictionary<string, FieldParameterMapping>
-                            {
-                                {
-                                    "ChildProperty1", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty1",
-                                        Prefix = "t3",
-                                        DbType = DbType.Int32
-                                    }
-                                },
-                                {
-                                    "ChildProperty2", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty2",
-                                        Prefix = "t3",
-                                        DbType = DbType.String
-                                    }
-                                },
-                                {
-                                    "ChildProperty3", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty3",
-                                        Prefix = "t3",
-                                        DbType = DbType.String
-                                    }
-                                }
-                            },
-                            Alias = "t3"
-                        });
-
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<Child3>(), It.IsAny<bool>(), "t4", 
-                            It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
-                        {
-                            TableName = "dbo.Child3",
-                            FieldMappings = new Dictionary<string, FieldParameterMapping>
-                            {
-                                {
-                                    "ChildProperty1", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty1",
-                                        Prefix = "t4",
-                                        DbType = DbType.Int32
-                                    }
-                                },
-                                {
-                                    "ChildProperty2", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty2",
-                                        Prefix = "t4",
-                                        DbType = DbType.String
-                                    }
-                                },
-                                {
-                                    "ChildProperty3", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty3",
-                                        Prefix = "t4",
-                                        DbType = DbType.String
-                                    }
-                                }
-                            },
-                            Alias = "t4"
-                        });
-
-                    expected = new QueryInfo(expectedQuery);
-                })
-                .ExecuteTest(() =>
-                {
-                    dynamic parameters = new ExpandoObject();
-
-                    parameters.Predicate = null;
-                    parameters.CanDirtyRead = true;
-                    parameters.IncludeParameters = true;
-                    parameters.DesiredFields = null;
-                    parameters.TableName = null;
-
-                    ItemUnderTest.BuildQuery<ParentClass2>(parameters);
-
-                    Mocks.Get<Mock<IPredicateBuilder>>()
-                        .Verify(x => x.BuildContainer(It.IsAny<Expression>(), It.IsAny<Type>(), 
-                            It.IsAny<bool>(), It.IsAny<string>(), It.IsAny<string>()), Times.Never);
+                                FieldName = "ParentProperty1", 
+                                Prefix = "t1",
+                                DbType = DbType.Int32
+                            }
+                        }
+                    },
+                    Alias = "t1"
                 });
+
+            fieldHelper
+                .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<string>(), It.IsAny<Child1>(), It.IsAny<bool>(), "t2", 
+                    It.IsAny<string>()))
+                .Returns(new TableObjectMapping
+                {
+                    TableName = "dbo.Child1",
+                    FieldMappings = new Dictionary<string, FieldParameterMapping>
+                    {
+                        {
+                            "ChildProperty1", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty1",
+                                Prefix = "t2",
+                                DbType = DbType.Int32
+                            }
+                        },
+                        {
+                            "ChildProperty2", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty2",
+                                Prefix = "t2",
+                                DbType = DbType.String
+                            }
+                        },
+                        {
+                            "ChildProperty3", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty3",
+                                Prefix = "t2",
+                                DbType = DbType.String
+                            }
+                        }
+                    },
+                    Alias = "t2"
+                });
+
+            fieldHelper
+                .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<string>(), It.IsAny<Child2>(), It.IsAny<bool>(), "t3", 
+                    It.IsAny<string>()))
+                .Returns(new TableObjectMapping
+                {
+                    TableName = "dbo.Child2",
+                    FieldMappings = new Dictionary<string, FieldParameterMapping>
+                    {
+                        {
+                            "ChildProperty1", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty1",
+                                Prefix = "t3",
+                                DbType = DbType.Int32
+                            }
+                        },
+                        {
+                            "ChildProperty2", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty2",
+                                Prefix = "t3",
+                                DbType = DbType.String
+                            }
+                        },
+                        {
+                            "ChildProperty3", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty3",
+                                Prefix = "t3",
+                                DbType = DbType.String
+                            }
+                        }
+                    },
+                    Alias = "t3"
+                });
+
+            fieldHelper
+                .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<string>(), It.IsAny<Child3>(), It.IsAny<bool>(), "t4", 
+                    It.IsAny<string>()))
+                .Returns(new TableObjectMapping
+                {
+                    TableName = "dbo.Child3",
+                    FieldMappings = new Dictionary<string, FieldParameterMapping>
+                    {
+                        {
+                            "ChildProperty1", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty1",
+                                Prefix = "t4",
+                                DbType = DbType.Int32
+                            }
+                        },
+                        {
+                            "ChildProperty2", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty2",
+                                Prefix = "t4",
+                                DbType = DbType.String
+                            }
+                        },
+                        {
+                            "ChildProperty3", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty3",
+                                Prefix = "t4",
+                                DbType = DbType.String
+                            }
+                        }
+                    },
+                    Alias = "t4"
+                });
+
+            expected = new QueryInfo(expectedQuery);
+
+            dynamic parameters = new ExpandoObject();
+
+            parameters.Predicate = null;
+            parameters.CanDirtyRead = true;
+            parameters.IncludeParameters = true;
+            parameters.DesiredFields = null;
+            parameters.TableName = null;
+
+            ItemUnderTest.BuildQuery<ParentClass2>(parameters);
+
+            Mocks.Get<IPredicateBuilder>()
+                .Verify(x => x.BuildContainer(It.IsAny<Expression>(), It.IsAny<Type>(), 
+                    It.IsAny<bool>(), It.IsAny<string>(), It.IsAny<string>()), Times.Never);
         }
 
-        [TestMethod]
+        [Test]
         public void WillInvokePredicateBuilderWithPrefixIfPredicateIsNotNull()
         {
             QueryInfo expected = null;
 
-            TestRunner
-                .DoCustomSetup(() =>
+            const string expectedQuery = @"SELECT t1.ParentProperty3 AS t1_ParentProperty3, t2.ChildProperty1 AS t2_ChildProperty1, t2.ChildProperty2 AS t2_ChildProperty2, t2.ChildProperty3 AS t2_ChildProperty3 FROM dbo.ParentClass3 (NOLOCK) t1 LEFT JOIN dbo.Parent3_Child1 (NOLOCK) ON t1.t1_ParentProperty3 = dbo.Parent3_Child1.ParentProperty3 LEFT JOIN dbo.Child3 (NOLOCK) t2 ON dbo.Parent3_Child1.ChildProperty1 = t2.t2_ChildProperty1;";
+
+            var fieldHelper = Mocks.Get<IFieldHelper>();
+
+            fieldHelper
+                .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<string>(), It.IsAny<ParentClass3>(), It.IsAny<bool>(), "t1", 
+                    It.IsAny<string>()))
+                .Returns(new TableObjectMapping
                 {
-                    const string expectedQuery = @"SELECT t1.ParentProperty3 AS t1_ParentProperty3, t2.ChildProperty1 AS t2_ChildProperty1, t2.ChildProperty2 AS t2_ChildProperty2, t2.ChildProperty3 AS t2_ChildProperty3 FROM dbo.ParentClass3 (NOLOCK) t1 LEFT JOIN dbo.Parent3_Child1 (NOLOCK) ON t1.t1_ParentProperty3 = dbo.Parent3_Child1.ParentProperty3 LEFT JOIN dbo.Child3 (NOLOCK) t2 ON dbo.Parent3_Child1.ChildProperty1 = t2.t2_ChildProperty1;";
-
-                    var fieldHelper = Mocks.Get<Mock<IFieldHelper>>();
-
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<ParentClass3>(), It.IsAny<bool>(), "t1", 
-                            It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
+                    TableName = "dbo.ParentClass3",
+                    FieldMappings = new Dictionary<string, FieldParameterMapping>
+                    {
                         {
-                            TableName = "dbo.ParentClass3",
-                            FieldMappings = new Dictionary<string, FieldParameterMapping>
+                            "ParentProperty3", new FieldParameterMapping
                             {
-                                {
-                                    "ParentProperty3", new FieldParameterMapping
-                                    {
-                                        FieldName = "ParentProperty3", 
-                                        Prefix = "t1",
-                                        DbType = DbType.Int32
-                                    }
-                                }
-                            },
-                            Alias = "t1"
-                        });
-
-                    fieldHelper
-                        .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
-                            It.IsAny<string>(), It.IsAny<Child3>(), It.IsAny<bool>(), "t2", 
-                            It.IsAny<string>()))
-                        .Returns(new TableObjectMapping
-                        {
-                            TableName = "dbo.Child3",
-                            FieldMappings = new Dictionary<string, FieldParameterMapping>
-                            {
-                                {
-                                    "ChildProperty1", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty1",
-                                        Prefix = "t2",
-                                        DbType = DbType.Int32
-                                    }
-                                },
-                                {
-                                    "ChildProperty2", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty2",
-                                        Prefix = "t2",
-                                        DbType = DbType.String
-                                    }
-                                },
-                                {
-                                    "ChildProperty3", new FieldParameterMapping
-                                    {
-                                        FieldName = "ChildProperty3",
-                                        Prefix = "t2",
-                                        DbType = DbType.String
-                                    }
-                                }
-                            },
-                            Alias = "t2"
-                        });
-
-                    expected = new QueryInfo(expectedQuery);
-                })
-                .ExecuteTest(() =>
-                {
-                    dynamic parameters = new ExpandoObject();
-                    // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-                    Expression<Func<ParentClass3, bool>> predicate = t => t.ParentProperty3 != null;
-
-                    parameters.Predicate = predicate;
-                    parameters.CanDirtyRead = true;
-                    parameters.IncludeParameters = true;
-                    parameters.DesiredFields = null;
-                    parameters.TableName = null;
-
-                    ItemUnderTest.BuildQuery<ParentClass3>(parameters);
-
-                    Mocks.Get<Mock<IPredicateBuilder>>()
-                        .Verify(x => x.BuildContainer(It.IsAny<Expression>(), It.IsAny<Type>(),
-                            It.IsAny<bool>(), "t1", "t1_"), Times.Once);
+                                FieldName = "ParentProperty3", 
+                                Prefix = "t1",
+                                DbType = DbType.Int32
+                            }
+                        }
+                    },
+                    Alias = "t1"
                 });
+
+            fieldHelper
+                .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<string>(), It.IsAny<Child3>(), It.IsAny<bool>(), "t2", 
+                    It.IsAny<string>()))
+                .Returns(new TableObjectMapping
+                {
+                    TableName = "dbo.Child3",
+                    FieldMappings = new Dictionary<string, FieldParameterMapping>
+                    {
+                        {
+                            "ChildProperty1", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty1",
+                                Prefix = "t2",
+                                DbType = DbType.Int32
+                            }
+                        },
+                        {
+                            "ChildProperty2", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty2",
+                                Prefix = "t2",
+                                DbType = DbType.String
+                            }
+                        },
+                        {
+                            "ChildProperty3", new FieldParameterMapping
+                            {
+                                FieldName = "ChildProperty3",
+                                Prefix = "t2",
+                                DbType = DbType.String
+                            }
+                        }
+                    },
+                    Alias = "t2"
+                });
+
+            expected = new QueryInfo(expectedQuery);
+
+            dynamic parameters = new ExpandoObject();
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
+            Expression<Func<ParentClass3, bool>> predicate = t => t.ParentProperty3 != null;
+
+            parameters.Predicate = predicate;
+            parameters.CanDirtyRead = true;
+            parameters.IncludeParameters = true;
+            parameters.DesiredFields = null;
+            parameters.TableName = null;
+
+            ItemUnderTest.BuildQuery<ParentClass3>(parameters);
+
+            Mocks.Get<IPredicateBuilder>()
+                .Verify(x => x.BuildContainer(It.IsAny<Expression>(), It.IsAny<Type>(),
+                    It.IsAny<bool>(), "t1", "t1_"), Times.Once);
         }
 
         [Table("dbo.NoJoins")]

@@ -13,10 +13,10 @@ using TightlyCurly.Com.Tests.Common.MsTest;
 
 namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.UpdateQueryBuilderStrategyTests
 {
-    [TestClass]
+    [TestFixture]
     public class TheBuildQueryMethod : MsTestMoqTestBase<UpdateQueryBuilderStrategy>
     {
-        [TestMethod]
+        [Test]
         public void WillBuildUpdateQueryWithPredicate()
         {
             QueryInfo expected = null;

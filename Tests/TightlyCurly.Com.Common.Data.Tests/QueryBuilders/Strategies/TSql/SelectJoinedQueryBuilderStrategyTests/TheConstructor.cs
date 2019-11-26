@@ -4,10 +4,10 @@ using TightlyCurly.Com.Tests.Common.MsTest;
 
 namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.SelectJoinedQueryBuilderStrategyTests
 {
-    [TestClass]
+    [TestFixture]
     public class TheConstructor : MsTestBase
     {
-        [TestMethod]
+        [Test]
         public void WillPassConstructorTests()
         {
             DoConstructorTests<SelectJoinedQueryBuilderStrategy>();

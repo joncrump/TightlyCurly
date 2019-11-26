@@ -7,10 +7,10 @@ using TightlyCurly.Com.Tests.Common.MsTest;
 
 namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
 {
-    [TestClass]
+    [TestFixture]
     public class TheAddValueFactoryMethod : MsTestMoqTestBase<TestableValueFactory>
     {
-        [TestMethod]
+        [Test]
         public void WillThrowArgumentNullExceptionIfKeyIsNull()
         {
             TestRunner.ExecuteTest(() =>
@@ -22,7 +22,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
             });
         }
 
-        [TestMethod]
+        [Test]
         public void WillThrowArgumentEmptyExceptionIfKeyIsEmpty()
         {
             TestRunner.ExecuteTest(() =>
@@ -34,7 +34,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
             });
         }
 
-        [TestMethod]
+        [Test]
         public void WillThrowArgumentNullExceptionIfValueFactoryIsNull()
         {
             TestRunner.ExecuteTest(() =>
@@ -46,7 +46,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
             });
         }
 
-        [TestMethod]
+        [Test]
         public void WillThrowInvalidOperationExceptionIfValueFactoryAlreadyExists()
         {
             var key = String.Empty;
@@ -68,7 +68,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
                 });
         }
 
-        [TestMethod]
+        [Test]
         public void WillAddDelegate()
         {
             var key = String.Empty;

@@ -13,10 +13,10 @@ using TightlyCurly.Com.Tests.Common.MsTest;
 
 namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.SelectSingleQueryBuilderStrategyTests
 {
-    [TestClass]
+    [TestFixture]
     public class TheBuildQueryMethod : MsTestMoqTestBase<SelectSingleQueryBuilderStrategy>
     {
-        [TestMethod]
+        [Test]
         public void WillBuildSelectQueryWithoutPredicate()
         {
             QueryInfo expected = null;
@@ -59,7 +59,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                 });
         }
 
-        [TestMethod]
+        [Test]
         public void WillBuildSelectQueryWithPredicate()
         {
             QueryInfo expected = null;

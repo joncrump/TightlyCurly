@@ -28,3 +28,4 @@ C:\Source\TightlyCurly\Databases\TightlyCurly.Com.Database\obj\Debug\postdeploy.
 C:\Source\TightlyCurly\Databases\TightlyCurly.Com.Database\obj\Debug\predeploy.sql
 C:\Source\TightlyCurly\Databases\TightlyCurly.Com.Database\obj\Debug\TightlyCurly.Com.Database.dll
 C:\Source\TightlyCurly\Databases\TightlyCurly.Com.Database\obj\Debug\TightlyCurly.Com.Database.pdb
+C:\Source\TightlyCurly\Databases\TightlyCurly.Com.Database\obj\Debug\TightlyCurly.Com.Database.sqlprojAssemblyReference.cache

@@ -9,7 +9,7 @@ using TightlyCurly.Com.Tests.Common.MsTest;
 
 namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
 {
-    [TestClass]
+    [TestFixture]
     public class TheBuildInsertQueryMethod : MsTestMoqTestBase<SqlQueryBuilder>
     {
         public override void Setup()
@@ -21,7 +21,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
                 .Returns(new Mock<IQueryBuilderStrategy>().Object);
         }
 
-        [TestMethod]
+        [Test]
         public void WillThrowArgumentNullExceptionIfModelIsNull()
         {
             TestRunner.ExecuteTest(() =>
@@ -34,7 +34,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
             });
         }
 
-        [TestMethod]
+        [Test]
         public void WillInvokeQueryBuilderStrategyFactory()
         {
             TestRunner.ExecuteTest(() =>

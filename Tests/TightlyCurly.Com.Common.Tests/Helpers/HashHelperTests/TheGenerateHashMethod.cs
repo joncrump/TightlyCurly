@@ -5,10 +5,10 @@ using TightlyCurly.Com.Tests.Common.MsTest;
 
 namespace TightlyCurly.Com.Common.Tests.Helpers.HashHelperTests
 {
-    [TestClass]
+    [TestFixture]
     public class TheGenerateHashMethod : MsTestMoqTestBase<HashHelper>
     {
-        [TestMethod]
+        [Test]
         public void WillThrowArgumentNullExceptionIfValueIsNull()
         {
             TestRunner.ExecuteTest(() =>
@@ -20,7 +20,7 @@ namespace TightlyCurly.Com.Common.Tests.Helpers.HashHelperTests
             });
         }
 
-        [TestMethod]
+        [Test]
         public void WillReturnHashIfValueIsHashable()
         {
             TestRunner
@@ -32,7 +32,7 @@ namespace TightlyCurly.Com.Common.Tests.Helpers.HashHelperTests
                 });
         }
 
-        [TestMethod]
+        [Test]
         public void WillReturnHashCodeOfObject()
         {
             string value = null;

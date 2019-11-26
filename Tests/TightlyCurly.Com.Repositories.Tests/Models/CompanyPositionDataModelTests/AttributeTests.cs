@@ -9,10 +9,10 @@ using TightlyCurly.Com.Tests.Common.MsTest;
 
 namespace TightlyCurly.Com.Repositories.Tests.Models.CompanyPositionDataModelTests
 {
-    [TestClass]
+    [TestFixture]
     public class AttributeTests : MsTestMoqTestBase<CompanyPositionDataModel>
     {
-        [TestMethod]
+        [Test]
         public void TypeIsDecorated()
         {
             TestRunner.ExecuteTest(() =>
@@ -31,7 +31,7 @@ namespace TightlyCurly.Com.Repositories.Tests.Models.CompanyPositionDataModelTes
             });
         }
 
-        [TestMethod]
+        [Test]
         public void PropertiesAreDecorated()
         {
             TestRunner.ExecuteTest(() =>

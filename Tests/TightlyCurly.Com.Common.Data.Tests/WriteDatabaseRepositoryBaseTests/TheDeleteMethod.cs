@@ -7,7 +7,7 @@ using TightlyCurly.Com.Tests.Common.MsTest.Data;
 
 namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
 {
-    [TestClass]
+    [TestFixture]
     public class TheDeleteMethod : MsTestMoqRepositoryBase<TestableWriteDatabaseRepository>
     {
         public override void Setup()
@@ -20,7 +20,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
                 .Returns(Mock.Of<QueryInfo>());
         }
 
-        [TestMethod]
+        [Test]
         public void WillThrowArgumentNullExceptionIfModelIsNull()
         {
             TestRunner.ExecuteTest(() =>
@@ -32,7 +32,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
             });
         }
 
-        [TestMethod]
+        [Test]
         public void WillInvokeQueryBuilderDeleteQuery()
         {
             TestRunner.ExecuteTest(() =>

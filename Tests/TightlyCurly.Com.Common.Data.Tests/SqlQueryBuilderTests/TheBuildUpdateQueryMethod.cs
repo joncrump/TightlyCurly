@@ -9,7 +9,7 @@ using TightlyCurly.Com.Tests.Common.MsTest;
 
 namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
 {
-    [TestClass]
+    [TestFixture]
     public class TheBuildUpdateQueryMethod : MsTestMockTestBase<SqlQueryBuilder>
     {
         public override void Setup()
@@ -21,7 +21,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
                 .Returns(new Mock<IQueryBuilderStrategy>().Object);
         }
 
-        [TestMethod]
+        [Test]
         public void WillThrowArgumentNullExceptionIfModelIsNull()
         {
             AssertExceptionIsThrown<ArgumentNullException>(
@@ -31,7 +31,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
             .AndVerifyMessageContains("model");
         }
 
-        [TestMethod]
+        [Test]
         public void WillThrowArgumentNullExceptionIfPredicateIsNull()
         {
             AssertExceptionIsThrown<ArgumentNullException>(
@@ -41,7 +41,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
             .AndVerifyMessageContains("predicate");
         }
 
-        [TestMethod]
+        [Test]
         public void WillInvokeQueryBuilderStrategyFactory()
         {
             Expression<Func<TestClass, bool>> predicate = t => t.Id == 5;

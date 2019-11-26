@@ -9,10 +9,10 @@ using TightlyCurly.Com.Tests.Common.MsTest;
 
 namespace TightlyCurly.Com.Repositories.Tests.Models.AddressDataModelTests
 {
-    [TestClass]
+    [TestFixture]
     public class AttributeTests : MsTestMoqTestBase<AddressDataModel>
     {
-        [TestMethod]
+        [Test]
         public void HasTypeAttributes()
         {
             TestRunner.ExecuteTest(() =>
@@ -32,7 +32,7 @@ namespace TightlyCurly.Com.Repositories.Tests.Models.AddressDataModelTests
             });
         }
 
-        [TestMethod]
+        [Test]
         public void HasPropertyAttributes()
         {
             Asserter.AssertHasPropertyAttributes(ItemUnderTest,

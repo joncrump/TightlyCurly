@@ -1,13 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql;
-using TightlyCurly.Com.Tests.Common.MsTest;
+using TightlyCurly.Com.Tests.Common.Base;
 
 namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.PagedQueryBuilderStrategyTests
 {
-    [TestClass]
-    public class TheConstructor : MsTestBase
+    [TestFixture]
+    public class TheConstructor : TestBase
     {
-        [TestMethod]
+        [Test]
         public void WillPassConstructorUnitTests()
         {
             DoConstructorTests<PagedQueryBuilderStrategy>();

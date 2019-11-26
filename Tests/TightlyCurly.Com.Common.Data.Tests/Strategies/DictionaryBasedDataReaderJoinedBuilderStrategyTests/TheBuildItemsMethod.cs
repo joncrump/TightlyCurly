@@ -17,10 +17,10 @@ using TightlyCurly.Com.Tests.Common.MsTest.Data;
 
 namespace TightlyCurly.Com.Common.Data.Tests.Strategies.DictionaryBasedDataReaderJoinedBuilderStrategyTests
 {
-    [TestClass]
+    [TestFixture]
     public class TheBuildItemsMethod : MsTestMoqDataItemTestBase<DictionaryBasedDataReaderJoinedBuilderStrategy>
     {
-        [TestMethod]
+        [Test]
         public void WillThrowArgumentNullExceptionIfParametersAreNull()
         {
             TestRunner
@@ -33,7 +33,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.Strategies.DictionaryBasedDataReade
                 });
         }
 
-        [TestMethod]
+        [Test]
         public void WillThrowArgumentNullExceptionIfDataSourceIsNull()
         {
             dynamic parameters = null;
@@ -57,7 +57,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.Strategies.DictionaryBasedDataReade
                 });
         }
 
-        [TestMethod]
+        [Test]
         public void WillThrowInvalidOperationExceptionIfTypeHasNoFieldAttributes()
         {
             dynamic parameters = null;
@@ -80,7 +80,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.Strategies.DictionaryBasedDataReade
                 });
         }
 
-        [TestMethod]
+        [Test]
         public void WillThrowInvalidOperationExceptionIfTypeDoesNotHavePrimaryKey()
         {
             dynamic parameters = null;
@@ -103,7 +103,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.Strategies.DictionaryBasedDataReade
                 });
         }
 
-        [TestMethod]
+        [Test]
         public void WillBuildItems()
         {
             List<Parent> expected = null;

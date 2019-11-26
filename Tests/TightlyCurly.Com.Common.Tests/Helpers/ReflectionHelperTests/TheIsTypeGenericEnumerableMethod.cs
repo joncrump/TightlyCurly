@@ -7,10 +7,10 @@ using TightlyCurly.Com.Tests.Common.MsTest;
 
 namespace TightlyCurly.Com.Common.Tests.Helpers.ReflectionHelperTests
 {
-    [TestClass]
+    [TestFixture]
     public class TheIsTypeGenericEnumerableMethod : MsTestMoqTestBase<ReflectionHelper>
     {
-        //[TestMethod]
+        //[Test]
         //public void WillThrowArgumentNullExceptionIfCandidateTypeIsNull()
         //{
         //    //TestRunner
@@ -23,7 +23,7 @@ namespace TightlyCurly.Com.Common.Tests.Helpers.ReflectionHelperTests
         //        //});
         //}
 
-       // [TestMethod]
+       // [Test]
 
 
         /*

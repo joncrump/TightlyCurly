@@ -10,7 +10,7 @@ using TightlyCurly.Com.Tests.Common.MsTest.Data;
 
 namespace TightlyCurly.Com.Common.Data.Tests.ReadDatabaseRepositoryBaseTests
 {
-    [TestClass]
+    [TestFixture]
     public class TheGetMethod : MsTestMoqRepositoryBase<TestableReadDatabaseRepository>
     {
         public override void Setup()
@@ -24,7 +24,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ReadDatabaseRepositoryBaseTests
                 .Returns(Mock.Of<QueryInfo>());
         }
 
-        [TestMethod]
+        [Test]
         public void WillInvokeQueryBuilderBuildSelectQuery()
         {
             TestRunner

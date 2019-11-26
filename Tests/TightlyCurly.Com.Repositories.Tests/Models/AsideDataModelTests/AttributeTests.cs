@@ -10,10 +10,10 @@ using TightlyCurly.Com.Tests.Common.MsTest;
 
 namespace TightlyCurly.Com.Repositories.Tests.Models.AsideDataModelTests
 {
-    [TestClass]
+    [TestFixture]
     public class AttributeTests : MsTestMoqTestBase<AsideDataModel>
     {
-        [TestMethod]
+        [Test]
         public void TypeIsDecorated()
         {
             TestRunner.ExecuteTest(() =>
@@ -32,7 +32,7 @@ namespace TightlyCurly.Com.Repositories.Tests.Models.AsideDataModelTests
             });
         }
 
-        [TestMethod]
+        [Test]
         public void PropertiesAreDecorated()
         {
             TestRunner.ExecuteTest(() =>

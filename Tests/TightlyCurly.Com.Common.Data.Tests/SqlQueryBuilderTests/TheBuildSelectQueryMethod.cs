@@ -9,7 +9,7 @@ using TightlyCurly.Com.Tests.Common.MsTest;
 
 namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
 {
-    [TestClass]
+    [TestFixture]
     public class TheBuildSelectQueryMethod : MsTestMockTestBase<SqlQueryBuilder>
     {
         public override void Setup()
@@ -23,7 +23,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
                 .Returns(new Mock<IQueryBuilderStrategy>().Object);
         }
 
-        [TestMethod]
+        [Test]
         public void WillInvokeBuilderStrategyIfBuildModeIsSingle()
         {
             ItemUnderTest.BuildSelectQuery(It.IsAny<Expression<Func<TestClass, bool>>>(),
@@ -36,7 +36,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
                     Times.Once);
         }
 
-        [TestMethod]
+        [Test]
         public void WillInvokeBuilderStrategyIfBuildModeIsJoined()
         {
             ItemUnderTest.BuildSelectQuery(It.IsAny<Expression<Func<TestClass, bool>>>(),
