@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\CountMetadataAttribute.cs" />
+    <Compile Include="Attributes\FieldMetadataAttribute.cs" />
+    <Compile Include="Attributes\JoinAttribute.cs" />
+    <Compile Include="Attributes\SortMetadataAttribute.cs" />
+    <Compile Include="Attributes\TableAttribute.cs" />
+    <Compile Include="Attributes\ValueFactoryAttribute.cs" />
     <Compile Include="BuilderOptions.cs" />
     <Compile Include="BuildMode.cs" />
     <Compile Include="Constants\Columns.cs" />
@@ -146,6 +152,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

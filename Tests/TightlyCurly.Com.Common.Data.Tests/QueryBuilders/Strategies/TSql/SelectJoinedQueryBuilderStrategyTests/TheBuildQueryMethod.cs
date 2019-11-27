@@ -86,7 +86,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
         [Test]
         public void WillNotInvokeQueryBuilderStrategyFactoryIfTypeHasJoinAttributes()
         {
-            var fieldHelper = Mocks.Get<Mock<IFieldHelper>>();
+            var fieldHelper = Mocks.Get<IFieldHelper>();
 
             fieldHelper
                 .Setup(x => x.BuildFields(It.IsAny<IEnumerable<string>>(),

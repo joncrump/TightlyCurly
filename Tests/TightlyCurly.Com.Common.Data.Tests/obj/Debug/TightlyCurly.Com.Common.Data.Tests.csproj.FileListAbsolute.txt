@@ -1,7 +1,0 @@
-C:/SourceCode/TightlyCurly/Dev/Tests/TightlyCurly.Com.Common.Data.Tests/obj/Debug/TightlyCurly.Com.Common.Data.Tests.csprojResolveAssemblyReference.cache
-C:/Source/Repos/TightlyCurly/Tests/TightlyCurly.Com.Common.Data.Tests/obj/Debug/TightlyCurly.Com.Common.Data.Tests.csprojResolveAssemblyReference.cache
-C:/Users/H157595/Documents/GitHub/TightlyCurly/Tests/TightlyCurly.Com.Common.Data.Tests/obj/Debug/TightlyCurly.Com.Common.Data.Tests.csprojResolveAssemblyReference.cache
-/Users/jhcrump/Documents/GitHub/TightlyCurly/Tests/TightlyCurly.Com.Common.Data.Tests/obj/Debug/TightlyCurly.Com.Common.Data.Tests.csprojResolveAssemblyReference.cache
-/Users/jhcrump/Documents/GitHub/TightlyCurly/Tests/TightlyCurly.Com.Common.Data.Tests/obj/Debug/TightlyCurly.Com.Common.Data.Tests.csproj.CoreCompileInputs.cache
-C:\Source\TightlyCurly\Tests\TightlyCurly.Com.Common.Data.Tests\obj\Debug\TightlyCurly.Com.Common.Data.Tests.csprojAssemblyReference.cache
-C:\Source\TightlyCurly\Tests\TightlyCurly.Com.Common.Data.Tests\obj\Debug\TightlyCurly.Com.Common.Data.Tests.csproj.CoreCompileInputs.cache

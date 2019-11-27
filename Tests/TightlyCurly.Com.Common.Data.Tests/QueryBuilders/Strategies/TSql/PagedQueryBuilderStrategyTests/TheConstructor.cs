@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql;
 using TightlyCurly.Com.Tests.Common.Base;
 
