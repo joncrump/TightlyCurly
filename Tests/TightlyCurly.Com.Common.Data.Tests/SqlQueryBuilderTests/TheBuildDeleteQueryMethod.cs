@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Linq.Expressions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using NUnit.Framework;
 using TightlyCurly.Com.Common.Data.QueryBuilders;
 using TightlyCurly.Com.Common.Data.QueryBuilders.Strategies;
-using TightlyCurly.Com.Tests.Common.MsTest;
+using TightlyCurly.Com.Tests.Common.Base;
 
 namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
 {
     [TestFixture]
-    public class TheBuildDeleteQueryMethod : MsTestMoqTestBase<SqlQueryBuilder>
+    public class TheBuildDeleteQueryMethod : MockTestBase<SqlQueryBuilder>
     {
-        public override void Setup()
+        protected override void Setup()
         {
             base.Setup();
 
-            Mocks.Get<Mock<IQueryBuilderStrategyFactory>>()
+            Mocks.Get<IQueryBuilderStrategyFactory>()
                 .Setup(x => x.GetBuilderStrategy(QueryKind.Delete))
                 .Returns(new Mock<IQueryBuilderStrategy>().Object);
         }
@@ -23,27 +23,21 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
         [Test]
         public void WillThrowArgumentNullExceptionIfPredicateIsNull()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                Asserter
-                    .AssertExceptionIsThrown<ArgumentNullException>(
-                        () => ItemUnderTest.BuildDeleteQuery<TestClass>(null, It.IsAny<string>()))
-                    .AndVerifyMessageContains("predicate");
-            });
+            Asserter
+                .AssertException<ArgumentNullException>(
+                    () => ItemUnderTest.BuildDeleteQuery<TestClass>(null, It.IsAny<string>()))
+                .AndVerifyMessageContains("predicate");
         }
 
         [Test]
         public void WillInvokeQueryBuilderStrategy()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                Expression<Func<TestClass, bool>> predicate = t => t.Id == 5;
+            Expression<Func<TestClass, bool>> predicate = t => t.Id == 5;
 
-                ItemUnderTest.BuildDeleteQuery(predicate);
+            ItemUnderTest.BuildDeleteQuery(predicate);
 
-                Mocks.Get<Mock<IQueryBuilderStrategyFactory>>()
-                    .Verify(x => x.GetBuilderStrategy(QueryKind.Delete), Times.Once);
-            });
+            Mocks.Get<QueryBuilderStrategyFactory>()
+                .Verify(x => x.GetBuilderStrategy(QueryKind.Delete), Times.Once);
         }
     }
 }

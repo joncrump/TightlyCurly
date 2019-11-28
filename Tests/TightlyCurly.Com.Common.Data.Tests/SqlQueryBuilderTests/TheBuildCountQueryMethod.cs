@@ -1,31 +1,24 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
+﻿using Moq;
+using NUnit.Framework;
 using TightlyCurly.Com.Common.Data.QueryBuilders;
 using TightlyCurly.Com.Common.Data.QueryBuilders.Strategies;
-using TightlyCurly.Com.Tests.Common.MsTest;
+using TightlyCurly.Com.Tests.Common.Base;
 
 namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
 {
     [TestFixture]
-    public class TheBuildCountQueryMethod : MsTestMoqTestBase<SqlQueryBuilder>
+    public class TheBuildCountQueryMethod : MockTestBase<SqlQueryBuilder>
     {
         [Test]
         public void WillInvokeQueryBuilderStrategyFactory()
         {
-            TestRunner
-                .DoCustomSetup(() =>
-                {
-                    Mocks.Get<Mock<IQueryBuilderStrategyFactory>>()
-                        .Setup(x => x.GetBuilderStrategy(QueryKind.Count))
-                        .Returns(new Mock<IQueryBuilderStrategy>().Object);
-                })
-                .ExecuteTest(() =>
-                {
-                    ItemUnderTest.BuildCountQuery<TestClass>();
+            Mocks.Get<IQueryBuilderStrategyFactory>()
+                .Setup(x => x.GetBuilderStrategy(QueryKind.Count))
+                .Returns(new Mock<IQueryBuilderStrategy>().Object);
+            ItemUnderTest.BuildCountQuery<TestClass>();
 
-                    Mocks.Get<Mock<IQueryBuilderStrategyFactory>>()
-                        .Verify(x => x.GetBuilderStrategy(QueryKind.Count), Times.Once);
-                });
+            Mocks.Get<IQueryBuilderStrategyFactory>()
+                .Verify(x => x.GetBuilderStrategy(QueryKind.Count), Times.Once);
         }
     }
 }

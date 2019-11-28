@@ -1,28 +1,26 @@
 ﻿using System;
 using System.Data;
 using System.Linq.Expressions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using NUnit.Framework;
 using TightlyCurly.Com.Common.Data.Attributes;
 using TightlyCurly.Com.Common.Extensions;
 using TightlyCurly.Com.Tests.Common;
-using TightlyCurly.Com.Tests.Common.MsTest.Data;
+using TightlyCurly.Com.Tests.Common.Base;
+using TightlyCurly.Com.Tests.Common.Data;
 
 namespace TightlyCurly.Com.Common.Data.Tests.ReflectionBasedDataReaderBuilderTests
 {
     [TestFixture]
-    public class TheBuildMethod : MsTestMoqDataItemTestBase<ReflectionBasedDataReaderBuilder>
+    public class TheBuildMethod : MockTestBase<ReflectionBasedDataReaderBuilder>
     {
         [Test]
         public void WillThrowArgumentNullExceptionIfDataReaderIsNull()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                Asserter
-                    .AssertExceptionIsThrown<ArgumentNullException>(
+            Asserter
+                .AssertException<ArgumentNullException>(
                         () => ItemUnderTest.Build<object>(null))
-                    .AndVerifyHasParameter("dataSource");
-            });
+                .AndVerifyHasParameter("dataSource");
         }
 
         [Test]
@@ -31,18 +29,12 @@ namespace TightlyCurly.Com.Common.Data.Tests.ReflectionBasedDataReaderBuilderTes
             TestClass expected = null;
             MockDataReader reader = null;
 
-            TestRunner
-                .DoCustomSetup(() =>
-                {
-                    expected = ObjectCreator.CreateNew<TestClass>();
-                    reader = DataReaderHelper.BuildMockDataReader(new[] {expected});
-                })
-                .ExecuteTest(() =>
-                {
-                    var actual = ItemUnderTest.Build<TestClass>(reader);
+            expected = ObjectCreator.CreateNew<TestClass>();
+            reader = new MockDataReaderHelper().BuildMockDataReader(new[] {expected});
+        
+            var actual = ItemUnderTest.Build<TestClass>(reader);
 
-                    Asserter.AssertEquality(expected, actual);
-                });
+            Asserter.AssertEquality(expected, actual);
         }
 
         [Test]
@@ -52,19 +44,12 @@ namespace TightlyCurly.Com.Common.Data.Tests.ReflectionBasedDataReaderBuilderTes
             MockDataReader reader = null;
             var prefix = String.Empty;
 
-            TestRunner
-                .DoCustomSetup(() =>
-                {
-                    prefix = DataGenerator.GenerateString();
-                    expected = ObjectCreator.CreateNew<TestClass>();
-                    reader = DataReaderHelper.BuildMockDataReader(new[] {expected}, prefix);
-                })
-                .ExecuteTest(() =>
-                {
-                    var actual = ItemUnderTest.Build<TestClass>(reader, prefix);
+            prefix = DataGenerator.GenerateString();
+            expected = ObjectCreator.CreateNew<TestClass>();
+            reader = new MockDataReaderHelper().BuildMockDataReader(new[] {expected}, prefix);
+            var actual = ItemUnderTest.Build<TestClass>(reader, prefix);
 
-                    Asserter.AssertEquality(expected, actual);
-                });
+            Asserter.AssertEquality(expected, actual);
         }
 
         [Test]
@@ -74,42 +59,37 @@ namespace TightlyCurly.Com.Common.Data.Tests.ReflectionBasedDataReaderBuilderTes
             MockDataReader reader = null;
             Mock<IValueFactory> valueFactory = null;
 
-            TestRunner
-                .DoCustomSetup(() =>
-                {
-                    var valueFactoryModel = ObjectCreator.CreateNew<TestClassWithValueFactories>();
+            var valueFactoryModel = ObjectCreator.CreateNew<TestClassWithValueFactories>();
 
-                    expected = ObjectCreator.CreateNew<TestClass>();
-                    reader = DataReaderHelper.BuildMockDataReader(new [] {valueFactoryModel});
-                    valueFactory = Mocks.Get<Mock<IValueFactory>>();
-                    Expression<Func<object>> fakeExpression = () => expected;
+            expected = ObjectCreator.CreateNew<TestClass>();
+            reader = new MockDataReaderHelper().BuildMockDataReader(new [] {valueFactoryModel});
 
-                    valueFactory
-                        .Setup(x => x.GetValueFactory(It.IsAny<string>(), It.IsAny<ParameterInfo>()))
-                        .Returns(fakeExpression);
-                })
-                .ExecuteTest(() =>
-                {
-                    var actual = ItemUnderTest.Build<TestClassWithValueFactories>(reader);
+            valueFactory = Mocks.Get<IValueFactory>();
+            Expression<Func<object>> fakeExpression = () => expected;
 
-                    valueFactory
-                        .Verify(x => x.GetValueFactory("TestClass1", It.IsAny<ParameterInfo>()), 
-                            Times.Once);
+            valueFactory
+                .Setup(x => x.GetValueFactory(It.IsAny<string>(), It.IsAny<ParameterInfo>()))
+                .Returns(fakeExpression);
+    
+            var actual = ItemUnderTest.Build<TestClassWithValueFactories>(reader);
 
-                    valueFactory
-                        .Verify(x => x.GetValueFactory("TestClass2", It.IsAny<ParameterInfo>()), 
-                            Times.Once);
+            valueFactory
+                .Verify(x => x.GetValueFactory("TestClass1", It.IsAny<ParameterInfo>()), 
+                    Times.Once);
 
-                    Assert.IsFalse(actual.ValueFactories.IsNullOrEmpty());
+            valueFactory
+                .Verify(x => x.GetValueFactory("TestClass2", It.IsAny<ParameterInfo>()), 
+                    Times.Once);
 
-                    Assert.IsTrue(actual.ValueFactories.ContainsKey("TestClass1"));
-                    Assert.IsNotNull(actual.ValueFactories["TestClass1"]);
-                    Asserter.AssertEquality(expected, actual.TestClass1);
+            Assert.IsFalse(actual.ValueFactories.IsNullOrEmpty());
 
-                    Assert.IsTrue(actual.ValueFactories.ContainsKey("TestClass2"));
-                    Assert.IsNotNull(actual.ValueFactories["TestClass2"]);
-                    Asserter.AssertEquality(expected, actual.TestClass2);
-                });
+            Assert.IsTrue(actual.ValueFactories.ContainsKey("TestClass1"));
+            Assert.IsNotNull(actual.ValueFactories["TestClass1"]);
+            Asserter.AssertEquality(expected, actual.TestClass1);
+
+            Assert.IsTrue(actual.ValueFactories.ContainsKey("TestClass2"));
+            Assert.IsNotNull(actual.ValueFactories["TestClass2"]);
+            Asserter.AssertEquality(expected, actual.TestClass2);
         }
 
         public class TestClass

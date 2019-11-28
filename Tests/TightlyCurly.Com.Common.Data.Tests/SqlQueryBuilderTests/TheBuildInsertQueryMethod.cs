@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using NUnit.Framework;
 using TightlyCurly.Com.Common.Data.QueryBuilders;
 using TightlyCurly.Com.Common.Data.QueryBuilders.Strategies;
-using TightlyCurly.Com.Tests.Common.Helpers;
-using TightlyCurly.Com.Tests.Common.MsTest;
+using TightlyCurly.Com.Tests.Common.Base;
 
 namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
 {
     [TestFixture]
-    public class TheBuildInsertQueryMethod : MsTestMoqTestBase<SqlQueryBuilder>
+    public class TheBuildInsertQueryMethod : MockTestBase<SqlQueryBuilder>
     {
-        public override void Setup()
+        protected override void Setup()
         {
             base.Setup();
 
-            Mocks.Get<Mock<IQueryBuilderStrategyFactory>>()
+            Mocks.Get<IQueryBuilderStrategyFactory>()
                 .Setup(x => x.GetBuilderStrategy(QueryKind.Insert))
                 .Returns(new Mock<IQueryBuilderStrategy>().Object);
         }
@@ -24,27 +23,21 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
         [Test]
         public void WillThrowArgumentNullExceptionIfModelIsNull()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                Asserter
-                    .AssertExceptionIsThrown<ArgumentNullException>(
-                        () => ItemUnderTest.BuildInsertQuery<TestClass>(null, It.IsAny<bool>(), It.IsAny<bool>(),
-                            It.IsAny<IEnumerable<string>>(), It.IsAny<string>()))
-                    .AndVerifyHasParameter("model");
-            });
+            Asserter
+                .AssertException<ArgumentNullException>(
+                    () => ItemUnderTest.BuildInsertQuery<TestClass>(null, It.IsAny<bool>(), It.IsAny<bool>(),
+                        It.IsAny<IEnumerable<string>>(), It.IsAny<string>()))
+                .AndVerifyHasParameter("model");
         }
 
         [Test]
         public void WillInvokeQueryBuilderStrategyFactory()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                ItemUnderTest.BuildInsertQuery(Mock.Of<TestClass>(), It.IsAny<bool>(),
-                    It.IsAny<bool>(), It.IsAny<IEnumerable<string>>(), It.IsAny<string>());
+            ItemUnderTest.BuildInsertQuery(Mock.Of<TestClass>(), It.IsAny<bool>(),
+                It.IsAny<bool>(), It.IsAny<IEnumerable<string>>(), It.IsAny<string>());
 
-                Mocks.Get<Mock<IQueryBuilderStrategyFactory>>()
-                    .Verify(x => x.GetBuilderStrategy(QueryKind.Insert), Times.Once);
-            });
+            Mocks.Get<IQueryBuilderStrategyFactory>()
+                .Verify(x => x.GetBuilderStrategy(QueryKind.Insert), Times.Once);
         }
     }
 }

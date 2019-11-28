@@ -4,20 +4,21 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using NUnit.Framework;
 using TightlyCurly.Com.Common.Data.QueryBuilders;
 using TightlyCurly.Com.Common.Data.Tests.ReadDatabaseRepositoryBaseTests;
-using TightlyCurly.Com.Tests.Common.MsTest.Data;
+using TightlyCurly.Com.Tests.Common.Base;
 
 namespace TightlyCurly.Com.Common.Data.Tests.ReadDatabaseRepositoryBaseTests
 {
     [TestFixture]
-    public class TheGetMethod : MsTestMoqRepositoryBase<TestableReadDatabaseRepository>
+    public class TheGetMethod : MockTestBase<TestableReadDatabaseRepository>
     {
-        public override void Setup()
+        protected override void Setup()
         {
             base.Setup();
 
-            Mocks.Get<Mock<IQueryBuilder>>()
+            Mocks.Get<IQueryBuilder>()
                 .Setup(x => x.BuildSelectQuery(It.IsAny<Expression<Func<TestModel, bool>>>(),
                     It.IsAny<bool>(), It.IsAny<bool>(), It.IsAny<IEnumerable<string>>(),
                     It.IsAny<string>(), It.IsAny<BuildMode>()))
@@ -27,16 +28,12 @@ namespace TightlyCurly.Com.Common.Data.Tests.ReadDatabaseRepositoryBaseTests
         [Test]
         public void WillInvokeQueryBuilderBuildSelectQuery()
         {
-            TestRunner
-                .ExecuteTest(() =>
-                {
-                    ItemUnderTest.Get();
+            ItemUnderTest.Get();
 
-                    Mocks.Get<Mock<IQueryBuilder>>()
-                        .Verify(x => x.BuildSelectQuery(It.IsAny<Expression<Func<TestModel, bool>>>(), 
-                            It.IsAny<bool>(), It.IsAny<bool>(), It.IsAny<IEnumerable<string>>(), It.IsAny<string>(), 
-                            It.IsAny<BuildMode>()), Times.Once);
-                });
+            Mocks.Get<IQueryBuilder>()
+                .Verify(x => x.BuildSelectQuery(It.IsAny<Expression<Func<TestModel, bool>>>(), 
+                    It.IsAny<bool>(), It.IsAny<bool>(), It.IsAny<IEnumerable<string>>(), It.IsAny<string>(), 
+                    It.IsAny<BuildMode>()), Times.Once);
         }
     }
 }
