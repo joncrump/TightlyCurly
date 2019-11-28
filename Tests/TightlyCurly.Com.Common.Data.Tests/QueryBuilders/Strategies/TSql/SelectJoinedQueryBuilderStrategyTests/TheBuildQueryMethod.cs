@@ -906,14 +906,14 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
         [Table("dbo.NoJoins")]
         public class NoJoinAttributeClass
         {
-            [FieldMetadata("Id", DbType.Int32)]
+            [FieldMetadata("Id", SqlDbType.Int)]
             public int Id { get; set; }
         }
 
         [Table("dbo.Parent")]
         public class ParentClass
         {
-            [FieldMetadata("ParentProperty1", DbType.Int32)]
+            [FieldMetadata("ParentProperty1", SqlDbType.Int)]
             public int ParentProperty1 { get; set; }
 
             [Join(JoinType.Inner, typeof(Child1), "ParentProperty1", "ChildProperty1")]
@@ -926,7 +926,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
         [Table("dbo.Parent2")]
         public class ParentClass2
         {
-            [FieldMetadata("ParentProperty1", DbType.Int32)]
+            [FieldMetadata("ParentProperty1", SqlDbType.Int)]
             public int ParentProperty1 { get; set; }
 
             [Join(JoinType.Inner, typeof(Child1), "ParentProperty1", "ChildProperty1")]
@@ -943,7 +943,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
         [Table("dbo.ParentClass3")]
         public class ParentClass3
         {
-            [FieldMetadata("ParentProperty3", DbType.Int32)]
+            [FieldMetadata("ParentProperty3", SqlDbType.Int)]
             public int ParentProperty3 { get; set; }
 
             [Join(JoinType.Left, typeof(Child3), "ParentProperty3", "ChildProperty1", 
@@ -954,39 +954,39 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
         [Table("dbo.Child1")]
         public class Child1
         {
-            [FieldMetadata("ChildProperty1", DbType.Int32)]
+            [FieldMetadata("ChildProperty1", SqlDbType.Int)]
             public int ChildProperty1 { get; set; }
 
-            [FieldMetadata("ChildProperty2", DbType.String)]
+            [FieldMetadata("ChildProperty2", SqlDbType.NVarChar)]
             public string ChildProperty2 { get; set; }
 
-            [FieldMetadata("ChildProperty3", DbType.String)]
+            [FieldMetadata("ChildProperty3", SqlDbType.NVarChar)]
             public string ChildProperty3 { get; set; }
         }
 
         [Table("dbo.Child2")]
         public class Child2
         {
-            [FieldMetadata("ChildProperty1", DbType.Int32)]
+            [FieldMetadata("ChildProperty1", SqlDbType.Int)]
             public int ChildProperty1 { get; set; }
 
-            [FieldMetadata("ChildProperty2", DbType.String)]
+            [FieldMetadata("ChildProperty2", SqlDbType.NVarChar)]
             public string ChildProperty2 { get; set; }
 
-            [FieldMetadata("ChildProperty3", DbType.String)]
+            [FieldMetadata("ChildProperty3", SqlDbType.NVarChar)]
             public string ChildProperty3 { get; set; }
         }
 
         [Table("dbo.Child3")]
         public class Child3
         {
-            [FieldMetadata("ChildProperty1", DbType.Int32)]
+            [FieldMetadata("ChildProperty1", SqlDbType.Int)]
             public int ChildProperty1 { get; set; }
 
-            [FieldMetadata("ChildProperty2", DbType.String)]
+            [FieldMetadata("ChildProperty2", SqlDbType.Int)]
             public string ChildProperty2 { get; set; }
 
-            [FieldMetadata("ChildProperty3", DbType.String)]
+            [FieldMetadata("ChildProperty3", SqlDbType.NVarChar)]
             public string ChildProperty3 { get; set; }
         }
     }

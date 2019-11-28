@@ -6,7 +6,7 @@ namespace TightlyCurly.Com.Common.Data.Attributes
     [AttributeUsage(AttributeTargets.Property)]
     public class FieldMetadataAttribute : Attribute, IOrderable
     {
-        public FieldMetadataAttribute(string fieldName, DbType dbType = SqlDbType.Image,
+        public FieldMetadataAttribute(string fieldName, SqlDbType dbType = SqlDbType.Image,
             string parameterName = null, bool isIdentity = false, bool allowDbNull = false, int order = 0,
             Type mappedType = null, bool isPrimaryKey = false)
         {

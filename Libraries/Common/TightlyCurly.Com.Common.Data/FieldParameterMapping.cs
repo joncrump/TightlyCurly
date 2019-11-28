@@ -8,7 +8,7 @@ namespace TightlyCurly.Com.Common.Data
         {
         }
 
-        public FieldParameterMapping(string fieldName, string parameterName, DbType dbType, object value = null, 
+        public FieldParameterMapping(string fieldName, string parameterName, SqlDbType dbType, object value = null, 
             bool isIdentity = false, string prefix = null)
         {
             FieldName = fieldName;
@@ -21,7 +21,7 @@ namespace TightlyCurly.Com.Common.Data
 
         public string FieldName { get; set; }
         public string ParameterName { get; set; }
-        public DbType DbType { get; set; }
+        public SqlDbType DbType { get; set; }
         public object Value { get; set; }
         public bool IsIdentity { get; set; }
         public string Prefix { get; set; }
