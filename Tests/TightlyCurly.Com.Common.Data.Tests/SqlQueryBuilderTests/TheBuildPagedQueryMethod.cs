@@ -1,19 +1,20 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿
 using Moq;
+using NUnit.Framework;
 using TightlyCurly.Com.Common.Data.QueryBuilders;
 using TightlyCurly.Com.Common.Data.QueryBuilders.Strategies;
-using TightlyCurly.Com.Tests.Common.MsTest;
+using TightlyCurly.Com.Tests.Common.Base;
 
 namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
 {
     [TestFixture]
-    public class TheBuildPagedQueryMethod : MsTestMockTestBase<SqlQueryBuilder>
+    public class TheBuildPagedQueryMethod : MockTestBase<SqlQueryBuilder>
     {
-        public override void Setup()
+        protected override void Setup()
         {
             base.Setup();
 
-            Mocks.Get<Mock<IQueryBuilderStrategyFactory>>()
+            Mocks.Get<IQueryBuilderStrategyFactory>()
                 .Setup(x => x.GetBuilderStrategy(It.IsAny<QueryKind>()))
                 .Returns(new Mock<IQueryBuilderStrategy>().Object);
         }
@@ -21,40 +22,28 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
         [Test]
         public void WillInvokeSelectSingleStrategyIfPagingInfoIsNull()
         {
-            TestRunner
-                .ExecuteTest(() =>
-                {
-                    ItemUnderTest.BuildPagedQuery<TestClass>(null);
+            ItemUnderTest.BuildPagedQuery<TestClass>(null);
 
-                    Mocks.Get<Mock<IQueryBuilderStrategyFactory>>()
-                        .Verify(x => x.GetBuilderStrategy(QueryKind.SelectSingleTable), Times.Once);
-                });
+            Mocks.Get<IQueryBuilderStrategyFactory>()
+                .Verify(x => x.GetBuilderStrategy(QueryKind.SelectSingleTable), Times.Once);
         }
 
         [Test]
         public void WillNotInvokeSelectSingleStrategyIfPagingInfoIsNotNull()
         {
-            TestRunner
-                .ExecuteTest(() =>
-                {
-                    ItemUnderTest.BuildPagedQuery<TestClass>(ObjectCreator.CreateNew<PagingInfo>());
+            ItemUnderTest.BuildPagedQuery<TestClass>(ObjectCreator.CreateNew<PagingInfo>());
 
-                    Mocks.Get<Mock<IQueryBuilderStrategyFactory>>()
-                       .Verify(x => x.GetBuilderStrategy(QueryKind.SelectSingleTable), Times.Never());
-                });
+            Mocks.Get<IQueryBuilderStrategyFactory>()
+               .Verify(x => x.GetBuilderStrategy(QueryKind.SelectSingleTable), Times.Never());
         }
 
         [Test]
         public void WillInvokePagedSingleStrategy()
         {
-            TestRunner
-                .ExecuteTest(() =>
-                {
-                    ItemUnderTest.BuildPagedQuery<TestClass>(ObjectCreator.CreateNew<PagingInfo>());
+            ItemUnderTest.BuildPagedQuery<TestClass>(ObjectCreator.CreateNew<PagingInfo>());
 
-                    Mocks.Get<Mock<IQueryBuilderStrategyFactory>>()
-                        .Verify(x => x.GetBuilderStrategy(QueryKind.PagedSingle), Times.Once);
-                });
+            Mocks.Get<IQueryBuilderStrategyFactory>()
+                .Verify(x => x.GetBuilderStrategy(QueryKind.PagedSingle), Times.Once);
         }
     }
 }

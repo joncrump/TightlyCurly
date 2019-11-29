@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Linq.Expressions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using NUnit.Framework;
 using TightlyCurly.Com.Common.Data.QueryBuilders;
-using TightlyCurly.Com.Tests.Common.MsTest.Data;
+using TightlyCurly.Com.Tests.Common.Base;
+
 
 namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
 {
     [TestFixture]
-    public class TheDeleteMethod : MsTestMoqRepositoryBase<TestableWriteDatabaseRepository>
+    public class TheDeleteMethod : MockTestBase<TestableWriteDatabaseRepository>
     {
-        public override void Setup()
+        protected override void Setup()
         {
             base.Setup();
 
-            Mocks.Get<Mock<IQueryBuilder>>()
+            Mocks.Get<IQueryBuilder>()
                 .Setup(x => x.BuildDeleteQuery(It.IsAny<Expression<Func<TestModel, bool>>>(), 
                     It.IsAny<string>()))
                 .Returns(Mock.Of<QueryInfo>());
@@ -23,25 +24,19 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
         [Test]
         public void WillThrowArgumentNullExceptionIfModelIsNull()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                Asserter
-                    .AssertExceptionIsThrown<ArgumentNullException>(
-                        () => ItemUnderTest.Delete(null, It.IsAny<Expression<Func<TestModel, bool>>>()))
-                    .AndVerifyHasParameter("model");
-            });
+            Asserter
+                .AssertException<ArgumentNullException>(
+                    () => ItemUnderTest.Delete(null, It.IsAny<Expression<Func<TestModel, bool>>>()))
+                .AndVerifyHasParameter("model");
         }
 
         [Test]
         public void WillInvokeQueryBuilderDeleteQuery()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                ItemUnderTest.Delete(Mock.Of<ITestModel>());
+            ItemUnderTest.Delete(Mock.Of<ITestModel>());
 
-                Mocks.Get<Mock<IQueryBuilder>>()
-                    .Verify(x => x.BuildDeleteQuery<ITestModel>(null, null), Times.Once);
-            });
+            Mocks.Get<IQueryBuilder>()
+                .Verify(x => x.BuildDeleteQuery<ITestModel>(null, null), Times.Once);
         }
     }
 }

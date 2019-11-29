@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using NUnit.Framework;
 using TightlyCurly.Com.Common.Data.QueryBuilders;
 using TightlyCurly.Com.Common.Data.QueryBuilders.Strategies;
-using TightlyCurly.Com.Tests.Common.MsTest;
+using TightlyCurly.Com.Tests.Common.Base;
 
 namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
 {
     [TestFixture]
-    public class TheBuildSelectQueryMethod : MsTestMockTestBase<SqlQueryBuilder>
+    public class TheBuildSelectQueryMethod : MockTestBase<SqlQueryBuilder>
     {
-        public override void Setup()
+        protected override void Setup()
         {
             base.Setup();
 

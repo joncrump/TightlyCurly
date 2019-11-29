@@ -1,36 +1,30 @@
 ﻿using System;
 using System.Linq.Expressions;
 using TightlyCurly.Com.Common.Exceptions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TightlyCurly.Com.Tests.Common.MsTest;
+using NUnit.Framework;
+using TightlyCurly.Com.Tests.Common.Base;
 
 namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
 {
     [TestFixture]
-    public class TheGetValueFactoryMethod : MsTestMoqTestBase<TestableValueFactory>
+    public class TheGetValueFactoryMethod : MockTestBase<TestableValueFactory>
     {
         [Test]
         public void WillThrowArgumentNullExceptionIfKeyIsNull()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                Asserter
-                    .AssertExceptionIsThrown<ArgumentNullException>(
-                        () => ItemUnderTest.GetValueFactory(null))
-                    .AndVerifyHasParameter("key");
-            });
+            Asserter
+                .AssertException<ArgumentNullException>(
+                    () => ItemUnderTest.GetValueFactory(null))
+                .AndVerifyHasParameter("key");
         }
 
         [Test]
         public void WillThrowArgumentEmptyExceptionIfKeyIsEmpty()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                Asserter
-                    .AssertExceptionIsThrown<ArgumentEmptyException>(
-                        () => ItemUnderTest.GetValueFactory(String.Empty))
-                    .AndVerifyHasParameter("key");
-            });
+            Asserter
+                .AssertException<ArgumentEmptyException>(
+                    () => ItemUnderTest.GetValueFactory(String.Empty))
+                .AndVerifyHasParameter("key");
         }
 
         [Test]
@@ -39,21 +33,14 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
             Expression<Func<object, object>> expected = null;
             var key = String.Empty;
 
-            TestRunner
-                .DoCustomSetup(() =>
-                {
-                    expected = e => null;
-                    key = DataGenerator.GenerateString();
+            expected = e => null;
+            key = DataGenerator.GenerateString();
 
-                    ItemUnderTest.Delegates
-                        .Add(key, expected);
-                })
-                .ExecuteTest(() =>
-                {
-                    var actual = ItemUnderTest.GetValueFactory(key);
+            ItemUnderTest.Delegates
+                .Add(key, expected);
+            var actual = ItemUnderTest.GetValueFactory(key);
 
-                    Asserter.AssertEquality("() => e => null", actual.ToString());
-                });
+            Asserter.AssertEquality("() => e => null", actual.ToString());
         }
 
         [Test]
@@ -63,25 +50,18 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
             var key = String.Empty;
             var random = String.Empty;
 
-            TestRunner
-                .DoCustomSetup(() =>
-                {
-                    key = DataGenerator.GenerateString();
-                    expected = DataGenerator.GenerateString();
-                    random = DataGenerator.GenerateString();
+            key = DataGenerator.GenerateString();
+            expected = DataGenerator.GenerateString();
+            random = DataGenerator.GenerateString();
 
-                    Expression<Func<object, string>> expression = e => e.ToString() + random;
+            Expression<Func<object, string>> expression = e => e.ToString() + random;
 
-                    ItemUnderTest.Delegates
-                        .Add(key, expression);
-                })
-                .ExecuteTest(() =>
-                {
-                    var returnExpression = ItemUnderTest.GetValueFactory(key, new ParameterInfo(typeof(string), expected));
-                    var actual = returnExpression.Compile()();
+            ItemUnderTest.Delegates
+                .Add(key, expression);
+            var returnExpression = ItemUnderTest.GetValueFactory(key, new ParameterInfo(typeof(string), expected));
+            var actual = returnExpression.Compile()();
 
-                    Asserter.AssertEquality(expected + random, actual.ToString());
-                });
+            Asserter.AssertEquality(expected + random, actual.ToString());
         }
     }
 }

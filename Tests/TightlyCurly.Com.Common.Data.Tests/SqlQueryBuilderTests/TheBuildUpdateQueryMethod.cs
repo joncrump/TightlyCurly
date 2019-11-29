@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using NUnit.Framework;
 using TightlyCurly.Com.Common.Data.QueryBuilders;
 using TightlyCurly.Com.Common.Data.QueryBuilders.Strategies;
-using TightlyCurly.Com.Tests.Common.MsTest;
+using TightlyCurly.Com.Tests.Common.Base;
 
 namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
 {
     [TestFixture]
-    public class TheBuildUpdateQueryMethod : MsTestMockTestBase<SqlQueryBuilder>
+    public class TheBuildUpdateQueryMethod : MockTestBase<SqlQueryBuilder>
     {
-        public override void Setup()
+        protected override void Setup()
         {
             base.Setup();
 
@@ -24,7 +24,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
         [Test]
         public void WillThrowArgumentNullExceptionIfModelIsNull()
         {
-            AssertExceptionIsThrown<ArgumentNullException>(
+            Asserter.AssertException<ArgumentNullException>(
                 () => ItemUnderTest.BuildUpdateQuery(null,
                     It.IsAny<Expression<Func<TestClass, bool>>>(),
                     It.IsAny<IEnumerable<string>>(), It.IsAny<string>()))
@@ -34,7 +34,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
         [Test]
         public void WillThrowArgumentNullExceptionIfPredicateIsNull()
         {
-            AssertExceptionIsThrown<ArgumentNullException>(
+            Asserter.AssertException<ArgumentNullException>(
                 () => ItemUnderTest.BuildUpdateQuery(Mock.Of<TestClass>(),
                     null,
                     It.IsAny<IEnumerable<string>>(), It.IsAny<string>()))

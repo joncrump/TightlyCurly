@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using Moq;
 using NUnit.Framework;
 using TightlyCurly.Com.Common.Data.QueryBuilders;

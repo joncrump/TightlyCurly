@@ -1,36 +1,36 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using NUnit.Framework;
 using TightlyCurly.Com.Common.Data.QueryBuilders;
 using TightlyCurly.Com.Common.Helpers;
-using TightlyCurly.Com.Tests.Common.MsTest.Data;
+using TightlyCurly.Com.Tests.Common.Base;
+
 
 namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
 {
     [TestFixture]
-    public class TheSaveMethod : MsTestMoqRepositoryBase<TestableWriteDatabaseRepository>
+    public class TheSaveMethod : MockTestBase<TestableWriteDatabaseRepository>
     {
-        public override void Setup()
+        protected override void Setup()
         {
             base.Setup();
 
-            Mocks.Get<Mock<IMapper>>()
+            Mocks.Get<IMapper>()
                 .Setup(x => x.Map<TestModel>(It.IsAny<ITestModel>()))
                 .Returns(ObjectCreator.CreateNew<TestModel>());
 
-            Mocks.Get<Mock<IMapper>>()
+            Mocks.Get<IMapper>()
                 .Setup(x => x.Map<TestModel>(It.IsAny<ITestModel>()))
                 .Returns(ObjectCreator.CreateNew<TestModel>());
 
-            Mocks.Get<Mock<IQueryBuilder>>()
+            Mocks.Get<IQueryBuilder>()
                 .Setup(x => x.BuildInsertQuery(It.IsAny<TestModel>(), It.IsAny<bool>(),
                     It.IsAny<bool>(), It.IsAny<IEnumerable<string>>(), It.IsAny<string>()))
                 .Returns(Mock.Of<QueryInfo>());
 
-            Mocks.Get<Mock<IQueryBuilder>>()
+            Mocks.Get<IQueryBuilder>()
                 .Setup(x => x.BuildUpdateQuery(It.IsAny<TestModel>(), It.IsAny<Expression<Func<TestModel, bool>>>(),
                     It.IsAny<IEnumerable<string>>(), It.IsAny<string>()))
                 .Returns(Mock.Of<QueryInfo>());
@@ -39,28 +39,22 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
         [Test]
         public void WillThrowArgumentNullExceptionIfModelIsNull()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                Asserter
-                    .AssertExceptionIsThrown<ArgumentNullException>(
-                        () => ItemUnderTest.Save(null, It.IsAny<bool>(),
-                            It.IsAny<Action<ITestModel>>(), It.IsAny<Action<ITestModel>>(),
-                            It.IsAny<Expression>()))
-                    .AndVerifyHasParameter("model");
-            });
+            Asserter
+                .AssertException<ArgumentNullException>(
+                    () => ItemUnderTest.Save(null, It.IsAny<bool>(),
+                        It.IsAny<Action<ITestModel>>(), It.IsAny<Action<ITestModel>>(),
+                        It.IsAny<Expression>()))
+                .AndVerifyHasParameter("model");
         }
 
         [Test]
         public void WillInvokeMapper()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                ItemUnderTest.Save(Mock.Of<ITestModel>(), true, null, null, null);
+            ItemUnderTest.Save(Mock.Of<ITestModel>(), true, null, null, null);
 
-                Mocks.Get<Mock<IMapper>>()
-                    .Verify(x => x.Map<TestModel>(It.IsAny<ITestModel>()), 
-                        Times.Once);
-            });
+            Mocks.Get<IMapper>()
+                .Verify(x => x.Map<TestModel>(It.IsAny<ITestModel>()), 
+                    Times.Once);
         }
 
         [Test]
@@ -69,44 +63,32 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
             var invoked = false;
             Action<ITestModel> insertAction = null;
 
-            TestRunner
-                .DoCustomSetup(() =>
-                {
-                    insertAction = t => invoked = true;
-                })
-                .ExecuteTest(() =>
-                {
-                    ItemUnderTest.Save(Mock.Of<ITestModel>(), true, insertAction, null, null);
+            insertAction = t => invoked = true;
+            ItemUnderTest.Save(Mock.Of<ITestModel>(), true, insertAction, null, null);
 
-                    Assert.IsTrue(invoked);
-                });
+            Assert.IsTrue(invoked);
         }
 
         [Test]
         public void WillInvokeQueryBuilderInsertQuery()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                ItemUnderTest.Save(Mock.Of<ITestModel>(), true, It.IsAny<Action<ITestModel>>(), 
-                    It.IsAny<Action<ITestModel>>(), It.IsAny<Expression>());
+            ItemUnderTest.Save(Mock.Of<ITestModel>(), true, It.IsAny<Action<ITestModel>>(), 
+                It.IsAny<Action<ITestModel>>(), It.IsAny<Expression>());
 
-                Mocks.Get<Mock<IQueryBuilder>>()
-                    .Verify(x => x.BuildInsertQuery(It.IsAny<TestModel>(), false, It.IsAny<bool>(), 
-                        It.IsAny<IEnumerable<string>>(), It.IsAny<string>()), Times.Once);
-            });
+            Mocks.Get<IQueryBuilder>()
+                .Verify(x => x.BuildInsertQuery(It.IsAny<TestModel>(), false, It.IsAny<bool>(), 
+                    It.IsAny<IEnumerable<string>>(), It.IsAny<string>()), Times.Once);
         }
 
         [Test]
         public void WillInvokeExecuteNonQueryIfModelIsNew()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                ItemUnderTest.Save(Mock.Of<ITestModel>(), true, It.IsAny<Action<ITestModel>>(),
-                    It.IsAny<Action<ITestModel>>(), It.IsAny<Expression>());
+            throw new NotImplementedException();
+            //ItemUnderTest.Save(Mock.Of<ITestModel>(), true, It.IsAny<Action<ITestModel>>(),
+            //    It.IsAny<Action<ITestModel>>(), It.IsAny<Expression>());
 
-                MockDatabase
-                    .Verify(x => x.ExecuteNonQuery(), Times.Once);
-            });
+            //MockDatabase
+            //    .Verify(x => x.ExecuteNonQuery(), Times.Once);
         }
 
         [Test]
@@ -116,31 +98,21 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
             var invoked = false;
             Expression updateExpression = null;
 
-            TestRunner
-                .DoCustomSetup(() =>
-                {
-                    updateAction = t => invoked = true;
-                    updateExpression = Expression.Parameter(typeof (TestModel));
-                })
-                .ExecuteTest(() =>
-                {
-                    ItemUnderTest.Save(Mock.Of<ITestModel>(), false, null, updateAction,
-                        updateExpression);
+            updateAction = t => invoked = true;
+            updateExpression = Expression.Parameter(typeof (TestModel));
+            ItemUnderTest.Save(Mock.Of<ITestModel>(), false, null, updateAction,
+                updateExpression);
 
-                    Assert.IsTrue(invoked);
-                });
+            Assert.IsTrue(invoked);
         }
 
         [Test]
         public void WillThrowInvalidOperationExceptionIfUpdateExpressionIsNullAndIsNewIsFalse()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                Asserter
-                    .AssertExceptionIsThrown<InvalidOperationException>(
-                        () => ItemUnderTest.Save(Mock.Of<ITestModel>(), false, null, null, null))
-                    .AndVerifyMessageContains("Don't know how to update model.  Update expression is null");
-            });
+            Asserter
+                .AssertException<InvalidOperationException>(
+                    () => ItemUnderTest.Save(Mock.Of<ITestModel>(), false, null, null, null))
+                .AndVerifyMessageContains("Don't know how to update model.  Update expression is null");
         }
 
         [Test]
@@ -148,20 +120,13 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
         {
             Expression updateExpression = null;
 
-            TestRunner
-                .DoCustomSetup(() =>
-                {
-                    updateExpression = Expression.Parameter(typeof (TestModel));
-                })
-                .ExecuteTest(() =>
-                {
-                    ItemUnderTest.Save(Mock.Of<ITestModel>(), false, null, null, updateExpression);
+            updateExpression = Expression.Parameter(typeof (TestModel));
+            ItemUnderTest.Save(Mock.Of<ITestModel>(), false, null, null, updateExpression);
 
-                    Mocks.Get<Mock<IQueryBuilder>>()
-                        .Verify(x => x.BuildUpdateQuery(It.IsAny<TestModel>(), It.IsAny<Expression<Func<TestModel, bool>>>(), 
-                            It.IsAny<IEnumerable<string>>(), It.IsAny<string>()), 
-                                Times.Once);
-                });
+            Mocks.Get<IQueryBuilder>()
+                .Verify(x => x.BuildUpdateQuery(It.IsAny<TestModel>(), It.IsAny<Expression<Func<TestModel, bool>>>(), 
+                    It.IsAny<IEnumerable<string>>(), It.IsAny<string>()), 
+                        Times.Once);
         }
     }
 }

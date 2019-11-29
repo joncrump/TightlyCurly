@@ -1,35 +1,28 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using TightlyCurly.Com.Common.Helpers;
-using TightlyCurly.Com.Tests.Common.MsTest;
+using TightlyCurly.Com.Tests.Common.Base;
 
 namespace TightlyCurly.Com.Common.Tests.Helpers.HashHelperTests
 {
     [TestFixture]
-    public class TheGenerateHashMethod : MsTestMoqTestBase<HashHelper>
+    public class TheGenerateHashMethod : MockTestBase<HashHelper>
     {
         [Test]
         public void WillThrowArgumentNullExceptionIfValueIsNull()
         {
-            TestRunner.ExecuteTest(() =>
-            {
-                Asserter
-                    .AssertExceptionIsThrown<ArgumentNullException>(
-                        () => ItemUnderTest.GenerateHash(null))
-                    .AndVerifyHasParameter("value");
-            });
+            Asserter
+                .AssertException<ArgumentNullException>(
+                    () => ItemUnderTest.GenerateHash(null))
+                .AndVerifyHasParameter("value");
         }
 
         [Test]
         public void WillReturnHashIfValueIsHashable()
         {
-            TestRunner
-                .ExecuteTest(() =>
-                {
-                    var actual = ItemUnderTest.GenerateHash(new HashableTestClass());
+            var actual = ItemUnderTest.GenerateHash(new HashableTestClass());
 
-                    Asserter.AssertEquality("TestingHash", actual);
-                });
+            Asserter.AssertEquality("TestingHash", actual);
         }
 
         [Test]
@@ -38,19 +31,11 @@ namespace TightlyCurly.Com.Common.Tests.Helpers.HashHelperTests
             string value = null;
             string expected = null;
 
-            TestRunner
-                .DoCustomSetup(() =>
-                {
-                    value = DataGenerator.GenerateString();
+            value = DataGenerator.GenerateString();
+            expected = value.GetHashCode().ToString();
+            var actual = ItemUnderTest.GenerateHash(value);
 
-                    expected = value.GetHashCode().ToString();
-                })
-                .ExecuteTest(() =>
-                {
-                    var actual = ItemUnderTest.GenerateHash(value);
-
-                    Asserter.AssertEquality(expected, actual);
-                });
+            Asserter.AssertEquality(expected, actual);
         }
 
         public class HashableTestClass : IHashable

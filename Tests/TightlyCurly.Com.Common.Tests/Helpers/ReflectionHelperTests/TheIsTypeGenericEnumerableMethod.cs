@@ -1,14 +1,10 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using TightlyCurly.Com.Common.Helpers;
+﻿using TightlyCurly.Com.Common.Helpers;
 using TightlyCurly.Com.Tests.Common.Base;
-using TightlyCurly.Com.Tests.Common.MsTest;
+
 
 namespace TightlyCurly.Com.Common.Tests.Helpers.ReflectionHelperTests
 {
-    [TestFixture]
-    public class TheIsTypeGenericEnumerableMethod : MsTestMoqTestBase<ReflectionHelper>
+    public class TheIsTypeGenericEnumerableMethod : MockTestBase<ReflectionHelper>
     {
         //[Test]
         //public void WillThrowArgumentNullExceptionIfCandidateTypeIsNull()
@@ -17,7 +13,7 @@ namespace TightlyCurly.Com.Common.Tests.Helpers.ReflectionHelperTests
         //    //    .ExecuteTest(() =>
         //    //    {
         //            Asserter
-        //                .AssertExceptionIsThrown<ArgumentNullException>(
+        //                .AssertException<ArgumentNullException>(
         //                    () => ItemUnderTest.IsTypeGenericEnumerable(null, It.IsAny<Type>()))
         //                .AndVerifyHasParameter("candidateType");
         //        //});
