@@ -14,7 +14,7 @@ namespace TightlyCurly.Com.Common.Tests.Helpers.ReflectionHelperTests
         //    //    {
         //            Asserter
         //                .AssertException<ArgumentNullException>(
-        //                    () => ItemUnderTest.IsTypeGenericEnumerable(null, It.IsAny<Type>()))
+        //                    () => SystemUnderTest.IsTypeGenericEnumerable(null, It.IsAny<Type>()))
         //                .AndVerifyHasParameter("candidateType");
         //        //});
         //}

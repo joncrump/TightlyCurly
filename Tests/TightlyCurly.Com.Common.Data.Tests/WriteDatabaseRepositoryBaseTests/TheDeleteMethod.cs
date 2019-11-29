@@ -26,14 +26,14 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
         {
             Asserter
                 .AssertException<ArgumentNullException>(
-                    () => ItemUnderTest.Delete(null, It.IsAny<Expression<Func<TestModel, bool>>>()))
+                    () => SystemUnderTest.Delete(null, It.IsAny<Expression<Func<TestModel, bool>>>()))
                 .AndVerifyHasParameter("model");
         }
 
         [Test]
         public void WillInvokeQueryBuilderDeleteQuery()
         {
-            ItemUnderTest.Delete(Mock.Of<ITestModel>());
+            SystemUnderTest.Delete(Mock.Of<ITestModel>());
 
             Mocks.Get<IQueryBuilder>()
                 .Verify(x => x.BuildDeleteQuery<ITestModel>(null, null), Times.Once);

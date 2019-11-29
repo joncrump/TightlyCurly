@@ -25,7 +25,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
         {
             Asserter
                 .AssertException<ArgumentNullException>(
-                    () => ItemUnderTest.BuildDeleteQuery<TestClass>(null, It.IsAny<string>()))
+                    () => SystemUnderTest.BuildDeleteQuery<TestClass>(null, It.IsAny<string>()))
                 .AndVerifyMessageContains("predicate");
         }
 
@@ -34,7 +34,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
         {
             Expression<Func<TestClass, bool>> predicate = t => t.Id == 5;
 
-            ItemUnderTest.BuildDeleteQuery(predicate);
+            SystemUnderTest.BuildDeleteQuery(predicate);
 
             Mocks.Get<QueryBuilderStrategyFactory>()
                 .Verify(x => x.GetBuilderStrategy(QueryKind.Delete), Times.Once);

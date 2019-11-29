@@ -17,14 +17,14 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
         {
             Asserter
                 .AssertException<ArgumentNullException>(
-                    () => ItemUnderTest.ExecuteNonQuery(null))
+                    () => SystemUnderTest.ExecuteNonQuery(null))
                 .AndVerifyHasParameter("queryInfo");
         }
 
         [Test]
         public void WillInvokeDatabaseCreateCommandTextMethod()
         {
-            ItemUnderTest.ExecuteNonQuery(Mock.Of<QueryInfo>());
+            SystemUnderTest.ExecuteNonQuery(Mock.Of<QueryInfo>());
 
             throw new NotImplementedException();
 //            MockDatabase
@@ -39,7 +39,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
 
             queryInfo = new QueryInfo { Parameters = null };
 
-            ItemUnderTest.ExecuteNonQuery(queryInfo);
+            SystemUnderTest.ExecuteNonQuery(queryInfo);
 
             throw new NotImplementedException();
             
@@ -58,7 +58,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
                 Parameters = Enumerable.Empty<IDbDataParameter>()
             };
 
-            ItemUnderTest.ExecuteNonQuery(queryInfo);
+            SystemUnderTest.ExecuteNonQuery(queryInfo);
 
             throw new NotImplementedException();
 //                MockDatabase
@@ -79,7 +79,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
                 }
             };
 
-            ItemUnderTest.ExecuteNonQuery(queryInfo);
+            SystemUnderTest.ExecuteNonQuery(queryInfo);
 
 //            MockDatabase
 //                .Verify(x => x.WithParameters(It.IsAny<IEnumerable<IDbDataParameter>>()),
@@ -89,7 +89,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
         [Test]
         public void WillInvokeDatabaseExecuteNonQueryMethod()
         {
-            ItemUnderTest.ExecuteNonQuery(Mock.Of<QueryInfo>());
+            SystemUnderTest.ExecuteNonQuery(Mock.Of<QueryInfo>());
 
             throw new NotImplementedException();
             

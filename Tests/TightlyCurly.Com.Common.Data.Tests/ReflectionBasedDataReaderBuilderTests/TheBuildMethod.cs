@@ -19,7 +19,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ReflectionBasedDataReaderBuilderTes
         {
             Asserter
                 .AssertException<ArgumentNullException>(
-                        () => ItemUnderTest.Build<object>(null))
+                        () => SystemUnderTest.Build<object>(null))
                 .AndVerifyHasParameter("dataSource");
         }
 
@@ -32,7 +32,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ReflectionBasedDataReaderBuilderTes
             expected = ObjectCreator.CreateNew<TestClass>();
             reader = new MockDataReaderHelper().BuildMockDataReader(new[] {expected});
         
-            var actual = ItemUnderTest.Build<TestClass>(reader);
+            var actual = SystemUnderTest.Build<TestClass>(reader);
 
             Asserter.AssertEquality(expected, actual);
         }
@@ -47,7 +47,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ReflectionBasedDataReaderBuilderTes
             prefix = DataGenerator.GenerateString();
             expected = ObjectCreator.CreateNew<TestClass>();
             reader = new MockDataReaderHelper().BuildMockDataReader(new[] {expected}, prefix);
-            var actual = ItemUnderTest.Build<TestClass>(reader, prefix);
+            var actual = SystemUnderTest.Build<TestClass>(reader, prefix);
 
             Asserter.AssertEquality(expected, actual);
         }
@@ -71,7 +71,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ReflectionBasedDataReaderBuilderTes
                 .Setup(x => x.GetValueFactory(It.IsAny<string>(), It.IsAny<ParameterInfo>()))
                 .Returns(fakeExpression);
     
-            var actual = ItemUnderTest.Build<TestClassWithValueFactories>(reader);
+            var actual = SystemUnderTest.Build<TestClassWithValueFactories>(reader);
 
             valueFactory
                 .Verify(x => x.GetValueFactory("TestClass1", It.IsAny<ParameterInfo>()), 

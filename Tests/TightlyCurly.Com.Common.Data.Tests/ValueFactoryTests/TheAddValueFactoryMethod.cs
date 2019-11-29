@@ -16,7 +16,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
         {
             Asserter
                 .AssertException<ArgumentNullException>(
-                    () => ItemUnderTest.AddValueFactory(null, e => new object()))
+                    () => SystemUnderTest.AddValueFactory(null, e => new object()))
                 .AndVerifyHasParameter("key");
         }
 
@@ -25,7 +25,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
         {
             Asserter
                 .AssertException<ArgumentEmptyException>(
-                    () => ItemUnderTest.AddValueFactory(String.Empty, e => new object()))
+                    () => SystemUnderTest.AddValueFactory(String.Empty, e => new object()))
                 .AndVerifyHasParameter("key");
         }
 
@@ -34,7 +34,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
         {
             Asserter
                 .AssertException<ArgumentNullException>(
-                    () => ItemUnderTest.AddValueFactory(DataGenerator.GenerateString(), (Expression<Action>) null))
+                    () => SystemUnderTest.AddValueFactory(DataGenerator.GenerateString(), (Expression<Action>) null))
                 .AndVerifyHasParameter("valueFactory");
         }
 
@@ -46,10 +46,10 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
             Expression<Func<object, object>> expression = e => null;
             key = DataGenerator.GenerateString();
 
-            ItemUnderTest.Delegates.Add(key, expression);
+            SystemUnderTest.Delegates.Add(key, expression);
             Asserter
                 .AssertException<InvalidOperationException>(
-                    () => ItemUnderTest.AddValueFactory(key, e => (Expression<Action>)null))
+                    () => SystemUnderTest.AddValueFactory(key, e => (Expression<Action>)null))
                 .AndVerifyMessageContains(ErrorMessages.CannotAddExpression);
         }
 
@@ -61,12 +61,12 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
             key = DataGenerator.GenerateString();
             Expression<Func<object, object>> expression = e => null;
 
-            ItemUnderTest.Delegates.Add(DataGenerator.GenerateString(), expression);
+            SystemUnderTest.Delegates.Add(DataGenerator.GenerateString(), expression);
             Expression<Func<object, object>> param = e => DataGenerator.GenerateInteger(1, 5);
 
-            ItemUnderTest.AddValueFactory(key, param);
+            SystemUnderTest.AddValueFactory(key, param);
 
-            Assert.IsTrue(ItemUnderTest.Delegates.ContainsKey(key));
+            Assert.IsTrue(SystemUnderTest.Delegates.ContainsKey(key));
         }
     }
 }

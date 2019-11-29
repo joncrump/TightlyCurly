@@ -12,7 +12,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.EntityModelDatabaseRepositoryBaseTe
         {
             Asserter
                 .AssertException<ArgumentNullException>(
-                    () => ItemUnderTest.Delete(null))
+                    () => SystemUnderTest.Delete(null))
                 .AndVerifyHasParameter("model");
         }
     }

@@ -11,7 +11,7 @@ namespace TightlyCurly.Com.Tests.Common.Base
 {
     public abstract class MockTestBase<TItemUnderTest> : TestBase where TItemUnderTest : class
     {
-        protected TItemUnderTest ItemUnderTest { get; set; }
+        protected TItemUnderTest SystemUnderTest { get; set; }
         protected PropertyBag Mocks { get; set; }
 
         protected MockTestBase() : this(AsserterFactory.GetAssertAdapter(UnitTestFrameworkType.Nunit))
@@ -52,18 +52,18 @@ namespace TightlyCurly.Com.Tests.Common.Base
             base.Setup();
 
             Mocks = new PropertyBag();
-            BuildItemUnderTest();
+            BuildSystemUnderTest();
         }
 
         protected override void CleanUp()
         {
             base.CleanUp();
 
-            ItemUnderTest = null;
+            SystemUnderTest = null;
             Mocks = null;
         }
 
-        private void BuildItemUnderTest()
+        private void BuildSystemUnderTest()
         {
             var type = typeof(TItemUnderTest);
 
@@ -80,7 +80,7 @@ namespace TightlyCurly.Com.Tests.Common.Base
 
         private void CreateInstanceWithConstructorNoParameters()
         {
-            ItemUnderTest = (TItemUnderTest)Activator.CreateInstance(typeof(TItemUnderTest), null);
+            SystemUnderTest = (TItemUnderTest)Activator.CreateInstance(typeof(TItemUnderTest), null);
         }
 
         private void CreateInstanceWithConstructorParameters(Type type)
@@ -122,7 +122,7 @@ namespace TightlyCurly.Com.Tests.Common.Base
                 values.Add(value);
             }
 
-            ItemUnderTest = (TItemUnderTest)Activator.CreateInstance(typeof(TItemUnderTest), values.ToArray());
+            SystemUnderTest = (TItemUnderTest)Activator.CreateInstance(typeof(TItemUnderTest), values.ToArray());
         }
     }
 }

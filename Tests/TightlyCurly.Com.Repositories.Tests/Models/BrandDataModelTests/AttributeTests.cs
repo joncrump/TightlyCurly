@@ -19,7 +19,7 @@ namespace TightlyCurly.Com.Repositories.Tests.Models.BrandDataModelTests
             throw new NotImplementedException();
             //TestRunner.ExecuteTest(() =>
             //{
-            //    Asserter.AssertHasClassAttributes(ItemUnderTest, new[]
+            //    Asserter.AssertHasClassAttributes(SystemUnderTest, new[]
             //    {
             //        new AttributeInfo
             //        {
@@ -37,7 +37,7 @@ namespace TightlyCurly.Com.Repositories.Tests.Models.BrandDataModelTests
         public void PropertiesAreDecorated()
         {
             throw new NotImplementedException();
-            //Asserter.AssertHasPropertyAttributes(ItemUnderTest, new []
+            //Asserter.AssertHasPropertyAttributes(SystemUnderTest, new []
             //{
             //    new PropertyAttributeInfo
             //    {

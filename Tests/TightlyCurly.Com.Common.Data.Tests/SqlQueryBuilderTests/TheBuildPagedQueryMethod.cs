@@ -22,7 +22,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
         [Test]
         public void WillInvokeSelectSingleStrategyIfPagingInfoIsNull()
         {
-            ItemUnderTest.BuildPagedQuery<TestClass>(null);
+            SystemUnderTest.BuildPagedQuery<TestClass>(null);
 
             Mocks.Get<IQueryBuilderStrategyFactory>()
                 .Verify(x => x.GetBuilderStrategy(QueryKind.SelectSingleTable), Times.Once);
@@ -31,7 +31,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
         [Test]
         public void WillNotInvokeSelectSingleStrategyIfPagingInfoIsNotNull()
         {
-            ItemUnderTest.BuildPagedQuery<TestClass>(ObjectCreator.CreateNew<PagingInfo>());
+            SystemUnderTest.BuildPagedQuery<TestClass>(ObjectCreator.CreateNew<PagingInfo>());
 
             Mocks.Get<IQueryBuilderStrategyFactory>()
                .Verify(x => x.GetBuilderStrategy(QueryKind.SelectSingleTable), Times.Never());
@@ -40,7 +40,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
         [Test]
         public void WillInvokePagedSingleStrategy()
         {
-            ItemUnderTest.BuildPagedQuery<TestClass>(ObjectCreator.CreateNew<PagingInfo>());
+            SystemUnderTest.BuildPagedQuery<TestClass>(ObjectCreator.CreateNew<PagingInfo>());
 
             Mocks.Get<IQueryBuilderStrategyFactory>()
                 .Verify(x => x.GetBuilderStrategy(QueryKind.PagedSingle), Times.Once);

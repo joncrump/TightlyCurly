@@ -17,7 +17,7 @@ namespace TightlyCurly.Com.Repositories.Tests.Models.CompanyRelationshipNodeData
         public void TypeIsDecorated()
         {
             throw new NotImplementedException();
-            //Asserter.AssertHasClassAttributes(ItemUnderTest, new[]
+            //Asserter.AssertHasClassAttributes(SystemUnderTest, new[]
             //{
             //    new AttributeInfo
             //    {
@@ -33,7 +33,8 @@ namespace TightlyCurly.Com.Repositories.Tests.Models.CompanyRelationshipNodeData
         [Test]
         public void PropertiesAreDecorated()
         {
-                //Asserter.AssertHasPropertyAttributes(ItemUnderTest, new[]
+            throw new NotImplementedException();
+                //Asserter.AssertHasPropertyAttributes(SystemUnderTest, new[]
                 //{
                 //    new PropertyAttributeInfo
                 //    {

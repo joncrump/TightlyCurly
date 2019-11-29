@@ -17,7 +17,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.FieldHelperTests
             // ReSharper disable once RedundantArgumentDefaultValue
             Asserter
                 .AssertException<InvalidOperationException>(
-                    () => ItemUnderTest.BuildFields<object>(tableName: null))
+                    () => SystemUnderTest.BuildFields<object>(tableName: null))
                 .AndVerifyMessageContains(
                     "Cannot build query.  Type {0} has no table attributes".FormatString(typeof (object)));
         }
@@ -27,7 +27,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.FieldHelperTests
         {
             Asserter
                 .AssertException<InvalidOperationException>(
-                    () => ItemUnderTest.BuildFields<object>(tableName: String.Empty))
+                    () => SystemUnderTest.BuildFields<object>(tableName: String.Empty))
                 .AndVerifyMessageContains(
                     "Cannot build query.  Type {0} has no table attributes".FormatString(typeof (object)));
         }
@@ -49,7 +49,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.FieldHelperTests
 //            };
     
             throw new NotImplementedException();
-//            var actual = ItemUnderTest.BuildFields<TestClass>();
+//            var actual = SystemUnderTest.BuildFields<TestClass>();
 //            Expression<Action<KeyValuePair<string, FieldParameterMapping>, KeyValuePair<string, FieldParameterMapping>>> expression = 
 //                (e, a) => CompareFieldParameterInfos(e, a, f => Assert.IsNull(f, null));
 //
@@ -82,7 +82,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.FieldHelperTests
 //                    }
 //            };
 //
-//            var actual = ItemUnderTest.BuildFields(model:model);
+//            var actual = SystemUnderTest.BuildFields(model:model);
 //
 //            Asserter.AssertEquality(expected, actual, new[] {"FieldMappings", "Joins", "JoinType"});
 //            Expression<Action<KeyValuePair<string, FieldParameterMapping>, KeyValuePair<string, FieldParameterMapping>>> expression =
@@ -114,7 +114,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.FieldHelperTests
 //                    }
 //            };
 //
-//            var actual = ItemUnderTest.BuildFields(new[] {"Id", "Bar"}, model: model);
+//            var actual = SystemUnderTest.BuildFields(new[] {"Id", "Bar"}, model: model);
 //            Expression<Action<KeyValuePair<string, FieldParameterMapping>, KeyValuePair<string, FieldParameterMapping>>> expression =
 //                (e, a) => CompareFieldParameterInfos(e, a, f => Assert.IsNotNull(f, null));
 //
@@ -134,7 +134,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.FieldHelperTests
 
             tableName = DataGenerator.GenerateString();
 
-            var actual = ItemUnderTest.BuildFields<TestClass>(tableName: tableName);
+            var actual = SystemUnderTest.BuildFields<TestClass>(tableName: tableName);
 
             Asserter.AssertEquality(tableName, actual.TableName);
         }
@@ -146,7 +146,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.FieldHelperTests
 
             alias = DataGenerator.GenerateString();
 
-            var actual = ItemUnderTest.BuildFields<TestClass>(alias: alias);
+            var actual = SystemUnderTest.BuildFields<TestClass>(alias: alias);
 
             Asserter.AssertEquality(alias, actual.Alias);
         }

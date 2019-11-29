@@ -44,7 +44,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
             parameters.DesiredFields = null;
             parameters.TableName = null;
 
-            ItemUnderTest.BuildQuery<NoJoinAttributeClass>(parameters);
+            SystemUnderTest.BuildQuery<NoJoinAttributeClass>(parameters);
 
             Mocks.Get<IQueryBuilderStrategyFactory>()
                 .Verify(x => x.GetBuilderStrategy(QueryKind.SelectSingleTable), Times.Once);
@@ -75,7 +75,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
             parameters.DesiredFields = null;
             parameters.TableName = null;
 
-            var actual = ItemUnderTest.BuildQuery<NoJoinAttributeClass>(parameters);
+            var actual = SystemUnderTest.BuildQuery<NoJoinAttributeClass>(parameters);
 
             Asserter.AssertEquality(expected, actual, new[]
             {
@@ -138,7 +138,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
             parameters.DesiredFields = null;
             parameters.TableName = null;
 
-            ItemUnderTest.BuildQuery<ParentClass>(parameters);
+            SystemUnderTest.BuildQuery<ParentClass>(parameters);
 
             Mocks.Get<IQueryBuilderStrategyFactory>()
                 .Verify(x => x.GetBuilderStrategy(QueryKind.SelectSingleTable), Times.Never);
@@ -202,7 +202,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
             parameters.DesiredFields = null;
             parameters.TableName = null;
             
-            ItemUnderTest.BuildQuery<ParentClass>(parameters);
+            SystemUnderTest.BuildQuery<ParentClass>(parameters);
 
             fieldHelper
                 .Verify(x => x.BuildFields(It.IsAny<IEnumerable<string>>(), It.IsAny<string>(), 
@@ -333,7 +333,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
             parameters.DesiredFields = null;
             parameters.TableName = null;
 
-            QueryInfo actual = ItemUnderTest.BuildQuery<ParentClass>(parameters);   
+            QueryInfo actual = SystemUnderTest.BuildQuery<ParentClass>(parameters);   
          
             Asserter.AssertEquality(expected.Query, actual.Query);
         }
@@ -415,7 +415,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
             parameters.DesiredFields = null;
             parameters.TableName = null;
 
-            QueryInfo actual = ItemUnderTest.BuildQuery<ParentClass3>(parameters);
+            QueryInfo actual = SystemUnderTest.BuildQuery<ParentClass3>(parameters);
 
             Asserter.AssertEquality(expected.Query, actual.Query);
         }
@@ -570,7 +570,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
             parameters.DesiredFields = null;
             parameters.TableName = null;
 
-            QueryInfo actual = ItemUnderTest.BuildQuery<ParentClass2>(parameters);
+            QueryInfo actual = SystemUnderTest.BuildQuery<ParentClass2>(parameters);
 
             Asserter.AssertEquality(expected.Query, actual.Query);
         }
@@ -652,7 +652,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
                 parameters.DesiredFields = null;
                 parameters.TableName = null;
 
-                ItemUnderTest.BuildQuery<ParentClass3>(parameters);
+                SystemUnderTest.BuildQuery<ParentClass3>(parameters);
 
                 Mocks.Get<IPredicateBuilder>()
                     .Verify(x => x.BuildContainer(It.IsAny<Expression>(), It.IsAny<Type>(), 
@@ -810,7 +810,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
             parameters.DesiredFields = null;
             parameters.TableName = null;
 
-            ItemUnderTest.BuildQuery<ParentClass2>(parameters);
+            SystemUnderTest.BuildQuery<ParentClass2>(parameters);
 
             Mocks.Get<IPredicateBuilder>()
                 .Verify(x => x.BuildContainer(It.IsAny<Expression>(), It.IsAny<Type>(), 
@@ -896,7 +896,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
             parameters.DesiredFields = null;
             parameters.TableName = null;
 
-            ItemUnderTest.BuildQuery<ParentClass3>(parameters);
+            SystemUnderTest.BuildQuery<ParentClass3>(parameters);
 
             Mocks.Get<IPredicateBuilder>()
                 .Verify(x => x.BuildContainer(It.IsAny<Expression>(), It.IsAny<Type>(),

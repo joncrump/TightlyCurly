@@ -68,7 +68,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Updat
             parameters.TableName = null;
             parameters.DesiredFields = null;
 
-            QueryInfo actual = ItemUnderTest.BuildQuery<TestClass>(parameters);
+            QueryInfo actual = SystemUnderTest.BuildQuery<TestClass>(parameters);
             Expression<Action<SqlParameter, SqlParameter>> expression = (e, a) => CompareParameters(e, a);
 
             Asserter.AssertEquality(expected, actual, new[] { "Parameters", "tableObjectMappings" });

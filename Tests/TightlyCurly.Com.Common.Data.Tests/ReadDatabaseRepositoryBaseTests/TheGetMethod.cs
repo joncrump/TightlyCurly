@@ -28,7 +28,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ReadDatabaseRepositoryBaseTests
         [Test]
         public void WillInvokeQueryBuilderBuildSelectQuery()
         {
-            ItemUnderTest.Get();
+            SystemUnderTest.Get();
 
             Mocks.Get<IQueryBuilder>()
                 .Verify(x => x.BuildSelectQuery(It.IsAny<Expression<Func<TestModel, bool>>>(), 

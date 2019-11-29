@@ -26,7 +26,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
         [Test]
         public void WillInvokeBuilderStrategyIfBuildModeIsSingle()
         {
-            ItemUnderTest.BuildSelectQuery(It.IsAny<Expression<Func<TestClass, bool>>>(),
+            SystemUnderTest.BuildSelectQuery(It.IsAny<Expression<Func<TestClass, bool>>>(),
                 It.IsAny<bool>(), It.IsAny<bool>(), It.IsAny<IEnumerable<string>>(),
 // ReSharper disable once RedundantArgumentDefaultValue
                 It.IsAny<string>(), BuildMode.Single);
@@ -39,7 +39,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
         [Test]
         public void WillInvokeBuilderStrategyIfBuildModeIsJoined()
         {
-            ItemUnderTest.BuildSelectQuery(It.IsAny<Expression<Func<TestClass, bool>>>(),
+            SystemUnderTest.BuildSelectQuery(It.IsAny<Expression<Func<TestClass, bool>>>(),
                 It.IsAny<bool>(), It.IsAny<bool>(), It.IsAny<IEnumerable<string>>(),
                 It.IsAny<string>(), BuildMode.Joined);
 

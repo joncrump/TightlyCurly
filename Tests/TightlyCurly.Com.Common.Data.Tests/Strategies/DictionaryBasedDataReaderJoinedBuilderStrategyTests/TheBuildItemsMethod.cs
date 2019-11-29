@@ -24,7 +24,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.Strategies.DictionaryBasedDataReade
         {
             Asserter
                 .AssertException<ArgumentNullException>(
-                    () => ItemUnderTest.BuildItems<object>(null, It.IsAny<IDataReader>()))
+                    () => SystemUnderTest.BuildItems<object>(null, It.IsAny<IDataReader>()))
                 .AndVerifyHasParameter("parameters");
         }
 
@@ -41,7 +41,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.Strategies.DictionaryBasedDataReade
             
             Asserter
                 .AssertException<ArgumentNullException>(
-                    () => ItemUnderTest.BuildItems<object>(parameters, null))
+                    () => SystemUnderTest.BuildItems<object>(parameters, null))
                 .AndVerifyHasParameter("dataSource");
         }
 
@@ -57,7 +57,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.Strategies.DictionaryBasedDataReade
  
             Asserter
                 .AssertException<InvalidOperationException>(
-                    () => ItemUnderTest.BuildItems<ClassWithNoFieldAttributes>(parameters, reader))
+                    () => SystemUnderTest.BuildItems<ClassWithNoFieldAttributes>(parameters, reader))
                 .AndVerifyMessageContains("Type {0} either has no FieldMetaDataAttributes or no Primary Key defined."
                 .FormatString(typeof(ClassWithNoFieldAttributes).ToString()));
         }
@@ -74,7 +74,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.Strategies.DictionaryBasedDataReade
  
             Asserter
                 .AssertException<InvalidOperationException>(
-                    () => ItemUnderTest.BuildItems<ClassWithNoPrimaryKey>(parameters, reader))
+                    () => SystemUnderTest.BuildItems<ClassWithNoPrimaryKey>(parameters, reader))
                 .AndVerifyMessageContains("Type {0} either has no FieldMetaDataAttributes or no Primary Key defined."
                 .FormatString(typeof(ClassWithNoPrimaryKey).ToString()));
         }
@@ -227,7 +227,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.Strategies.DictionaryBasedDataReade
             dataReaderBuilder
                 .Setup(x => x.Build<Child2>(reader, "t3", false))
                 .ReturnsInOrder(new [] {parent1.Child2s.First(), parent1.Child2s.Last(), parent2.Child2s.First(), parent2.Child2s.Last()});
-            var actual = ItemUnderTest.BuildItems<Parent>(parameters, reader);
+            var actual = SystemUnderTest.BuildItems<Parent>(parameters, reader);
 
             Expression<Action<Parent, Parent>> compareParent =
                (e, a) => Asserter.AssertEquality(e, a, new[] {"Child1s", "Child2s"}, null, 

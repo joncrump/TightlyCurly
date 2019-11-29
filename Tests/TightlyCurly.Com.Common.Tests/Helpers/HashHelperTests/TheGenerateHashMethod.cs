@@ -13,14 +13,14 @@ namespace TightlyCurly.Com.Common.Tests.Helpers.HashHelperTests
         {
             Asserter
                 .AssertException<ArgumentNullException>(
-                    () => ItemUnderTest.GenerateHash(null))
+                    () => SystemUnderTest.GenerateHash(null))
                 .AndVerifyHasParameter("value");
         }
 
         [Test]
         public void WillReturnHashIfValueIsHashable()
         {
-            var actual = ItemUnderTest.GenerateHash(new HashableTestClass());
+            var actual = SystemUnderTest.GenerateHash(new HashableTestClass());
 
             Asserter.AssertEquality("TestingHash", actual);
         }
@@ -33,7 +33,7 @@ namespace TightlyCurly.Com.Common.Tests.Helpers.HashHelperTests
 
             value = DataGenerator.GenerateString();
             expected = value.GetHashCode().ToString();
-            var actual = ItemUnderTest.GenerateHash(value);
+            var actual = SystemUnderTest.GenerateHash(value);
 
             Asserter.AssertEquality(expected, actual);
         }

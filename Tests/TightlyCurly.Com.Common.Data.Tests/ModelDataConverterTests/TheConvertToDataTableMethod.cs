@@ -17,7 +17,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ModelDataConverterTests
         {
             Asserter
                 .AssertException<ArgumentNullException>(
-                    () => ItemUnderTest.ConvertToDataTable<TestData>(null))
+                    () => SystemUnderTest.ConvertToDataTable<TestData>(null))
                 .AndVerifyHasParameter("models");
         }
 
@@ -26,7 +26,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ModelDataConverterTests
         {
             Asserter
                 .AssertException<ArgumentEmptyException>(
-                    () => ItemUnderTest.ConvertToDataTable(Enumerable.Empty<IModel>()))
+                    () => SystemUnderTest.ConvertToDataTable(Enumerable.Empty<IModel>()))
                 .AndVerifyHasParameter("models");
         }
 
@@ -51,7 +51,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ModelDataConverterTests
                 {"Baz", "Baz"}
             });
 
-            var actual = ItemUnderTest.ConvertToDataTable(models);
+            var actual = SystemUnderTest.ConvertToDataTable(models);
             Expression<Action<KeyValuePair<string, string>, KeyValuePair<string, string>>> expression =
                 (e, a) => CompareKeyValuePairs(e, a);
 

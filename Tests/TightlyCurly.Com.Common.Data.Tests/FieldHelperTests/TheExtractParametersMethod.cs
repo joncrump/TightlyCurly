@@ -14,7 +14,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.FieldHelperTests
         [Test]
         public void WillReturnEmptyEnumerableIfFieldContainersAreNull()
         {
-            var actual = ItemUnderTest.ExtractParameters(null, It.IsAny<bool>());
+            var actual = SystemUnderTest.ExtractParameters(null, It.IsAny<bool>());
 
             Assert.IsNotNull(actual);
             Assert.AreEqual(0, actual.Count());
@@ -24,7 +24,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.FieldHelperTests
         public void WillReturnEmptyEnumerableIfFieldContainersValuesAreNull()
         {
             var actual =
-                ItemUnderTest.ExtractParameters(new TableObjectMapping
+                SystemUnderTest.ExtractParameters(new TableObjectMapping
                 {
                     TableName = DataGenerator.GenerateString()
                 }, It.IsAny<bool>());
@@ -37,7 +37,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.FieldHelperTests
         public void WillReturnEmptyEnumerableIfFieldContainersValuesAreEmpty()
         {
             var actual =
-                ItemUnderTest.ExtractParameters(new TableObjectMapping
+                SystemUnderTest.ExtractParameters(new TableObjectMapping
                 {
                     TableName = DataGenerator.GenerateString(),
                     FieldMappings = new Dictionary<string, FieldParameterMapping>()
@@ -79,7 +79,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.FieldHelperTests
 //                new SqlParameter("@bak", SqlDbType.NVarChar) {Value = DBNull.Value}
 //            };
 //
-//            var actual = ItemUnderTest.ExtractParameters(values, false);
+//            var actual = SystemUnderTest.ExtractParameters(values, false);
 //            Expression<Action<IDbDataParameter, IDbDataParameter>> expression =
 //                (e, a) => CompareParameters(e, a);
 //            
@@ -124,7 +124,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.FieldHelperTests
 //                new SqlParameter("@bak", SqlDbType.NVarChar) {Value = DBNull.Value}
 //            };
 //
-//            var actual = ItemUnderTest.ExtractParameters(values, true);
+//            var actual = SystemUnderTest.ExtractParameters(values, true);
 //            Expression<Action<IDbDataParameter, IDbDataParameter>> expression =
 //                (e, a) => CompareParameters(e, a);
 //

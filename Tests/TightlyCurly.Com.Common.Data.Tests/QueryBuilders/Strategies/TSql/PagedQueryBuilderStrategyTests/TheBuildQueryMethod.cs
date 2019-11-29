@@ -58,7 +58,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Paged
             parameters.CanDirtyRead = true;
             parameters.DesiredFields = null;
 
-            QueryInfo query = ItemUnderTest.BuildQuery<ClientDataModel>(parameters);
+            QueryInfo query = SystemUnderTest.BuildQuery<ClientDataModel>(parameters);
 
             Asserter.AssertEquality(expectedQuery, query.Query);
 

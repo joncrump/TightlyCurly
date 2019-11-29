@@ -15,7 +15,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Count
         {
             Asserter
                 .AssertException<InvalidOperationException>(
-                    () => ItemUnderTest.BuildQuery<DummyCountClassWithNoCountAttributes>(It.IsAny<dynamic>()))
+                    () => SystemUnderTest.BuildQuery<DummyCountClassWithNoCountAttributes>(It.IsAny<dynamic>()))
                 .AndVerifyMessageContains("Could not build query. Type {0} does not have a count attribute."
                     .FormatString(typeof (DummyCountClassWithNoCountAttributes).ToString()));
         }
@@ -25,7 +25,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Count
         {
             Asserter
                 .AssertException<InvalidOperationException>(
-                    () => ItemUnderTest.BuildQuery<DummyCountClassWithNoAttributes>(It.IsAny<dynamic>()))
+                    () => SystemUnderTest.BuildQuery<DummyCountClassWithNoAttributes>(It.IsAny<dynamic>()))
                 .AndVerifyMessageContains("Could not build query. Type {0} does not have a table attribute."
                     .FormatString(typeof (DummyCountClassWithNoAttributes)));
         }
@@ -39,7 +39,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Count
 
             expected = new QueryInfo(query);
 
-            var actual = ItemUnderTest.BuildQuery<DummyCountClassWithCountAttributes>(It.IsAny<dynamic>());
+            var actual = SystemUnderTest.BuildQuery<DummyCountClassWithCountAttributes>(It.IsAny<dynamic>());
 
             Assert.IsNotNull(actual);
             Asserter.AssertEquality(expected.Query, actual.Query);

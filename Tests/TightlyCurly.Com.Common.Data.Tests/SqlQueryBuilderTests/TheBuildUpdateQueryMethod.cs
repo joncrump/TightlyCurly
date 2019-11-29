@@ -25,7 +25,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
         public void WillThrowArgumentNullExceptionIfModelIsNull()
         {
             Asserter.AssertException<ArgumentNullException>(
-                () => ItemUnderTest.BuildUpdateQuery(null,
+                () => SystemUnderTest.BuildUpdateQuery(null,
                     It.IsAny<Expression<Func<TestClass, bool>>>(),
                     It.IsAny<IEnumerable<string>>(), It.IsAny<string>()))
             .AndVerifyMessageContains("model");
@@ -35,7 +35,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
         public void WillThrowArgumentNullExceptionIfPredicateIsNull()
         {
             Asserter.AssertException<ArgumentNullException>(
-                () => ItemUnderTest.BuildUpdateQuery(Mock.Of<TestClass>(),
+                () => SystemUnderTest.BuildUpdateQuery(Mock.Of<TestClass>(),
                     null,
                     It.IsAny<IEnumerable<string>>(), It.IsAny<string>()))
             .AndVerifyMessageContains("predicate");
@@ -46,7 +46,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
         {
             Expression<Func<TestClass, bool>> predicate = t => t.Id == 5;
 
-            ItemUnderTest.BuildUpdateQuery(Mock.Of<TestClass>(), predicate,
+            SystemUnderTest.BuildUpdateQuery(Mock.Of<TestClass>(), predicate,
                 It.IsAny<IEnumerable<string>>(), It.IsAny<string>());
 
             Mocks.Get<IQueryBuilderStrategyFactory>()

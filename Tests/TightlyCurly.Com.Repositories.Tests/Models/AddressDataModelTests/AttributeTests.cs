@@ -17,7 +17,7 @@ namespace TightlyCurly.Com.Repositories.Tests.Models.AddressDataModelTests
         public void HasTypeAttributes()
         {
             throw new NotImplementedException();
-            //Asserter.AssertHasClassAttributes(ItemUnderTest,
+            //Asserter.AssertHasClassAttributes(SystemUnderTest,
             //    new[]
             //    {
             //        new AttributeInfo
@@ -35,7 +35,7 @@ namespace TightlyCurly.Com.Repositories.Tests.Models.AddressDataModelTests
         public void HasPropertyAttributes()
         {
             throw new NotImplementedException();
-            //Asserter.AssertHasPropertyAttributes(ItemUnderTest,
+            //Asserter.AssertHasPropertyAttributes(SystemUnderTest,
             //    new[]
             //    {
             //        new PropertyAttributeInfo

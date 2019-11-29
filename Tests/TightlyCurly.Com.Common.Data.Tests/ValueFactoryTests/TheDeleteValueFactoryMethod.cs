@@ -15,7 +15,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
         {
             Asserter
                 .AssertException<ArgumentNullException>(
-                    () => ItemUnderTest.DeleteValueFactory(null))
+                    () => SystemUnderTest.DeleteValueFactory(null))
                 .AndVerifyHasParameter("key");
         }
 
@@ -24,7 +24,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
         {
             Asserter
                 .AssertException<ArgumentEmptyException>(
-                    () => ItemUnderTest.DeleteValueFactory(String.Empty))
+                    () => SystemUnderTest.DeleteValueFactory(String.Empty))
                 .AndVerifyHasParameter("key");
         }
 
@@ -33,10 +33,10 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
         {
             Expression<Func<object, object>> expression = e => null;
 
-            ItemUnderTest.Delegates.Add(DataGenerator.GenerateString(), expression);
+            SystemUnderTest.Delegates.Add(DataGenerator.GenerateString(), expression);
             Asserter
                 .AssertException<InvalidOperationException>(
-                    () => ItemUnderTest.DeleteValueFactory(DataGenerator.GenerateString()))
+                    () => SystemUnderTest.DeleteValueFactory(DataGenerator.GenerateString()))
                 .AndVerifyMessageContains(ErrorMessages.CannotDeleteExpression);
         }
 
@@ -48,10 +48,10 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
             key = DataGenerator.GenerateString();
             Expression<Func<object, object>> expression = e => null;
 
-            ItemUnderTest.Delegates.Add(key, expression);
-            ItemUnderTest.DeleteValueFactory(key);
+            SystemUnderTest.Delegates.Add(key, expression);
+            SystemUnderTest.DeleteValueFactory(key);
 
-            Assert.IsFalse(ItemUnderTest.Delegates.ContainsKey(key));
+            Assert.IsFalse(SystemUnderTest.Delegates.ContainsKey(key));
         }
     }
 }

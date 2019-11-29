@@ -15,7 +15,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
             Mocks.Get<IQueryBuilderStrategyFactory>()
                 .Setup(x => x.GetBuilderStrategy(QueryKind.Count))
                 .Returns(new Mock<IQueryBuilderStrategy>().Object);
-            ItemUnderTest.BuildCountQuery<TestClass>();
+            SystemUnderTest.BuildCountQuery<TestClass>();
 
             Mocks.Get<IQueryBuilderStrategyFactory>()
                 .Verify(x => x.GetBuilderStrategy(QueryKind.Count), Times.Once);

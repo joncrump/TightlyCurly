@@ -20,7 +20,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Inser
         {
             Asserter
                 .AssertException<ArgumentNullException>(
-                    () => ItemUnderTest.BuildQuery<TestClass>());
+                    () => SystemUnderTest.BuildQuery<TestClass>());
         }
 
         [Test]
@@ -68,7 +68,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Inser
             parameters.TableName = null;
             parameters.Model = testClass;
 
-            QueryInfo actual = ItemUnderTest.BuildQuery<TestClass>(parameters);
+            QueryInfo actual = SystemUnderTest.BuildQuery<TestClass>(parameters);
             var expression = ConstructComparisonDelegate();
 
             Asserter.AssertEquality(expected, actual, new[] { "Parameters", "tableObjectMappings" });

@@ -12,7 +12,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.EntityModelDatabaseRepositoryBaseTe
         {
             Asserter
                 .AssertException<ArgumentNullException>(
-                    () => ItemUnderTest.Save(null, true))
+                    () => SystemUnderTest.Save(null, true))
                 .AndVerifyHasParameter("model");
         }
     }

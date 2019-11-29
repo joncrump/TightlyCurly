@@ -35,7 +35,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Delet
         {
             Asserter
                 .AssertException<ArgumentNullException>(
-                    () => ItemUnderTest.BuildQuery<TestClass>(null))
+                    () => SystemUnderTest.BuildQuery<TestClass>(null))
                 .AndVerifyHasParameter("parameters");
         }
 
@@ -78,7 +78,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Delet
             parameters.Predicate = predicate;
             parameters.TableName = null;
 
-            QueryInfo actual = ItemUnderTest.BuildQuery<TestClass>(parameters);
+            QueryInfo actual = SystemUnderTest.BuildQuery<TestClass>(parameters);
             Expression<Action<SqlParameter, SqlParameter>> expression =
                 (e, a) => CompareSqlParameters(e, a);
 

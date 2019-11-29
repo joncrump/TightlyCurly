@@ -28,14 +28,14 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
         {
             Asserter
                 .AssertException<ArgumentNullException>(
-                    () => ItemUnderTest.ExecuteMultiple<object>(null, It.IsAny<BuildMode>()))
+                    () => SystemUnderTest.ExecuteMultiple<object>(null, It.IsAny<BuildMode>()))
                 .AndVerifyHasParameter("queryInfo");
         }
 
         [Test]
         public void WillInvokeDatabaseCreateCommandText()
         {
-            ItemUnderTest.ExecuteMultiple<object>(Mock.Of<QueryInfo>(), BuildMode.Joined);
+            SystemUnderTest.ExecuteMultiple<object>(Mock.Of<QueryInfo>(), BuildMode.Joined);
 
             throw new NotImplementedException();
 //            MockDatabase
@@ -46,7 +46,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
         [Test]
         public void WillInvokeTheDatabaseWithParametersMethod()
         {
-            ItemUnderTest.ExecuteMultiple<object>(Mock.Of<QueryInfo>(), It.IsAny<BuildMode>());
+            SystemUnderTest.ExecuteMultiple<object>(Mock.Of<QueryInfo>(), It.IsAny<BuildMode>());
 
             throw new NotImplementedException();
 //                MockDatabase
@@ -57,7 +57,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
         [Test]
         public void WillInvokeDatabaseExecuteMultipleMethod()
         {
-            ItemUnderTest.ExecuteMultiple<object>(Mock.Of<QueryInfo>(), It.IsAny<BuildMode>());
+            SystemUnderTest.ExecuteMultiple<object>(Mock.Of<QueryInfo>(), It.IsAny<BuildMode>());
 
 //                MockDatabase
 //                    .Verify(x => x.ExecuteMultiple<object>(It.IsAny<IBuilderStrategy>(), 
@@ -68,7 +68,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
         [Test]
         public void WillInvokeBuilderStrategyFactory()
         {
-            ItemUnderTest.ExecuteMultiple<object>(Mock.Of<QueryInfo>(), BuildMode.Joined);
+            SystemUnderTest.ExecuteMultiple<object>(Mock.Of<QueryInfo>(), BuildMode.Joined);
 
 //                Mocks.Get<Mock<IBuilderStrategyFactory>>()
 //                    .Verify(x => x.GetStrategy(BuildMode.Joined), Times.Once);

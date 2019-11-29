@@ -25,7 +25,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
         {
             Asserter
                 .AssertException<ArgumentNullException>(
-                    () => ItemUnderTest.BuildInsertQuery<TestClass>(null, It.IsAny<bool>(), It.IsAny<bool>(),
+                    () => SystemUnderTest.BuildInsertQuery<TestClass>(null, It.IsAny<bool>(), It.IsAny<bool>(),
                         It.IsAny<IEnumerable<string>>(), It.IsAny<string>()))
                 .AndVerifyHasParameter("model");
         }
@@ -33,7 +33,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.SqlQueryBuilderTests
         [Test]
         public void WillInvokeQueryBuilderStrategyFactory()
         {
-            ItemUnderTest.BuildInsertQuery(Mock.Of<TestClass>(), It.IsAny<bool>(),
+            SystemUnderTest.BuildInsertQuery(Mock.Of<TestClass>(), It.IsAny<bool>(),
                 It.IsAny<bool>(), It.IsAny<IEnumerable<string>>(), It.IsAny<string>());
 
             Mocks.Get<IQueryBuilderStrategyFactory>()

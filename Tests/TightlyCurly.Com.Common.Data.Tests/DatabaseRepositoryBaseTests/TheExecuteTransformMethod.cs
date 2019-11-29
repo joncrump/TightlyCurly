@@ -19,7 +19,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
             Asserter
                 .AssertException<ArgumentNullException>(
                     () =>
-                        ItemUnderTest.ExecuteTransform(null, It.IsAny<Func<IDataReader, object>>(),
+                        SystemUnderTest.ExecuteTransform(null, It.IsAny<Func<IDataReader, object>>(),
                             It.IsAny<Action<object>>()))
                 .AndVerifyHasParameter("queryInfo");
         }
@@ -29,7 +29,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
         {
             Asserter
                 .AssertException<ArgumentNullException>(
-                    () => ItemUnderTest.ExecuteTransform(Mock.Of<QueryInfo>(), null,
+                    () => SystemUnderTest.ExecuteTransform(Mock.Of<QueryInfo>(), null,
                         It.IsAny<Action<object>>()))
                 .AndVerifyHasParameter("builderDelegate");
         }
@@ -41,7 +41,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
 
             Asserter
                 .AssertException<ArgumentNullException>(
-                    () => ItemUnderTest.ExecuteTransform(Mock.Of<QueryInfo>(), builderDelegate,
+                    () => SystemUnderTest.ExecuteTransform(Mock.Of<QueryInfo>(), builderDelegate,
                         null))
                 .AndVerifyHasParameter("transformAction");
         }
@@ -52,7 +52,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
             Func<IDataReader, object> builderDelegate = r => r;
             Action<object> transformAction = FakeMethod;
 
-            ItemUnderTest.ExecuteTransform(Mock.Of<QueryInfo>(), builderDelegate, 
+            SystemUnderTest.ExecuteTransform(Mock.Of<QueryInfo>(), builderDelegate, 
                 transformAction);
 
             throw new NotImplementedException();
@@ -72,7 +72,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
             Func<IDataReader, object> builderDelegate = r => r;
             Action<object> transformAction = FakeMethod;
 
-            ItemUnderTest.ExecuteTransform(queryInfo, builderDelegate, transformAction);
+            SystemUnderTest.ExecuteTransform(queryInfo, builderDelegate, transformAction);
 
             throw new NotImplementedException();
 //            MockDatabase
@@ -93,7 +93,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
             Func<IDataReader, object> builderDelegate = r => r;
             Action<object> transformAction = FakeMethod;
 
-            ItemUnderTest.ExecuteTransform(queryInfo, builderDelegate, transformAction);
+            SystemUnderTest.ExecuteTransform(queryInfo, builderDelegate, transformAction);
 
             throw new NotImplementedException();
             
@@ -118,7 +118,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
             Func<IDataReader, object> builderDelegate = r => r;
             Action<object> transformAction = FakeMethod;
 
-            ItemUnderTest.ExecuteTransform(queryInfo, builderDelegate, transformAction);
+            SystemUnderTest.ExecuteTransform(queryInfo, builderDelegate, transformAction);
 
             throw new NotImplementedException();
             
@@ -133,7 +133,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
             Func<IDataReader, object> builderDelegate = r => r;
             Action<object> transformAction = FakeMethod;
 
-            ItemUnderTest.ExecuteTransform(Mock.Of<QueryInfo>(), 
+            SystemUnderTest.ExecuteTransform(Mock.Of<QueryInfo>(), 
                 builderDelegate, transformAction);
 
             throw new NotImplementedException();

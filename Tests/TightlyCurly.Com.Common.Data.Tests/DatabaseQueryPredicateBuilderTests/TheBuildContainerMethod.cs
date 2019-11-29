@@ -63,7 +63,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
                 });
         
 
-            var actual = ItemUnderTest.BuildContainer(expression, typeof(TestClass));
+            var actual = SystemUnderTest.BuildContainer(expression, typeof(TestClass));
             Expression<Action<SqlParameter, SqlParameter>> compareExpression =
                 (e, a) => CompareParameters(e, a);
 
@@ -116,7 +116,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
                     }
                 });
 
-            var actual = ItemUnderTest.BuildContainer(expression, typeof(TestClass), tableAlias:"t1", fieldPrefix:"t1_");
+            var actual = SystemUnderTest.BuildContainer(expression, typeof(TestClass), tableAlias:"t1", fieldPrefix:"t1_");
             Expression<Action<SqlParameter, SqlParameter>> compareExpression =
                 (e, a) => CompareParameters(e, a);
 
@@ -144,7 +144,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
 
             Asserter
                 .AssertException<InvalidOperationException>(
-                    () => ItemUnderTest.BuildContainer(expression, typeof(TestClass)))
+                    () => SystemUnderTest.BuildContainer(expression, typeof(TestClass)))
                 .AndVerifyMessageContains("Cannot build query.  Property has no metadata attributes: SomeProperty");
         }
 
@@ -159,7 +159,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
                     expected = new QueryContainer(
                         "PioneerSquareBar LIKE ('Hink%')");
 
-                    var actual = ItemUnderTest.BuildContainer(expression, typeof(TestClass));
+                    var actual = SystemUnderTest.BuildContainer(expression, typeof(TestClass));
 
                     Asserter.AssertEquality(expected, actual, new[] { "Parameters", "OrderByClause" });
         }
@@ -175,7 +175,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
             expected = new QueryContainer(
                 "t1.t1_PioneerSquareBar LIKE ('Hink%')");
 
-            var actual = ItemUnderTest.BuildContainer(expression, typeof(TestClass), 
+            var actual = SystemUnderTest.BuildContainer(expression, typeof(TestClass), 
                 tableAlias:"t1", fieldPrefix:"t1_");
 
             Asserter.AssertEquality(expected, actual, new[] { "Parameters", "OrderByClause" });
@@ -192,7 +192,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
             expected = new QueryContainer(
                 "PioneerSquareBar LIKE ('%yikes%')");
 
-            var actual = ItemUnderTest.BuildContainer(expression, typeof(TestClass));
+            var actual = SystemUnderTest.BuildContainer(expression, typeof(TestClass));
 
             Asserter.AssertEquality(expected, actual, new[] { "Parameters", "OrderByClause" });
         }
@@ -208,7 +208,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
             expected = new QueryContainer(
                 "t1.t1_PioneerSquareBar LIKE ('%yikes%')");
        
-            var actual = ItemUnderTest.BuildContainer(expression, typeof(TestClass), 
+            var actual = SystemUnderTest.BuildContainer(expression, typeof(TestClass), 
                 tableAlias:"t1", fieldPrefix:"t1_");
 
             Asserter.AssertEquality(expected, actual, new[] { "Parameters", "OrderByClause" });
@@ -225,7 +225,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
             expected = new QueryContainer(
                 "PioneerSquareBar LIKE ('%yikes')");
         
-            var actual = ItemUnderTest.BuildContainer(expression, typeof(TestClass));
+            var actual = SystemUnderTest.BuildContainer(expression, typeof(TestClass));
 
             Asserter.AssertEquality(expected, actual, new[] { "Parameters", "OrderByClause" });
         }
@@ -241,7 +241,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
             expected = new QueryContainer(
                 "t1.t1_PioneerSquareBar LIKE ('%yikes')");
         
-            var actual = ItemUnderTest.BuildContainer(expression, typeof(TestClass), 
+            var actual = SystemUnderTest.BuildContainer(expression, typeof(TestClass), 
                 tableAlias:"t1", fieldPrefix:"t1_");
 
             Asserter.AssertEquality(expected, actual, new[] { "Parameters", "OrderByClause" });
@@ -258,7 +258,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
             expected = new QueryContainer(
                 "PioneerSquareBar = 'yikes'");
        
-            var actual = ItemUnderTest.BuildContainer(expression, typeof(TestClass));
+            var actual = SystemUnderTest.BuildContainer(expression, typeof(TestClass));
 
             Asserter.AssertEquality(expected, actual, new[] { "Parameters", "OrderByClause" });
         }
@@ -274,7 +274,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
             expected = new QueryContainer(
                 "t1.t1_PioneerSquareBar = 'yikes'");
 
-            var actual = ItemUnderTest.BuildContainer(expression, typeof(TestClass), 
+            var actual = SystemUnderTest.BuildContainer(expression, typeof(TestClass), 
                 tableAlias:"t1", fieldPrefix:"t1_");
 
             Asserter.AssertEquality(expected, actual, new[] { "Parameters", "OrderByClause" });
@@ -291,7 +291,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
             expected = new QueryContainer(
                 "TestClassId = 5");
 
-            var actual = ItemUnderTest.BuildContainer(expression, typeof(TestClass));
+            var actual = SystemUnderTest.BuildContainer(expression, typeof(TestClass));
 
             Asserter.AssertEquality(expected, actual, new[] { "Parameters", "OrderByClause" });
         }
@@ -307,7 +307,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
             expected = new QueryContainer(
                 "t1.t1_TestClassId = 5");
        
-            var actual = ItemUnderTest.BuildContainer(expression, typeof(TestClass), 
+            var actual = SystemUnderTest.BuildContainer(expression, typeof(TestClass), 
                 tableAlias:"t1", fieldPrefix:"t1_");
 
             Asserter.AssertEquality(expected, actual, new[] { "Parameters", "OrderByClause" });
@@ -323,7 +323,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
 
             expected = new QueryContainer("PioneerSquareBar IS NULL");
         
-            var actual = ItemUnderTest.BuildContainer(expression, typeof (TestClass));
+            var actual = SystemUnderTest.BuildContainer(expression, typeof (TestClass));
 
             Asserter.AssertEquality(expected, actual, new[] { "Parameters", "OrderByClause" });
         }
@@ -338,7 +338,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
 
             expected = new QueryContainer("t1.t1_PioneerSquareBar IS NULL");
        
-            var actual = ItemUnderTest.BuildContainer(expression, typeof(TestClass), 
+            var actual = SystemUnderTest.BuildContainer(expression, typeof(TestClass), 
                 tableAlias:"t1", fieldPrefix:"t1_");
 
             Asserter.AssertEquality(expected, actual, new[] { "Parameters", "OrderByClause" });
@@ -372,7 +372,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
             expected = "DAY(SomeDate) = {0} AND MONTH(SomeDate) = {1} AND YEAR(SomeDate) = {2}"
                 .FormatString(dateValue.Day.ToString(), dateValue.Month.ToString(), dateValue.Year.ToString());
 
-            var actual = ItemUnderTest.BuildContainer(expression, typeof(DateClass));
+            var actual = SystemUnderTest.BuildContainer(expression, typeof(DateClass));
 
             Asserter.AssertEquality(new QueryContainer(expected), actual, new[] { "Parameters", "OrderByClause" });
         }
@@ -404,7 +404,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
             expected = "DAY(t1.t1_SomeDate) = {0} AND MONTH(t1.t1_SomeDate) = {1} AND YEAR(t1.t1_SomeDate) = {2}"
                 .FormatString(dateValue.Day.ToString(), dateValue.Month.ToString(), dateValue.Year.ToString());
 
-            var actual = ItemUnderTest.BuildContainer(expression, typeof(DateClass), tableAlias:"t1", fieldPrefix:"t1_");
+            var actual = SystemUnderTest.BuildContainer(expression, typeof(DateClass), tableAlias:"t1", fieldPrefix:"t1_");
 
             Asserter.AssertEquality(new QueryContainer(expected), actual, new[] { "Parameters", "OrderByClause" });
         }
@@ -427,7 +427,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
             expected = "SomeName = @someName AND DAY(SomeDate) = {0} AND MONTH(SomeDate) = {1} AND YEAR(SomeDate) = {2}"
                 .FormatString(dateValue.Day.ToString(), dateValue.Month.ToString(), dateValue.Year.ToString());
 
-            var actual = ItemUnderTest.BuildContainer(expression, typeof(DateClass));
+            var actual = SystemUnderTest.BuildContainer(expression, typeof(DateClass));
             Expression<Action<SqlParameter, SqlParameter>> compareExpression =
                 (e, a) => CompareParameters(e, a);
 

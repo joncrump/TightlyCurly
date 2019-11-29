@@ -41,7 +41,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
         {
             Asserter
                 .AssertException<ArgumentNullException>(
-                    () => ItemUnderTest.Save(null, It.IsAny<bool>(),
+                    () => SystemUnderTest.Save(null, It.IsAny<bool>(),
                         It.IsAny<Action<ITestModel>>(), It.IsAny<Action<ITestModel>>(),
                         It.IsAny<Expression>()))
                 .AndVerifyHasParameter("model");
@@ -50,7 +50,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
         [Test]
         public void WillInvokeMapper()
         {
-            ItemUnderTest.Save(Mock.Of<ITestModel>(), true, null, null, null);
+            SystemUnderTest.Save(Mock.Of<ITestModel>(), true, null, null, null);
 
             Mocks.Get<IMapper>()
                 .Verify(x => x.Map<TestModel>(It.IsAny<ITestModel>()), 
@@ -64,7 +64,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
             Action<ITestModel> insertAction = null;
 
             insertAction = t => invoked = true;
-            ItemUnderTest.Save(Mock.Of<ITestModel>(), true, insertAction, null, null);
+            SystemUnderTest.Save(Mock.Of<ITestModel>(), true, insertAction, null, null);
 
             Assert.IsTrue(invoked);
         }
@@ -72,7 +72,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
         [Test]
         public void WillInvokeQueryBuilderInsertQuery()
         {
-            ItemUnderTest.Save(Mock.Of<ITestModel>(), true, It.IsAny<Action<ITestModel>>(), 
+            SystemUnderTest.Save(Mock.Of<ITestModel>(), true, It.IsAny<Action<ITestModel>>(), 
                 It.IsAny<Action<ITestModel>>(), It.IsAny<Expression>());
 
             Mocks.Get<IQueryBuilder>()
@@ -84,7 +84,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
         public void WillInvokeExecuteNonQueryIfModelIsNew()
         {
             throw new NotImplementedException();
-            //ItemUnderTest.Save(Mock.Of<ITestModel>(), true, It.IsAny<Action<ITestModel>>(),
+            //SystemUnderTest.Save(Mock.Of<ITestModel>(), true, It.IsAny<Action<ITestModel>>(),
             //    It.IsAny<Action<ITestModel>>(), It.IsAny<Expression>());
 
             //MockDatabase
@@ -100,7 +100,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
 
             updateAction = t => invoked = true;
             updateExpression = Expression.Parameter(typeof (TestModel));
-            ItemUnderTest.Save(Mock.Of<ITestModel>(), false, null, updateAction,
+            SystemUnderTest.Save(Mock.Of<ITestModel>(), false, null, updateAction,
                 updateExpression);
 
             Assert.IsTrue(invoked);
@@ -111,7 +111,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
         {
             Asserter
                 .AssertException<InvalidOperationException>(
-                    () => ItemUnderTest.Save(Mock.Of<ITestModel>(), false, null, null, null))
+                    () => SystemUnderTest.Save(Mock.Of<ITestModel>(), false, null, null, null))
                 .AndVerifyMessageContains("Don't know how to update model.  Update expression is null");
         }
 
@@ -121,7 +121,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
             Expression updateExpression = null;
 
             updateExpression = Expression.Parameter(typeof (TestModel));
-            ItemUnderTest.Save(Mock.Of<ITestModel>(), false, null, null, updateExpression);
+            SystemUnderTest.Save(Mock.Of<ITestModel>(), false, null, null, updateExpression);
 
             Mocks.Get<IQueryBuilder>()
                 .Verify(x => x.BuildUpdateQuery(It.IsAny<TestModel>(), It.IsAny<Expression<Func<TestModel, bool>>>(), 

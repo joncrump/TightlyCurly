@@ -16,7 +16,7 @@ namespace TightlyCurly.Com.Repositories.Tests.Models.AsideDataModelTests
         public void TypeIsDecorated()
         {
             throw new NotImplementedException();
-            //Asserter.AssertHasClassAttributes(ItemUnderTest, new []
+            //Asserter.AssertHasClassAttributes(SystemUnderTest, new []
             //{
             //    new AttributeInfo
             //    {
@@ -35,7 +35,7 @@ namespace TightlyCurly.Com.Repositories.Tests.Models.AsideDataModelTests
             throw new NotImplementedException();
             //TestRunner.ExecuteTest(() =>
             //{
-            //    Asserter.AssertHasPropertyAttributes(ItemUnderTest, new[]
+            //    Asserter.AssertHasPropertyAttributes(SystemUnderTest, new[]
             //    {
             //        new PropertyAttributeInfo
             //        {

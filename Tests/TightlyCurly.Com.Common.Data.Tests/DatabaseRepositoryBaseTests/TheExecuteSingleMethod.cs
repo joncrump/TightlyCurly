@@ -25,14 +25,14 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
         {
             Asserter
                 .AssertException<ArgumentNullException>(
-                    () => ItemUnderTest.ExecuteSingle<object>(null, It.IsAny<BuildMode>()))
+                    () => SystemUnderTest.ExecuteSingle<object>(null, It.IsAny<BuildMode>()))
                 .AndVerifyHasParameter("queryInfo");
         }
 
         [Test]
         public void WillInvokeBuilderStrategyFactory()
         {
-            ItemUnderTest.ExecuteSingle<object>(Mock.Of<QueryInfo>(), BuildMode.Joined);
+            SystemUnderTest.ExecuteSingle<object>(Mock.Of<QueryInfo>(), BuildMode.Joined);
 
             Mocks.Get<IBuilderStrategyFactory>()
                 .Verify(x => x.GetStrategy(BuildMode.Joined), Times.Once);
@@ -41,7 +41,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
         [Test]
         public void WillInvokeDatabaseCreateCommandText()
         {
-            ItemUnderTest.ExecuteSingle<object>(Mock.Of<QueryInfo>());
+            SystemUnderTest.ExecuteSingle<object>(Mock.Of<QueryInfo>());
 
             throw new NotImplementedException();
 //            MockDatabase
@@ -52,7 +52,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
         [Test]
         public void WillInvokeDatabaseWithParameters()
         {
-            ItemUnderTest.ExecuteSingle<object>(Mock.Of<QueryInfo>());
+            SystemUnderTest.ExecuteSingle<object>(Mock.Of<QueryInfo>());
 
             throw new NotImplementedException();
 //            MockDatabase
@@ -63,7 +63,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
         [Test]
         public void WillInvokeExecuteSingle()
         {
-            ItemUnderTest.ExecuteSingle<object>(Mock.Of<QueryInfo>());
+            SystemUnderTest.ExecuteSingle<object>(Mock.Of<QueryInfo>());
 
             throw new NotImplementedException();
 //            MockDatabase

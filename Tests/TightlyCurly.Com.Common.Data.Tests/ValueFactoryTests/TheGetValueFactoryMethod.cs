@@ -14,7 +14,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
         {
             Asserter
                 .AssertException<ArgumentNullException>(
-                    () => ItemUnderTest.GetValueFactory(null))
+                    () => SystemUnderTest.GetValueFactory(null))
                 .AndVerifyHasParameter("key");
         }
 
@@ -23,7 +23,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
         {
             Asserter
                 .AssertException<ArgumentEmptyException>(
-                    () => ItemUnderTest.GetValueFactory(String.Empty))
+                    () => SystemUnderTest.GetValueFactory(String.Empty))
                 .AndVerifyHasParameter("key");
         }
 
@@ -36,9 +36,9 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
             expected = e => null;
             key = DataGenerator.GenerateString();
 
-            ItemUnderTest.Delegates
+            SystemUnderTest.Delegates
                 .Add(key, expected);
-            var actual = ItemUnderTest.GetValueFactory(key);
+            var actual = SystemUnderTest.GetValueFactory(key);
 
             Asserter.AssertEquality("() => e => null", actual.ToString());
         }
@@ -56,9 +56,9 @@ namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
 
             Expression<Func<object, string>> expression = e => e.ToString() + random;
 
-            ItemUnderTest.Delegates
+            SystemUnderTest.Delegates
                 .Add(key, expression);
-            var returnExpression = ItemUnderTest.GetValueFactory(key, new ParameterInfo(typeof(string), expected));
+            var returnExpression = SystemUnderTest.GetValueFactory(key, new ParameterInfo(typeof(string), expected));
             var actual = returnExpression.Compile()();
 
             Asserter.AssertEquality(expected + random, actual.ToString());

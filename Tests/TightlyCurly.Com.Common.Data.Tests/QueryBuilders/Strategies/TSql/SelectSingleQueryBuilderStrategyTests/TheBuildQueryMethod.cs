@@ -48,7 +48,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
             parameters.TableName = null;
             parameters.Predicate = predicate;
 
-            QueryInfo actual = ItemUnderTest.BuildQuery<TestClass>(parameters);
+            QueryInfo actual = SystemUnderTest.BuildQuery<TestClass>(parameters);
 
             Asserter.AssertEquality(expected, actual, new[] { "Parameters", "tableObjectMappings" });
             Assert.IsTrue(actual.Parameters.IsNullOrEmpty());
@@ -99,7 +99,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.Selec
             parameters.TableName = null;
             parameters.Predicate = predicate;
 
-            QueryInfo actual = ItemUnderTest.BuildQuery<TestClass>(parameters);
+            QueryInfo actual = SystemUnderTest.BuildQuery<TestClass>(parameters);
             Expression<Action<SqlParameter, SqlParameter>> expression = (e, a) => CompareParameters(e, a);
 
             Asserter.AssertEquality(expected, actual, new[] { "Parameters", "tableObjectMappings" });
