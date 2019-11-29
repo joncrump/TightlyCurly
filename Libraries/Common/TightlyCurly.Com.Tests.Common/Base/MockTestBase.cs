@@ -117,7 +117,7 @@ namespace TightlyCurly.Com.Tests.Common.Base
                                                                            null), parameterType);
 
 					var method = Mocks.GetType().GetMethod("Add");
-					var genericMethod = method.MakeGenericMethod(parameterType);
+					var genericMethod = method.MakeGenericMethod(parameter.ParameterType);
 
 					genericMethod.Invoke(Mocks, new object[] { parameter.Name, mock });
 
