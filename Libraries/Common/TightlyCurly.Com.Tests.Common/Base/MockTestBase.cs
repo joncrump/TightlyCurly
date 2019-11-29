@@ -16,35 +16,40 @@ namespace TightlyCurly.Com.Tests.Common.Base
 
         protected MockTestBase() : this(AsserterFactory.GetAssertAdapter(UnitTestFrameworkType.Nunit))
         {
+            Setup();
         }
         
         protected MockTestBase(UnitTestFrameworkType frameworkType) : this(AsserterFactory.GetAssertAdapter(frameworkType))
         {
-            
+            Setup();
         }
         
         protected MockTestBase(IAssertAdapter assertAdapter)
             : base(new RandomDataGenerator(), new ReflectionBasedObjectCreator(), assertAdapter, 
             new SurrogateAsserter(assertAdapter))
         {
+            Setup();
         }
 
         protected MockTestBase(IDataGenerator dataGenerator, IAssertAdapter assertAdapter)
             : base(dataGenerator, new ReflectionBasedObjectCreator(), assertAdapter, 
             new SurrogateAsserter(assertAdapter))
         {
+            Setup();
         }
 
         protected MockTestBase(IDataGenerator dataGenerator, IObjectCreator objectCreator, 
             IAssertAdapter assertAdapter)
             : base(dataGenerator, objectCreator, assertAdapter)
         {
+            Setup();
         }
 
         protected MockTestBase(IObjectCreator objectCreator, IAssertAdapter assertAdapter)
             : base(new RandomDataGenerator(), objectCreator, assertAdapter, 
             new SurrogateAsserter(assertAdapter))
         {
+            Setup();
         }
 
         protected override void Setup()

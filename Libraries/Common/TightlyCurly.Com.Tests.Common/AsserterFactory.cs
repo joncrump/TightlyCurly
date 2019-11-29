@@ -11,7 +11,6 @@ namespace TightlyCurly.Com.Tests.Common
             {
                 case UnitTestFrameworkType.Nunit:
                     return new NUnitAssertAdapter();
-                    break;
                 default:
                     throw new NotSupportedException($"The framework type {frameworkType} is not supported.");
             }
