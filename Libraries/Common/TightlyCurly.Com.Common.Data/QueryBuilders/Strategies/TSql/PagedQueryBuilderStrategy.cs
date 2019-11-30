@@ -6,6 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using TightlyCurly.Com.Common.Data.Constants;
+using TightlyCurly.Com.Common.Data.Helpers;
 using TightlyCurly.Com.Common.Data.Mappings;
 using TightlyCurly.Com.Common.Extensions;
 
@@ -15,23 +16,25 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
     {
         private readonly IPredicateBuilder _predicateBuilder;
         private readonly IObjectMappingFactory _objectMappingFactory;
+        private readonly IDatabaseConfiguration _databaseConfiguration;
 
         public PagedQueryBuilderStrategy(IFieldHelper fieldHelper, IPredicateBuilder predicateBuilder, 
-            IObjectMappingFactory objectMappingFactory) 
+            IObjectMappingFactory objectMappingFactory, IDatabaseConfiguration databaseConfiguration) 
             : base(fieldHelper)
         {
-            _predicateBuilder = predicateBuilder.EnsureIsNotNull("predicateBuilder");
-            _objectMappingFactory = objectMappingFactory.EnsureIsNotNull("objectMappingFactory");
+            _predicateBuilder = predicateBuilder.EnsureIsNotNull(nameof(predicateBuilder));
+            _objectMappingFactory = objectMappingFactory.EnsureIsNotNull(nameof(objectMappingFactory));
+            _databaseConfiguration = databaseConfiguration.EnsureIsNotNull(nameof(databaseConfiguration));
         }
 
         public QueryInfo BuildQuery<TValue>(dynamic parameters = null) where TValue : class
         {
-            PagingInfo pagingInfo = parameters.PagingInfo;
-            IEnumerable<string> desiredFields = parameters.DesiredFields;
-            Expression<Func<TValue, bool>> predicate = parameters.Predicate;
-            bool canDirtyRead = parameters.CanDirtyRead;
-            bool includeParameters = parameters.IncludeParameters;
-            var mapping = _objectMappingFactory.GetMappingFor<TValue>();
+            PagingInfo pagingInfo = parameters?.PagingInfo;
+            IEnumerable<string> desiredFields = parameters?.DesiredFields;
+            Expression<Func<TValue, bool>> predicate = parameters?.Predicate;
+            bool canDirtyRead = parameters?.CanDirtyRead;
+            bool includeParameters = parameters?.IncludeParameters;
+            var mapping = _objectMappingFactory.GetMappingForType(typeof(TValue), _databaseConfiguration.MappingKind);
             var queryBuilder = new StringBuilder();
             var fields = FieldHelper.BuildFields<TValue>(desiredFields);
             var orderByClause = BuildPagedOrderByClause(mapping);

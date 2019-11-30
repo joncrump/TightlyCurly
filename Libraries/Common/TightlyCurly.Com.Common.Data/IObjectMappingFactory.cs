@@ -5,7 +5,6 @@ namespace TightlyCurly.Com.Common.Data
 {
     public interface IObjectMappingFactory
     {
-        IMapping GetMappingFor<TModel>();
-        IMapping GetMappingForType(Type objectType);
+        IMapping GetMappingForType(Type objectType, MappingKind mappingKind);
     }
 }

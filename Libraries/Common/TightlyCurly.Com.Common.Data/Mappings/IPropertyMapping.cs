@@ -18,4 +18,5 @@ namespace TightlyCurly.Com.Common.Data.Mappings
         string LazyLoader { get; set; }
         IMethodCache MethodCache { get; set; }
     }
+
 }

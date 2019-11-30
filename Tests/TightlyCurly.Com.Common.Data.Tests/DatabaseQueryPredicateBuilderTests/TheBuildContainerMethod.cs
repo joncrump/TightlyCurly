@@ -16,11 +16,6 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
     [TestFixture]
     public class TheBuildContainerMethod : MockTestBase<DatabaseQueryPredicateBuilder>
     {
-        public TheBuildContainerMethod() : base()
-        {
-            
-        }
-
         [Test]
         public void WillPassParameterChecks()
         {
@@ -32,7 +27,6 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
         {
             Expression<Func<TestClass, bool>> expression = null;
             QueryContainer expected = null;
-
 
             var id = DataGenerator.GenerateInteger();
             var testClass = ObjectCreator.CreateNew<TestClass>();
@@ -61,7 +55,6 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
                         Value = "Margaritas"
                     }
                 });
-        
 
             var actual = SystemUnderTest.BuildContainer(expression, typeof(TestClass));
             Expression<Action<SqlParameter, SqlParameter>> compareExpression =
