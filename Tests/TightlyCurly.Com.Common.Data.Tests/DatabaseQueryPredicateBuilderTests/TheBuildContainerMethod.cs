@@ -4,12 +4,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
-using Moq;
 using NUnit.Framework;
 using TightlyCurly.Com.Common.Extensions;
-using TightlyCurly.Com.Tests.Common;
 using TightlyCurly.Com.Tests.Common.Base;
-using TightlyCurly.Com.Tests.Common.Helpers;
 
 namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
 {
