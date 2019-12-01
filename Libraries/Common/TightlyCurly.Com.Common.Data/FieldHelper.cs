@@ -14,7 +14,7 @@ namespace TightlyCurly.Com.Common.Data
 
         public FieldHelper(IObjectMappingFactory objectMappingFactory)
         {
-            _objectMappingFactory = Guard.EnsureIsNotNull("objectMappingFactory", objectMappingFactory);
+            _objectMappingFactory = Guard.ThrowIfNull("objectMappingFactory", objectMappingFactory);
         }
 
         public TableObjectMapping BuildFields<TValue>(IEnumerable<string> desiredFields = null, 

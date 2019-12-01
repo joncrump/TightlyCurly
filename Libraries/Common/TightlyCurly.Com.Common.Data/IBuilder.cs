@@ -7,6 +7,6 @@
 
     public interface IBuilder<in TDataSource, out TModel>
     {
-        TModel Build<TModel>(TDataSource dataSource);
+        TModel Build(TDataSource dataSource);
     }
 }

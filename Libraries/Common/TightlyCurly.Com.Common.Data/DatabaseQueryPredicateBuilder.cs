@@ -37,16 +37,16 @@ namespace TightlyCurly.Com.Common.Data
         public DatabaseQueryPredicateBuilder(IObjectMappingFactory objectMappingFactory,
             IDatabaseConfiguration databaseConfiguration)
         {
-            _objectMappingFactory = objectMappingFactory.EnsureIsNotNull(nameof(objectMappingFactory));
-            _databaseConfiguration = databaseConfiguration.EnsureIsNotNull(nameof(databaseConfiguration));
+            _objectMappingFactory = objectMappingFactory.ThrowIfNull(nameof(objectMappingFactory));
+            _databaseConfiguration = databaseConfiguration.ThrowIfNull(nameof(databaseConfiguration));
             _parameters = new List<IDbDataParameter>();
         }
 
         public QueryContainer BuildContainer(Expression expression, Type declaringType, bool addParameters = true, 
             string tableAlias = null, string fieldPrefix = null)
         {
-            Guard.EnsureIsNotNull("expression", expression);
-            _declaringType = Guard.EnsureIsNotNull("declaringType", declaringType);
+            Guard.ThrowIfNull("expression", expression);
+            _declaringType = Guard.ThrowIfNull("declaringType", declaringType);
             _addParameters = addParameters;
 
             _parameters.Clear();

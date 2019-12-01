@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using TightlyCurly.Com.Common.Data.Attributes;
 using TightlyCurly.Com.Common.Data.Mappings;
 using TightlyCurly.Com.Common.Extensions;
 
@@ -20,7 +21,7 @@ namespace TightlyCurly.Com.Common.Data
 
         public IDatatableObjectMapping ConvertToDataTable<TModel>(IEnumerable<TModel> models)
         {
-            Guard.EnsureIsNotNullOrEmpty("models", models);
+            Guard.ThrowIfNullOrEmpty("models", models);
 
             BuildDataTable(models);
 
@@ -33,8 +34,8 @@ namespace TightlyCurly.Com.Common.Data
             //var type = typeof(TModel);
             //var tableAttribute = (TableAttribute)type.GetCustomAttributes(typeof(TableAttribute), true).FirstOrDefault();
 
-            //_dataTable = tableAttribute.IsNotNull() 
-            //    ? BuildTableBasedOnMetadata(models, tableAttribute) 
+            //_dataTable = tableAttribute.IsNotNull()
+            //    ? BuildTableBasedOnMetadata(models, tableAttribute)
             //    : BuildTableBasedOnModels(models);
         }
 

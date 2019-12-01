@@ -26,7 +26,7 @@ namespace TightlyCurly.Com.Tests.Common
             IEnumerable<string> parametersToSkip = null)
             where TItemUnderTest : class
         {
-            Guard.EnsureIsNotNullOrEmpty("methodName", methodName);
+            Guard.ThrowIfNullOrEmpty("methodName", methodName);
             
             var methodInfo = typeof(TItemUnderTest).GetMethod(methodName);
 

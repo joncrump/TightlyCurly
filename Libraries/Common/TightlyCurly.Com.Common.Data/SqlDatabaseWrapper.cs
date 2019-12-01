@@ -19,13 +19,13 @@ namespace TightlyCurly.Com.Common.Data
 
         public SqlDatabaseWrapper(string connectionString)
         {
-            _connectionString = Guard.EnsureIsNotNullOrEmpty("connectionString", connectionString);
+            _connectionString = Guard.ThrowIfNullOrEmpty("connectionString", connectionString);
             _parameters = new List<IDbDataParameter>();
         }
 
         public IDatabaseWrapper WithParameter(DbParameter parameter)
         {
-            Guard.EnsureIsNotNull("parameter", parameter);
+            Guard.ThrowIfNull("parameter", parameter);
 
             _parameters.Add(parameter);
 
@@ -34,7 +34,7 @@ namespace TightlyCurly.Com.Common.Data
 
         public IDatabaseWrapper WithParameter<T>(string name, object value, ParameterDirection direction = ParameterDirection.Input)
         {
-            Guard.EnsureIsNotNullOrEmpty("name", name);
+            Guard.ThrowIfNullOrEmpty("name", name);
 
             if (value.IsNull() || (value is string && ((string)value).IsNullOrEmpty()))
             {
@@ -54,7 +54,7 @@ namespace TightlyCurly.Com.Common.Data
 
         public IDatabaseWrapper WithParameters(IEnumerable<IDbDataParameter> parameters)
         {
-            Guard.EnsureIsNotNullOrEmpty("parameters", parameters);
+            Guard.ThrowIfNullOrEmpty("parameters", parameters);
 
             _parameters.AddRange(parameters.Where(p => !p.IsNull()));
 
@@ -63,7 +63,7 @@ namespace TightlyCurly.Com.Common.Data
 
         public IDatabaseWrapper CreateCommandText(string commandText, QueryType queryType = QueryType.StoredProcedure)
         {
-            Guard.EnsureIsNotNullOrEmpty("commandText", commandText);
+            Guard.ThrowIfNullOrEmpty("commandText", commandText);
 
             _commandText = commandText;
             _queryType = queryType;
@@ -102,9 +102,9 @@ namespace TightlyCurly.Com.Common.Data
         {
             try
             {
-                Guard.EnsureIsNotNull("readerDelegate", readerDelegate);
-                Guard.EnsureIsNotNull("dataReaderBuilder", dataReaderBuilder);
-                Guard.EnsureIsNotNullOrEmpty("tableObjectMappings", tableObjectMappings);
+                Guard.ThrowIfNull("readerDelegate", readerDelegate);
+                Guard.ThrowIfNull("dataReaderBuilder", dataReaderBuilder);
+                Guard.ThrowIfNullOrEmpty("tableObjectMappings", tableObjectMappings);
 
                 List<T> values;
 
@@ -135,7 +135,7 @@ namespace TightlyCurly.Com.Common.Data
         {
             try
             {
-                Guard.EnsureIsNotNull("readerDelegate", readerDelegate);
+                Guard.ThrowIfNull("readerDelegate", readerDelegate);
 
                 var values = new List<T>();
 
@@ -169,7 +169,7 @@ namespace TightlyCurly.Com.Common.Data
         {
             try
             {
-                Guard.EnsureIsNotNull("readerDelegate", readerDelegate);
+                Guard.ThrowIfNull("readerDelegate", readerDelegate);
 
                 VerifyCommandText();
 
@@ -199,7 +199,7 @@ namespace TightlyCurly.Com.Common.Data
         {
             try
             {
-                Guard.EnsureIsNotNull("readerDelegate", readerDelegate);
+                Guard.ThrowIfNull("readerDelegate", readerDelegate);
 
                 var value = default(T);
 
@@ -233,7 +233,7 @@ namespace TightlyCurly.Com.Common.Data
         {
             try
             {
-                Guard.EnsureIsNotNull("readerDelegate", readerDelegate);
+                Guard.ThrowIfNull("readerDelegate", readerDelegate);
 
                 VerifyCommandText();
 
@@ -264,9 +264,9 @@ namespace TightlyCurly.Com.Common.Data
         {
             try
             {
-                Guard.EnsureIsNotNull("readerDelegate", readerDelegate);
-                Guard.EnsureIsNotNull("dataReaderBuilder", dataReaderBuilder);
-                Guard.EnsureIsNotNullOrEmpty("tableObjectMappings", tableObjectMappings);
+                Guard.ThrowIfNull("readerDelegate", readerDelegate);
+                Guard.ThrowIfNull("dataReaderBuilder", dataReaderBuilder);
+                Guard.ThrowIfNullOrEmpty("tableObjectMappings", tableObjectMappings);
 
                 var value = default(T);
 
@@ -296,7 +296,7 @@ namespace TightlyCurly.Com.Common.Data
         public T ExecuteSingle<T>(IBuilderStrategy builderStrategy, IEnumerable<TableObjectMapping> tableObjectMappings)
             where T : class, new()
         {
-            Guard.EnsureIsNotNull("builderStrategy", builderStrategy);
+            Guard.ThrowIfNull("builderStrategy", builderStrategy);
 
             dynamic parameters = new ExpandoObject();
             parameters.TableObjectMappings = tableObjectMappings;
@@ -331,7 +331,7 @@ namespace TightlyCurly.Com.Common.Data
         public IEnumerable<T> ExecuteMultiple<T>(IBuilderStrategy builderStrategy, IEnumerable<TableObjectMapping> tableObjectMappings)
             where T : class, new()
         {
-            Guard.EnsureIsNotNull("builderStrategy", builderStrategy);
+            Guard.ThrowIfNull("builderStrategy", builderStrategy);
 
             dynamic parameters = new ExpandoObject();
             parameters.TableObjectMappings = tableObjectMappings;
@@ -370,8 +370,8 @@ namespace TightlyCurly.Com.Common.Data
 
         public void ExecuteBulk(DataTable dataTable, IDictionary<string, string> columnMappings)
         {
-            Guard.EnsureIsNotNull("dataTable", dataTable);
-            Guard.EnsureIsNotNullOrEmpty("columnMappings", columnMappings);
+            Guard.ThrowIfNull("dataTable", dataTable);
+            Guard.ThrowIfNullOrEmpty("columnMappings", columnMappings);
 
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -392,7 +392,7 @@ namespace TightlyCurly.Com.Common.Data
         {
             try
             {
-                Guard.EnsureIsNotNull("transformAction", transformAction);
+                Guard.ThrowIfNull("transformAction", transformAction);
 
                 VerifyCommandText();
 

@@ -8,7 +8,7 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders
 
         public QueryBuilderStrategyFactory(IResolver resolver)
         {
-            _resolver = Guard.EnsureIsNotNull("resolver", resolver);
+            _resolver = Guard.ThrowIfNull("resolver", resolver);
         }
 
         public IQueryBuilderStrategy GetBuilderStrategy(QueryKind queryKind)

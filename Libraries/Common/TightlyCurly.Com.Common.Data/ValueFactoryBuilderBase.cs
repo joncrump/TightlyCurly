@@ -8,7 +8,7 @@ namespace TightlyCurly.Com.Common.Data
 
         protected ValueFactoryBuilderBase(IValueFactory valueFactory)
         {
-            ValueFactory = Guard.EnsureIsNotNull("valueFactory", valueFactory);
+            ValueFactory = Guard.ThrowIfNull("valueFactory", valueFactory);
         }
 
         protected void AddValueFactory(ValueFactoryModelBase model, 
@@ -19,7 +19,7 @@ namespace TightlyCurly.Com.Common.Data
                 return;
             }
 
-            Guard.EnsureIsNotNullOrEmpty("loaderKey", loaderKey);
+            Guard.ThrowIfNullOrEmpty("loaderKey", loaderKey);
 
             var valueExpression = ValueFactory.GetValueFactory(
                 loaderKey, parameter);

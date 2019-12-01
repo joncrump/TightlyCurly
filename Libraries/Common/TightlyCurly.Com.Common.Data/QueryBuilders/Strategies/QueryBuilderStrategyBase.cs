@@ -6,7 +6,7 @@
 
         protected QueryBuilderStrategyBase(IFieldHelper fieldHelper)
         {
-            FieldHelper = Guard.EnsureIsNotNull("fieldHelper", fieldHelper);
+            FieldHelper = Guard.ThrowIfNull("fieldHelper", fieldHelper);
         }
     }
 }

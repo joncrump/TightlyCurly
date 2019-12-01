@@ -15,7 +15,7 @@ namespace TightlyCurly.Com.Common.Models
 
         public void Add(string key, Type type, object value)
         {
-            Guard.EnsureIsNotNullOrEmpty("key", key);
+            Guard.ThrowIfNullOrEmpty("key", key);
 
             _values.Add(key, new Tuple<Type, object>(type, value));
         }
@@ -35,7 +35,7 @@ namespace TightlyCurly.Com.Common.Models
 
         public TValue Get<TValue>(string key)
         {
-            Guard.EnsureIsNotNullOrEmpty("key", key);
+            Guard.ThrowIfNullOrEmpty("key", key);
 
             var value = _values[key];
 
@@ -44,7 +44,7 @@ namespace TightlyCurly.Com.Common.Models
 
         public bool HasValue(string key)
         {
-            Guard.EnsureIsNotNullOrEmpty("key", key);
+            Guard.ThrowIfNullOrEmpty("key", key);
 
             return _values.ContainsKey(key);
         }

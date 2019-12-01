@@ -19,8 +19,8 @@ namespace TightlyCurly.Com.Common.Data.Repositories
             IQueryBuilder queryBuilder, IBuilderStrategyFactory builderStrategyFactory)
             : base(databaseName, databaseFactory, builderStrategyFactory)
         {
-            Mapper = Guard.EnsureIsNotNull("mapper", mapper);
-            QueryBuilder = Guard.EnsureIsNotNull("queryBuilder", queryBuilder);
+            Mapper = Guard.ThrowIfNull("mapper", mapper);
+            QueryBuilder = Guard.ThrowIfNull("queryBuilder", queryBuilder);
         }
 
         public virtual IEnumerable<TInterface> Get(Expression filterExpression = null, 

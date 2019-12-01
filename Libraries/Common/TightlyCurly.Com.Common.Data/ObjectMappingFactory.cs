@@ -7,7 +7,7 @@ namespace TightlyCurly.Com.Common.Data
     {
         public IMapping GetMappingForType(Type objectType, MappingKind mappingKind)
         {
-            objectType.EnsureIsNotNull(nameof(objectType));
+            objectType.ThrowIfNull(nameof(objectType));
 
             throw new NotImplementedException();
         }

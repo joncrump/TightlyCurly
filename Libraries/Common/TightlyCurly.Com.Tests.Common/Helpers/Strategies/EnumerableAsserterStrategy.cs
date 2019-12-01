@@ -16,7 +16,7 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
             IAsserterStrategyFactory asserterStrategyFactory)
             : base(assertAdapter)
         {
-            _asserterStrategyFactory = Guard.EnsureIsNotNull("asserterStrategyFactory", asserterStrategyFactory);
+            _asserterStrategyFactory = Guard.ThrowIfNull("asserterStrategyFactory", asserterStrategyFactory);
         }
 
         public override string Name

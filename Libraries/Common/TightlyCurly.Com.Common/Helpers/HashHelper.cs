@@ -4,7 +4,7 @@
     {
         public string GenerateHash(object value)
         {
-            Guard.EnsureIsNotNull("value", value);
+            Guard.ThrowIfNull("value", value);
 
             if (value is IHashable)
             {

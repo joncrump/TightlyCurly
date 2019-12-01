@@ -17,7 +17,7 @@ namespace TightlyCurly.Com.Tests.Common.Base
 
         public void Add<TValue>(string key, Mock<TValue> mock) where TValue : class
         {
-            Guard.EnsureIsNotNullOrEmpty("key", key);
+            Guard.ThrowIfNullOrEmpty("key", key);
 
             _values.Add(key, new Tuple<Type, object>(mock.GetType().GenericTypeArguments.First(), mock));
         }
@@ -32,7 +32,7 @@ namespace TightlyCurly.Com.Tests.Common.Base
 
         public TValue Get<TValue>(string key)
         {
-            Guard.EnsureIsNotNullOrEmpty("key", key);
+            Guard.ThrowIfNullOrEmpty("key", key);
 
             var value = _values[key];
 
@@ -41,7 +41,7 @@ namespace TightlyCurly.Com.Tests.Common.Base
         
         public bool HasValue(string key)
         {
-            Guard.EnsureIsNotNullOrEmpty("key", key);
+            Guard.ThrowIfNullOrEmpty("key", key);
 
             return _values.ContainsKey(key);
         }

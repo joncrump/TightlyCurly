@@ -27,7 +27,7 @@ namespace TightlyCurly.Com.Common.Data.Repositories
             // ReSharper restore OptionalParameterHierarchyMismatch
             )
         {
-            Guard.EnsureIsNotNull("model", model);
+            Guard.ThrowIfNull("model", model);
 
             var mappedModel = Mapper.Map<TModel>(model);
 
@@ -51,7 +51,7 @@ namespace TightlyCurly.Com.Common.Data.Repositories
 
         public void Delete(TInterface model)
         {
-            Guard.EnsureIsNotNull("model", model);
+            Guard.ThrowIfNull("model", model);
 
             Delete(model, m => m.Id == model.Id);
         }

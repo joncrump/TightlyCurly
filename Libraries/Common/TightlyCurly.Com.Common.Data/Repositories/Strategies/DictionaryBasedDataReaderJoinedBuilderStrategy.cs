@@ -24,15 +24,15 @@ namespace TightlyCurly.Com.Common.Data.Repositories.Strategies
         public DictionaryBasedDataReaderJoinedBuilderStrategy(IDataReaderBuilder dataReaderBuilder, IObjectMappingFactory objectMappingFactory, 
             IDatabaseConfiguration databaseConfiguration) : base(dataReaderBuilder)
         {
-            _objectMappingFactory = objectMappingFactory.EnsureIsNotNull(nameof(objectMappingFactory));
-            _databaseConfiguration = databaseConfiguration.EnsureIsNotNull(nameof(databaseConfiguration));
+            _objectMappingFactory = objectMappingFactory.ThrowIfNull(nameof(objectMappingFactory));
+            _databaseConfiguration = databaseConfiguration.ThrowIfNull(nameof(databaseConfiguration));
         }
 
         public IEnumerable<TValue> BuildItems<TValue>(dynamic parameters, IDataReader dataSource) 
             where TValue : class, new()
         {
-            Guard.EnsureIsNotNull("parameters", parameters);
-            Guard.EnsureIsNotNull("dataSource", dataSource);
+            Guard.ThrowIfNull<string>("parameters", parameters);
+            Guard.ThrowIfNull("dataSource", dataSource);
 
             IEnumerable<TableObjectMapping> tableObjectMappings = parameters.TableObjectMappings;
             IDictionary<object, TValue> parents = new Dictionary<object, TValue>();

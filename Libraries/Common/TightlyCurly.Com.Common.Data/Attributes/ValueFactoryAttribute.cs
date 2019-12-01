@@ -6,7 +6,7 @@ namespace TightlyCurly.Com.Common.Data.Attributes
     {
         public ValueFactoryAttribute(string valueFactoryName)
         {
-            ValueFactoryName = Guard.EnsureIsNotNullOrEmpty("valueFactoryName", valueFactoryName);
+            ValueFactoryName = Guard.ThrowIfNullOrEmpty("valueFactoryName", valueFactoryName);
         }
 
         public string ValueFactoryName { get; private set; }

@@ -23,7 +23,7 @@ namespace TightlyCurly.Com.Common.Data.Repositories
             Action<TInterface> insertAction, Action<TInterface> updateAction,
             Expression updateExpression)
         {
-            Guard.EnsureIsNotNull("model", model);
+            Guard.ThrowIfNull("model", model);
 
             var mappedModel = Mapper.Map<TModel>(model);
 
@@ -56,7 +56,7 @@ namespace TightlyCurly.Com.Common.Data.Repositories
 
         public virtual void Delete(TInterface model, Expression<Func<TModel, bool>> deleteExpression = null)
         {
-            Guard.EnsureIsNotNull("model", model);
+            Guard.ThrowIfNull("model", model);
 
             ExecuteNonQuery(QueryBuilder.BuildDeleteQuery(deleteExpression));
         }

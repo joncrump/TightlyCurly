@@ -76,7 +76,7 @@ namespace TightlyCurly.Com.Tests.Common
 
         public virtual int GetOrdinal(string name)
         {
-            Guard.EnsureIsNotNullOrEmpty("name", name);
+            Guard.ThrowIfNullOrEmpty("name", name);
 
             if (InvokedColumns.All(s => String.CompareOrdinal(s, name) != 0))
             {

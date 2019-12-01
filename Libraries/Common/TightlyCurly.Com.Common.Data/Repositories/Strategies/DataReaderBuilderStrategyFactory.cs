@@ -6,7 +6,7 @@
 
         public DataReaderBuilderStrategyFactory(IResolver resolver)
         {
-            _resolver = Guard.EnsureIsNotNull("resolver", resolver);
+            _resolver = Guard.ThrowIfNull("resolver", resolver);
         }
 
         public IBuilderStrategy GetStrategy(BuildMode buildMode)

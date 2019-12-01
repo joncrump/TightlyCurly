@@ -9,7 +9,7 @@ namespace TightlyCurly.Com.Common.Helpers
 
         public void Retry(Action action, RetryPolicy retryPolicy = RetryPolicy.ThrowException, int numberOfRetries = 3)
         {
-            Guard.EnsureIsNotNull("action", action);
+            Guard.ThrowIfNull("action", action);
             Guard.EnsureIsValid("retryPolicy", r => r > 0, retryPolicy);
             Guard.EnsureIsValid("numberOfRetries", i => i > 0, numberOfRetries);
 
@@ -55,7 +55,7 @@ namespace TightlyCurly.Com.Common.Helpers
 
         public TItem Retry<TItem>(Func<TItem> action, RetryPolicy retryPolicy = RetryPolicy.ThrowException, int numberOfRetries = 3)
         {
-            Guard.EnsureIsNotNull("action", action);
+            Guard.ThrowIfNull("action", action);
             Guard.EnsureIsValid("retryPolicy", r => r > 0, retryPolicy);
             Guard.EnsureIsValid("numberOfRetries", i => i > 0, numberOfRetries);
 

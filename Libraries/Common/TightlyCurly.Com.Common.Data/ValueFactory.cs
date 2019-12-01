@@ -18,8 +18,8 @@ namespace TightlyCurly.Com.Common.Data
 
         public void AddValueFactory(string key, Expression<Action> valueFactory)
         {
-            Guard.EnsureIsNotNullOrEmpty("key", key);
-            Guard.EnsureIsNotNull("valueFactory", valueFactory);
+            Guard.ThrowIfNullOrEmpty("key", key);
+            Guard.ThrowIfNull("valueFactory", valueFactory);
 
             if (Delegates.ContainsKey(key))
             {
@@ -31,8 +31,8 @@ namespace TightlyCurly.Com.Common.Data
 
         public void AddValueFactory(string key, Expression<Func<object, object>> valueFactory)
         {
-            Guard.EnsureIsNotNullOrEmpty("key", key);
-            Guard.EnsureIsNotNull("valueFactory", valueFactory);
+            Guard.ThrowIfNullOrEmpty("key", key);
+            Guard.ThrowIfNull("valueFactory", valueFactory);
 
             if (Delegates.ContainsKey(key))
             {
@@ -44,7 +44,7 @@ namespace TightlyCurly.Com.Common.Data
 
         public void DeleteValueFactory(string key)
         {
-            Guard.EnsureIsNotNullOrEmpty("key", key);
+            Guard.ThrowIfNullOrEmpty("key", key);
 
             if (!Delegates.ContainsKey(key))
             {
@@ -56,7 +56,7 @@ namespace TightlyCurly.Com.Common.Data
 
         public Expression<Func<object>> GetValueFactory(string key, ParameterInfo parameter = null)
         {
-            Guard.EnsureIsNotNullOrEmpty("key", key);
+            Guard.ThrowIfNullOrEmpty("key", key);
 
             if (!Delegates.ContainsKey(key))
             {
@@ -87,7 +87,7 @@ namespace TightlyCurly.Com.Common.Data
 
         public Expression GetValueFactory(string key)
         {
-            Guard.EnsureIsNotNullOrEmpty("key", key);
+            Guard.ThrowIfNullOrEmpty("key", key);
 
             if (!Delegates.ContainsKey(key))
             {

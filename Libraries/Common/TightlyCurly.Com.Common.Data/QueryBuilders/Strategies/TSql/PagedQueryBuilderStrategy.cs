@@ -22,9 +22,9 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
             IObjectMappingFactory objectMappingFactory, IDatabaseConfiguration databaseConfiguration) 
             : base(fieldHelper)
         {
-            _predicateBuilder = predicateBuilder.EnsureIsNotNull(nameof(predicateBuilder));
-            _objectMappingFactory = objectMappingFactory.EnsureIsNotNull(nameof(objectMappingFactory));
-            _databaseConfiguration = databaseConfiguration.EnsureIsNotNull(nameof(databaseConfiguration));
+            _predicateBuilder = predicateBuilder.ThrowIfNull(nameof(predicateBuilder));
+            _objectMappingFactory = objectMappingFactory.ThrowIfNull(nameof(objectMappingFactory));
+            _databaseConfiguration = databaseConfiguration.ThrowIfNull(nameof(databaseConfiguration));
         }
 
         public QueryInfo BuildQuery<TValue>(dynamic parameters = null) where TValue : class

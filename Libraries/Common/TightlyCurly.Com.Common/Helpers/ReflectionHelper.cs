@@ -11,8 +11,8 @@ namespace TightlyCurly.Com.Common.Helpers
         public IEnumerable<PropertyInfo> GetPropertiesFromAttribute<TAttribute>(TAttribute attribute, Type type) 
             where TAttribute : Attribute
         {
-            Guard.EnsureIsNotNull("attribute", attribute);
-            Guard.EnsureIsNotNull("type", type);
+            Guard.ThrowIfNull("attribute", attribute);
+            Guard.ThrowIfNull("type", type);
 
             var typeProperties = type.GetProperties();
 

@@ -14,7 +14,7 @@ namespace TightlyCurly.Com.Tests.Common
 
         public ColumnInfo(string columnName)
         {
-            ColumnName = Guard.EnsureIsNotNullOrEmpty("columnName", columnName);
+            ColumnName = Guard.ThrowIfNullOrEmpty("columnName", columnName);
         }
 
         public ColumnInfo(string columnName, object value) : this(columnName)

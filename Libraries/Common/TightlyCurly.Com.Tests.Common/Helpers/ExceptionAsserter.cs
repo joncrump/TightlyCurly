@@ -63,7 +63,7 @@ namespace TightlyCurly.Com.Tests.Common.Helpers
                 throw new InvalidOperationException("The caught exception cannot be null.");
             }
 
-            Guard.EnsureIsNotNullOrEmpty("message", message);
+            Guard.ThrowIfNullOrEmpty("message", message);
 
             Assert.IsTrue(CaughtException.Message.IsNotNullOrEmpty(), "The exception message is null or empty.");
             Assert.IsTrue(CaughtException.Message.Contains(message), "The exception message did not contain the expected message.\r\n.Expected: {0}\r\n.Actual: {1}".FormatString(
@@ -86,7 +86,7 @@ namespace TightlyCurly.Com.Tests.Common.Helpers
                 throw new InvalidOperationException("The caught exception must be a form of ArgumentException.");
             }
 
-            Guard.EnsureIsNotNullOrEmpty("parameterName", parameterName);
+            Guard.ThrowIfNullOrEmpty("parameterName", parameterName);
 
             Assert.AreEqual(parameterName, argumentException.ParamName, 
                 "Expected parameterName {0} was not found.  The exception contained parameterName {1} instead.".FormatString(parameterName, 

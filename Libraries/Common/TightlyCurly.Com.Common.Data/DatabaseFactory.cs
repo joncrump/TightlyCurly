@@ -6,12 +6,12 @@
 
         public DatabaseFactory(IResolver resolver)
         {
-            _resolver = Guard.EnsureIsNotNull("resolver", resolver);
+            _resolver = Guard.ThrowIfNull("resolver", resolver);
         }
 
         public IDatabaseWrapper GetDatabase(string databaseName)
         {
-            Guard.EnsureIsNotNullOrEmpty("databaseName", databaseName);
+            Guard.ThrowIfNullOrEmpty("databaseName", databaseName);
 
             return _resolver.Resolve<IDatabaseWrapper>(databaseName);
         }

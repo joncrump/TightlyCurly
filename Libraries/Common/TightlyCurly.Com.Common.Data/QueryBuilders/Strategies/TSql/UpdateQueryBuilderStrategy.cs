@@ -14,7 +14,7 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
         public UpdateQueryBuilderStrategy(IFieldHelper fieldHelper, IPredicateBuilder predicateBuilder) 
             : base(fieldHelper)
         {
-            _predicateBuilder = Guard.EnsureIsNotNull("predicateBuilder", predicateBuilder);
+            _predicateBuilder = Guard.ThrowIfNull("predicateBuilder", predicateBuilder);
         }
 
         public QueryInfo BuildQuery<TValue>(dynamic parameters = null) where TValue : class

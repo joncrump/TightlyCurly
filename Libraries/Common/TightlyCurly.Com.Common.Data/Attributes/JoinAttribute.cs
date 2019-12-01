@@ -16,9 +16,9 @@ namespace TightlyCurly.Com.Common.Data.Attributes
             string parentProperty = null, string childProperty = null)
         {
             JoinType = Guard.EnsureIsValid("relationshipType", d => d != JoinType.None, relationshipType);
-            JoinedType = Guard.EnsureIsNotNull("joinedType", joinedType);
-            LeftKey = Guard.EnsureIsNotNullOrEmpty("leftKey", leftKey);
-            RightKey = Guard.EnsureIsNotNullOrEmpty("rightKey", rightKey);
+            JoinedType = Guard.ThrowIfNull("joinedType", joinedType);
+            LeftKey = Guard.ThrowIfNullOrEmpty("leftKey", leftKey);
+            RightKey = Guard.ThrowIfNullOrEmpty("rightKey", rightKey);
             JoinTable = joinTable;
             JoinTableLeftKey = joinTableLeftKey;
             JoinTableRightKey = joinTableRightKey;

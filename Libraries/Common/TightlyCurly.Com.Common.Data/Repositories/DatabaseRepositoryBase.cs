@@ -30,15 +30,15 @@ namespace TightlyCurly.Com.Common.Data.Repositories
         protected DatabaseRepositoryBase(string databaseName, IDatabaseFactory databaseFactory, 
             IBuilderStrategyFactory builderStrategyFactory)
         {
-            _databaseName = Guard.EnsureIsNotNullOrEmpty("databaseName", databaseName);
-            DatabaseFactory = Guard.EnsureIsNotNull("databaseFactory", databaseFactory);
-            _builderStrategyFactory = Guard.EnsureIsNotNull("builderStrategyFactory", builderStrategyFactory);
+            _databaseName = Guard.ThrowIfNullOrEmpty("databaseName", databaseName);
+            DatabaseFactory = Guard.ThrowIfNull("databaseFactory", databaseFactory);
+            _builderStrategyFactory = Guard.ThrowIfNull("builderStrategyFactory", builderStrategyFactory);
         }
 
         public TValue ExecuteSingle<TValue>(QueryInfo queryInfo, BuildMode buildMode = BuildMode.Single)
             where TValue : class, new()
         {
-            Guard.EnsureIsNotNull("queryInfo", queryInfo);
+            Guard.ThrowIfNull("queryInfo", queryInfo);
 
             var strategy = _builderStrategyFactory.GetStrategy(buildMode);
 
@@ -53,7 +53,7 @@ namespace TightlyCurly.Com.Common.Data.Repositories
             BuildMode buildMode = BuildMode.Single) 
             where TValue : class, new()
         {
-            Guard.EnsureIsNotNull("queryInfo", queryInfo);
+            Guard.ThrowIfNull("queryInfo", queryInfo);
 
             var strategy = _builderStrategyFactory.GetStrategy(buildMode);
 
@@ -67,9 +67,9 @@ namespace TightlyCurly.Com.Common.Data.Repositories
         public void ExecuteTransform<TValue>(QueryInfo queryInfo, Func<IDataReader, TValue> builderDelegate,
             Action<TValue> transformAction)
         {
-            Guard.EnsureIsNotNull("queryInfo", queryInfo);
-            Guard.EnsureIsNotNull("builderDelegate", builderDelegate);
-            Guard.EnsureIsNotNull("transformAction", transformAction);
+            Guard.ThrowIfNull("queryInfo", queryInfo);
+            Guard.ThrowIfNull("builderDelegate", builderDelegate);
+            Guard.ThrowIfNull("transformAction", transformAction);
 
             if (queryInfo.Parameters.IsNotNullOrEmpty())
             {
@@ -88,7 +88,7 @@ namespace TightlyCurly.Com.Common.Data.Repositories
 
         public void ExecuteNonQuery(QueryInfo queryInfo)
         {
-            Guard.EnsureIsNotNull("queryInfo", queryInfo);
+            Guard.ThrowIfNull("queryInfo", queryInfo);
 
             if (queryInfo.Parameters.IsNotNullOrEmpty())
             {

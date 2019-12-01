@@ -12,7 +12,7 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders
 
         public SqlQueryBuilder(IQueryBuilderStrategyFactory queryBuilderStrategyFactory)
         {
-            _builderStrategyFactory = Guard.EnsureIsNotNull("queryBuilderStrategyFactory", queryBuilderStrategyFactory);
+            _builderStrategyFactory = Guard.ThrowIfNull("queryBuilderStrategyFactory", queryBuilderStrategyFactory);
         }
 
         public QueryInfo BuildSelectQuery<TValue>(Expression<Func<TValue, bool>> predicate = null,
@@ -29,7 +29,7 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders
         public QueryInfo BuildInsertQuery<TValue>(TValue model, bool returnNewId = true, bool ignoreIdentity = true,
             IEnumerable<string> desiredFields = null, string tableName = null) where TValue : class
         {
-            Guard.EnsureIsNotNull("model", model);
+            Guard.ThrowIfNull("model", model);
 
             dynamic parameters = new ExpandoObject();
 
@@ -48,8 +48,8 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders
         public QueryInfo BuildUpdateQuery<TValue>(TValue model, Expression<Func<TValue, bool>> predicate, 
             IEnumerable<string> desiredFields = null, string tableName = null) where TValue : class
         {
-            Guard.EnsureIsNotNull("model", model);
-            Guard.EnsureIsNotNull("predicate", predicate);
+            Guard.ThrowIfNull("model", model);
+            Guard.ThrowIfNull("predicate", predicate);
 
             dynamic parameters = new ExpandoObject();
 
@@ -66,7 +66,7 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders
 
         public QueryInfo BuildDeleteQuery<TValue>(Expression<Func<TValue, bool>> predicate, string tableName = null) where TValue : class
         {
-            Guard.EnsureIsNotNull("predicate", predicate);
+            Guard.ThrowIfNull("predicate", predicate);
 
             dynamic parameters = new ExpandoObject();
 
@@ -119,8 +119,8 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders
             where TParent : class
             where TChild : class
         {
-            Guard.EnsureIsNotNullOrEmpty("whereField", whereField);
-            Guard.EnsureIsNotNullOrEmpty("selectChildField", selectChildField);
+            Guard.ThrowIfNullOrEmpty("whereField", whereField);
+            Guard.ThrowIfNullOrEmpty("selectChildField", selectChildField);
 
             var outerQuery = BuildSelectQueryFor<TParent>();
             var innerQuery = BuildSelectQuery(childPredicate, desiredFields: new[] { selectChildField });

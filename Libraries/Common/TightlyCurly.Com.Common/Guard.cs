@@ -9,7 +9,7 @@ namespace TightlyCurly.Com.Common
 {
     public static class Guard
     {
-        public static object EnsureIsNotNull(string parameterName, object value, string message = null)
+        public static object ThrowIfNull(string parameterName, object value, string message = null)
         {
             ValidateParameterName(parameterName);
 
@@ -26,7 +26,7 @@ namespace TightlyCurly.Com.Common
             throw new ArgumentNullException(parameterName, message);
         }
 
-        public static T EnsureIsNotNull<T>(string parameterName, T value, string message = null)
+        public static T ThrowIfNull<T>(string parameterName, T value, string message = null)
         {
             ValidateParameterName(parameterName);
 
@@ -43,7 +43,7 @@ namespace TightlyCurly.Com.Common
             throw new ArgumentNullException(parameterName, message);
         }
 
-        public static string EnsureIsNotNullOrEmpty(string parameterName, string value, string message = null)
+        public static string ThrowIfNullOrEmpty(string parameterName, string value, string message = null)
         {
             ValidateParameterName(parameterName);
 
@@ -70,7 +70,7 @@ namespace TightlyCurly.Com.Common
             return value;
         }
 
-        public static IEnumerable<T> EnsureIsNotNullOrEmpty<T>(string parameterName, IEnumerable<T> value, string message = null)
+        public static IEnumerable<T> ThrowIfNullOrEmpty<T>(string parameterName, IEnumerable<T> value, string message = null)
         {
             ValidateParameterName(parameterName);
 
@@ -98,7 +98,7 @@ namespace TightlyCurly.Com.Common
             return argumentIsNotNullOrEmpty;
         }
 
-        public static object EnsureIsNotNull(this object value, string parameterName, string message = null)
+        public static object ThrowIfNull(this object value, string parameterName, string message = null)
         {
             ValidateParameterName(parameterName);
 
@@ -115,7 +115,7 @@ namespace TightlyCurly.Com.Common
             throw new ArgumentNullException(parameterName, message);
         }
 
-        public static T EnsureIsNotNull<T>(this T value, string parameterName, string message = null)
+        public static T ThrowIfNull<T>(this T value, string parameterName, string message = null)
         {
             ValidateParameterName(parameterName);
 

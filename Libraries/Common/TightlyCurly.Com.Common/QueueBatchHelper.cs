@@ -17,7 +17,7 @@ namespace TightlyCurly.Com.Common
 
         public int SplitItemsIntoBatches<TItem>(IEnumerable<TItem> items, int numberOfItemsPerBatch)
         {
-            Guard.EnsureIsNotNullOrEmpty("items", items);
+            Guard.ThrowIfNullOrEmpty("items", items);
             Guard.EnsureIsValid("numberOfItemsPerBatch", i => i > 0, numberOfItemsPerBatch);
 
             var itemCount = items.Count();

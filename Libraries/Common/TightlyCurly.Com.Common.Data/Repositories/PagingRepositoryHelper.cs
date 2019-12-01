@@ -22,8 +22,8 @@ namespace TightlyCurly.Com.Common.Data.Repositories
             : base(databaseName, databaseFactory, mapper, queryBuilder,  
                 builderStrategyFactory)
         {
-            PagingModelBuilder = Guard.EnsureIsNotNull("pagingModelBuilder", pagingModelBuilder);
-            Builder = Guard.EnsureIsNotNull("builder", builder);
+            PagingModelBuilder = Guard.ThrowIfNull("pagingModelBuilder", pagingModelBuilder);
+            Builder = Guard.ThrowIfNull("builder", builder);
         }
 
         public virtual PagingModel GetCriteriaByPage(Expression filterExpression = null, PagingInfo pagingInfo = null, 

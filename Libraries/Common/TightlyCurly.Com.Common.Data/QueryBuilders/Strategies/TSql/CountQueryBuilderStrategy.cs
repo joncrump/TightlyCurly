@@ -10,8 +10,8 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
         public CountQueryBuilderStrategy(IFieldHelper fieldHelper, IObjectMappingFactory objectMappingFactory, 
             IDatabaseConfiguration databaseConfiguration) : base(fieldHelper)
         {
-            _objectMappingFactory = objectMappingFactory.EnsureIsNotNull(nameof(objectMappingFactory));
-            _databaseConfiguration = databaseConfiguration.EnsureIsNotNull(nameof(databaseConfiguration));
+            _objectMappingFactory = objectMappingFactory.ThrowIfNull(nameof(objectMappingFactory));
+            _databaseConfiguration = databaseConfiguration.ThrowIfNull(nameof(databaseConfiguration));
         }
 
         public QueryInfo BuildQuery<TValue>(dynamic parameters) where TValue : class

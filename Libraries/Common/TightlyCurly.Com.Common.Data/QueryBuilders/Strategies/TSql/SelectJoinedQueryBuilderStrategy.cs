@@ -23,8 +23,8 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
         {
             throw new NotImplementedException();
 
-            _predicateBuilder = Guard.EnsureIsNotNull("predicateBuilder", predicateBuilder);
-            _queryBuilderStrategyFactory = Guard.EnsureIsNotNull("queryBuilderStrategyFactory", queryBuilderStrategyFactory);
+            _predicateBuilder = Guard.ThrowIfNull("predicateBuilder", predicateBuilder);
+            _queryBuilderStrategyFactory = Guard.ThrowIfNull("queryBuilderStrategyFactory", queryBuilderStrategyFactory);
         }
 
         public QueryInfo BuildQuery<TValue>(dynamic parameters = null) where TValue : class

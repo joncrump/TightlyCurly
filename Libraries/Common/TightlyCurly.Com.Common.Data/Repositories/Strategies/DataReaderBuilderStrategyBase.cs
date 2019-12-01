@@ -6,7 +6,7 @@
 
         protected DataReaderBuilderStrategyBase(IDataReaderBuilder dataReaderBuilder)
         {
-            DataReaderBuilder = Guard.EnsureIsNotNull("dataReaderBuilder", dataReaderBuilder);
+            DataReaderBuilder = Guard.ThrowIfNull("dataReaderBuilder", dataReaderBuilder);
         }
     }
 }

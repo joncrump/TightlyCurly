@@ -12,12 +12,12 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
         public DeleteQueryBuilderStrategy(IFieldHelper fieldHelper, IPredicateBuilder predicateBuilder) 
             : base(fieldHelper)
         {
-            _predicateBuilder = Guard.EnsureIsNotNull("predicateBuilder", predicateBuilder);
+            _predicateBuilder = Guard.ThrowIfNull("predicateBuilder", predicateBuilder);
         }
 
         public QueryInfo BuildQuery<TValue>(dynamic parameters) where TValue : class
         {
-            Guard.EnsureIsNotNull("parameters", parameters);
+            Guard.ThrowIfNull<string>("parameters", parameters);
 
             Expression<Func<TValue, bool>> predicate = parameters.Predicate;
             string tableName = parameters.TableName;
