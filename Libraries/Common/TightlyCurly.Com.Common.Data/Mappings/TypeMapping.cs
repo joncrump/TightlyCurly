@@ -12,7 +12,8 @@ namespace TightlyCurly.Com.Common.Data.Mappings
 
         public Type Type { get; set; }
         public string DataSource { get; set; }
-        public string CountField { get; }
+        public string CountField { get; set; }
+        public string CountAlias { get; set; }
         public IEnumerable<PropertyMapping> PropertyMappings { get; set; } 
     }
 }

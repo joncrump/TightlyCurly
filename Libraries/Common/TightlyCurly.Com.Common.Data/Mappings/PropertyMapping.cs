@@ -8,6 +8,11 @@ namespace TightlyCurly.Com.Common.Data.Mappings
     [KnownType(typeof(JoinMapping))]
     public class PropertyMapping
     {
+        public PropertyMapping()
+        {
+
+        }
+
         [JsonConstructor()]
         public PropertyMapping(JoinMapping joinMapping)
         {

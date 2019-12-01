@@ -15,6 +15,8 @@ namespace TightlyCurly.Com.Common.Data.Mappings
 
         public TypeMapping GetMappingForType(Type objectType)
         {
+            objectType.ThrowIfNull(nameof(objectType));
+
             throw new NotImplementedException();
         }
     }
