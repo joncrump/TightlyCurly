@@ -6,6 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using TightlyCurly.Com.Common.Data.Helpers;
+using TightlyCurly.Com.Common.Data.Mappings;
 using TightlyCurly.Com.Common.Extensions;
 
 namespace TightlyCurly.Com.Common.Data.Repositories.Strategies
@@ -13,7 +14,7 @@ namespace TightlyCurly.Com.Common.Data.Repositories.Strategies
     public class DictionaryBasedDataReaderJoinedBuilderStrategy : DataReaderBuilderStrategyBase, IBuilderStrategy
     {
         private static readonly MethodInfo WhereMethod;
-        private readonly IObjectMappingFactory _objectMappingFactory;
+        private readonly IObjectMapperFactory _objectMappingFactory;
         private readonly IDatabaseConfiguration _databaseConfiguration;
 
         static DictionaryBasedDataReaderJoinedBuilderStrategy()
@@ -21,7 +22,7 @@ namespace TightlyCurly.Com.Common.Data.Repositories.Strategies
             WhereMethod = GetWhereMethod();
         }
 
-        public DictionaryBasedDataReaderJoinedBuilderStrategy(IDataReaderBuilder dataReaderBuilder, IObjectMappingFactory objectMappingFactory, 
+        public DictionaryBasedDataReaderJoinedBuilderStrategy(IDataReaderBuilder dataReaderBuilder, IObjectMapperFactory objectMappingFactory, 
             IDatabaseConfiguration databaseConfiguration) : base(dataReaderBuilder)
         {
             _objectMappingFactory = objectMappingFactory.ThrowIfNull(nameof(objectMappingFactory));
@@ -38,8 +39,8 @@ namespace TightlyCurly.Com.Common.Data.Repositories.Strategies
             IDictionary<object, TValue> parents = new Dictionary<object, TValue>();
 
             var type = typeof (TValue);
-            var mapping = _objectMappingFactory.GetMappingForType(typeof(TValue), _databaseConfiguration.MappingKind);
-
+            var mapper = _objectMappingFactory.GetMapperFor<TValue>(_databaseConfiguration.MappingKind);
+            var mapping = mapper.GetMappingFor<TValue>();
             var primaryKeyMappings = mapping.PropertyMappings
                 .Where(p => p.IsPrimaryKey);
             var primaryKeyProperties = primaryKeyMappings
@@ -235,7 +236,8 @@ namespace TightlyCurly.Com.Common.Data.Repositories.Strategies
 
         private PropertyInfo GetChildPrimaryKey(Type childType)
         {
-            var mapping = _objectMappingFactory.GetMappingForType(childType, _databaseConfiguration.MappingKind);
+            var mapper = _objectMappingFactory.GetMapperForType(childType, _databaseConfiguration.MappingKind);
+            var mapping = mapper.GetMappingForType(childType);
             var primaryKeyMapping = mapping.PropertyMappings
                 .FirstOrDefault(p => p.IsPrimaryKey);
 

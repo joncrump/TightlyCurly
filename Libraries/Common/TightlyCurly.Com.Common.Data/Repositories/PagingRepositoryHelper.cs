@@ -53,7 +53,7 @@ namespace TightlyCurly.Com.Common.Data.Repositories
                 {
                     if (pagingModel.IsNull())
                     {
-                        pagingModel = PagingModelBuilder.Build<PagingModel>(r);
+                        pagingModel = PagingModelBuilder.Build(r);
                     }
 
                     models.Add(Builder.Build<TModel>(r));

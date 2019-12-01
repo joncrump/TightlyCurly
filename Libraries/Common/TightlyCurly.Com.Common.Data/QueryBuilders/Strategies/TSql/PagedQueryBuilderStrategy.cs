@@ -15,11 +15,11 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
     public class PagedQueryBuilderStrategy : QueryBuilderStrategyBase, IQueryBuilderStrategy
     {
         private readonly IPredicateBuilder _predicateBuilder;
-        private readonly IObjectMappingFactory _objectMappingFactory;
+        private readonly IObjectMapperFactory _objectMappingFactory;
         private readonly IDatabaseConfiguration _databaseConfiguration;
 
         public PagedQueryBuilderStrategy(IFieldHelper fieldHelper, IPredicateBuilder predicateBuilder, 
-            IObjectMappingFactory objectMappingFactory, IDatabaseConfiguration databaseConfiguration) 
+            IObjectMapperFactory objectMappingFactory, IDatabaseConfiguration databaseConfiguration) 
             : base(fieldHelper)
         {
             _predicateBuilder = predicateBuilder.ThrowIfNull(nameof(predicateBuilder));
@@ -34,7 +34,8 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
             Expression<Func<TValue, bool>> predicate = parameters?.Predicate;
             bool canDirtyRead = parameters?.CanDirtyRead;
             bool includeParameters = parameters?.IncludeParameters;
-            var mapping = _objectMappingFactory.GetMappingForType(typeof(TValue), _databaseConfiguration.MappingKind);
+            var mapper = _objectMappingFactory.GetMapperFor<TValue>(_databaseConfiguration.MappingKind);
+            var mapping = mapper.GetMappingFor<TValue>();
             var queryBuilder = new StringBuilder();
             var fields = FieldHelper.BuildFields<TValue>(desiredFields);
             var orderByClause = BuildPagedOrderByClause(mapping);
@@ -85,7 +86,7 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
             return new QueryInfo(queryBuilder.ToString().Trim(), fields, databaseParameters);
         }
 
-        protected string BuildPagedOrderByClause(IMapping mapping)
+        protected string BuildPagedOrderByClause(TypeMapping mapping)
         {
             var clauseBuilder = new StringBuilder();
 
@@ -152,7 +153,7 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
             return queryBuilder.ToString();
         }
 
-        protected string BuildCountClause(IMapping mapping)
+        protected string BuildCountClause(TypeMapping mapping)
         {
             return "COUNT({0}) OVER() AS TotalRecords ".FormatString(mapping.CountField);
         }

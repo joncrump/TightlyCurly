@@ -4,15 +4,16 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using TightlyCurly.Com.Common.Data.Constants;
+using TightlyCurly.Com.Common.Data.Mappings;
 using TightlyCurly.Com.Common.Extensions;
 
 namespace TightlyCurly.Com.Common.Data
 {
     public class FieldHelper : IFieldHelper
     {
-        private readonly IObjectMappingFactory _objectMappingFactory;
+        private readonly IObjectMapperFactory _objectMappingFactory;
 
-        public FieldHelper(IObjectMappingFactory objectMappingFactory)
+        public FieldHelper(IObjectMapperFactory objectMappingFactory)
         {
             _objectMappingFactory = Guard.ThrowIfNull("objectMappingFactory", objectMappingFactory);
         }

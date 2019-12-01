@@ -10,6 +10,7 @@ using System.Text;
 using TightlyCurly.Com.Common.Data.Attributes;
 using TightlyCurly.Com.Common.Data.Constants;
 using TightlyCurly.Com.Common.Data.Helpers;
+using TightlyCurly.Com.Common.Data.Mappings;
 using TightlyCurly.Com.Common.Extensions;
 
 namespace TightlyCurly.Com.Common.Data
@@ -26,7 +27,7 @@ namespace TightlyCurly.Com.Common.Data
         private string _tableAlias;
         private string _fieldPrefix;
 
-        private readonly IObjectMappingFactory _objectMappingFactory;
+        private readonly IObjectMapperFactory _objectMappingFactory;
         private readonly IDatabaseConfiguration _databaseConfiguration;
 
         public int? Skip { get; private set; }
@@ -34,7 +35,7 @@ namespace TightlyCurly.Com.Common.Data
         public string OrderBy { get; private set; }
         public string WhereClause { get; private set; }
 
-        public DatabaseQueryPredicateBuilder(IObjectMappingFactory objectMappingFactory,
+        public DatabaseQueryPredicateBuilder(IObjectMapperFactory objectMappingFactory,
             IDatabaseConfiguration databaseConfiguration)
         {
             _objectMappingFactory = objectMappingFactory.ThrowIfNull(nameof(objectMappingFactory));
@@ -142,7 +143,8 @@ namespace TightlyCurly.Com.Common.Data
                 var field = ParseStartsWithExpression(m);
                 var memberExpression = (MemberExpression)m.Object;
                 var property = memberExpression.Member as PropertyInfo;
-                var mapping = _objectMappingFactory.GetMappingForType(_declaringType, _databaseConfiguration.MappingKind);
+                var mapper = _objectMappingFactory.GetMapperForType(_declaringType, _databaseConfiguration.MappingKind);
+                var mapping = mapper.GetMappingForType(_declaringType);
                 var propertyMapping = mapping.PropertyMappings
                     .FirstOrDefault(p => p.PropertyName == property.Name);
 
@@ -156,7 +158,8 @@ namespace TightlyCurly.Com.Common.Data
                 var field = ParseStartsWithExpression(m);
                 var memberExpression = (MemberExpression)m.Object;
                 var property = memberExpression.Member as PropertyInfo;
-                var mapping = _objectMappingFactory.GetMappingForType(_declaringType, _databaseConfiguration.MappingKind);
+                var mapper = _objectMappingFactory.GetMapperForType(_declaringType, _databaseConfiguration.MappingKind);
+                var mapping = mapper.GetMappingForType(_declaringType);
                 var propertyMapping = mapping.PropertyMappings
                     .FirstOrDefault(p => p.PropertyName == property.Name);
 
@@ -172,7 +175,8 @@ namespace TightlyCurly.Com.Common.Data
                 var memberExpression = (MemberExpression)m.Object;
 
                 var property = memberExpression.Member as PropertyInfo;
-                var mapping = _objectMappingFactory.GetMappingForType(_declaringType, _databaseConfiguration.MappingKind);
+                var mapper = _objectMappingFactory.GetMapperForType(_declaringType, _databaseConfiguration.MappingKind);
+                var mapping = mapper.GetMappingForType(_declaringType);
                 var propertyMapping = mapping.PropertyMappings
                     .FirstOrDefault(p => p.PropertyName == property.Name);
 
@@ -186,7 +190,8 @@ namespace TightlyCurly.Com.Common.Data
                 var field = ParseEqualsExpression(m);
                 var memberExpression = (MemberExpression)m.Object;
                 var property = memberExpression.Member as PropertyInfo;
-                var mapping = _objectMappingFactory.GetMappingForType(_declaringType, _databaseConfiguration.MappingKind);
+                var mapper = _objectMappingFactory.GetMapperForType(_declaringType, _databaseConfiguration.MappingKind);
+                var mapping = mapper.GetMappingForType(_declaringType);
                 var propertyMapping = mapping.PropertyMappings
                     .FirstOrDefault(p => p.PropertyName == property.Name);
 
@@ -359,7 +364,8 @@ namespace TightlyCurly.Com.Common.Data
             {
                 var property = memberExpression.Member as PropertyInfo;
                 var fieldName = GetFieldName(property);
-                var mapping = _objectMappingFactory.GetMappingForType(_declaringType, _databaseConfiguration.MappingKind);
+                var mapper = _objectMappingFactory.GetMapperForType(_declaringType, _databaseConfiguration.MappingKind);
+                var mapping = mapper.GetMappingForType(_declaringType);
                 var propertyMapping = mapping.PropertyMappings
                     .FirstOrDefault(p => p.PropertyName == property.Name);
 
@@ -432,7 +438,8 @@ namespace TightlyCurly.Com.Common.Data
 
         private string GetFieldName(PropertyInfo property)
         {
-            var mapping = _objectMappingFactory.GetMappingForType(_declaringType, _databaseConfiguration.MappingKind);
+            var mapper = _objectMappingFactory.GetMapperForType(_declaringType, _databaseConfiguration.MappingKind);
+            var mapping = mapper.GetMappingForType(_declaringType);
             var propertyMapping = mapping.PropertyMappings
                 .FirstOrDefault(p => p.PropertyName == property.Name);
             var declaredTypeProperty = _declaringType.GetProperties().FirstOrDefault(p => p.Name == property.Name);
@@ -443,7 +450,6 @@ namespace TightlyCurly.Com.Common.Data
                 fieldName = propertyMapping.Field;
             }
 
-            // Give up.  We couldn't find the decorated attribute.
             if (fieldName.IsNullOrEmpty())
             {
                 throw new InvalidOperationException(

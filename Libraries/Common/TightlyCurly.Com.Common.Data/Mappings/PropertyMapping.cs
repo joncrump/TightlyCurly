@@ -6,7 +6,7 @@ namespace TightlyCurly.Com.Common.Data.Mappings
 {
     [DataContract]
     [KnownType(typeof(JoinMapping))]
-    public class PropertyMapping : IPropertyMapping
+    public class PropertyMapping
     {
         [JsonConstructor()]
         public PropertyMapping(JoinMapping joinMapping)

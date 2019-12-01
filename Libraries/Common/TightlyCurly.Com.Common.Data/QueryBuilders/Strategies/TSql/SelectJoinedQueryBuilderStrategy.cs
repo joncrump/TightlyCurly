@@ -14,11 +14,11 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
     {
         private readonly IPredicateBuilder _predicateBuilder;
         private readonly IQueryBuilderStrategyFactory _queryBuilderStrategyFactory;
-        private readonly IObjectMappingFactory _objectMappingFactory;
+        private readonly IObjectMapperFactory _objectMappingFactory;
 
         public SelectJoinedQueryBuilderStrategy(IFieldHelper fieldHelper, IPredicateBuilder predicateBuilder, 
             IQueryBuilderStrategyFactory queryBuilderStrategyFactory, 
-            IObjectMappingFactory objectMappingFactory) 
+            IObjectMapperFactory objectMappingFactory) 
             : base(fieldHelper)
         {
             throw new NotImplementedException();
@@ -187,7 +187,7 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
             //return tableObjectMappings;
         }
 
-        private TableObjectMapping AddJoins(IMapping mapping, TableObjectMapping parent, TableObjectMapping child)
+        private TableObjectMapping AddJoins(TypeMapping mapping, TableObjectMapping parent, TableObjectMapping child)
         {
             throw new NotImplementedException();
             //if (attribute.JoinTable.IsNotNullOrEmpty())
@@ -202,7 +202,7 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
             //return parent;
         }
 
-        private static void BuildComplexJoin(IMapping mapping, TableObjectMapping parent, TableObjectMapping child)
+        private static void BuildComplexJoin(TypeMapping mapping, TableObjectMapping parent, TableObjectMapping child)
         {
             throw new NotImplementedException();
             //var parentTableName = parent.TableName;
@@ -239,7 +239,7 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
             //});
         }
 
-        private static void BuildSimpleJoin(IMapping mapping, TableObjectMapping parent, TableObjectMapping child)
+        private static void BuildSimpleJoin(TypeMapping mapping, TableObjectMapping parent, TableObjectMapping child)
         {
             throw new NotImplementedException();
             //parent.Do(() => parent.Joins.Add(new Join

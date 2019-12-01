@@ -12,9 +12,9 @@ namespace TightlyCurly.Com.Common.Data
     {
         private DataTable _dataTable;
         private IDictionary<string, string> _columnMappings;
-        private IObjectMappingFactory _objectMappingFactory;
+        private IObjectMapperFactory _objectMappingFactory;
 
-        public ModelDataConverter(IObjectMappingFactory objectMappingFactory)
+        public ModelDataConverter(IObjectMapperFactory objectMappingFactory)
         {
             throw new NotImplementedException();
         }
@@ -58,7 +58,7 @@ namespace TightlyCurly.Com.Common.Data
             return table;
         }
 
-        private DataTable BuildTableBasedOnMetadata<TModel>(IEnumerable<TModel> models, IMapping mapping)
+        private DataTable BuildTableBasedOnMetadata<TModel>(IEnumerable<TModel> models, TypeMapping mapping)
         {
             throw new NotImplementedException();
             //var table = new DataTable
