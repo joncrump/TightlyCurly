@@ -39,7 +39,7 @@ namespace TightlyCurly.Com.Common.Data.Repositories.Strategies
             IDictionary<object, TValue> parents = new Dictionary<object, TValue>();
 
             var type = typeof (TValue);
-            var mapper = _objectMappingFactory.GetMapperFor<TValue>(_databaseConfiguration.MappingKind);
+            var mapper = _objectMappingFactory.GetMapper(_databaseConfiguration.MappingKind);
             var mapping = mapper.GetMappingFor<TValue>();
             var primaryKeyMappings = mapping.PropertyMappings
                 .Where(p => p.IsPrimaryKey);
@@ -236,7 +236,7 @@ namespace TightlyCurly.Com.Common.Data.Repositories.Strategies
 
         private PropertyInfo GetChildPrimaryKey(Type childType)
         {
-            var mapper = _objectMappingFactory.GetMapperForType(childType, _databaseConfiguration.MappingKind);
+            var mapper = _objectMappingFactory.GetMapper(_databaseConfiguration.MappingKind);
             var mapping = mapper.GetMappingForType(childType);
             var primaryKeyMapping = mapping.PropertyMappings
                 .FirstOrDefault(p => p.IsPrimaryKey);

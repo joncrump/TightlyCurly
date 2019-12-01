@@ -79,6 +79,7 @@
     <Compile Include="ILoadOptions.cs" />
     <Compile Include="MappingKind.cs" />
     <Compile Include="Mappings\IDataMapper.cs" />
+    <Compile Include="Mappings\ReflectionBasedDataMapper.cs" />
     <Compile Include="Mappings\TypeMapping.cs" />
     <Compile Include="IMethodCache.cs" />
     <Compile Include="IModelDataConverter.cs" />

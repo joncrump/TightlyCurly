@@ -17,7 +17,7 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
 
         public QueryInfo BuildQuery<TValue>(dynamic parameters) where TValue : class
         {
-            var mapper = _objectMappingFactory.GetMapperFor<TValue>(_databaseConfiguration.MappingKind);
+            var mapper = _objectMappingFactory.GetMapper(_databaseConfiguration.MappingKind);
             var mapping = mapper.GetMappingFor<TValue>();
             var table = mapping.DataSource;
             var count = mapping.CountField;

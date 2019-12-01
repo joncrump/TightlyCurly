@@ -4,12 +4,7 @@ namespace TightlyCurly.Com.Common.Data.Mappings
 {
     public class ObjectMapperFactory : IObjectMapperFactory
     {
-        public IDataMapper GetMapperFor<TValue>(MappingKind mappingKind)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IDataMapper GetMapperForType(Type objectType, MappingKind mappingKind)
+        public IDataMapper GetMapper(MappingKind mappingKind)
         {
             throw new NotImplementedException();
         }

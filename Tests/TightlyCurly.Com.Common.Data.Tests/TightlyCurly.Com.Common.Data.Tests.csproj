@@ -70,7 +70,8 @@
     <Compile Include="EntityModelDatabaseRepositoryBaseTests\TheConstructor.cs" />
     <Compile Include="EntityModelDatabaseRepositoryBaseTests\TheSaveMethod.cs" />
     <Compile Include="EntityModelDatabaseRepositoryBaseTests\TheDeleteMethod.cs" />
-    <Compile Include="ObjectMappingFactoryTests\TheGetMappingForTypeMethod.cs" />
+    <Compile Include="Mappings\ObjectMappingFactoryTests\TheGetMappingForTypeMethod.cs" />
+    <Compile Include="Mappings\ReflectionBasedDataMapperTests\TheGetMappingForTypeMethod.cs" />
     <Compile Include="ReadDatabaseRepositoryBaseTests\ITestModel.cs" />
     <Compile Include="ReadDatabaseRepositoryBaseTests\TestableReadDatabaseRepository.cs" />
     <Compile Include="ReadDatabaseRepositoryBaseTests\TestModel.cs" />

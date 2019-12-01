@@ -34,7 +34,7 @@ namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
             Expression<Func<TValue, bool>> predicate = parameters?.Predicate;
             bool canDirtyRead = parameters?.CanDirtyRead;
             bool includeParameters = parameters?.IncludeParameters;
-            var mapper = _objectMappingFactory.GetMapperFor<TValue>(_databaseConfiguration.MappingKind);
+            var mapper = _objectMappingFactory.GetMapper(_databaseConfiguration.MappingKind);
             var mapping = mapper.GetMappingFor<TValue>();
             var queryBuilder = new StringBuilder();
             var fields = FieldHelper.BuildFields<TValue>(desiredFields);
