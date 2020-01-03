@@ -2,7 +2,7 @@
 {
     public interface IJoinMapping
     {
-        string JoinType { get; set; }
+        JoinType JoinType { get; set; }
         string LeftKey { get; set; }
         string RightKey { get; set; }
         string JoinTable { get; set; }

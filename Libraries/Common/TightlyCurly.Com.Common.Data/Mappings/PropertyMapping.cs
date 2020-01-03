@@ -1,4 +1,6 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Data;
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -24,7 +26,7 @@ namespace TightlyCurly.Com.Common.Data.Mappings
 
         [DataMember(Name = "databaseType", IsRequired = false)]
         [JsonConverter(typeof(StringEnumConverter))]
-        public string DatabaseType { get; set; }
+        public SqlDbType DatabaseType { get; set; }
 
         [DataMember(Name = "parameterName", IsRequired = false)]
         public string ParameterName { get; set; }
@@ -46,6 +48,8 @@ namespace TightlyCurly.Com.Common.Data.Mappings
 
         [DataMember(Name = "sortColumn")]
         public string SortColumn { get; set; }
+        
+        public string SortColumnAlias { get; set; }
 
         [DataMember(Name = "field", IsRequired = false)]
         public string Field { get; set; }
@@ -56,6 +60,8 @@ namespace TightlyCurly.Com.Common.Data.Mappings
         [DataMember(Name = "lazyLoader", IsRequired = false)]
         public string LazyLoader { get; set; }
 
+        public Type MappedType { get; set; }
+        
         public IMethodCache MethodCache { get; set; }
     }
 }

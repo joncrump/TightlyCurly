@@ -6,7 +6,7 @@ namespace TightlyCurly.Com.Common.Data.Mappings
     public class JoinMapping : IJoinMapping
     {
         [DataMember(Name = "joinType")]
-        public string JoinType { get; set; }
+        public JoinType JoinType { get; set; }
 
         [DataMember(Name = "leftKey")]
         public string LeftKey { get; set; }

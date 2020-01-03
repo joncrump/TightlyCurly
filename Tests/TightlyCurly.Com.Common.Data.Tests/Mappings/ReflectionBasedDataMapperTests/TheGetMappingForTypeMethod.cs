@@ -46,7 +46,42 @@ namespace TightlyCurly.Com.Common.Data.Tests.Mappings.ReflectionBasedDataMapperT
 
         private IEnumerable<PropertyMapping> GetPropertyMappings()
         {
-            throw new NotImplementedException();
+            var propertyMappings = new List<PropertyMapping>
+            {
+                GetPropertyMapping("Id", SqlDbType.Int, "@id", true, 
+                    false, 0, null, true, sortColumn: "Id", sortColumnAlias: "NumRows"),
+                GetPropertyMapping("Name", SqlDbType.NVarChar, "@name", false, false, 1),
+                GetPropertyMapping("ForeignKey", SqlDbType.Int, "@foreignKey", order: 2, joinMapping:
+                    new JoinMapping
+                    {
+                        JoinType = JoinType.Inner,
+                        LeftKey = "ForeignKey",
+                        RightKey = "Id"
+                    })
+            };
+
+            return propertyMappings;
+        }
+
+        private PropertyMapping GetPropertyMapping(string propertyName, SqlDbType dbType, string parameterName = null,
+            bool isIdentity = false, bool allowDbNull = false, int order = 0, Type mappedType = null,
+            bool isPrimaryKey = false, IJoinMapping joinMapping = null, string sortColumn = null, 
+            string sortColumnAlias = null)
+        {
+            return new PropertyMapping
+            {
+                SortColumn = sortColumn,
+                SortColumnAlias = sortColumnAlias,
+                PropertyName = propertyName,
+                DatabaseType = dbType,
+                ParameterName = parameterName,
+                IsIdentity = isIdentity,
+                AllowDbNull = allowDbNull,
+                Order = order,
+                MappedType = mappedType,
+                IsPrimaryKey = isPrimaryKey,
+                JoinMapping = joinMapping
+            };
         }
 
         [Table("dbo.FakeTable")]
