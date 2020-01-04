@@ -19,9 +19,42 @@ namespace TightlyCurly.Com.Common.Data.Mappings
         {
             objectType.ThrowIfNull(nameof(objectType));
 
-            var tableAttribute = objectType.GetCustomAttribute(typeof(TableAttribute));
-            
+            return BuildMapping(objectType);
+        }
+
+        private TypeMapping BuildMapping(Type objectType)
+        {
+            var mapping = new TypeMapping();
+
+            BuildTableMapping(objectType, mapping);
+            BuildPropertyMappings(objectType, mapping);
+
+            return mapping;
+        }
+
+        private void BuildPropertyMappings(Type objectType, TypeMapping mapping)
+        {
+            var propertyInfos = objectType.GetProperties();
+
+            foreach (var propertyInfo in propertyInfos)
+            {
+                BuildPropertyMapping(propertyInfo, mapping);
+            }
+
             throw new NotImplementedException();
+        }
+
+        private void BuildPropertyMapping(PropertyInfo propertyInfo, TypeMapping mapping)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BuildTableMapping(Type objectType, TypeMapping mapping)
+        {
+            var tableAttribute = (TableAttribute)objectType.GetCustomAttribute(typeof(TableAttribute));
+
+            mapping.DataSource = tableAttribute.Name;
+            mapping.Type = objectType;
         }
     }
 }

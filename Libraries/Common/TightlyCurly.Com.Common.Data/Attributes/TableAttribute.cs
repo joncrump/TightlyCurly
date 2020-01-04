@@ -10,6 +10,6 @@ namespace TightlyCurly.Com.Common.Data.Attributes
             Name = name;
         }
 
-        public string Name { get; private set; }
+        public string Name { get; }
     }
 }
