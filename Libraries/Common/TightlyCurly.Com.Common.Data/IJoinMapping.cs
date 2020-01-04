@@ -6,7 +6,7 @@
         string LeftKey { get; set; }
         string RightKey { get; set; }
         string JoinTable { get; set; }
-        string JoinTableJoinType { get; set; }
+        JoinType JoinTableJoinType { get; set; }
         string JoinTableLeftKey { get; set; }
         string JoinTableRightKey { get; set; }
     }

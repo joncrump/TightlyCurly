@@ -250,6 +250,12 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
                                 {Constants.ParameterNames.AssertDelegate, expression}
                             });
                     }
+                    else if (property.PropertyType == typeof(Type))
+                    {
+                        Expression<Action<Type, Type>> expression = (e, a) =>
+                            _asserter.AssertEquality((Type) expectedValue, (Type) actualValue, null,
+                                null, recurseProperties);
+                    }
                     else
                     {
                         HandleRecurseProperties<T>(propertiesToIgnore, additionalParameters, recurseProperties, property, expectedValue, actualValue);

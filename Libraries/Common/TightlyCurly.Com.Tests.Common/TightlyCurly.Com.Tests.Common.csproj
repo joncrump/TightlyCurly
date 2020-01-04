@@ -64,6 +64,7 @@
     <Compile Include="Helpers\Strategies\BooleanAsserterStrategy.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Helpers\Strategies\IAsserterStrategyFactory.cs" />
+    <Compile Include="Helpers\Strategies\TypeAsserterStrategy.cs" />
     <Compile Include="Helpers\SurrogateAsserter.cs" />
     <Compile Include="Helpers\ExceptionAsserter.cs" />
     <Compile Include="Helpers\IDataGenerator.cs" />

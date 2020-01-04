@@ -30,6 +30,11 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
         {
             var type = typeof(TValue);
 
+            if (type == typeof(Type))
+            {
+                return GetTypeStrategy<TValue>();
+            }
+
             var isEnumerable = type.IsGenericType && type.GetInterface("IEnumerable").IsNotNull();
 
             if (isEnumerable)
@@ -63,12 +68,20 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
             return GetObjectStrategy<TValue>();
         }
 
+        private IAsserterStrategy GetTypeStrategy<TValue>()
+        {
+            var typeStrategyType = typeof(TypeAsserterStrategy);
+
+            var strategy = (IAsserterStrategy) Activator.CreateInstance(typeStrategyType, Assert);
+
+            return strategy;
+        }
+
         private IAsserterStrategy GetEnumStrategy()
         {
             var enumStrategyType = typeof(EnumAsserterStrategy);
 
-            var strategy = (IAsserterStrategy)Activator.CreateInstance(enumStrategyType,
-                new object[] { Assert });
+            var strategy = (IAsserterStrategy)Activator.CreateInstance(enumStrategyType, Assert);
 
             return strategy;
         }

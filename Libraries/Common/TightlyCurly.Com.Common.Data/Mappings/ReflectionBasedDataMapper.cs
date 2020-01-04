@@ -40,13 +40,71 @@ namespace TightlyCurly.Com.Common.Data.Mappings
             {
                 BuildPropertyMapping(propertyInfo, mapping);
             }
-
-            throw new NotImplementedException();
         }
 
         private void BuildPropertyMapping(PropertyInfo propertyInfo, TypeMapping mapping)
         {
-            throw new NotImplementedException();
+            var fieldAttribute = (FieldMetadataAttribute) propertyInfo.GetCustomAttribute(typeof(
+                FieldMetadataAttribute));
+            var joinAttribute = (JoinAttribute) propertyInfo.GetCustomAttribute(typeof(JoinAttribute));
+            var countAttribute =
+                (CountMetadataAttribute) propertyInfo.GetCustomAttribute(typeof(CountMetadataAttribute));
+            
+            var propertyMapping = new PropertyMapping();
+
+            BuildFromFieldAttribute(propertyInfo, propertyMapping, fieldAttribute);
+            BuildFromCountAttribute(propertyMapping, countAttribute);
+            BuildFromJoinAttribute(propertyMapping, joinAttribute);
+            
+            mapping.PropertyMappings.Add(propertyMapping);
+        }
+
+        private void BuildFromJoinAttribute(PropertyMapping propertyMapping, JoinAttribute joinAttribute)
+        {
+            if (joinAttribute == null)
+            {
+                return;
+            }
+
+            var joinMapping = new JoinMapping
+            {
+                JoinType = joinAttribute.JoinType,
+                LeftKey = joinAttribute.LeftKey,
+                RightKey = joinAttribute.RightKey,
+                JoinTable = joinAttribute.JoinTable,
+                JoinTableLeftKey = joinAttribute.JoinTableLeftKey,
+                JoinTableRightKey = joinAttribute.JoinTableRightKey,
+                JoinTableJoinType = joinAttribute.JoinTableJoinType,
+                ParentProperty = joinAttribute.ParentProperty,
+                ChildProperty = joinAttribute.ChildProperty
+            };
+
+            propertyMapping.JoinMapping = joinMapping;
+        }
+
+        private void BuildFromCountAttribute(PropertyMapping propertyMapping, CountMetadataAttribute countAttribute)
+        {
+            if (countAttribute == null)
+            {
+                return;
+            }
+
+            propertyMapping.SortColumn = countAttribute.FieldName;
+            propertyMapping.SortColumnAlias = countAttribute.FieldAlias;
+        }
+
+        private static void BuildFromFieldAttribute(PropertyInfo propertyInfo, PropertyMapping propertyMapping,
+            FieldMetadataAttribute fieldAttribute)
+        {
+            propertyMapping.PropertyName = propertyInfo.Name;
+            propertyMapping.DatabaseType = fieldAttribute.DbType;
+            propertyMapping.ParameterName = fieldAttribute.ParameterName;
+            propertyMapping.IsIdentity = fieldAttribute.IsIdentity;
+            propertyMapping.AllowDbNull = fieldAttribute.AllowDbNull;
+            propertyMapping.IsPrimaryKey = fieldAttribute.IsPrimaryKey;
+            propertyMapping.Order = fieldAttribute.Order ?? 0;
+            propertyMapping.IsPrimitive = propertyInfo.PropertyType.IsPrimitive;
+            propertyMapping.Field = fieldAttribute.FieldName;
         }
 
         private void BuildTableMapping(Type objectType, TypeMapping mapping)

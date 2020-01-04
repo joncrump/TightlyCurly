@@ -18,6 +18,7 @@
             public const string Tuple2AsserterStrategy = "Tuple2AsserterStrategy";
             public const string UriAsserterStrategy = "UriAsserterStrategy";
             public const string BooleanAsserterStrategy = "BooleanAsserterStrategy";
+            public const string TypeAsserterStrategy = "TypeAsserterStrategy";
         }
 
         public static class ParameterNames

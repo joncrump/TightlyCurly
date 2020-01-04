@@ -44,7 +44,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.Mappings.ReflectionBasedDataMapperT
             };
         }
 
-        private IEnumerable<PropertyMapping> GetPropertyMappings()
+        private List<PropertyMapping> GetPropertyMappings()
         {
             var propertyMappings = new List<PropertyMapping>
             {
