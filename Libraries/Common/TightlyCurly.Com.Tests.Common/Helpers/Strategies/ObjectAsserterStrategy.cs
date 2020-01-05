@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using NUnit.Framework;
 using TightlyCurly.Com.Common.Extensions;
 
 namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
@@ -95,20 +96,20 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
                     }
                     else if (property.PropertyType == typeof(string))
                     {
-                        _asserter.AssertEquality((string)expectedValue, (string)actualValue, 
-                            additionalParameters:new Dictionary<string, object>
-                        {
-                            {Constants.ParameterNames.CheckForNullOrEmpty, false}
-                        });
+                        _asserter.AssertEquality((string) expectedValue, (string) actualValue,
+                            additionalParameters: new Dictionary<string, object>
+                            {
+                                {Constants.ParameterNames.CheckForNullOrEmpty, false}
+                            });
                     }
                     else if (typeof(IEnumerable<T>).IsAssignableFrom(property.PropertyType))
                     {
-                        _asserter.AssertEquality((IEnumerable<T>)expectedValue, (IEnumerable<T>)actualValue);
+                        _asserter.AssertEquality((IEnumerable<T>) expectedValue, (IEnumerable<T>) actualValue);
                     }
                     else if (property.PropertyType == typeof(Int32))
                     {
-                        _asserter.AssertEquality(Convert.ToInt32(expectedValue), Convert.ToInt32(actualValue), 
-                            additionalParameters:new Dictionary<string, object>
+                        _asserter.AssertEquality(Convert.ToInt32(expectedValue), Convert.ToInt32(actualValue),
+                            additionalParameters: new Dictionary<string, object>
                             {
                                 {Constants.ParameterNames.CheckForNonZero, false},
                                 {Constants.ParameterNames.CheckForPositive, false}
@@ -117,18 +118,18 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
                     else if (property.PropertyType == typeof(Int32?))
                     {
                         Expression<Action<int, int>> expression = (e, a) =>
-                                _asserter.AssertEquality(Convert.ToInt32(expectedValue), Convert.ToInt32(actualValue), null,
+                            _asserter.AssertEquality(Convert.ToInt32(expectedValue), Convert.ToInt32(actualValue), null,
                                 new Dictionary<string, object>
                                 {
                                     {Constants.ParameterNames.CheckForNonZero, false},
                                     {Constants.ParameterNames.CheckForPositive, false}
                                 }, recurseProperties);
 
-                        _asserter.AssertEquality((int?)expectedValue, (int?)actualValue,
+                        _asserter.AssertEquality((int?) expectedValue, (int?) actualValue,
                             additionalParameters: new Dictionary<string, object>
-                        {
-                            {Constants.ParameterNames.AssertDelegate, expression}
-                        });
+                            {
+                                {Constants.ParameterNames.AssertDelegate, expression}
+                            });
                     }
                     else if (property.PropertyType == typeof(Boolean))
                     {
@@ -136,10 +137,11 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
                     }
                     else if (property.PropertyType == typeof(Boolean?))
                     {
-                        Expression<Action<bool, bool>> expression = 
-                            (e, a) => Assert.AreEqual(Convert.ToBoolean(expectedValue), Convert.ToBoolean(actualValue), null);
+                        Expression<Action<bool, bool>> expression =
+                            (e, a) => Assert.AreEqual(Convert.ToBoolean(expectedValue), Convert.ToBoolean(actualValue),
+                                null);
 
-                        _asserter.AssertEquality((bool?)expectedValue, (bool?)actualValue,
+                        _asserter.AssertEquality((bool?) expectedValue, (bool?) actualValue,
                             additionalParameters: new Dictionary<string, object>
                             {
                                 {Constants.ParameterNames.AssertDelegate, expression}
@@ -147,7 +149,7 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
                     }
                     else if (property.PropertyType == typeof(DateTime))
                     {
-                        _asserter.AssertEquality(Convert.ToDateTime(expectedValue), Convert.ToDateTime(actualValue), 
+                        _asserter.AssertEquality(Convert.ToDateTime(expectedValue), Convert.ToDateTime(actualValue),
                             additionalParameters: new Dictionary<string, object>
                             {
                                 {Constants.ParameterNames.CheckForMinDate, false},
@@ -156,15 +158,16 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
                     }
                     else if (property.PropertyType == typeof(DateTime?))
                     {
-                        Expression<Action<DateTime, DateTime>> expression = 
-                            (e, a) => _asserter.AssertEquality(Convert.ToDateTime(expectedValue), Convert.ToDateTime(actualValue),
-                            null, new Dictionary<string, object>
-                            {
-                                {Constants.ParameterNames.CheckForMinDate, false},
-                                {Constants.ParameterNames.CheckForMaxDate, false}
-                            }, recurseProperties);
+                        Expression<Action<DateTime, DateTime>> expression =
+                            (e, a) => _asserter.AssertEquality(Convert.ToDateTime(expectedValue),
+                                Convert.ToDateTime(actualValue),
+                                null, new Dictionary<string, object>
+                                {
+                                    {Constants.ParameterNames.CheckForMinDate, false},
+                                    {Constants.ParameterNames.CheckForMaxDate, false}
+                                }, recurseProperties);
 
-                        _asserter.AssertEquality((DateTime?)expectedValue, (DateTime?)actualValue,
+                        _asserter.AssertEquality((DateTime?) expectedValue, (DateTime?) actualValue,
                             additionalParameters: new Dictionary<string, object>
                             {
                                 {Constants.ParameterNames.AssertDelegate, expression}
@@ -173,7 +176,7 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
                     else if (property.PropertyType == typeof(Int64))
                     {
                         _asserter.AssertEquality(Convert.ToInt64(expectedValue), Convert.ToInt64(actualValue),
-                            additionalParameters:new Dictionary<string, object>
+                            additionalParameters: new Dictionary<string, object>
                             {
                                 {Constants.ParameterNames.CheckForNonZero, false},
                                 {Constants.ParameterNames.CheckForPositive, false}
@@ -181,17 +184,17 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
                     }
                     else if (property.PropertyType == typeof(Int64?))
                     {
-                        Expression<Action<Int64, Int64>> expression = 
-                             (e, a) =>
-                                _asserter.AssertEquality(Convert.ToInt64(expectedValue), Convert.ToInt64(actualValue), 
-                                null, 
-                                new Dictionary<string, object>
-                                {
-                                    {Constants.ParameterNames.CheckForNonZero, false},
-                                    {Constants.ParameterNames.CheckForPositive, false}
-                                }, recurseProperties);
+                        Expression<Action<Int64, Int64>> expression =
+                            (e, a) =>
+                                _asserter.AssertEquality(Convert.ToInt64(expectedValue), Convert.ToInt64(actualValue),
+                                    null,
+                                    new Dictionary<string, object>
+                                    {
+                                        {Constants.ParameterNames.CheckForNonZero, false},
+                                        {Constants.ParameterNames.CheckForPositive, false}
+                                    }, recurseProperties);
 
-                        _asserter.AssertEquality((Int64?)expectedValue, (Int64?)actualValue, additionalParameters:
+                        _asserter.AssertEquality((Int64?) expectedValue, (Int64?) actualValue, additionalParameters:
                             new Dictionary<string, object>
                             {
                                 {Constants.ParameterNames.AssertDelegate, expression}
@@ -199,8 +202,8 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
                     }
                     else if (property.PropertyType == typeof(Double))
                     {
-                        _asserter.AssertEquality(Convert.ToDouble(expectedValue), Convert.ToDouble(actualValue), 
-                            additionalParameters:new Dictionary<string, object>
+                        _asserter.AssertEquality(Convert.ToDouble(expectedValue), Convert.ToDouble(actualValue),
+                            additionalParameters: new Dictionary<string, object>
                             {
                                 {Constants.ParameterNames.CheckForNonZero, false},
                                 {Constants.ParameterNames.CheckForPositive, false}
@@ -208,16 +211,16 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
                     }
                     else if (property.PropertyType == typeof(Double?))
                     {
-                        Expression<Action<Double, Double>> expression = 
+                        Expression<Action<Double, Double>> expression =
                             (e, a) =>
                                 _asserter.AssertEquality(Convert.ToDouble(expectedValue), Convert.ToDouble(actualValue),
-                            null, new Dictionary<string, object>
-                            {
-                                {Constants.ParameterNames.CheckForNonZero, false},
-                                {Constants.ParameterNames.CheckForPositive, false}
-                            }, recurseProperties);
+                                    null, new Dictionary<string, object>
+                                    {
+                                        {Constants.ParameterNames.CheckForNonZero, false},
+                                        {Constants.ParameterNames.CheckForPositive, false}
+                                    }, recurseProperties);
 
-                        _asserter.AssertEquality((double?)expectedValue, (double?)actualValue,
+                        _asserter.AssertEquality((double?) expectedValue, (double?) actualValue,
                             additionalParameters: new Dictionary<string, object>
                             {
                                 {Constants.ParameterNames.AssertDelegate, expression}
@@ -225,11 +228,11 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
                     }
                     else if (property.PropertyType == typeof(byte))
                     {
-                        _asserter.AssertEquality((byte)expectedValue, (byte)actualValue);
+                        _asserter.AssertEquality((byte) expectedValue, (byte) actualValue);
                     }
-                    else if (property.PropertyType == typeof(Guid))   
+                    else if (property.PropertyType == typeof(Guid))
                     {
-                        _asserter.AssertEquality((Guid)expectedValue, (Guid)actualValue, 
+                        _asserter.AssertEquality((Guid) expectedValue, (Guid) actualValue,
                             additionalParameters: new Dictionary<string, object>
                             {
                                 {Constants.ParameterNames.CheckForEmptyGuid, false}
@@ -238,13 +241,13 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
                     else if (property.PropertyType == typeof(Guid?))
                     {
                         Expression<Action<Guid, Guid>> expression = (e, a) =>
-                            _asserter.AssertEquality((Guid)expectedValue, (Guid)actualValue,
-                            null, new Dictionary<string, object>
-                            {
-                                {Constants.ParameterNames.CheckForEmptyGuid, false}
-                            }, recurseProperties);
+                            _asserter.AssertEquality((Guid) expectedValue, (Guid) actualValue,
+                                null, new Dictionary<string, object>
+                                {
+                                    {Constants.ParameterNames.CheckForEmptyGuid, false}
+                                }, recurseProperties);
 
-                        _asserter.AssertEquality((Guid?)expectedValue, (Guid?)actualValue, additionalParameters:
+                        _asserter.AssertEquality((Guid?) expectedValue, (Guid?) actualValue, additionalParameters:
                             new Dictionary<string, object>
                             {
                                 {Constants.ParameterNames.AssertDelegate, expression}
@@ -258,7 +261,8 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
                     }
                     else
                     {
-                        HandleRecurseProperties<T>(propertiesToIgnore, additionalParameters, recurseProperties, property, expectedValue, actualValue);
+                        HandleRecurseProperties<T>(propertiesToIgnore, additionalParameters, recurseProperties,
+                            property, expectedValue, actualValue);
                     }
                 }
                 catch (TargetException)
@@ -271,6 +275,24 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
                     failedProperties.Add("Property: {0}. Expected: {1}, Actual: {2}"
                         .FormatString(property.Name, expectedValue, actualValue));
                 }
+                catch (AssertionException)
+                {
+                    failedProperties.Add("Property: {0}. Expected: {1}, Actual: {2}"
+                        .FormatString(property.Name, expectedValue, actualValue));
+                }
+                catch (TargetInvocationException exception)
+                {
+                    if (exception.InnerException != null && exception.InnerException is AssertionException)
+                    {
+                        failedProperties.Add("Property: {0}. Expected: {1}, Actual: {2}"
+                            .FormatString(property.Name, expectedValue, actualValue));
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                
             }
 
             return failedProperties;

@@ -22,7 +22,7 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
         public virtual void AssertEquality(object expected, object actual, IEnumerable<string> propertiesToIgnore = null,
             IDictionary<string, object> additionalParameters = null, bool recurseProperties = false)
         {
-            AssertEquality((TValue)expected, (TValue)actual, propertiesToIgnore, additionalParameters);
+            AssertEquality((TValue)expected, (TValue)actual, propertiesToIgnore, additionalParameters, recurseProperties);
         }
 
         protected TModel ExtractParameter<TModel>(IDictionary<string, object> parameters, 

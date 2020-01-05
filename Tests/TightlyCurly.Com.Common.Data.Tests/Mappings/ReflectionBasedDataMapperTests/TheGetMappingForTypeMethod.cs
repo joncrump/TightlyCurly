@@ -26,10 +26,18 @@ namespace TightlyCurly.Com.Common.Data.Tests.Mappings.ReflectionBasedDataMapperT
         public void WillReturnMappingBasedOnType()
         {
             var expected = GetExpected();
-
             var actual = SystemUnderTest.GetMappingForType(typeof(TestClass));
 
-            Asserter.AssertEquality(expected, actual);
+            Asserter.AssertEquality(expected, actual, new [] {"PropertyMappings"});
+
+            Asserter.AssertEquality(expected.PropertyMappings.Count, actual.PropertyMappings.Count);
+            var sortedExpected = expected.PropertyMappings.OrderBy(p => p.PropertyName);
+            var sortedActual = actual.PropertyMappings.OrderBy(p => p.PropertyName);
+
+            for (var index = 0; index < expected.PropertyMappings.Count; index++)
+            {
+                Asserter.AssertEquality(sortedExpected.ElementAt(index), sortedActual.ElementAt(1));
+            }
         }
 
         private TypeMapping GetExpected()

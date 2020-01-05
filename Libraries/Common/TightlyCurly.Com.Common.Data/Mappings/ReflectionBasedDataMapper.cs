@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using TightlyCurly.Com.Common.Data.Attributes;
 
 namespace TightlyCurly.Com.Common.Data.Mappings
@@ -24,25 +20,25 @@ namespace TightlyCurly.Com.Common.Data.Mappings
 
         private TypeMapping BuildMapping(Type objectType)
         {
-            var mapping = new TypeMapping();
+            var typeMapping = new TypeMapping();
 
-            BuildTableMapping(objectType, mapping);
-            BuildPropertyMappings(objectType, mapping);
+            BuildTableMapping(objectType, typeMapping);
+            BuildPropertyMappings(objectType, typeMapping);
 
-            return mapping;
+            return typeMapping;
         }
 
-        private void BuildPropertyMappings(Type objectType, TypeMapping mapping)
+        private void BuildPropertyMappings(Type objectType, TypeMapping typeMapping)
         {
             var propertyInfos = objectType.GetProperties();
 
             foreach (var propertyInfo in propertyInfos)
             {
-                BuildPropertyMapping(propertyInfo, mapping);
+                BuildPropertyMapping(propertyInfo, typeMapping);
             }
         }
 
-        private void BuildPropertyMapping(PropertyInfo propertyInfo, TypeMapping mapping)
+        private void BuildPropertyMapping(PropertyInfo propertyInfo, TypeMapping typeMapping)
         {
             var fieldAttribute = (FieldMetadataAttribute) propertyInfo.GetCustomAttribute(typeof(
                 FieldMetadataAttribute));
@@ -53,10 +49,10 @@ namespace TightlyCurly.Com.Common.Data.Mappings
             var propertyMapping = new PropertyMapping();
 
             BuildFromFieldAttribute(propertyInfo, propertyMapping, fieldAttribute);
-            BuildFromCountAttribute(propertyMapping, countAttribute);
+            BuildFromCountAttribute(typeMapping, countAttribute);
             BuildFromJoinAttribute(propertyMapping, joinAttribute);
             
-            mapping.PropertyMappings.Add(propertyMapping);
+            typeMapping.PropertyMappings.Add(propertyMapping);
         }
 
         private void BuildFromJoinAttribute(PropertyMapping propertyMapping, JoinAttribute joinAttribute)
@@ -82,15 +78,15 @@ namespace TightlyCurly.Com.Common.Data.Mappings
             propertyMapping.JoinMapping = joinMapping;
         }
 
-        private void BuildFromCountAttribute(PropertyMapping propertyMapping, CountMetadataAttribute countAttribute)
+        private void BuildFromCountAttribute(TypeMapping typeMapping, CountMetadataAttribute countAttribute)
         {
             if (countAttribute == null)
             {
                 return;
             }
 
-            propertyMapping.SortColumn = countAttribute.FieldName;
-            propertyMapping.SortColumnAlias = countAttribute.FieldAlias;
+            typeMapping.CountField = countAttribute.FieldName;
+            typeMapping.CountAlias = countAttribute.FieldAlias;
         }
 
         private static void BuildFromFieldAttribute(PropertyInfo propertyInfo, PropertyMapping propertyMapping,
