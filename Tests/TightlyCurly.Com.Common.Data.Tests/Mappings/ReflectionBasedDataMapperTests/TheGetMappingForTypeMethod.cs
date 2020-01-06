@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
 using TightlyCurly.Com.Common.Data.Attributes;
 using TightlyCurly.Com.Common.Data.Mappings;
@@ -28,7 +26,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.Mappings.ReflectionBasedDataMapperT
             var expected = GetExpected();
             var actual = SystemUnderTest.GetMappingForType(typeof(TestClass));
 
-            Asserter.AssertEquality(expected, actual, new [] {"PropertyMappings"});
+            Asserter.AssertEquality(expected, actual, new[] {"PropertyMappings"});
 
             Asserter.AssertEquality(expected.PropertyMappings.Count, actual.PropertyMappings.Count);
             var sortedExpected = expected.PropertyMappings.OrderBy(p => p.PropertyName);
@@ -36,7 +34,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.Mappings.ReflectionBasedDataMapperT
 
             for (var index = 0; index < expected.PropertyMappings.Count; index++)
             {
-                Asserter.AssertEquality(sortedExpected.ElementAt(index), sortedActual.ElementAt(1));
+                Asserter.AssertEquality(sortedExpected.ElementAt(index), sortedActual.ElementAt(index));
             }
         }
 
@@ -64,7 +62,9 @@ namespace TightlyCurly.Com.Common.Data.Tests.Mappings.ReflectionBasedDataMapperT
                     {
                         JoinType = JoinType.Inner,
                         LeftKey = "ForeignKey",
-                        RightKey = "Id"
+                        RightKey = "Id",
+                        ParentProperty = "ForeignKey",
+                        ChildProperty = "Id"
                     })
             };
 

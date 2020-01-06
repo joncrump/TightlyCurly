@@ -81,3 +81,6 @@ obj
 /Libraries/Common/TightlyCurly.Com.Common.Models/obj
 /Libraries/Common/TightlyCurly.Com.Common.Data/obj
 obj
+Debug/*
+*.pdb
+*.dll

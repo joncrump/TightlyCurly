@@ -28,5 +28,12 @@ namespace TightlyCurly.Com.Common.Extensions
 
             return method;
         }
+
+        //public static TAttribute GetAttribute<TAttribute>(this PropertyInfo propertyInfo)
+        //    where TAttribute : Attribute
+        //{
+        //    return (TAttribute)propertyInfo.GetCustomAttribute(typeof(
+        //        TAttribute));
+        //}
     }
 }

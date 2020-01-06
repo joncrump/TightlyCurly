@@ -86,12 +86,12 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
 
                     if (expectedValue.IsNull() && !actualValue.IsNull())
                     {
-                        failedProperties.Add("Property: {0}. Expected: <NULL>, Actual: {1}"
+                        failedProperties.Add("Property: {0}. Expected: <NULL>, Actual: {1}\n"
                             .FormatString(property.Name, actualValue));
                     }
                     else if (!expectedValue.IsNull() && actualValue.IsNull())
                     {
-                        failedProperties.Add("Property: {0}. Expected: {1}, Actual: <NULL>"
+                        failedProperties.Add("Property: {0}. Expected: {1}, Actual: <NULL>\n"
                             .FormatString(property.Name, expectedValue));
                     }
                     else if (property.PropertyType == typeof(string))
@@ -255,9 +255,15 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
                     }
                     else if (property.PropertyType == typeof(Type))
                     {
-                        Expression<Action<Type, Type>> expression = (e, a) =>
+                       // Expression<Action<Type, Type>> expression = (e, a) =>
                             _asserter.AssertEquality((Type) expectedValue, (Type) actualValue, null,
                                 null, recurseProperties);
+
+                        //_asserter.AssertEquality(expectedValue, actualValue, additionalParameters:
+                        //    new Dictionary<string, object>
+                        //    {
+                        //        {Constants.ParameterNames.AssertDelegate, expression}
+                        //    });
                     }
                     else
                     {
@@ -267,24 +273,24 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
                 }
                 catch (TargetException)
                 {
-                    failedProperties.Add("Property: {0} type mismatch."
+                    failedProperties.Add("Property: {0} type mismatch.\n"
                         .FormatString(property.Name));
                 }
                 catch (AssertException)
                 {
-                    failedProperties.Add("Property: {0}. Expected: {1}, Actual: {2}"
+                    failedProperties.Add("Property: {0}. Expected: {1}, Actual: {2}\n"
                         .FormatString(property.Name, expectedValue, actualValue));
                 }
                 catch (AssertionException)
                 {
-                    failedProperties.Add("Property: {0}. Expected: {1}, Actual: {2}"
+                    failedProperties.Add("Property: {0}. Expected: {1}, Actual: {2}\n"
                         .FormatString(property.Name, expectedValue, actualValue));
                 }
                 catch (TargetInvocationException exception)
                 {
                     if (exception.InnerException != null && exception.InnerException is AssertionException)
                     {
-                        failedProperties.Add("Property: {0}. Expected: {1}, Actual: {2}"
+                        failedProperties.Add("Property: {0}. Expected: {1}, Actual: {2}\n"
                             .FormatString(property.Name, expectedValue, actualValue));
                     }
                     else
@@ -292,7 +298,6 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
                         throw;
                     }
                 }
-                
             }
 
             return failedProperties;

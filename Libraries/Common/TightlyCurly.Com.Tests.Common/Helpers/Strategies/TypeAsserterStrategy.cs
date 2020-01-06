@@ -23,6 +23,12 @@ namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
         public override void AssertEquality(Type expected, Type actual, IEnumerable<string> propertiesToIgnore = null, 
             IDictionary<string, object> additionalParameters = null, bool recurseProperties = false)
         {
+            if (expected == null)
+            {
+                Assert.IsNull(actual);
+                return;
+            }
+
             Assert.AreEqual(expected.Name, actual.Name);
             Assert.AreEqual(expected.IsPrimitive, actual.IsPrimitive);
             Assert.AreEqual(expected.Namespace, actual.Namespace);
