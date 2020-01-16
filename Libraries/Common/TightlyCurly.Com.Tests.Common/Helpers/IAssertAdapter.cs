@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TightlyCurly.Com.Tests.Common.Helpers
 {
@@ -12,5 +13,8 @@ namespace TightlyCurly.Com.Tests.Common.Helpers
         void Inconclusive(string message);
         void IsNotNull(object value, string message = null);
         void IsNull(object value, string message = null);
+
+        void AreEqual<TValue, TKey>(IEnumerable<TValue> expected, IEnumerable<TValue> actual,
+            Func<TValue, TKey> orderSelector = null, IEqualityComparer<TValue> comparer = null);
     }
 }
