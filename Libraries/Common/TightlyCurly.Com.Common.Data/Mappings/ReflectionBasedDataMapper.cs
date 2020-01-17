@@ -43,7 +43,12 @@ namespace TightlyCurly.Com.Common.Data.Mappings
             var fieldAttribute = propertyInfo.GetCustomAttribute<FieldMetadataAttribute>();
             var joinAttribute = propertyInfo.GetCustomAttribute<JoinAttribute>();
             var countAttribute = propertyInfo.GetCustomAttribute<CountMetadataAttribute>();
-            
+
+            if (fieldAttribute == null)
+            {
+                return;
+            }
+
             var propertyMapping = new PropertyMapping();
 
             BuildFromFieldAttribute(propertyInfo, propertyMapping, fieldAttribute);

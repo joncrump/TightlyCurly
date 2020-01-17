@@ -27,15 +27,7 @@ namespace TightlyCurly.Com.Common.Data.Tests.Mappings.ReflectionBasedDataMapperT
             var actual = SystemUnderTest.GetMappingForType(typeof(TestClass));
 
             Asserter.AssertEquality(expected, actual, new[] {"PropertyMappings"});
-
-           // Asserter.AssertEquality(expected.PropertyMappings.Count, actual.PropertyMappings.Count);
-            //var sortedExpected = expected.PropertyMappings.OrderBy(p => p.PropertyName);
-            //var sortedActual = actual.PropertyMappings.OrderBy(p => p.PropertyName);
-
-            //for (var index = 0; index < expected.PropertyMappings.Count; index++)
-            //{
-            //    Asserter.AssertEquality(sortedExpected.ElementAt(index), sortedActual.ElementAt(index));
-            //}
+            Asserter.AssertEquality(expected.PropertyMappings, actual.PropertyMappings);
         }
 
         private TypeMapping GetExpected()
@@ -54,30 +46,32 @@ namespace TightlyCurly.Com.Common.Data.Tests.Mappings.ReflectionBasedDataMapperT
         {
             var propertyMappings = new List<PropertyMapping>
             {
-                GetPropertyMapping("Id", SqlDbType.Int, "@id", true, 
-                    false, 0, null, true, sortColumn: "Id", sortColumnAlias: "NumRows"),
-                GetPropertyMapping("Name", SqlDbType.NVarChar, "@name", false, false, 1),
-                //GetPropertyMapping("ForeignKey", SqlDbType.Int, "@foreignKey", order: 2, joinMapping:
-                    //new JoinMapping
-                    //{
-                    //    JoinType = JoinType.Inner,
-                    //    LeftKey = "ForeignKey",
-                    //    RightKey = "Id",
-                    //    ParentProperty = "ForeignKey",
-                    //    ChildProperty = "Id"
-                    //})
+                GetPropertyMapping("Id", SqlDbType.Int, "Id", "@id", true, 
+                    false, 0, null, true),
+                GetPropertyMapping("Name", SqlDbType.NVarChar, fieldName:"Name", "@name", false, false, 1, isPrimitive:false),
+                GetPropertyMapping("ForeignKey", SqlDbType.Int, "ForeignKey", "@foreignKey", order: 2, joinMapping:
+                    new JoinMapping
+                    {
+                        JoinType = JoinType.Inner,
+                        LeftKey = "ForeignKey",
+                        RightKey = "Id",
+                        ParentProperty = "ForeignKey",
+                        ChildProperty = "Id"
+                    })
             };
 
             return propertyMappings;
         }
 
-        private PropertyMapping GetPropertyMapping(string propertyName, SqlDbType dbType, string parameterName = null,
+        private PropertyMapping GetPropertyMapping(string propertyName, SqlDbType dbType, 
+            string fieldName, string parameterName = null,
             bool isIdentity = false, bool allowDbNull = false, int order = 0, Type mappedType = null,
             bool isPrimaryKey = false, IJoinMapping joinMapping = null, string sortColumn = null, 
-            string sortColumnAlias = null)
+            string sortColumnAlias = null, bool isPrimitive = true)
         {
             return new PropertyMapping
             {
+                Field = fieldName,
                 SortColumn = sortColumn,
                 SortColumnAlias = sortColumnAlias,
                 PropertyName = propertyName,
@@ -88,7 +82,8 @@ namespace TightlyCurly.Com.Common.Data.Tests.Mappings.ReflectionBasedDataMapperT
                 Order = order,
                 MappedType = mappedType,
                 IsPrimaryKey = isPrimaryKey,
-                JoinMapping = joinMapping
+                JoinMapping = joinMapping, 
+                IsPrimitive = isPrimitive
             };
         }
 
