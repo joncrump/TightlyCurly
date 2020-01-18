@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using NUnit.Framework;
 using TightlyCurly.Com.Common.Data.Attributes;
+using TightlyCurly.Com.Common.Data.Helpers;
 using TightlyCurly.Com.Common.Data.Mappings;
 using TightlyCurly.Com.Tests.Common.Base;
 
@@ -23,6 +24,16 @@ namespace TightlyCurly.Com.Common.Data.Tests.Mappings.ReflectionBasedDataMapperT
         [Test]
         public void WillReturnMappingBasedOnType()
         {
+            var helper = Mocks.Get<IDataBuilderHelper>();
+
+            helper
+                .Setup(x => x.InferDatabaseType(typeof(string)))
+                .Returns(SqlDbType.NVarChar);
+
+            helper
+                .Setup(x => x.GetParameterName("NotDecorated"))
+                .Returns("@notDecorated");
+
             var expected = GetExpected();
             var actual = SystemUnderTest.GetMappingForType(typeof(TestClass));
 
@@ -57,7 +68,8 @@ namespace TightlyCurly.Com.Common.Data.Tests.Mappings.ReflectionBasedDataMapperT
                         RightKey = "Id",
                         ParentProperty = "ForeignKey",
                         ChildProperty = "Id"
-                    })
+                    }),
+                GetPropertyMapping("NotDecorated", SqlDbType.NVarChar, "NotDecorated", "@notDecorated", false, true, 3, isPrimitive:false )
             };
 
             return propertyMappings;
@@ -101,6 +113,11 @@ namespace TightlyCurly.Com.Common.Data.Tests.Mappings.ReflectionBasedDataMapperT
                 null, false)]
             [Join(JoinType.Inner, typeof(int), "ForeignKey", "Id")]
             public int ForeignKey { get; set; }
+
+            public string NotDecorated { get; set; }
+
+            [Ignore]
+            public string PleaseIgnoreMe { get; set; }
         }
     }
 }
