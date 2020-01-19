@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Data;
+using System.Linq;
+using System.Xml;
 
 namespace TightlyCurly.Com.Common.Data.Helpers
 {
@@ -77,7 +79,16 @@ namespace TightlyCurly.Com.Common.Data.Helpers
 
         public string GetParameterName(string name)
         {
-            throw new NotImplementedException();
+            var firstLetter = char.ToLower(name[0]);
+
+            if (name.Length == 1)
+            {
+                return $"@{firstLetter}";
+            }
+
+            var theRest = new[] {firstLetter}.Concat(name.Substring(1, name.Length - 1).ToCharArray()).ToArray();
+
+            return $"@{new string(theRest)}";
         }
     }
 }
