@@ -66,6 +66,7 @@
     <Compile Include="Evaluator.cs" />
     <Compile Include="FieldHelper.cs" />
     <Compile Include="FieldParameterMapping.cs" />
+    <Compile Include="Helpers\DataBuilderHelper.cs" />
     <Compile Include="Helpers\IDatabaseConfiguration.cs" />
     <Compile Include="Helpers\IDataBuilderHelper.cs" />
     <Compile Include="IBuilder.cs" />
