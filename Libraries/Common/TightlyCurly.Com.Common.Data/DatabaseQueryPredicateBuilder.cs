@@ -373,7 +373,7 @@ namespace TightlyCurly.Com.Common.Data
                 var parameter = new SqlParameter
                 {
                     ParameterName = propertyMapping.ParameterName,
-                    SqlDbType = propertyMapping.DatabaseType//DatabaseTypes.FieldMappings[propertyMapping.DatabaseType]
+                    SqlDbType = propertyMapping.DatabaseType
                 };
 
                 _parameters.Add(parameter);
