@@ -4,7 +4,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
+using Moq;
 using NUnit.Framework;
+using TightlyCurly.Com.Common.Data.Mappings;
 using TightlyCurly.Com.Common.Extensions;
 using TightlyCurly.Com.Tests.Common.Base;
 
@@ -13,6 +15,21 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
     [TestFixture]
     public class TheBuildContainerMethod : MockTestBase<DatabaseQueryPredicateBuilder>
     {
+        protected override void Setup()
+        {
+            base.Setup();
+
+            var mapper = new Mock<IDataMapper>();
+
+            mapper
+                .Setup(x => x.GetMappingForType(typeof(TestClass)))
+                .Returns(GetTestClassTypeMapping());
+
+            Mocks.Get<IObjectMapperFactory>()
+                .Setup(x => x.GetMapper(It.IsAny<MappingKind>()))
+                .Returns(mapper.Object);
+        }
+
         [Test]
         public void WillPassParameterChecks()
         {
@@ -468,6 +485,54 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
             Asserter.AssertEquality(expected.ParameterName, actual.ParameterName);
             Asserter.AssertEquality(expected.SqlDbType, actual.SqlDbType);
             Assert.AreEqual(expected.Value, actual.Value);
+        }
+
+        private TypeMapping GetTestClassTypeMapping()
+        {
+            return new TypeMapping
+            {
+                Type = typeof(TestClass),
+                DataSource = "dbo.TestTable",
+                PropertyMappings = GetPropertyMappings()
+            };
+        }
+
+        private IList<PropertyMapping> GetPropertyMappings()
+        {
+            return new List<PropertyMapping>
+            {
+                new PropertyMapping
+                {
+                    IsIdentity = true,
+                    DatabaseType = SqlDbType.Int,
+                    Field = "TestClassId",
+                    AllowDbNull = false, 
+                    IsPrimaryKey = true,
+                    IsPrimitive = true,
+                    MappedType = typeof(int),
+                    PropertyName = "Id",
+                    ParameterName = "@id"
+                },
+                new PropertyMapping
+                {
+                    DatabaseType = SqlDbType.NVarChar,
+                    Field = "SomeFoo",
+                    AllowDbNull = false,
+                    IsPrimitive = false,
+                    MappedType = typeof(string),
+                    PropertyName = "Foo",
+                    ParameterName = "@fooParameter"
+                },
+                new PropertyMapping
+                {
+                    DatabaseType = SqlDbType.NVarChar,
+                    Field = "PioneerSquareBar",
+                    IsPrimitive = false,
+                    MappedType = typeof(string),
+                    PropertyName = "Bar",
+                    ParameterName = "@itsFridayLetsGoToTheBar"
+                }
+            };
         }
     }
 }
