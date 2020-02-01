@@ -351,7 +351,6 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
             Asserter.AssertEquality(expected, actual, new[] { "Parameters", "OrderByClause" });
         }
 
-
         [Test]
         public void WillHandleDateTime()
         {
@@ -378,6 +377,17 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
 
             expected = "DAY(SomeDate) = {0} AND MONTH(SomeDate) = {1} AND YEAR(SomeDate) = {2}"
                 .FormatString(dateValue.Day.ToString(), dateValue.Month.ToString(), dateValue.Year.ToString());
+
+            var mapper = new Mock<IDataMapper>();
+
+            mapper
+                .Setup(x => x.GetMappingForType(typeof(DateClass)))
+                .Returns(GetDateMapping);
+
+            Mocks
+                .Get<IObjectMapperFactory>()
+                .Setup(x => x.GetMapper(It.IsAny<MappingKind>()))
+                .Returns(mapper.Object);
 
             var actual = SystemUnderTest.BuildContainer(expression, typeof(DateClass));
 
@@ -408,6 +418,17 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
 
             expression = Expression.AndAlso(andExpression, yearExpression);
 
+            var mapper = new Mock<IDataMapper>();
+
+            mapper
+                .Setup(x => x.GetMappingForType(typeof(DateClass)))
+                .Returns(GetDateMapping);
+
+            Mocks
+                .Get<IObjectMapperFactory>()
+                .Setup(x => x.GetMapper(It.IsAny<MappingKind>()))
+                .Returns(mapper.Object);
+
             expected = "DAY(t1.t1_SomeDate) = {0} AND MONTH(t1.t1_SomeDate) = {1} AND YEAR(t1.t1_SomeDate) = {2}"
                 .FormatString(dateValue.Day.ToString(), dateValue.Month.ToString(), dateValue.Year.ToString());
 
@@ -430,6 +451,17 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
             expression = d => d.Name == dateClass.Name && d.SomeDateTime.Day.Equals(dateValue.Day)
                               && d.SomeDateTime.Month.Equals(dateValue.Month) &&
                               d.SomeDateTime.Year.Equals(dateValue.Year);
+
+            var mapper = new Mock<IDataMapper>();
+
+            mapper
+                .Setup(x => x.GetMappingForType(typeof(DateClass)))
+                .Returns(GetDateMapping);
+
+            Mocks
+                .Get<IObjectMapperFactory>()
+                .Setup(x => x.GetMapper(It.IsAny<MappingKind>()))
+                .Returns(mapper.Object);
 
             expected = "SomeName = @someName AND DAY(SomeDate) = {0} AND MONTH(SomeDate) = {1} AND YEAR(SomeDate) = {2}"
                 .FormatString(dateValue.Day.ToString(), dateValue.Month.ToString(), dateValue.Year.ToString());
@@ -531,6 +563,33 @@ namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
                     MappedType = typeof(string),
                     PropertyName = "Bar",
                     ParameterName = "@itsFridayLetsGoToTheBar"
+                }
+            };
+        }
+
+        private TypeMapping GetDateMapping()
+        {
+            return new TypeMapping
+            {
+                DataSource = "dbo.Date",
+                Type = typeof(DateClass),
+                PropertyMappings = new List<PropertyMapping>
+                {
+                    new PropertyMapping
+                    {
+                        DatabaseType = SqlDbType.DateTime,
+                        Field = "SomeDate",
+                        AllowDbNull = false,
+                        IsPrimitive = false,
+                        PropertyName = "SomeDateTime"
+                    },
+                    new PropertyMapping
+                    {
+                        DatabaseType = SqlDbType.NVarChar,
+                        Field = "Name",
+                        AllowDbNull = true,
+                        PropertyName = "Name"
+                    }
                 }
             };
         }
