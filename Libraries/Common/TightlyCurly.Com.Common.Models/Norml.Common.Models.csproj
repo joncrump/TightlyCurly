@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8E0E84AE-BA57-4FB2-8009-96CF513BC269}</ProjectGuid>
+    <ProjectGuid>{88A2370D-E1B5-45F5-920B-61EA708E5B14}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TightlyCurly.Com.Providers.Common</RootNamespace>
-    <AssemblyName>TightlyCurly.Com.Providers.Common</AssemblyName>
+    <RootNamespace>TightlyCurly.Com.Common.Models</RootNamespace>
+    <AssemblyName>TightlyCurly.Com.Common.Models</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -44,21 +44,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICriteriaProvider.cs" />
-    <Compile Include="IExportableProvider.cs" />
-    <Compile Include="IPagingProvider.cs" />
-    <Compile Include="IReadProvider.cs" />
-    <Compile Include="IWriteProvider.cs" />
+    <Compile Include="Enums\ChangeFrequency.cs" />
+    <Compile Include="Enums\ConstructionMode.cs" />
+    <Compile Include="Enums\ConsultationStatus.cs" />
+    <Compile Include="Enums\ContentType.cs" />
+    <Compile Include="Enums\EntityType.cs" />
+    <Compile Include="Enums\LinkKind.cs" />
+    <Compile Include="Enums\ObjectType.cs" />
+    <Compile Include="Enums\RetrievalMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TightlyCurly.Com.Common.Data\TightlyCurly.Com.Common.Data.csproj">
-      <Project>{02D3A7EC-DEED-49F6-A8A7-A7904E56C1F3}</Project>
-      <Name>TightlyCurly.Com.Common.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TightlyCurly.Com.Common\TightlyCurly.Com.Common.csproj">
+    <ProjectReference Include="..\TightlyCurly.Com.Common\Norml.Common.csproj">
       <Project>{90DE5354-58AD-4B3E-805D-E1F471143033}</Project>
-      <Name>TightlyCurly.Com.Common</Name>
+      <Name>Norml.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

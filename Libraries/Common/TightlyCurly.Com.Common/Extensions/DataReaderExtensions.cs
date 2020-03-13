@@ -13,23 +13,23 @@ namespace TightlyCurly.Com.Common.Extensions
                     typeof(bool), (r, n) =>
                     {
                         if (r.IsDBNull(r.GetOrdinal(n)))
-                                     {
-                                         return null;
-                                     }
+                        {
+                            return null;
+                        }
 
-                                     var value = r[n].ToString();
+                        var value = r[n].ToString();
 
-                                     if (value == "1")
-                                     {
-                                         return true;
-                                     }
+                        if (value == "1")
+                        {
+                            return true;
+                        }
 
-                                     if (value == "0")
-                                     {
-                                         return false;
-                                     }
+                        if (value == "0")
+                        {
+                            return false;
+                        }
 
-                                     return Boolean.Parse(value);
+                        return Boolean.Parse(value);
                     }
                 },
                 { typeof(bool?), (r, n) =>

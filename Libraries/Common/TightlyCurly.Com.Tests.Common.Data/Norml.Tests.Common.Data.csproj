@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6D3BAFCD-4972-4F74-87CF-2D9C6331E5B3}</ProjectGuid>
+    <ProjectGuid>{FFADF87C-28D8-49B2-AFC7-C96301C7D700}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TightlyCurly.Com.Repositories</RootNamespace>
-    <AssemblyName>TightlyCurly.Com.Repositories</AssemblyName>
+    <RootNamespace>TightlyCurly.Com.Tests.Common.Data</RootNamespace>
+    <AssemblyName>TightlyCurly.Com.Tests.Common.Data</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -44,27 +44,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants\Columns.cs" />
-    <Compile Include="Constants\Parameters.cs" />
-    <Compile Include="Constants\Tables.cs" />
+    <Compile Include="IDataReaderHelper.cs" />
+    <Compile Include="MockDataReaderHelper.cs" />
+    <Compile Include="MockDataItemTestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\TightlyCurly.Com.Common.Data\TightlyCurly.Com.Common.Data.csproj">
+    <ProjectReference Include="..\TightlyCurly.Com.Common.Data\TightlyCurly.Com.Common.Data.csproj">
       <Project>{02D3A7EC-DEED-49F6-A8A7-A7904E56C1F3}</Project>
       <Name>TightlyCurly.Com.Common.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Common\TightlyCurly.Com.Common.Models\Norml.Common.Models.csproj">
-      <Project>{88A2370D-E1B5-45F5-920B-61EA708E5B14}</Project>
-      <Name>Norml.Common.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\TightlyCurly.Com.Common\Norml.Common.csproj">
+    <ProjectReference Include="..\TightlyCurly.Com.Common\Norml.Common.csproj">
       <Project>{90DE5354-58AD-4B3E-805D-E1F471143033}</Project>
       <Name>Norml.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TightlyCurly.Com.Tests.Common\Norml.Tests.Common.csproj">
+      <Project>{FA9B391B-963B-455E-94C8-C4B88D766886}</Project>
+      <Name>Norml.Tests.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Database\" />
+    <PackageReference Include="Moq">
+      <Version>4.13.1</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -134,17 +134,17 @@
       <Project>{02D3A7EC-DEED-49F6-A8A7-A7904E56C1F3}</Project>
       <Name>TightlyCurly.Com.Common.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Libraries\Common\TightlyCurly.Com.Common\TightlyCurly.Com.Common.csproj">
+    <ProjectReference Include="..\..\Libraries\Common\TightlyCurly.Com.Common\Norml.Common.csproj">
       <Project>{90DE5354-58AD-4B3E-805D-E1F471143033}</Project>
-      <Name>TightlyCurly.Com.Common</Name>
+      <Name>Norml.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Libraries\Common\TightlyCurly.Com.Tests.Common.Data\TightlyCurly.Com.Tests.Common.Data.csproj">
+    <ProjectReference Include="..\..\Libraries\Common\TightlyCurly.Com.Tests.Common.Data\Norml.Tests.Common.Data.csproj">
       <Project>{FFADF87C-28D8-49B2-AFC7-C96301C7D700}</Project>
-      <Name>TightlyCurly.Com.Tests.Common.Data</Name>
+      <Name>Norml.Tests.Common.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Libraries\Common\TightlyCurly.Com.Tests.Common\TightlyCurly.Com.Tests.Common.csproj">
+    <ProjectReference Include="..\..\Libraries\Common\TightlyCurly.Com.Tests.Common\Norml.Tests.Common.csproj">
       <Project>{FA9B391B-963B-455E-94C8-C4B88D766886}</Project>
-      <Name>TightlyCurly.Com.Tests.Common</Name>
+      <Name>Norml.Tests.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
