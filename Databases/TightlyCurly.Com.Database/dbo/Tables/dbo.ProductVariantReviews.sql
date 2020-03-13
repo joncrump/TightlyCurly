@@ -1,9 +1,0 @@
-﻿CREATE TABLE [dbo].[ProductVariantReviews]
-(
-	[Id] INT IDENTITY(1,1) NOT NULL,
-	[ProductVariantReviewId] UNIQUEIDENTIFIER NOT NULL,
-	[ProductVariantId] UNIQUEIDENTIFIER NOT NULL,
-	[OverallRating] DECIMAL NOT NULL,
-	[EnteredDate] SMALLDATETIME NOT NULL,
-	[UpdatedDate] SMALLDATETIME NOT NULL
-)

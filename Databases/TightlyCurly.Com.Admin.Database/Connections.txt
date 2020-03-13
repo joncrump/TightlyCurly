@@ -1,4 +1,0 @@
-DBRefFolders found in your dbp file
-Connect String: Data Source=(local);Initial Catalog=ALLIGOSHEE_HAIR_ADMIN;Integrated Security=True
-Provider: Microsoft SQL Server
-

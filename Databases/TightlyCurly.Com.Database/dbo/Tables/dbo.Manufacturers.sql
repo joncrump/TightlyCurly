@@ -1,8 +1,0 @@
-﻿CREATE TABLE [dbo].[Manufacturers]
-(
-	[Id] INT IDENTITY(1,1),
-	[ManufacturerId] UNIQUEIDENTIFIER NOT NULL,
-	[Name] NVARCHAR(1000) NOT NULL,
-	[EnteredDate] SMALLDATETIME NOT NULL,
-	[UpdatedDate] SMALLDATETIME NOT NULL
-)

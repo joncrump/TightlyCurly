@@ -1,8 +1,0 @@
-﻿CREATE TABLE [dbo].[ContactInfos_PhoneNumbers]
-(
-	[Id] INT NOT NULL IDENTITY(1,1),
-	[ContactInfoId] UNIQUEIDENTIFIER NOT NULL,
-	[PhoneNumberId] UNIQUEIDENTIFIER NOT NULL,
-	[EnteredDate] SMALLDATETIME NOT NULL,
-	[UpdatedDate] SMALLDATETIME NOT NULL
-)

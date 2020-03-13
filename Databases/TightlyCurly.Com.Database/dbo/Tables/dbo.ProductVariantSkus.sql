@@ -1,9 +1,0 @@
-﻿CREATE TABLE [dbo].[ProductVariantSkus]
-(
-	[Id] INT IDENTITY(1,1) NOT NULL,
-	[ProductVariantSkuId] UNIQUEIDENTIFIER NOT NULL,
-	[ProductVariantId] UNIQUEIDENTIFIER NOT NULL,
-	[Sku] NVARCHAR(100) NOT NULL,
-	[EnteredDate] SMALLDATETIME NOT NULL,
-	[UpdatedDate] SMALLDATETIME NOT NULL
-)

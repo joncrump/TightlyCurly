@@ -1,8 +1,0 @@
-﻿CREATE TABLE [dbo].[CompanyPositions_Companies]
-(
-	[Id] INT NOT NULL IDENTITY(1,1),
-	[CompanyPositionId] UNIQUEIDENTIFIER NOT NULL,
-	[CompanyId] UNIQUEIDENTIFIER NOT NULL,
-	[EnteredDate] SMALLDATETIME NOT NULL,
-	[UpdatedDate] SMALLDATETIME NOT NULL
-)

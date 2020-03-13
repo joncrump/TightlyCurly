@@ -1,8 +1,0 @@
-﻿CREATE TABLE [dbo].[PatentAuthors_Patents]
-(
-	[Id] INT NOT NULL IDENTITY(1,1),
-	[PatentAuthorId] UNIQUEIDENTIFIER NOT NULL,
-	[PatentId] UNIQUEIDENTIFIER NOT NULL,
-	[EnteredDate] SMALLDATETIME NOT NULL,
-	[UpdatedDate] SMALLDATETIME NOT NULL
-)

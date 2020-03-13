@@ -1,8 +1,0 @@
-﻿CREATE TABLE [dbo].[Copyrights_Countries]
-(
-	[Id] INT NOT NULL IDENTITY(1,1),
-	[CopyrightId] UNIQUEIDENTIFIER NOT NULL,
-	[CountryId] UNIQUEIDENTIFIER NOT NULL,
-	[EnteredDate] SMALLDATETIME NOT NULL,
-	[UpdatedDate] SMALLDATETIME NOT NULL
-)

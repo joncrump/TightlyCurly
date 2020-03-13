@@ -1,9 +1,0 @@
-﻿CREATE TABLE [dbo].[ProductTypes]
-(
-	[Id] INT IDENTITY(1,1) NOT NULL,
-	[ProductTypeId] UNIQUEIDENTIFIER NOT NULL,
-	[Type] NVARCHAR(255) NOT NULL,
-	[Description] NVARCHAR(1000) NULL,
-	[EnteredDate] SMALLDATETIME NOT NULL,
-	[UpdatedDate] SMALLDATETIME NOT NULL
-)

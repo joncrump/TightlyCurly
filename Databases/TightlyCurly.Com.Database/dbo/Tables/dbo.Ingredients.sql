@@ -1,8 +1,0 @@
-﻿CREATE TABLE [dbo].[Ingredients] (
-	[Id] INT IDENTITY(1,1) NOT NULL,
-	[IngredientId] UNIQUEIDENTIFIER NOT NULL,
-	[Title]	NVARCHAR(1000) NOT NULL,
-	[Description] NVARCHAR(1000) NULL,
-    [UpdatedDate] SMALLDATETIME NOT NULL,
-    [EnteredDate] SMALLDATETIME NOT NULL
-);

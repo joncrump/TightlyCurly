@@ -1,9 +1,0 @@
-﻿CREATE TABLE [dbo].[MessageTemplateTokens]
-(
-	[Id] INT NOT NULL IDENTITY(1,1),
-	[MessageTemplateTokenId] UNIQUEIDENTIFIER NOT NULL,
-	[Key] NVARCHAR(20) NOT NULL,
-	[Value] NVARCHAR(300) NOT NULL,
-	[EnteredDate] SMALLDATETIME NOT NULL,
-	[UpdatedDate] SMALLDATETIME NOT NULL
-)

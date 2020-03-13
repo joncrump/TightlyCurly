@@ -1,8 +1,0 @@
-﻿CREATE TABLE [dbo].[CategoryTypes]
-(
-	[Id] INT IDENTITY(1,1) NOT NULL,
-	[CategoryTypeId] UNIQUEIDENTIFIER NOT NULL,
-	[Name] NVARCHAR(255) NOT NULL,
-	[EnteredDate] SMALLDATETIME NOT NULL,
-	[UpdatedDate] SMALLDATETIME NOT NULL		 
-)

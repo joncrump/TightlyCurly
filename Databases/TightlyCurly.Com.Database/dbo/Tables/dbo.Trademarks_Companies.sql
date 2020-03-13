@@ -1,8 +1,0 @@
-﻿CREATE TABLE [dbo].[Trademarks_Companies]
-(
-	[Id] INT NOT NULL IDENTITY(1,1),
-	[TrademarkId] UNIQUEIDENTIFIER NOT NULL,
-	[CompanyId] UNIQUEIDENTIFIER NOT NULL,
-	[EnteredDate] SMALLDATETIME NOT NULL,
-	[UpdatedDate] SMALLDATETIME NOT NULL
-)

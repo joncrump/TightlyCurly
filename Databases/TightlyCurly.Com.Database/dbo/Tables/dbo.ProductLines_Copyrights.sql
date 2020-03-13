@@ -1,8 +1,0 @@
-﻿CREATE TABLE [dbo].[ProductLines_Copyrights]
-(
-	[Id] INT NOT NULL IDENTITY(1,1),
-	[ProductLineId] UNIQUEIDENTIFIER NOT NULL,
-	[CopyrightId] UNIQUEIDENTIFIER NOT NULL,
-	[EnteredDate] SMALLDATETIME NOT NULL,
-	[UpdatedDate] SMALLDATETIME NOT NULL
-)

@@ -1,4 +1,0 @@
-﻿User-agent: *
-Disallow: 
-
-sitemap: http://www.tightlycurly.com/sitemap

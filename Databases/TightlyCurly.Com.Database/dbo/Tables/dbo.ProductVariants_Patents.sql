@@ -1,8 +1,0 @@
-﻿CREATE TABLE [dbo].[ProductVariants_Patents]
-(
-	[Id] INT NOT NULL IDENTITY(1,1),
-	[ProductVariantId] UNIQUEIDENTIFIER NOT NULL,
-	[PatentId] UNIQUEIDENTIFIER NOT NULL,
-	[EnteredDate] SMALLDATETIME NOT NULL,
-	[UpdatedDate] SMALLDATETIME NOT NULL
-)

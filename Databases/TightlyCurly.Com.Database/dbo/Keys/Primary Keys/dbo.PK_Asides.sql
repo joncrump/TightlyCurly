@@ -1,3 +1,0 @@
-﻿ALTER TABLE [dbo].[Asides]
-	ADD CONSTRAINT [PK_Asides]
-	PRIMARY KEY (Id)

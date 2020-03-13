@@ -1,8 +1,0 @@
-﻿CREATE TABLE [dbo].[People_SocialMediaInfos]
-(
-	[Id] INT NOT NULL IDENTITY(1,1),
-	[PersonId] UNIQUEIDENTIFIER NOT NULL,
-	[SocialMediaInfoId] UNIQUEIDENTIFIER NOT NULL,
-	[EnteredDate] SMALLDATETIME NOT NULL,
-	[UpdatedDate] SMALLDATETIME NOT NULL
-)

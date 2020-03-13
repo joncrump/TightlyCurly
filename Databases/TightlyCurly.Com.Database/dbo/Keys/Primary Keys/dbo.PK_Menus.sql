@@ -1,3 +1,0 @@
-﻿ALTER TABLE [dbo].[Menus]
-	ADD CONSTRAINT [PK_Menus]
-	PRIMARY KEY (Id)
