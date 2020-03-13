@@ -1,7 +1,7 @@
 ﻿using System;
-using TightlyCurly.Com.Tests.Common.Helpers;
+using Norml.Tests.Common.Helpers;
 
-namespace TightlyCurly.Com.Tests.Common
+namespace Norml.Tests.Common
 {
     public static class AsserterFactory
     {

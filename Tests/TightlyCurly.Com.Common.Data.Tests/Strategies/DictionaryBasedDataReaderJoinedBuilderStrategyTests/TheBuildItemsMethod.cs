@@ -7,14 +7,14 @@ using System.Linq;
 using System.Linq.Expressions;
 using Moq;
 using NUnit.Framework;
-using TightlyCurly.Com.Common.Data.Attributes;
-using TightlyCurly.Com.Common.Data.Repositories.Strategies;
-using TightlyCurly.Com.Common.Extensions;
-using TightlyCurly.Com.Tests.Common;
-using TightlyCurly.Com.Tests.Common.Base;
-using TightlyCurly.Com.Tests.Common.Extensions;
+using Norml.Common.Data.Attributes;
+using Norml.Common.Data.Repositories.Strategies;
+using Norml.Common.Extensions;
+using Norml.Tests.Common;
+using Norml.Tests.Common.Base;
+using Norml.Tests.Common.Extensions;
 
-namespace TightlyCurly.Com.Common.Data.Tests.Strategies.DictionaryBasedDataReaderJoinedBuilderStrategyTests
+namespace Norml.Common.Data.Tests.Strategies.DictionaryBasedDataReaderJoinedBuilderStrategyTests
 {
     [TestFixture]
     public class TheBuildItemsMethod : MockTestBase<DictionaryBasedDataReaderJoinedBuilderStrategy>

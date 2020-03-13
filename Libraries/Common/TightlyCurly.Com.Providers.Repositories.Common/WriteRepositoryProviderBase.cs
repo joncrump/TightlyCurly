@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq.Expressions;
-using TightlyCurly.Com.Common;
-using TightlyCurly.Com.Common.Data;
-using TightlyCurly.Com.Common.Data.Repositories;
+using Norml.Common;
+using Norml.Common.Data;
+using Norml.Common.Data.Repositories;
 
-//namespace TightlyCurly.Com.Providers.Repositories.Common
+//namespace Norml.Providers.Repositories.Common
 //{
 //    public abstract class WriteRepositoryProviderBase<TInterface, TRepository> 
 //        : ReadRepositoryProviderBase<TInterface, TRepository>

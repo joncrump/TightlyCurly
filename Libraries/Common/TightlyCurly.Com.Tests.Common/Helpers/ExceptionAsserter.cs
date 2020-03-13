@@ -1,8 +1,8 @@
 ﻿using System;
-using TightlyCurly.Com.Common;
-using TightlyCurly.Com.Common.Extensions;
+using Norml.Common;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Tests.Common.Helpers
+namespace Norml.Tests.Common.Helpers
 {
     public class ExceptionAsserter : IExceptionAsserter
     {

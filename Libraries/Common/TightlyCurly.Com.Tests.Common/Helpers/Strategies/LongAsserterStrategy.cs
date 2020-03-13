@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
+namespace Norml.Tests.Common.Helpers.Strategies
 {
     public class LongAsserterStrategy : AsserterStrategyBase<long>
     {

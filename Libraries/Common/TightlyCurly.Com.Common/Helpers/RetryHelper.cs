@@ -1,7 +1,7 @@
 ﻿using System;
-using TightlyCurly.Com.Common.Extensions;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Common.Helpers
+namespace Norml.Common.Helpers
 {
     public class RetryHelper : IRetryHelper
     {

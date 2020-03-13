@@ -1,9 +1,9 @@
-﻿using TightlyCurly.Com.Common.Data.QueryBuilders;
-using TightlyCurly.Com.Common.Data.Repositories;
-using TightlyCurly.Com.Common.Data.Repositories.Strategies;
-using TightlyCurly.Com.Common.Helpers;
+﻿using Norml.Common.Data.QueryBuilders;
+using Norml.Common.Data.Repositories;
+using Norml.Common.Data.Repositories.Strategies;
+using Norml.Common.Helpers;
 
-namespace TightlyCurly.Com.Common.Data.Tests.ReadDatabaseRepositoryBaseTests
+namespace Norml.Common.Data.Tests.ReadDatabaseRepositoryBaseTests
 {
     public class TestableReadDatabaseRepository : ReadDatabaseRepositoryBase<ITestModel, TestModel>
     {

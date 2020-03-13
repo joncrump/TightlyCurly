@@ -1,6 +1,6 @@
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.IContentArticleNote, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.IContentArticleNote, Norml.Common.Models",
         "dataSource": "dbo.ContentArticleNotes",
         "countProperty":"Id",
         "propertyMappings": [

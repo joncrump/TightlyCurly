@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq.Expressions;
-using TightlyCurly.Com.Common.Data.QueryBuilders;
-using TightlyCurly.Com.Common.Data.Repositories.Strategies;
-using TightlyCurly.Com.Common.Extensions;
-using TightlyCurly.Com.Common.Helpers;
+using Norml.Common.Data.QueryBuilders;
+using Norml.Common.Data.Repositories.Strategies;
+using Norml.Common.Extensions;
+using Norml.Common.Helpers;
 
-namespace TightlyCurly.Com.Common.Data.Repositories
+namespace Norml.Common.Data.Repositories
 {
     public class PagingRepositoryHelper<TInterface, TModel> : ReadDatabaseRepositoryBase<TInterface, TModel>
         where TModel : class, TInterface, new()

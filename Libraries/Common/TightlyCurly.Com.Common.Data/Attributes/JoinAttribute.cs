@@ -1,7 +1,7 @@
 ﻿using System;
-using TightlyCurly.Com.Common.Extensions;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Common.Data.Attributes
+namespace Norml.Common.Data.Attributes
 {
     [AttributeUsage(AttributeTargets.Property)]
     public class JoinAttribute : Attribute

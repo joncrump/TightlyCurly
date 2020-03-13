@@ -1,10 +1,10 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Data;
-using TightlyCurly.Com.Common.Data.Helpers;
-using TightlyCurly.Com.Tests.Common.Base;
+using Norml.Common.Data.Helpers;
+using Norml.Tests.Common.Base;
 
-namespace TightlyCurly.Com.Common.Data.Tests.Helpers.DataBuilderHelperTests
+namespace Norml.Common.Data.Tests.Helpers.DataBuilderHelperTests
 {
     [TestFixture]
     public class TheInferDatabaseTypeMethod : MockTestBase<DataBuilderHelper>

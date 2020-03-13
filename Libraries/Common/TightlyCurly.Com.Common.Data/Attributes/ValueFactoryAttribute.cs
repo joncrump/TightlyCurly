@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TightlyCurly.Com.Common.Data.Attributes
+namespace Norml.Common.Data.Attributes
 {
     public class ValueFactoryAttribute : Attribute
     {

@@ -5,11 +5,11 @@ using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using TightlyCurly.Com.Common.Data.Helpers;
-using TightlyCurly.Com.Common.Data.Mappings;
-using TightlyCurly.Com.Common.Extensions;
+using Norml.Common.Data.Helpers;
+using Norml.Common.Data.Mappings;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Common.Data.Repositories.Strategies
+namespace Norml.Common.Data.Repositories.Strategies
 {
     public class DictionaryBasedDataReaderJoinedBuilderStrategy : DataReaderBuilderStrategyBase, IBuilderStrategy
     {

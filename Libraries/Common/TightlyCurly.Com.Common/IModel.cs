@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TightlyCurly.Com.Common
+namespace Norml.Common
 {
     public interface IModel 
     {

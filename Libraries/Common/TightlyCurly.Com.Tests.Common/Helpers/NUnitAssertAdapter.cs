@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 
-namespace TightlyCurly.Com.Tests.Common.Helpers
+namespace Norml.Tests.Common.Helpers
 {
     public class NUnitAssertAdapter : IAssertAdapter
     {

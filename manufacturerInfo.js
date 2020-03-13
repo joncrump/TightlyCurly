@@ -1,6 +1,6 @@
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.IManufacturerInfo, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.IManufacturerInfo, Norml.Common.Models",
         "dataSource": "dbo.ManufacturerInfos",
         "countProperty":"Id",
         "propertyMappings": [

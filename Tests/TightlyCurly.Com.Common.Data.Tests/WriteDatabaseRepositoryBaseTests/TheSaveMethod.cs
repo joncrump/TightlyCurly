@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using Moq;
 using NUnit.Framework;
-using TightlyCurly.Com.Common.Data.QueryBuilders;
-using TightlyCurly.Com.Common.Helpers;
-using TightlyCurly.Com.Tests.Common.Base;
+using Norml.Common.Data.QueryBuilders;
+using Norml.Common.Helpers;
+using Norml.Tests.Common.Base;
 
 
-namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
+namespace Norml.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
 {
     [TestFixture]
     public class TheSaveMethod : MockTestBase<TestableWriteDatabaseRepository>

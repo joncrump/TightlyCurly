@@ -1,6 +1,6 @@
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.IMessageCampaign, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.IMessageCampaign, Norml.Common.Models",
         "dataSource": "dbo.MessageCampaigns",
         "countProperty":"Id",
         "propertyMappings": [

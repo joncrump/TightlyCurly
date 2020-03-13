@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace TightlyCurly.Com.Common.Helpers
+namespace Norml.Common.Helpers
 {
     public interface IResourcesHelper
     {

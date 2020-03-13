@@ -1,6 +1,6 @@
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.IPatentAuthor, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.IPatentAuthor, Norml.Common.Models",
         "dataSource": "dbo.PatentAuthors",
         "countProperty":"Id",
         "propertyMappings": [

@@ -1,4 +1,4 @@
-﻿namespace TightlyCurly.Com.Common.Data
+﻿namespace Norml.Common.Data
 {
     public enum BuildMode
     {

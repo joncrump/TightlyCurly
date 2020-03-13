@@ -1,6 +1,6 @@
-﻿using TightlyCurly.Com.Common.Extensions;
+﻿using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Common
+namespace Norml.Common
 {
     public class PagingInfo
     {

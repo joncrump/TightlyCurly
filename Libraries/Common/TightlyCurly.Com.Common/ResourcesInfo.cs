@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace TightlyCurly.Com.Common
+namespace Norml.Common
 {
     public class ResourcesInfo : IResourcesInfo
     {

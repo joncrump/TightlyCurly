@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TightlyCurly.Com.Common.Helpers
+namespace Norml.Common.Helpers
 {
     public class EnvironmentHelper : IEnvironmentHelper
     {

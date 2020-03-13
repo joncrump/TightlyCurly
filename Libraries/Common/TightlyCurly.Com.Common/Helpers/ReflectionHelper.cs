@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using TightlyCurly.Com.Common.Extensions;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Common.Helpers
+namespace Norml.Common.Helpers
 {
     public class ReflectionHelper : IReflectionHelper
     {

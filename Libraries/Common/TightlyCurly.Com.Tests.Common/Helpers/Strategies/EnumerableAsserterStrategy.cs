@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using TightlyCurly.Com.Common;
-using TightlyCurly.Com.Common.Extensions;
+using Norml.Common;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
+namespace Norml.Tests.Common.Helpers.Strategies
 {
     public class EnumerableAsserterStrategy<TModel> : AsserterStrategyBase<IEnumerable<TModel>>
     {

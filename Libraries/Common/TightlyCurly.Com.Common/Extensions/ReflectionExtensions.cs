@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace TightlyCurly.Com.Common.Extensions
+namespace Norml.Common.Extensions
 {
     public static class ReflectionExtensions
     {

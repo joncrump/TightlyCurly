@@ -1,7 +1,7 @@
 // Add mapping
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.IProductVariantUserReview, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.IProductVariantUserReview, Norml.Common.Models",
         "dataSource": "dbo.ProductVariantUserReviews",
         "countProperty":"Id",
         "propertyMappings": [

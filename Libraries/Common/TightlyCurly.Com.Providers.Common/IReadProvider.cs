@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TightlyCurly.Com.Providers.Common
+namespace Norml.Providers.Common
 {
     public interface IReadProvider<out TInterface, TIdType>
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text;
-using TightlyCurly.Com.Common.Extensions;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Tests.Common.Helpers
+namespace Norml.Tests.Common.Helpers
 {
     public class RandomDataGenerator : IDataGenerator
     {

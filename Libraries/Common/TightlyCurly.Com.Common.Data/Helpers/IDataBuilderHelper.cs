@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 
-namespace TightlyCurly.Com.Common.Data.Helpers
+namespace Norml.Common.Data.Helpers
 {
     public interface IDataBuilderHelper
     {

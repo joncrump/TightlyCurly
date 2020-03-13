@@ -1,6 +1,6 @@
 [
     {
-        "type": "TightlyCurly.Com.Common.Models.IProductSafetyInfo, TightlyCurly.Com.Common.Models",
+        "type": "Norml.Common.Models.IProductSafetyInfo, Norml.Common.Models",
         "dataSource": "dbo.ProductSafetyInfos",
         "countProperty": "Id",
         "propertyMappings": [

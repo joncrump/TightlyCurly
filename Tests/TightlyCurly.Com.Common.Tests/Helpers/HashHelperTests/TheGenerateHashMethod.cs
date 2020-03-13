@@ -1,9 +1,9 @@
 ﻿using System;
 using NUnit.Framework;
-using TightlyCurly.Com.Common.Helpers;
-using TightlyCurly.Com.Tests.Common.Base;
+using Norml.Common.Helpers;
+using Norml.Tests.Common.Base;
 
-namespace TightlyCurly.Com.Common.Tests.Helpers.HashHelperTests
+namespace Norml.Common.Tests.Helpers.HashHelperTests
 {
     [TestFixture]
     public class TheGenerateHashMethod : MockTestBase<HashHelper>

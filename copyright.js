@@ -1,6 +1,6 @@
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.ICopyright, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.ICopyright, Norml.Common.Models",
         "dataSource": "dbo.Copyrights",
         "countProperty":"Id",
         "propertyMappings": [

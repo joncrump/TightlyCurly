@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TightlyCurly.Com.Common.Extensions;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
+namespace Norml.Tests.Common.Helpers.Strategies
 {
     public class AsserterStrategyFactory : IAsserterStrategyFactory
     {

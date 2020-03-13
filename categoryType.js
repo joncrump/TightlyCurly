@@ -1,6 +1,6 @@
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.ICategoryType, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.ICategoryType, Norml.Common.Models",
         "dataSource": "dbo.CategoryTypes",
         "countProperty":"Id",
         "propertyMappings": [

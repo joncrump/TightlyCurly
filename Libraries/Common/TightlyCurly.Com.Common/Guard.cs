@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
-using TightlyCurly.Com.Common.Exceptions;
-using TightlyCurly.Com.Common.Extensions;
+using Norml.Common.Exceptions;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Common
+namespace Norml.Common
 {
     public static class Guard
     {

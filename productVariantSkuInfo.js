@@ -1,6 +1,6 @@
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.ITProductVariantSkuInfo, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.ITProductVariantSkuInfo, Norml.Common.Models",
         "dataSource": "dbo.ProductVariantSkus",
         "countProperty":"Id",
         "propertyMappings": [

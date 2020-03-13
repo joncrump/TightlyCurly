@@ -6,9 +6,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using Moq;
 using NUnit.Framework;
-using TightlyCurly.Com.Tests.Common.Base;
+using Norml.Tests.Common.Base;
 
-namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
+namespace Norml.Common.Data.Tests.DatabaseRepositoryBaseTests
 {
     [TestFixture]
     public class TheExecuteTransformMethod : MockTestBase<TestableDatabaseRepository>

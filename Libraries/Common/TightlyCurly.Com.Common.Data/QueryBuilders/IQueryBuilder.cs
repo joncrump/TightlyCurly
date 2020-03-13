@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace TightlyCurly.Com.Common.Data.QueryBuilders
+namespace Norml.Common.Data.QueryBuilders
 {
     public interface IQueryBuilder
     {

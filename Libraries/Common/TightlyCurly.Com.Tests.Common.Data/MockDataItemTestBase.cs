@@ -4,10 +4,10 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TightlyCurly.Com.Tests.Common.Base;
-using TightlyCurly.Com.Tests.Common.Helpers;
+using Norml.Tests.Common.Base;
+using Norml.Tests.Common.Helpers;
 
-namespace TightlyCurly.Com.Tests.Common.Data
+namespace Norml.Tests.Common.Data
 {
     public abstract class MockDataItemTestBase<TItemUnderTest> : MockTestBase<TItemUnderTest>
         where TItemUnderTest : class

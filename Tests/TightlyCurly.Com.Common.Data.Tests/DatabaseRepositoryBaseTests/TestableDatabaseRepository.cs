@@ -1,7 +1,7 @@
-﻿using TightlyCurly.Com.Common.Data.Repositories;
-using TightlyCurly.Com.Common.Data.Repositories.Strategies;
+﻿using Norml.Common.Data.Repositories;
+using Norml.Common.Data.Repositories.Strategies;
 
-namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
+namespace Norml.Common.Data.Tests.DatabaseRepositoryBaseTests
 {
     public class TestableDatabaseRepository : DatabaseRepositoryBase
     {

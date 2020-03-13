@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace TightlyCurly.Com.Common.Data
+namespace Norml.Common.Data
 {
     public interface IMethodCache
     {

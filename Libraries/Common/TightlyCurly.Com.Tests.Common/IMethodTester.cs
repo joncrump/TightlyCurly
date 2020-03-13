@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace TightlyCurly.Com.Tests.Common
+namespace Norml.Tests.Common
 {
     public interface IMethodTester
     {

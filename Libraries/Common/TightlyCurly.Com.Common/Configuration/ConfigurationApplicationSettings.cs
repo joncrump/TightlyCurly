@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 
-namespace TightlyCurly.Com.Common.Configuration
+namespace Norml.Common.Configuration
 {
     public class ConfigurationApplicationSettings : IApplicationSettings
     {

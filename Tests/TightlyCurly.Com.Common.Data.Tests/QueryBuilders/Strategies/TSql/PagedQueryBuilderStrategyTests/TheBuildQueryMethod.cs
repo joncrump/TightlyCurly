@@ -5,11 +5,11 @@ using System.Dynamic;
 using System.Linq;
 using System.Linq.Expressions;
 using Moq;
-using TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql;
+using Norml.Common.Data.QueryBuilders.Strategies.TSql;
 using NUnit.Framework;
-using TightlyCurly.Com.Tests.Common.Base;
+using Norml.Tests.Common.Base;
 
-namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.PagedQueryBuilderStrategyTests
+namespace Norml.Common.Data.Tests.QueryBuilders.Strategies.TSql.PagedQueryBuilderStrategyTests
 {
     [TestFixture]
     public class TheBuildQueryMethod : MockTestBase<PagedQueryBuilderStrategy>

@@ -50,10 +50,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TightlyCurly.Com.Common.Data\TightlyCurly.Com.Common.Data.csproj">
-      <Project>{02D3A7EC-DEED-49F6-A8A7-A7904E56C1F3}</Project>
-      <Name>TightlyCurly.Com.Common.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TightlyCurly.Com.Common\Norml.Common.csproj">
       <Project>{90DE5354-58AD-4B3E-805D-E1F471143033}</Project>
       <Name>Norml.Common</Name>

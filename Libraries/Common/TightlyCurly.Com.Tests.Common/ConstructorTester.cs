@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Moq;
-using TightlyCurly.Com.Common.Extensions;
-using TightlyCurly.Com.Tests.Common.Helpers;
+using Norml.Common.Extensions;
+using Norml.Tests.Common.Helpers;
 
-namespace TightlyCurly.Com.Tests.Common
+namespace Norml.Tests.Common
 {
     public class ConstructorTester : IConstructorTester
     {

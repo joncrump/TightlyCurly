@@ -1,4 +1,4 @@
-﻿namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
+﻿namespace Norml.Tests.Common.Helpers.Strategies
 {
     public interface IAsserterStrategyFactory
     {

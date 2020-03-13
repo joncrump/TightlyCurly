@@ -1,6 +1,6 @@
 [
     {
-        "type": "TightlyCurly.Com.Common.Models.IProductMetadata, TightlyCurly.Com.Common.Models",
+        "type": "Norml.Common.Models.IProductMetadata, Norml.Common.Models",
         "dataSource": "dbo.ProductMetadata",
         "countProperty": "Id",
         "propertyMappings": [

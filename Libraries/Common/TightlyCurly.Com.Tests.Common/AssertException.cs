@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TightlyCurly.Com.Tests.Common
+namespace Norml.Tests.Common
 {
     public class AssertException : Exception
     {

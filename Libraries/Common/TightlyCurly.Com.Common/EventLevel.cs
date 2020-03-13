@@ -1,4 +1,4 @@
-﻿namespace TightlyCurly.Com.Common
+﻿namespace Norml.Common
 {
     public enum EventLevel
     {

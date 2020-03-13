@@ -1,6 +1,6 @@
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.IContactInfo, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.IContactInfo, Norml.Common.Models",
         "dataSource": "dbo.CompanyInfos",
         "countProperty":"Id",
         "propertyMappings": [

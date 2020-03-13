@@ -1,4 +1,4 @@
-﻿namespace TightlyCurly.Com.Common.Helpers
+﻿namespace Norml.Common.Helpers
 {
     public interface IMapper
     {

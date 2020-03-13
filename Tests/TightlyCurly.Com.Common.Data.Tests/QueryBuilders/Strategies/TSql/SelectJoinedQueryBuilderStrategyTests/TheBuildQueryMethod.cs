@@ -6,14 +6,14 @@ using System.Linq.Expressions;
 
 using Moq;
 using NUnit.Framework;
-using TightlyCurly.Com.Common.Data.Attributes;
-using TightlyCurly.Com.Common.Data.QueryBuilders;
-using TightlyCurly.Com.Common.Data.QueryBuilders.Strategies;
-using TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql;
-using TightlyCurly.Com.Common.Extensions;
-using TightlyCurly.Com.Tests.Common.Base;
+using Norml.Common.Data.Attributes;
+using Norml.Common.Data.QueryBuilders;
+using Norml.Common.Data.QueryBuilders.Strategies;
+using Norml.Common.Data.QueryBuilders.Strategies.TSql;
+using Norml.Common.Extensions;
+using Norml.Tests.Common.Base;
 
-namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.SelectJoinedQueryBuilderStrategyTests
+namespace Norml.Common.Data.Tests.QueryBuilders.Strategies.TSql.SelectJoinedQueryBuilderStrategyTests
 {
     [TestFixture]
     public class TheBuildQueryMethod : MockTestBase<SelectJoinedQueryBuilderStrategy>

@@ -1,4 +1,4 @@
-﻿namespace TightlyCurly.Com.Tests.Common.DataHelpers
+﻿namespace Norml.Tests.Common.DataHelpers
 {
     public class DatabaseDataHelper 
     {

@@ -1,4 +1,4 @@
-﻿namespace TightlyCurly.Com.Repositories.Constants
+﻿namespace Norml.Repositories.Constants
 {
     public static class Columns
     {

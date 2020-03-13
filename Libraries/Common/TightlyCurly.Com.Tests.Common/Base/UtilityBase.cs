@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Reflection;
 using Moq;
-using TightlyCurly.Com.Common;
-using TightlyCurly.Com.Tests.Common.Helpers;
+using Norml.Common;
+using Norml.Tests.Common.Helpers;
 
-namespace TightlyCurly.Com.Tests.Common.Base
+namespace Norml.Tests.Common.Base
 {
     public abstract class UtilityBase
     {

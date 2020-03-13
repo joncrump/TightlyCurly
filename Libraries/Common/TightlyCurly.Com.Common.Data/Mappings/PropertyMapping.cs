@@ -3,7 +3,7 @@ using System.Data;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace TightlyCurly.Com.Common.Data.Mappings
+namespace Norml.Common.Data.Mappings
 {
     public class PropertyMapping
     {

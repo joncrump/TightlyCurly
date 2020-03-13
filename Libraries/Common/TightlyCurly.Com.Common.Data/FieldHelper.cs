@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using TightlyCurly.Com.Common.Data.Constants;
-using TightlyCurly.Com.Common.Data.Mappings;
-using TightlyCurly.Com.Common.Extensions;
+using Norml.Common.Data.Constants;
+using Norml.Common.Data.Mappings;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Common.Data
+namespace Norml.Common.Data
 {
     public class FieldHelper : IFieldHelper
     {

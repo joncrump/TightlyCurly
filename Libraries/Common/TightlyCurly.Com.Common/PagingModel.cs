@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TightlyCurly.Com.Common
+namespace Norml.Common
 {
     public class PagingModel
     {

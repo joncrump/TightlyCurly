@@ -1,7 +1,7 @@
 ﻿using System;
-using TightlyCurly.Com.Common.Actions;
+using Norml.Common.Actions;
 
-namespace TightlyCurly.Com.Common
+namespace Norml.Common
 {
     public abstract class EventProcessorBase
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TightlyCurly.Com.Common.Data.Mappings
+namespace Norml.Common.Data.Mappings
 {
     public class TypeMapping
     {

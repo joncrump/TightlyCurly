@@ -1,6 +1,6 @@
 [
     {
-        "type": "TightlyCurly.Com.Common.Models.IAside, TightlyCurly.Com.Common.Models",
+        "type": "Norml.Common.Models.IAside, Norml.Common.Models",
         "dataSource": "dbo.Asides",
         "countProperty": "Id",
         "propertyMappings": [

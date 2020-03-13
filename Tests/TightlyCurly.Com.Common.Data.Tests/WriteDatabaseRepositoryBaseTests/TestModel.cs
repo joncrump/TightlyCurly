@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
+namespace Norml.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
 {
     public class TestModel : ITestModel
     {

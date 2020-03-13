@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TightlyCurly.Com.Common.Configuration
+namespace Norml.Common.Configuration
 {
     public interface IApplicationSettings
     {

@@ -1,6 +1,6 @@
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.ICompanyRelationshipNode, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.ICompanyRelationshipNode, Norml.Common.Models",
         "dataSource": "dbo.CompanyRelationships",
         "countProperty":"Id",
         "propertyMappings": [

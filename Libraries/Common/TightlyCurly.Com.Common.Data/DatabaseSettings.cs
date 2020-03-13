@@ -2,7 +2,7 @@
 using System.Configuration;
 using System.Linq;
 
-namespace TightlyCurly.Com.Common.Data
+namespace Norml.Common.Data
 {
     public class DatabaseSettings : IDatabaseSettings
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TightlyCurly.Com.Tests.Common.Data
+namespace Norml.Tests.Common.Data
 {
     public interface IDataReaderHelper
     {

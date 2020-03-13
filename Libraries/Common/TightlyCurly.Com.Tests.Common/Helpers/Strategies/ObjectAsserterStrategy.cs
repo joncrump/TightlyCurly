@@ -4,9 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using NUnit.Framework;
-using TightlyCurly.Com.Common.Extensions;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
+namespace Norml.Tests.Common.Helpers.Strategies
 {
     public class ObjectAsserterStrategy<TValue> : AsserterStrategyBase<TValue> where TValue : class
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 
-namespace TightlyCurly.Com.Common.Data.Repositories.Strategies
+namespace Norml.Common.Data.Repositories.Strategies
 {
     public class DataReaderSingleBuilderStrategy : DataReaderBuilderStrategyBase, IBuilderStrategy
     {

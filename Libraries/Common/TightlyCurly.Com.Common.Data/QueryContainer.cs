@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 
-namespace TightlyCurly.Com.Common.Data
+namespace Norml.Common.Data
 {
     public class QueryContainer
     {

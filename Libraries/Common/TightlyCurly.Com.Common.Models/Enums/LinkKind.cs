@@ -1,4 +1,4 @@
-﻿namespace TightlyCurly.Com.Common.Model.Enums
+﻿namespace Norml.Common.Model.Enums
 {
     public enum LinkKind
     {

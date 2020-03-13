@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using TightlyCurly.Com.Common.Extensions;
-using TightlyCurly.Com.Tests.Common.Base;
+using Norml.Common.Extensions;
+using Norml.Tests.Common.Base;
 
-namespace TightlyCurly.Com.Tests.Common.Helpers
+namespace Norml.Tests.Common.Helpers
 {
     public class ReflectionBasedObjectCreator : UtilityBase, IObjectCreator
     {

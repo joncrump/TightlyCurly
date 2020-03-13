@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TightlyCurly.Com.Common
+namespace Norml.Common
 {
     [AttributeUsage(AttributeTargets.Property)]
     public class IgnoreAttribute : Attribute

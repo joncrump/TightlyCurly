@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TightlyCurly.Com.Common.Exceptions
+namespace Norml.Common.Exceptions
 {
     public class ArgumentInvalidException : ArgumentException
     {

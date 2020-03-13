@@ -2,10 +2,10 @@
 using System.Data;
 using System.Linq;
 using System.Reflection;
-//using TightlyCurly.Com.Common.Data.Attributes;
-using TightlyCurly.Com.Common.Extensions;
+//using Norml.Common.Data.Attributes;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Common.Data
+namespace Norml.Common.Data
 {
     public class ReflectionBasedDataReaderBuilder : ValueFactoryBuilderBase, IDataReaderBuilder
     {

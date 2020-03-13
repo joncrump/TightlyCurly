@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using TightlyCurly.Com.Common.Extensions;
-using TightlyCurly.Com.Tests.Common.Helpers;
-using TightlyCurly.Com.Tests.Common.Helpers.Strategies;
+using Norml.Common.Extensions;
+using Norml.Tests.Common.Helpers;
+using Norml.Tests.Common.Helpers.Strategies;
 
-namespace TightlyCurly.Com.Tests.Common.Base
+namespace Norml.Tests.Common.Base
 {
     public abstract class TestBase : UtilityBase
     {

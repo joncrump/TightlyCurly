@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TightlyCurly.Com.Common.Data
+namespace Norml.Common.Data
 {
     class PropertyMapping
     {

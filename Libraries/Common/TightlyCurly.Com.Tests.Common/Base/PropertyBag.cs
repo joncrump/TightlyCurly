@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Moq;
-using TightlyCurly.Com.Common;
+using Norml.Common;
 
-namespace TightlyCurly.Com.Tests.Common.Base
+namespace Norml.Tests.Common.Base
 {
     public class PropertyBag
     {

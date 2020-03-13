@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Moq;
-using TightlyCurly.Com.Common;
-using TightlyCurly.Com.Common.Extensions;
-using TightlyCurly.Com.Tests.Common.Helpers;
+using Norml.Common;
+using Norml.Common.Extensions;
+using Norml.Tests.Common.Helpers;
 
-namespace TightlyCurly.Com.Tests.Common.Base
+namespace Norml.Tests.Common.Base
 {
     public abstract class MockTestBase<TItemUnderTest> : TestBase where TItemUnderTest : class
     {

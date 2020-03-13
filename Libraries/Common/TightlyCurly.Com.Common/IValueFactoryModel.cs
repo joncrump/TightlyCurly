@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace TightlyCurly.Com.Common
+namespace Norml.Common
 {
     public interface IValueFactoryModel
     {

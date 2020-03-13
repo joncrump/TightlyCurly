@@ -1,6 +1,6 @@
-﻿using TightlyCurly.Com.Common.Data.QueryBuilders.Strategies;
+﻿using Norml.Common.Data.QueryBuilders.Strategies;
 
-namespace TightlyCurly.Com.Common.Data.QueryBuilders
+namespace Norml.Common.Data.QueryBuilders
 {
     public interface IQueryBuilderStrategyFactory
     {

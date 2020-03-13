@@ -3,13 +3,13 @@ using System.Data;
 using System.Linq.Expressions;
 using Moq;
 using NUnit.Framework;
-using TightlyCurly.Com.Common.Data.Attributes;
-using TightlyCurly.Com.Common.Extensions;
-using TightlyCurly.Com.Tests.Common;
-using TightlyCurly.Com.Tests.Common.Base;
-using TightlyCurly.Com.Tests.Common.Data;
+using Norml.Common.Data.Attributes;
+using Norml.Common.Extensions;
+using Norml.Tests.Common;
+using Norml.Tests.Common.Base;
+using Norml.Tests.Common.Data;
 
-namespace TightlyCurly.Com.Common.Data.Tests.ReflectionBasedDataReaderBuilderTests
+namespace Norml.Common.Data.Tests.ReflectionBasedDataReaderBuilderTests
 {
     [TestFixture]
     public class TheBuildMethod : MockTestBase<ReflectionBasedDataReaderBuilder>

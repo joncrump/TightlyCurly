@@ -1,10 +1,10 @@
 ﻿using System;
 using Moq;
 using NUnit.Framework;
-using TightlyCurly.Com.Common.Data.Mappings;
-using TightlyCurly.Com.Tests.Common.Base;
+using Norml.Common.Data.Mappings;
+using Norml.Tests.Common.Base;
 
-namespace TightlyCurly.Com.Common.Data.Tests.ObjectMappingFactoryTests
+namespace Norml.Common.Data.Tests.ObjectMappingFactoryTests
 {
     [TestFixture]
     public class TheGetMappingForTypeMethod : MockTestBase<ObjectMapperFactory>

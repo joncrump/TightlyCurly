@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using TightlyCurly.Com.Common.Actions;
+using Norml.Common.Actions;
 
-namespace TightlyCurly.Com.Common.Helpers
+namespace Norml.Common.Helpers
 {
     public interface IBatchHelper
     {

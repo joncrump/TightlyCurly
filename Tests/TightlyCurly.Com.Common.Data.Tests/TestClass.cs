@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using TightlyCurly.Com.Common.Data.Attributes;
+using Norml.Common.Data.Attributes;
 
-namespace TightlyCurly.Com.Common.Data.Tests
+namespace Norml.Common.Data.Tests
 {
     [Table("dbo.TestTable")]
     public class TestClass

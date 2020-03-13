@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 
-namespace TightlyCurly.Com.Common.Data.Constants
+namespace Norml.Common.Data.Constants
 {
     public static class DatabaseTypes
     {

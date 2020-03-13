@@ -1,7 +1,7 @@
-﻿using TightlyCurly.Com.Common.Data.Helpers;
-using TightlyCurly.Com.Common.Data.Mappings;
+﻿using Norml.Common.Data.Helpers;
+using Norml.Common.Data.Mappings;
 
-namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
+namespace Norml.Common.Data.QueryBuilders.Strategies.TSql
 {
     public class CountQueryBuilderStrategy : QueryBuilderStrategyBase, IQueryBuilderStrategy
     {

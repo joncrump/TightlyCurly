@@ -7,11 +7,11 @@ using System.Linq;
 using System.Linq.Expressions;
 using Moq;
 using NUnit.Framework;
-using TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql;
-using TightlyCurly.Com.Common.Extensions;
-using TightlyCurly.Com.Tests.Common.Base;
+using Norml.Common.Data.QueryBuilders.Strategies.TSql;
+using Norml.Common.Extensions;
+using Norml.Tests.Common.Base;
 
-namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.UpdateQueryBuilderStrategyTests
+namespace Norml.Common.Data.Tests.QueryBuilders.Strategies.TSql.UpdateQueryBuilderStrategyTests
 {
     [TestFixture]
     public class TheBuildQueryMethod : MockTestBase<UpdateQueryBuilderStrategy>

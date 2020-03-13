@@ -1,6 +1,6 @@
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.ICountry, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.ICountry, Norml.Common.Models",
         "dataSource": "dbo.Countries",
         "countProperty":"Id",
         "propertyMappings": [

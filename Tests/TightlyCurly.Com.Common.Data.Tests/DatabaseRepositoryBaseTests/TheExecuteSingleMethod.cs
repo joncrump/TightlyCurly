@@ -1,10 +1,10 @@
 ﻿using System;
 using Moq;
 using NUnit.Framework;
-using TightlyCurly.Com.Common.Data.Repositories.Strategies;
-using TightlyCurly.Com.Tests.Common.Base;
+using Norml.Common.Data.Repositories.Strategies;
+using Norml.Tests.Common.Base;
 
-namespace TightlyCurly.Com.Common.Data.Tests.DatabaseRepositoryBaseTests
+namespace Norml.Common.Data.Tests.DatabaseRepositoryBaseTests
 {
     [TestFixture]
     public class TheExecuteSingleMethod : MockTestBase<TestableDatabaseRepository>

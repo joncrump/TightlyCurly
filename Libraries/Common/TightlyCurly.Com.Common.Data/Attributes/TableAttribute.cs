@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TightlyCurly.Com.Common.Data.Attributes
+namespace Norml.Common.Data.Attributes
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class TableAttribute : Attribute

@@ -1,6 +1,6 @@
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.IMenuItemText, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.IMenuItemText, Norml.Common.Models",
         "dataSource": "dbo.MenuItemTexts",
         "countProperty":"Id",
         "propertyMappings": [

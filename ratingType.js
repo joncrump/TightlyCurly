@@ -1,6 +1,6 @@
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.IRatingType, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.IRatingType, Norml.Common.Models",
         "dataSource": "dbo.RatingTypes",
         "countProperty":"Id",
         "propertyMappings": [

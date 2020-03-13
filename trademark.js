@@ -1,6 +1,6 @@
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.ITrademark, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.ITrademark, Norml.Common.Models",
         "dataSource": "dbo.Trademarks",
         "countProperty":"Id",
         "propertyMappings": [

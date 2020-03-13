@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
-using TightlyCurly.Com.Common;
+using Norml.Common;
 
-namespace TightlyCurly.Com.Providers.Common
+namespace Norml.Providers.Common
 {
     public interface IPagingProvider
     {

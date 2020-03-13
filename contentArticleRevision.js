@@ -1,6 +1,6 @@
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.IContentArticleRevision, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.IContentArticleRevision, Norml.Common.Models",
         "dataSource": "dbo.ContentArticleRevisions",
         "countProperty":"Id",
         "propertyMappings": [

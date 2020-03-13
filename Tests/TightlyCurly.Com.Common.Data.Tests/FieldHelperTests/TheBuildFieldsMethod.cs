@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq.Expressions;
 using NUnit.Framework;
-using TightlyCurly.Com.Common.Extensions;
-using TightlyCurly.Com.Tests.Common.Base;
+using Norml.Common.Extensions;
+using Norml.Tests.Common.Base;
 
-namespace TightlyCurly.Com.Common.Data.Tests.FieldHelperTests
+namespace Norml.Common.Data.Tests.FieldHelperTests
 {
     [TestFixture]
     public class TheBuildFieldsMethod : MockTestBase<FieldHelper>

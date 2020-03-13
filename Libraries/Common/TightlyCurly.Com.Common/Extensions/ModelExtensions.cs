@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace TightlyCurly.Com.Common.Extensions
+namespace Norml.Common.Extensions
 {
     public static class ModelExtensions
     {

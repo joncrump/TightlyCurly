@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace TightlyCurly.Com.Common.Data.Mappings
+namespace Norml.Common.Data.Mappings
 {
     public class JoinMapping : IJoinMapping
     {

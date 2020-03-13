@@ -1,4 +1,4 @@
-﻿namespace TightlyCurly.Com.Common.Actions
+﻿namespace Norml.Common.Actions
 {
     public delegate void ProcessEventHandler(object sender, ProcessEventArgs eventArgs);
 

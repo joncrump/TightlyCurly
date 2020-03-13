@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 
-namespace TightlyCurly.Com.Common.Extensions
+namespace Norml.Common.Extensions
 {
     public static class DataReaderExtensions
     {

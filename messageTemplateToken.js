@@ -1,6 +1,6 @@
 [
     {
-        "type": "TightlyCurly.Com.Common.Models.IMessageTemplateToken, TightlyCurly.Com.Common.Models",
+        "type": "Norml.Common.Models.IMessageTemplateToken, Norml.Common.Models",
         "dataSource": "dbo.MessageTemplateTokens",
         "countProperty": "Id",
         "propertyMappings": [

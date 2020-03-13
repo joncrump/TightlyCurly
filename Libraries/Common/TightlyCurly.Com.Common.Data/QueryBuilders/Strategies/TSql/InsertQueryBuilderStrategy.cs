@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TightlyCurly.Com.Common.Extensions;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
+namespace Norml.Common.Data.QueryBuilders.Strategies.TSql
 {
     public class InsertQueryBuilderStrategy : QueryBuilderStrategyBase, IQueryBuilderStrategy
     {

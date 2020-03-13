@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq.Expressions;
-using TightlyCurly.Com.Common.Extensions;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Common.Data.QueryBuilders
+namespace Norml.Common.Data.QueryBuilders
 {
     public class SqlQueryBuilder : IQueryBuilder
     {

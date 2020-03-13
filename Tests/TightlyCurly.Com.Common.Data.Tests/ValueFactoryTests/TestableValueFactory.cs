@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
+namespace Norml.Common.Data.Tests.ValueFactoryTests
 {
     public class TestableValueFactory : ValueFactory
     {

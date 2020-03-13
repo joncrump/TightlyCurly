@@ -5,12 +5,12 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Moq;
-using TightlyCurly.Com.Common;
-using TightlyCurly.Com.Common.Extensions;
-using TightlyCurly.Com.Tests.Common.Base;
-using TightlyCurly.Com.Tests.Common.Helpers;
+using Norml.Common;
+using Norml.Common.Extensions;
+using Norml.Tests.Common.Base;
+using Norml.Tests.Common.Helpers;
 
-namespace TightlyCurly.Com.Tests.Common
+namespace Norml.Tests.Common
 {
     public class MethodTester : IMethodTester
     {

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using TightlyCurly.Com.Common.Data.Repositories.Strategies;
-using TightlyCurly.Com.Common.Extensions;
+using Norml.Common.Data.Repositories.Strategies;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Common.Data.Repositories
+namespace Norml.Common.Data.Repositories
 {
     public abstract class DatabaseRepositoryBase
     {

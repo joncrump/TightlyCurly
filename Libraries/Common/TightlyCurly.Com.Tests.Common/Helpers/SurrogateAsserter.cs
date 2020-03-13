@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TightlyCurly.Com.Common.Extensions;
-using TightlyCurly.Com.Tests.Common.Helpers.Strategies;
+using Norml.Common.Extensions;
+using Norml.Tests.Common.Helpers.Strategies;
 
-namespace TightlyCurly.Com.Tests.Common.Helpers
+namespace Norml.Tests.Common.Helpers
 {
     public class SurrogateAsserter : IAssertHelper
     {

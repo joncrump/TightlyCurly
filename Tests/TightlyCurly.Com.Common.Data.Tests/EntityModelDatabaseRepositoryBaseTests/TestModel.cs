@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TightlyCurly.Com.Common.Data.Tests.EntityModelDatabaseRepositoryBaseTests
+namespace Norml.Common.Data.Tests.EntityModelDatabaseRepositoryBaseTests
 {
     public class TestModel : ITestModel
     {

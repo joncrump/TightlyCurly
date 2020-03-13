@@ -5,10 +5,10 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using System.Dynamic;
 using System.Linq;
-using TightlyCurly.Com.Common.Data.Repositories.Strategies;
-using TightlyCurly.Com.Common.Extensions;
+using Norml.Common.Data.Repositories.Strategies;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Common.Data
+namespace Norml.Common.Data
 {
     public class SqlDatabaseWrapper : IDatabaseWrapper
     {

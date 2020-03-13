@@ -6,11 +6,11 @@ using System.Linq;
 using System.Linq.Expressions;
 using Moq;
 using NUnit.Framework;
-using TightlyCurly.Com.Common.Data.Mappings;
-using TightlyCurly.Com.Common.Extensions;
-using TightlyCurly.Com.Tests.Common.Base;
+using Norml.Common.Data.Mappings;
+using Norml.Common.Extensions;
+using Norml.Tests.Common.Base;
 
-namespace TightlyCurly.Com.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
+namespace Norml.Common.Data.Tests.DatabaseQueryPredicateBuilderTests
 {
     [TestFixture]
     public class TheBuildContainerMethod : MockTestBase<DatabaseQueryPredicateBuilder>

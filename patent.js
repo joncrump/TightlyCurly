@@ -1,6 +1,6 @@
 [
     {
-        "type": "TightlyCurly.Com.Common.Models.IPatent, TightlyCurly.Com.Common.Models",
+        "type": "Norml.Common.Models.IPatent, Norml.Common.Models",
         "dataSource": "dbo.Patents",
         "countProperty": "Id",
         "propertyMappings": [

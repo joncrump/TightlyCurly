@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Reflection;
-using TightlyCurly.Com.Common.Data.Attributes;
-using TightlyCurly.Com.Common.Data.Helpers;
+using Norml.Common.Data.Attributes;
+using Norml.Common.Data.Helpers;
 
-namespace TightlyCurly.Com.Common.Data.Mappings
+namespace Norml.Common.Data.Mappings
 {
     public class ReflectionBasedDataMapper : IDataMapper
     {

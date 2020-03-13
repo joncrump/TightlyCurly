@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using NUnit.Framework;
-using TightlyCurly.Com.Common.Data.Attributes;
-using TightlyCurly.Com.Common.Data.Helpers;
-using TightlyCurly.Com.Common.Data.Mappings;
-using TightlyCurly.Com.Tests.Common.Base;
+using Norml.Common.Data.Attributes;
+using Norml.Common.Data.Helpers;
+using Norml.Common.Data.Mappings;
+using Norml.Tests.Common.Base;
 
-namespace TightlyCurly.Com.Common.Data.Tests.Mappings.ReflectionBasedDataMapperTests
+namespace Norml.Common.Data.Tests.Mappings.ReflectionBasedDataMapperTests
 {
     [TestFixture]
     public class TheGetMappingForTypeMethod : MockTestBase<ReflectionBasedDataMapper>

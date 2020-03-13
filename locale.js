@@ -1,6 +1,6 @@
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.ILocale, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.ILocale, Norml.Common.Models",
         "dataSource": "dbo.Locales",
         "countProperty":"Id",
         "propertyMappings": [

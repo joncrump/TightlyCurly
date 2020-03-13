@@ -1,6 +1,6 @@
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.ILocation, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.ILocation, Norml.Common.Models",
         "dataSource": "dbo.Locations",
         "countProperty":"Id",
         "propertyMappings": [

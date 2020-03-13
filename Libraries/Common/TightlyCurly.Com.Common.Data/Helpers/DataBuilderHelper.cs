@@ -3,7 +3,7 @@ using System.Data;
 using System.Linq;
 using System.Xml;
 
-namespace TightlyCurly.Com.Common.Data.Helpers
+namespace Norml.Common.Data.Helpers
 {
     public class DataBuilderHelper : IDataBuilderHelper
     {

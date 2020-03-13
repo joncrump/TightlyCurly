@@ -1,7 +1,7 @@
 // JavaScript source code
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.IProductRevisionHistoryEntry, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.IProductRevisionHistoryEntry, Norml.Common.Models",
         "dataSource": "dbo.ProductRevisionHistoryEntries",
         "countProperty":"Id",
         "propertyMappings": [

@@ -1,6 +1,6 @@
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.IIngredientComment, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.IIngredientComment, Norml.Common.Models",
         "dataSource": "dbo.IngredientComments",
         "countProperty":"Id",
         "propertyMappings": [

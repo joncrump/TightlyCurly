@@ -1,6 +1,6 @@
 [
     {
-        "type": "TightlyCurly.Com.Common.Models.IBrand, TightlyCurly.Com.Common.Models",
+        "type": "Norml.Common.Models.IBrand, Norml.Common.Models",
         "dataSource": "dbo.Brands",
         "countProperty": "BrandId",
         "propertyMappings": [

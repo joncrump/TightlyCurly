@@ -1,4 +1,4 @@
-﻿namespace TightlyCurly.Com.Common.Data.Repositories.Strategies
+﻿namespace Norml.Common.Data.Repositories.Strategies
 {
     public interface IBuilderStrategyFactory
     {

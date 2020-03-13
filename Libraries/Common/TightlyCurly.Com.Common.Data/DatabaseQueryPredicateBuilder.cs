@@ -7,13 +7,13 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
-using TightlyCurly.Com.Common.Data.Attributes;
-using TightlyCurly.Com.Common.Data.Constants;
-using TightlyCurly.Com.Common.Data.Helpers;
-using TightlyCurly.Com.Common.Data.Mappings;
-using TightlyCurly.Com.Common.Extensions;
+using Norml.Common.Data.Attributes;
+using Norml.Common.Data.Constants;
+using Norml.Common.Data.Helpers;
+using Norml.Common.Data.Mappings;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Common.Data
+namespace Norml.Common.Data
 {
     // This code was influenced from http://stackoverflow.com/questions/7731905/how-to-convert-an-expression-tree-to-a-partial-sql-query
     public class DatabaseQueryPredicateBuilder : ExpressionVisitor, IPredicateBuilder

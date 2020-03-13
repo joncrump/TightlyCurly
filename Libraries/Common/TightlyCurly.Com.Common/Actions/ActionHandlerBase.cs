@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TightlyCurly.Com.Common.Actions
+namespace Norml.Common.Actions
 {
     public abstract class ActionHandlerBase
     {

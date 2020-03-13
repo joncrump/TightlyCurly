@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
-using TightlyCurly.Com.Tests.Common.Base;
+using Norml.Tests.Common.Base;
 
-namespace TightlyCurly.Com.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
+namespace Norml.Common.Data.Tests.WriteDatabaseRepositoryBaseTests
 {
     [TestFixture]
     public class TheConstructor : TestBase

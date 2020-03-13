@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TightlyCurly.Com.Common
+namespace Norml.Common
 {
     public interface IResourcesInfo
     {

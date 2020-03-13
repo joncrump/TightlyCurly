@@ -1,6 +1,6 @@
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.IIngredientUri, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.IIngredientUri, Norml.Common.Models",
         "dataSource": "dbo.IngredientUris",
         "countProperty":"Id",
         "propertyMappings": [

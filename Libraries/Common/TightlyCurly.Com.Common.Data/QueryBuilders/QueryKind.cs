@@ -1,4 +1,4 @@
-﻿namespace TightlyCurly.Com.Common.Data.QueryBuilders
+﻿namespace Norml.Common.Data.QueryBuilders
 {
     public enum QueryKind
     {

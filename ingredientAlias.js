@@ -1,6 +1,6 @@
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.IIngredientAlias, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.IIngredientAlias, Norml.Common.Models",
         "dataSource": "dbo.IngredientAliases",
         "countProperty":"Id",
         "propertyMappings": [

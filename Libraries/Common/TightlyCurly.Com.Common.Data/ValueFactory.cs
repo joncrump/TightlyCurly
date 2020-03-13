@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using TightlyCurly.Com.Common.Data.Constants;
-using TightlyCurly.Com.Common.Extensions;
+using Norml.Common.Data.Constants;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Common.Data
+namespace Norml.Common.Data
 {
     public class ValueFactory : IValueFactory
     {

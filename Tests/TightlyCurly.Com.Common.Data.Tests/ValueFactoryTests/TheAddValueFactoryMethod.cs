@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq.Expressions;
-using TightlyCurly.Com.Common.Data.Constants;
-using TightlyCurly.Com.Common.Exceptions;
+using Norml.Common.Data.Constants;
+using Norml.Common.Exceptions;
 using NUnit.Framework;
-using TightlyCurly.Com.Tests.Common.Base;
+using Norml.Tests.Common.Base;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
-namespace TightlyCurly.Com.Common.Data.Tests.ValueFactoryTests
+namespace Norml.Common.Data.Tests.ValueFactoryTests
 {
     [TestFixture]
     public class TheAddValueFactoryMethod : MockTestBase<TestableValueFactory>

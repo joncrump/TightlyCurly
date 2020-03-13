@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TightlyCurly.Com.Common
+namespace Norml.Common
 {
     public abstract class ValueFactoryModelBase
     {

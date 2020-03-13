@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 
-namespace TightlyCurly.Com.Common.Extensions
+namespace Norml.Common.Extensions
 {
     public static class EnumerableExtensions
     {

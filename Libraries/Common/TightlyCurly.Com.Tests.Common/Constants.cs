@@ -1,4 +1,4 @@
-﻿namespace TightlyCurly.Com.Tests.Common
+﻿namespace Norml.Tests.Common
 {
     public static class Constants
     {

@@ -1,6 +1,6 @@
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.IProductVariantReviewComment, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.IProductVariantReviewComment, Norml.Common.Models",
         "dataSource": "dbo.ProductVariantReviewComments",
         "countProperty":"Id",
         "propertyMappings": [

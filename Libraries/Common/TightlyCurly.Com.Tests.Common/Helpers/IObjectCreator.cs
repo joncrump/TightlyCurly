@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TightlyCurly.Com.Tests.Common.Helpers
+namespace Norml.Tests.Common.Helpers
 {
     public interface IObjectCreator
     {

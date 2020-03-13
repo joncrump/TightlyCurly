@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace TightlyCurly.Com.Common.Data.Repositories
+namespace Norml.Common.Data.Repositories
 {
     public interface IPagingRepository
     {

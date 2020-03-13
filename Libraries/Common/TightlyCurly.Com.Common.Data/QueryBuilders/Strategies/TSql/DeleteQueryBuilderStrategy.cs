@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Text;
-using TightlyCurly.Com.Common.Extensions;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql
+namespace Norml.Common.Data.QueryBuilders.Strategies.TSql
 {
     public class DeleteQueryBuilderStrategy : QueryBuilderStrategyBase, IQueryBuilderStrategy
     {

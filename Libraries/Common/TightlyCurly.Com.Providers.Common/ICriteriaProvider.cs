@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace TightlyCurly.Com.Providers.Common
+namespace Norml.Providers.Common
 {
     public interface ICriteriaProvider<out TInterface>
     {

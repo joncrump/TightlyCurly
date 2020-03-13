@@ -1,6 +1,6 @@
-﻿using TightlyCurly.Com.Common.Data.Repositories;
+﻿using Norml.Common.Data.Repositories;
 
-namespace TightlyCurly.Com.Common.Data
+namespace Norml.Common.Data
 {
     public interface IEntityRepository<TModel> : IWriteRepository<TModel>,
         IReadRepository<TModel>

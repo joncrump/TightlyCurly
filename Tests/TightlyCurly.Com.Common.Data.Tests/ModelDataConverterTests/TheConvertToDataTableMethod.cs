@@ -4,10 +4,10 @@ using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using NUnit.Framework;
-using TightlyCurly.Com.Common.Exceptions;
-using TightlyCurly.Com.Tests.Common.Base;
+using Norml.Common.Exceptions;
+using Norml.Tests.Common.Base;
 
-namespace TightlyCurly.Com.Common.Data.Tests.ModelDataConverterTests
+namespace Norml.Common.Data.Tests.ModelDataConverterTests
 {
     [TestFixture]
     public class TheConvertToDataTableMethod : MockTestBase<ModelDataConverter>

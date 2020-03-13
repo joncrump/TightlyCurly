@@ -1,6 +1,6 @@
 [
     {
-        "type":"TightlyCurly.Com.Common.Models.IMenu, TightlyCurly.Com.Common.Models",
+        "type":"Norml.Common.Models.IMenu, Norml.Common.Models",
         "dataSource": "dbo.Menus",
         "countProperty":"Id",
         "propertyMappings": [

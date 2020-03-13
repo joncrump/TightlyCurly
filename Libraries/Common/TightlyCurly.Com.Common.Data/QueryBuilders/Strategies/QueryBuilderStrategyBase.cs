@@ -1,4 +1,4 @@
-﻿namespace TightlyCurly.Com.Common.Data.QueryBuilders.Strategies
+﻿namespace Norml.Common.Data.QueryBuilders.Strategies
 {
     public abstract class QueryBuilderStrategyBase
     {

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using TightlyCurly.Com.Common.Data.Repositories.Strategies;
+using Norml.Common.Data.Repositories.Strategies;
 
-namespace TightlyCurly.Com.Common.Data
+namespace Norml.Common.Data
 {
     public interface IDatabaseWrapper
     {

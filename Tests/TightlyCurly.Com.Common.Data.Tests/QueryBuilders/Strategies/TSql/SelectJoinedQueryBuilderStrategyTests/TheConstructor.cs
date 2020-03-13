@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
-using TightlyCurly.Com.Common.Data.QueryBuilders.Strategies.TSql;
-using TightlyCurly.Com.Tests.Common.Base;
+using Norml.Common.Data.QueryBuilders.Strategies.TSql;
+using Norml.Tests.Common.Base;
 
-namespace TightlyCurly.Com.Common.Data.Tests.QueryBuilders.Strategies.TSql.SelectJoinedQueryBuilderStrategyTests
+namespace Norml.Common.Data.Tests.QueryBuilders.Strategies.TSql.SelectJoinedQueryBuilderStrategyTests
 {
     [TestFixture]
     public class TheConstructor : TestBase

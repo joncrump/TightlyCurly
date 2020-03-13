@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Resources;
 
-namespace TightlyCurly.Com.Common.Helpers
+namespace Norml.Common.Helpers
 {
     public class ResourcesHelper : IResourcesHelper
     {

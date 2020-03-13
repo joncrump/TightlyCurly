@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TightlyCurly.Com.Common.Helpers
+namespace Norml.Common.Helpers
 {
     public delegate void ExceptionOccurredHandler(object sender, ExceptionEventArgs e);
 

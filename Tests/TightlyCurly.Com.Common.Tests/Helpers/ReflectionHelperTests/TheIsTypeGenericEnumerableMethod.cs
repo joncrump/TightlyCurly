@@ -1,8 +1,8 @@
-﻿using TightlyCurly.Com.Common.Helpers;
-using TightlyCurly.Com.Tests.Common.Base;
+﻿using Norml.Common.Helpers;
+using Norml.Tests.Common.Base;
 
 
-namespace TightlyCurly.Com.Common.Tests.Helpers.ReflectionHelperTests
+namespace Norml.Common.Tests.Helpers.ReflectionHelperTests
 {
     public class TheIsTypeGenericEnumerableMethod : MockTestBase<ReflectionHelper>
     {

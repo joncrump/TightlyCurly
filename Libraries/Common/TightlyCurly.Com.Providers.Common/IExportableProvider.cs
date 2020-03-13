@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq.Expressions;
-using TightlyCurly.Com.Common;
-using TightlyCurly.Com.Common.Data;
+using Norml.Common;
+using Norml.Common.Data;
 
-namespace TightlyCurly.Com.Providers.Common
+namespace Norml.Providers.Common
 {
     public interface IExportableProvider<out TInterface>
     {

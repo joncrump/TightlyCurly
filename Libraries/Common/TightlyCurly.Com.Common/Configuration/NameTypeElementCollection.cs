@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
-using TightlyCurly.Com.Common.Extensions;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Common.Configuration
+namespace Norml.Common.Configuration
 {
     public class NameTypeElementCollection : ConfigurationElementCollection
     {

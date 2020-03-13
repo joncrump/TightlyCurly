@@ -5,11 +5,11 @@ using System.Linq.Expressions;
 
 using Moq;
 using NUnit.Framework;
-using TightlyCurly.Com.Common.Data.QueryBuilders;
-using TightlyCurly.Com.Common.Data.Tests.ReadDatabaseRepositoryBaseTests;
-using TightlyCurly.Com.Tests.Common.Base;
+using Norml.Common.Data.QueryBuilders;
+using Norml.Common.Data.Tests.ReadDatabaseRepositoryBaseTests;
+using Norml.Tests.Common.Base;
 
-namespace TightlyCurly.Com.Common.Data.Tests.ReadDatabaseRepositoryBaseTests
+namespace Norml.Common.Data.Tests.ReadDatabaseRepositoryBaseTests
 {
     [TestFixture]
     public class TheGetMethod : MockTestBase<TestableReadDatabaseRepository>

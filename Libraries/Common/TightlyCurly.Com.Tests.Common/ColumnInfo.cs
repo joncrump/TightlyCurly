@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using TightlyCurly.Com.Common;
-using TightlyCurly.Com.Common.Extensions;
+using Norml.Common;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Tests.Common
+namespace Norml.Tests.Common
 {
     public class ColumnInfo
     {

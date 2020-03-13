@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-//using TightlyCurly.Com.Common.Data.Attributes;
-using TightlyCurly.Com.Common.Extensions;
+//using Norml.Common.Data.Attributes;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Tests.Common.Data
+namespace Norml.Tests.Common.Data
 {
     public class MockDataReaderHelper : IDataReaderHelper
     {

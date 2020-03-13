@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using TightlyCurly.Com.Common.Extensions;
+using Norml.Common.Extensions;
 
-namespace TightlyCurly.Com.Tests.Common.Helpers.Strategies
+namespace Norml.Tests.Common.Helpers.Strategies
 {
     public class DateTimeAsserterStrategy : AsserterStrategyBase<DateTime>
     {
